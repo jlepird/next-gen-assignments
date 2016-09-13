@@ -11,11 +11,15 @@
 
     <br>
     <br>
-    <h1>Welcome!</h1>
+    
 
     </div>
 
+    <div class="col-md-3">  </div>
+
     <div class="col-md-5">
+        <h1>Welcome!</h1>
+
         <h2>Template Header</h2>
 
         <p>
