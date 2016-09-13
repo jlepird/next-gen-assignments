@@ -25,7 +25,12 @@
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam mauris, vulputate ut nisi pharetra, gravida aliquet erat. Pellentesque iaculis lobortis tortor, eu eleifend eros fringilla sed. Donec consequat purus eu sem pellentesque, vel porttitor mi aliquam. Vivamus ornare dolor eleifend consequat vestibulum. Etiam eleifend neque eu mauris aliquam consectetur. Ut feugiat nulla quis nisi tempor ornare vitae ac enim. Nam consectetur id nulla in congue. Sed et odio quis ante fermentum finibus ut sed massa. Suspendisse maximus gravida lorem vitae sagittis. Integer consectetur augue magna, molestie placerat ligula rhoncus ac. Proin dictum, lacus sit amet semper euismod, orci lacus condimentum dui, nec blandit lorem metus semper dui. 
             <?php 
-            echo "foo";
+            $conn = mysqli_connect("localhost", getenv("USER"), "");
+            if ($conn->connect_error){
+                die("Connection failed:" . $conn->connect_error);
+            }
+            $tbl = $conn->query("select 'SQL Query Result' as test;");
+            echo $tbl->fetch_assoc()["test"]; 
             ?>
         </p>
 
