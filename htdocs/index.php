@@ -40,7 +40,7 @@
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-                        <i class="fa fa-user"></i> JOHN LEPIRD
+                        <i class="fa fa-user"></i> NAME HERE
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
@@ -61,7 +61,8 @@
 
 <div class="container">
 
-
+    <br>
+    <br>
     <h1>Welcome!</h1>
 
 
