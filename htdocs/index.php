@@ -1,7 +1,7 @@
 <?php session_start();
 // If user hasn't logged in, have them do that now. 
 if (!isset($_SESSION["uname"])) {
-    header("Location: login.php"); // comment this line to disable login (for debug) 
+    header("Location: /login.php"); // comment this line to disable login (for debug) 
 }
 ?>
 <html>
