@@ -13,7 +13,9 @@
                 <li>
                     <a href="/">Home</a>
                 </li>
-
+                <li>
+                    <a href="/help/about.php"> About</a>
+                </li>
                 <li>
                     <a href="/billets/find.php">Find a Billet</a>
                 </li>
@@ -24,7 +26,7 @@
                     <a href="/prefs/input.php">My Preference List</a>
                 </li>
                 <li>
-                    <a href="/contact.php">Contact Us</a>
+                    <a href="/help/contact.php">Contact Us</a>
                 </li>
                 <!-- 
                 <li class="dropdown">
