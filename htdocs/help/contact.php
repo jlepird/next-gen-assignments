@@ -18,8 +18,8 @@ if (!isset($_SESSION["uname"])) {
         <h2>Contact Information</h2>
 
         <h3> 1Lt Jack Lepird </h3>
-        <p> not-my-real-email@email.net
-        <p> 911 </p>
+        <p> john.r.lepird.mil@mail.mil
+        <p> 571-256-7711 (commercial) </p>
 
     </div>
 
