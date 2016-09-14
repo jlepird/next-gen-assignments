@@ -21,7 +21,7 @@ if (!isset($_SESSION["uname"])) {
         <p> john.r.lepird.mil@mail.mil
         <p> 571-256-7711 (commercial) </p>
         
-        <h3> Courtney Knoth</h3>
+        <h3> Ms. Courtney Knoth</h3>
         <p> courtney.l.knoth.civ@mail.mil</p>
         <p> 571-256-2041 (commercial) </p>
 
