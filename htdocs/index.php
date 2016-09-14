@@ -1,6 +1,13 @@
+<?php session_start();
+// If user hasn't logged in, have them do that now. 
+if (!isset($_SESSION["uname"])) {
+    header("Location: login.php"); // comment this line to disable login (for debug) 
+}
+?>
 <html>
     <head> 
     <?php include './head_common.php'; ?>
+
     </head>
 <body>
 
@@ -33,13 +40,22 @@
                 $user = "ubuntu" ;
             }
 
+            // Connect to our sql server
             $conn = mysqli_connect("localhost", $user, "");
+
+            // Give error if the connection failed. 
             if ($conn->connect_error){
                 die("Connection failed:" . $conn->connect_error);
             }
+
+            // Run a really dumb query 
             $tbl = $conn->query("select 'SQL Query Result' as test;");
-            echo $tbl->fetch_assoc()["test"]; 
-            echo "Uname = " . getenv("USER");
+
+            // get the result into a table 
+            echo $tbl->fetch_assoc()["test"];
+
+            // Another debug: print the username that the user had at the beginning. 
+            echo "Uname = " . $_SESSION['uname'];
             ?>
         </p>
 

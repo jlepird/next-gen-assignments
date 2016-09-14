@@ -26,6 +26,9 @@
                 <li>
                     <a href="/contact.php">Contact Us</a>
                 </li>
+                <li>
+                    <a href="/logout.php">Log Out</a>
+                </li>
                 <!-- 
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
