@@ -1,4 +1,9 @@
-
+<?php session_start();
+// If user hasn't logged in, have them do that now. 
+if (!isset($_SESSION["uname"])) {
+    header("Location: /login.php"); // comment this line to disable login (for debug) 
+}
+?>
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -27,6 +32,9 @@
                 </li>
                 <li>
                     <a href="/help/contact.php">Contact Us</a>
+                </li>
+                <li>
+                    <a href="/logout.php">Log Out</a>
                 </li>
                 <!-- 
                 <li class="dropdown">
