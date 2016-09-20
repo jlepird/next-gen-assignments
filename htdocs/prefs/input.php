@@ -6,7 +6,7 @@ if (!isset($_SESSION["uname"])) {
 ?>
 <html>
     <head> 
-    <?php include '../head_common.php'; ?>
+    <?php include '../include/head_common.php'; ?>
     </head>
 <body>
 <?php include '../banner.php'; ?>

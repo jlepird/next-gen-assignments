@@ -1,6 +1,6 @@
 <html>
     <head> 
-    <?php include './head_common.php'; ?>
+    <?php include './include/head_common.php'; ?>
     </head>
 <body>
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
