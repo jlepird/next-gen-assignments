@@ -65,7 +65,7 @@ class mySQL {
 		if ($res->num_rows > 1) {
 			die("Query" . $cmd . "returned multiple rows"); 
 		} elseif ($res->num_rows < 1){
-			die("Query" . $cmd . "returned no rows");
+			return "ERROR-- no rows returned";
 		}
 		$row = $res->fetch_row();
 		if (count($row) > 1){
