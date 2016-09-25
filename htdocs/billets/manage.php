@@ -7,15 +7,26 @@ if (!isset($_SESSION["uname"])) {
 <html>
     <head> 
     <?php include '../include/head_common.php'; ?>
+
     </head>
 <body>
 <?php include '../banner.php'; ?>
+
 <div class="col-md-3">  </div>
     <div class="col-md-5">
+
     <br> <br> <br>
-    <p> Manage Billet Filler Text </p>
+    <?php $res = $sql->queryJSON("select posn from nextGen.billetOwners where user = '" . $_SESSION["uname"] . "';");
+    if ($res == "[]") {
+    	include "./nobillets.php";
+    } else {
+    	include "./yesbillets.php";
+    	$data = $sql->queryJSON("select key, val from nextGen.billetData " . 
+    		                    "left outer join nextGen.billetOwners on nextGen.billetOwners.posn = nextGen.billetOwners.posn" . 
+    		                    " where user = '" . $_SESSION["uname"] . "';");
+    }
 
-
+    ?>
     </div>
 
 </div>

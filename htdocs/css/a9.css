@@ -1,0 +1,9 @@
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px light grey;
+    padding: 10px;
+}
+
+/* Dummy class to disable/enable multiple elements */ 
+.toggle{}
