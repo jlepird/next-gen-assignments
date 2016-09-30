@@ -15,7 +15,6 @@ if (!isset($_SESSION["uname"])) {
     <br> <br> <br>
     <p>As part of this test, you are requested to submit detailed information on each of your billets.  This information will be searchable and read by potential officers on the VML to inform their assignment preference list.
 
-<p></p><a href="https://afvec.langley.af.mil/myvector/">Proceed to MyVECTOR</a>
     </div>
 
 </div>
