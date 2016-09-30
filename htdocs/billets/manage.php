@@ -13,9 +13,9 @@ if (!isset($_SESSION["uname"])) {
 <div class="col-md-3">  </div>
     <div class="col-md-5">
     <br> <br> <br>
-    <p> Manage Billet Filler Text </p>
+    <p>As part of this test, you are requested to submit detailed information on each of your billets.  This information will be searchable and read by potential officers on the VML to inform their assignment preference list.
 
-
+<p></p><a href="https://afvec.langley.af.mil/myvector/">Proceed to MyVECTOR</a>
     </div>
 
 </div>
