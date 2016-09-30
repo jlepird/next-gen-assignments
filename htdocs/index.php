@@ -24,7 +24,7 @@ if (!isset($_SESSION["uname"])) {
 
     <div class="col-md-3">  </div>
 
-    <div class="col-md-5">
+    <div class="col-md-10">
         <h1>Getting Started</h1>
 
 <p>As an active participant on the FY17 Summer VML cycle, you have been chosen to help shape the future Air Force assignment system. You are part of an initial pilot program to help test proposed ideas and processes that have the goal of improving the current system by making it more decentralized, transparent, and user friendly. This effort is in response to the SecDef's Force of the Future initiative to implement a web-based talent management system. Please keep in mind that is only a test and will have no bearing on your actual VML cycle, as the FY17 Summer VML has already closed. Keeping that in mind, we ask that you participate as if this new assignment system is part has already been implemented.  The more accurate and quantifiable data we can collect, the better we can make recommendations to Air Force leadership. </p>
