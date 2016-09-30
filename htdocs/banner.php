@@ -28,6 +28,9 @@ if (!isset($_SESSION["uname"])) {
                     <a href="/billets/manage.php">Manage Billets</a>
                 </li>
                 <li>
+                    <a href="/billets/find_officer.php">Find an Officer</a>
+                </li>
+                <li>
                     <a href="/prefs/input.php">My Preference List</a>
                 </li>
                 <li>
