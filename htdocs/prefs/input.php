@@ -20,10 +20,10 @@ if (!isset($_SESSION["uname"])) {
      $res1 = $sql->queryJSON("select owner from nextGen.users where username = '" . $_SESSION["uname"] . "';");
      $res2 = $sql->queryJSON("select officer from nextGen.users where username = '" . $_SESSION["uname"] . "';");
      
-        if ($res1 == "TRUE") { // if they are an owner, then display a page to submit a preference list of officers
+        if ($res1 == 1) { // if they are an owner, then display a page to submit a preference list of officers
         	include "./officer_preference.php";
         }
-        if ($res2 == "TRUE") { // if they are an officer, then display a page to submit a preference list of assignments
+        if ($res2 == 1) { // if they are an officer, then display a page to submit a preference list of assignments
         	include "./assignments_preference.php";
         }
         
