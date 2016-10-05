@@ -9,13 +9,15 @@ drop table if exists users;
 create table users(
     username varchar(50) primary key not null,
     email varchar(50) not null, 
-    password binary(32) not null
+    password binary(32) not null,
+    assign_pref_list bit not null,
+    off_pref_list bit not null
 ); 
 
 
 insert into users values 
-('a9', 'example@test.com', md5('test')),
-('a1', 'example2@test.com', md5('test'));
+('a9', 'example@test.com', md5('test'), 1, 0),
+('a1', 'example2@test.com', md5('test'), 0, 1);
 
 drop table if exists billetOwners;
 create table billetOwners(
