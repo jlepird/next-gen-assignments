@@ -64,6 +64,7 @@ updateBilletData(data[0].posn);
 <br><br> 
 <fieldset>
 <table> 
+	<tr> <td colspan="4">  <h5> <i> General Information </i> </h5>  </td> </tr>
 	<tr> 
 		<td> <p> Billet AFSC: </p> </td> 
 		<td> <input type = "text" name = "afsc" value = "" class = "autopop"> </td> 
@@ -90,64 +91,68 @@ updateBilletData(data[0].posn);
 			<option value = "no" > No  </option>
 		</select>
 		 </td>
+	</tr> 
+</table>
+</fieldset>
+<fieldset>
+<table> 
+	<tr> <td colspan="4"> <h5> <i> Degrees and Certifications </i> </h5>  </td> </tr>
+	<tr> 
+		<td> <p> Advanced Academic Degree Requirement (Level): </p> </td>
+		<td> <select name = "aadLevel" class = "autopop"> 
+			<option value = "bs"> None </option>
+			<option value = "ms"> Master's </option>
+			<option value = "phd"> PhD </option>
+		</select> </td>
+	</tr>
+	<tr> 
+		<td> <p> Advanced Academic Degree Requirement (Degree): </p> </td>
+		<td> <input type = "text" name = "aadDegree" class = "autopop" value = "N/A"> </td>
+	</tr>
+	<tr> 
+		<td> <p>Acquisition Level: </p> </td>
+		<td> <select name = "acqLevel" >
+			<option value = "temp1"> Option 1 </option>
+			<option value = "temp2"> Option 2 </option>
+			<option value = "temp3"> Option 3 </option>
+		</select> </td>
 	</tr>
 </table>
 </fieldset>
 <fieldset>
-	<p> Advanced Academic Degree Requirement (Level): </p>
-	<select name = "aadLevel" class = "autopop"> 
-		<option value = "bs"> None </option>
-		<option value = "ms"> Master's </option>
-		<option value = "phd"> PhD </option>
-	</select>
-	<br> <br> 
-	<p> Advanced Academic Degree Requirement (Degree): </p>
-	<input type = "text" name = "aadDegree" class = "autopop" value = "N/A">
-</fieldset>
-<fieldset>
-	<p>Acquisition Level: </p>
-	<select name = "acqLevel" >
-	<option value = "temp1"> Option 1 </option>
-	<option value = "temp2"> Option 2 </option>
-	<option value = "temp3"> Option 3 </option>
-	</select>
-</fieldset>
-<fieldset>
 <table> 
+	<tr> <td colspan="4"> <h5> <i> Lifestyle </i> </h5>  </td> </tr>
 <tr>
-	<td> 
-		<p>Percentage of Time TDY (Approximate): </p>
-		<select name = "tdy" class = "autopop">
-		<option value = "0"> 0% </option>
-		<option value = "5"> 5% </option>
-		<option value = "10"> 10% </option>
-		<option value = "25"> 25% </option>
-		<option value = ">25"> More than 25% </option>
-		</select>
+	<td> <p>Percentage of Time TDY (Approximate): </p> </td>
+	<td> <select name = "tdy" class = "autopop">
+			 <option value = "0"> 0% </option>
+			 <option value = "5"> 5% </option>
+			 <option value = "10"> 10% </option>
+			 <option value = "25"> 25% </option>
+			 <option value = ">25"> More than 25% </option>
+		 </select>
 	</td>
-	<td style = "padding: 0 30px 0 30px;"> 
-		<p>Deployable: </p>
+	<td style = "padding: 0 30px 0 30px;"> 	<p>Deployable: </p> </td>
+	<td> 
 		<select name = "deployable" class = "autopop">
-		<option value = "yes"> Yes </option>
-		<option value = "no"> No </option>
+			<option value = "yes"> Yes </option>
+			<option value = "no"> No </option>
 		</select>
 	</td>
 </tr>
-</table>
-</fieldset>
-<fieldset>
-<p> Typical Hours </p>
-	<table> 
-		<tr> 
-			<td> Start: </td> 
-			<td> <input type = "text" name = "start" class = "autopop" value = ""> </td>
-			<td> Stop: </td> 
-			<td> <input type = "text" name = "stop" class = "autopop" value = ""> </td>
-		</tr>
+<tr> <td colspan="4"><p> Typical Hours </p> </td> </tr>
+<tr> 
+	<td> Start: </td> 
+	<td> <input type = "text" name = "start" class = "autopop" value = ""> </td>
+	<td> Stop: </td> 
+	<td> <input type = "text" name = "stop" class = "autopop" value = ""> </td>
+</tr>
 	</table>
 </fieldset>
 <fieldset>
-	<p> Job Description: </p>
-	<textarea id = "desc" name = "desc" cols = "100" rows = "10"> </textarea>
+<table>
+	<tr> <td> <h5> <i> Job Description </i> </h5> </td> </tr>
+	<tr> <td> <textarea id = "desc" name = "desc" cols = "100" rows = "10"> </textarea> </td> </tr>
+</table>
 </fieldset>
 </form>
