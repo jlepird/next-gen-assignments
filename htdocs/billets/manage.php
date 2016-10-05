@@ -13,6 +13,7 @@ if (!isset($_SESSION["uname"])) {
 <?php include '../banner.php'; ?>
 
 <div class="col-md-3">  </div>
+
     <div class="col-md-5">
 
     <br> <br> <br>
@@ -20,10 +21,13 @@ if (!isset($_SESSION["uname"])) {
     if ($res == "[]") {
     	include "./nobillets.php";
     } else {
+    	$data = $sql->queryJSON("select nextGen.billetOwners.posn, tkey, val from nextGen.billetData " . 
+	                    "left outer join nextGen.billetOwners on nextGen.billetData.posn = nextGen.billetOwners.posn" . 
+	                    " where user = '" . $_SESSION["uname"] . "';");
+    	$descs = $sql->queryJSON("select nextGen.billetOwners.posn, txt from nextGen.billetDescs " . 
+	                    "left outer join nextGen.billetOwners on nextGen.billetDescs.posn = nextGen.billetOwners.posn" . 
+	                    " where user = '" . $_SESSION["uname"] . "';");
     	include "./yesbillets.php";
-    	$data = $sql->queryJSON("select key, val from nextGen.billetData " . 
-    		                    "left outer join nextGen.billetOwners on nextGen.billetOwners.posn = nextGen.billetOwners.posn" . 
-    		                    " where user = '" . $_SESSION["uname"] . "';");
     }
 
     ?>

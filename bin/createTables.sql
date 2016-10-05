@@ -10,7 +10,7 @@ create table users(
     password binary(32) not null
 ); 
 
-grant select on users to 'jack'@'localhost'; 
+grant select on users to 'ubuntu'@'localhost'; 
 
 insert into users values 
 ('a9', 'example@test.com', md5('test'));
@@ -21,7 +21,7 @@ create table billetOwners(
 	user varchar(50) not null references users.username
 );
 
-grant select on billetOwners to 'jack'@'localhost';
+grant select on billetOwners to 'ubuntu'@'localhost';
 
 insert into billetOwners values
 ( 'abc', 'a9'),
@@ -37,10 +37,13 @@ create table billetData (
 insert into billetData values 
 	('abc', 'afsc', '61A'),
 	('abc', 'grade', 'Lt Col'),
-	('abc', 'location', 'AF/A9'),
+	('abc', 'location', 'Pentagon'),
+	('abc', 'unit', 'AF/A9'), 
 	('def', 'afsc', '38P'),
 	('def', 'grade', 'Maj'),
-	('def', 'location', 'AF/A1');
+	('def', 'location', 'Pentagon'),
+	('def', 'unit', 'AF/A1') 
+	;
 
 drop table if exists billetDescs;
 create table billetDescs (
@@ -52,5 +55,5 @@ insert into billetDescs values
 	('def', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam mauris, vulputate ut nisi pharetra, gravida aliquet erat. Pellentesque iaculis lobortis tortor, eu eleifend eros fringilla sed. Donec consequat purus eu sem pellentesque, vel porttitor mi aliquam. Vivamus ornare dolor eleifend consequat vestibulum. Etiam eleifend neque eu mauris aliquam consectetur. Ut feugiat nulla quis nisi tempor ornare vitae ac enim. Nam consectetur id nulla in congue. Sed et odio quis ante fermentum finibus ut sed massa. Suspendisse maximus gravida lorem vitae sagittis. Integer consectetur augue magna, molestie placerat ligula rhoncus ac. Proin dictum, lacus sit amet semper euismod, orci lacus condimentum dui, nec blandit lorem metus semper dui.')
 	;
 
-grant select, update, insert on billetData to 'jack'@'localhost';
-grant select, update, insert on billetDescs to 'jack'@'localhost'; 
+grant select, update, insert on billetData to 'ubuntu'@'localhost';
+grant select, update, insert on billetDescs to 'ubuntu'@'localhost'; 
