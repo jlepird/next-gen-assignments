@@ -10,10 +10,9 @@ if (!isset($_SESSION["uname"])) {
     </head>
 <body>
 <?php include '../banner.php'; ?>
-<div class="col-md-3">  </div>
-    <div class="col-md-5">
+
     <br> <br> <br>
-    <p> Pref List Filler Text </p>
+    <p> You are an officer on the VML, so you will submit a preference list of assignments you want. </p>
 
 
     </div>

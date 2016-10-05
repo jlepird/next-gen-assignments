@@ -10,10 +10,9 @@ if (!isset($_SESSION["uname"])) {
     </head>
 <body>
 <?php include '../banner.php'; ?>
-<div class="col-md-3">  </div>
-    <div class="col-md-5">
+
     <br> <br> <br>
-    <p> Pref List Filler Text </p>
+    <p> You are a billet owner, so you will submit a preference list of officers you want. </p>
 
 
     </div>
