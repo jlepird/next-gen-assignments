@@ -13,7 +13,8 @@ create table users(
 grant select on users to 'ubuntu'@'localhost'; 
 
 insert into users values 
-('a9', 'example@test.com', md5('test'));
+('a9', 'example@test.com', md5('test'))
+('a1', 'example2@test.com', md5('test'));
 
 drop table if exists billetOwners;
 create table billetOwners(
