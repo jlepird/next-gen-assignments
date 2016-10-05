@@ -15,10 +15,9 @@ if (!isset($_SESSION["uname"])) {
     <br> <br> <br>
     <p> Pref List Filler Text </p>
 
-
      <?php
-    $res1 = $sql->queryJSON("select owner from nextGen.users where username = '" . $_SESSION["uname"] . "';");
-    $res2 = $sql->queryJSON("select officer from nextGen.users where username = '" . $_SESSION["uname"] . "';");
+    $res1 = $sql->queryValue("select owner from nextGen.users where username = '" . $_SESSION["uname"] . "';");
+    $res2 = $sql->queryValue("select officer from nextGen.users where username = '" . $_SESSION["uname"] . "';");
      
     if ($res1 == 1) { // if they are an owner, then display a page to submit a preference list of officers
     	include "./officer_preference.php";
