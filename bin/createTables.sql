@@ -10,13 +10,13 @@ create table users(
     username varchar(50) primary key not null,
     email varchar(50) not null, 
     password binary(32) not null,
-    owner bit,
-    officer bit
+    owner bit not null,
+    officer bit not null
 ); 
 
 
 insert into users values 
-('a9', 'example@test.com', md5('test'), 1, 0),
+('a9', 'example@test.com',  md5('test'), 1, 0),
 ('a1', 'example2@test.com', md5('test'), 0, 1);
 
 drop table if exists billetOwners;
