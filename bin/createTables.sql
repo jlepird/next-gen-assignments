@@ -77,3 +77,5 @@ grant select on users to 'ubuntu'@'localhost';
 grant select on billetOwners to 'ubuntu'@'localhost';
 grant select, update, insert on billetData to 'ubuntu'@'localhost';
 grant select, update, insert on billetDescs to 'ubuntu'@'localhost'; 
+
+select 'Complete' as 'Update';  
