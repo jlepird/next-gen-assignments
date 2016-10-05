@@ -1,0 +1,26 @@
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px light grey;
+    padding: 10px;
+}
+
+/* Dummy class to disable/enable multiple elements */ 
+.toggle{}
+
+fieldset { 
+    display: block;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 1px groove;
+    border-style: solid; 
+    border-color: lightgrey; 
+}
+
+td {
+	padding: 0 2px 0 2px; 
+}

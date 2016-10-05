@@ -78,10 +78,14 @@ class mySQL {
 	public function queryJSON($cmd){
 		$res = $this->_conn->query($cmd);
 		$json = array();
-		while($row = $res->fetch_object()){
-			$json[] = $row;
+		if ($res->num_rows > 0){
+			while($row = $res->fetch_object()){
+				$json[] = $row;
+			}
+			return json_encode($json);
+		} else {
+			return "[]";
 		}
-		return json_encode($json);
 	}
 
 } 
