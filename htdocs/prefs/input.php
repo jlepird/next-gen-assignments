@@ -15,19 +15,18 @@ if (!isset($_SESSION["uname"])) {
     <br> <br> <br>
     <p> Pref List Filler Text </p>
 
-    <?php $res = $sql->queryJSON("select posn from nextGen.billetOwners where user = '" . $_SESSION["uname"] . "';");
-        if ($res == "[]") { // // if they don't own a billet and therefore an officer, then they are redirected to a page to submit a preference list of assignments
-        	include "./assignments_preference.php";
-        } else { // if they own a billet, then they are redirected to a page to submit a preference list of officers
-        	$data = $sql->queryJSON("select nextGen.billetOwners.posn, tkey, val from nextGen.billetData " . 
-    	                    "left outer join nextGen.billetOwners on nextGen.billetData.posn = nextGen.billetOwners.posn" . 
-    	                    " where user = '" . $_SESSION["uname"] . "';");
-        	$descs = $sql->queryJSON("select nextGen.billetOwners.posn, txt from nextGen.billetDescs " . 
-    	                    "left outer join nextGen.billetOwners on nextGen.billetDescs.posn = nextGen.billetOwners.posn" . 
-    	                    " where user = '" . $_SESSION["uname"] . "';");
+
+     <?php
+     $res1 = $sql->queryJSON("select owner from nextGen.users where username = '" . $_SESSION["uname"] . "';");
+     $res2 = $sql->queryJSON("select officer from nextGen.users where username = '" . $_SESSION["uname"] . "';");
+     
+        if ($res1 == 1) { // if they are an owner, then display a page to submit a preference list of officers
         	include "./officer_preference.php";
         }
-    
+        if ($res2 == 1) { // if they are an officer, then display a page to submit a preference list of assignments
+        	include "./assignments_preference.php";
+        }
+        
         ?>
 
     </div>
