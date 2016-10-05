@@ -82,6 +82,15 @@ updateBilletData(data[0].posn);
 		<td> <p> Point of Contact:</p> </td> 
 		<td> <input type = "text" name = "poc" value = "" class = "autopop"> </td>
 	</tr>
+	<tr>
+		<td colspan="2"> <p> Allow Airmen to contact me regarding this billet: </p> </td>
+		<td colspan="2"> 
+		<select name = "contact?" class = "autopop"> 
+			<option value = "yes"> Yes </option>
+			<option value = "no" > No  </option>
+		</select>
+		 </td>
+	</tr>
 </table>
 </fieldset>
 <fieldset>

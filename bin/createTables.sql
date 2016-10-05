@@ -48,7 +48,8 @@ insert into billetData values
 	('abc', 'start',        '0730'),
 	('abc', 'stop',         '1630'),
 	('abc', 'tdy',          '5'), 
-	('abc', 'deployable',   'yes'), 
+	('abc', 'deployable',   'yes'),
+	('abc', 'contact?',     'yes'),
 	('def', 'afsc',         '38P'),
 	('def', 'grade',        'Maj'),
 	('def', 'location',     'Pentagon'),
@@ -60,7 +61,8 @@ insert into billetData values
 	('def', 'start',        '0730'),
 	('def', 'stop',         '1700'),
 	('def', 'tdy',          '25'),
-	('def', 'deployable',   'yes')
+	('def', 'deployable',   'yes'),
+	('def', 'contact?',     'no')
 	;
 
 drop table if exists billetDescs;
