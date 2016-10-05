@@ -1,10 +1,12 @@
-<script type="text/javascript">
-
+<script type = "text/javascript">
+	/* TODO: Add var declaration to avoid polluting global namespace */ 
+	vals = <?php echo $res; ?>;
+	data = <?php echo $data; ?>;
+	descs = <?php echo $descs; ?>;
+	
+	
 /* Run on Page Load */ 
 $( function(){ 
-
-vals = <?php echo $res; ?>;
-data = <?php echo $data; ?>;
 
 // Populate the drop down menu
 d3.select("#billetSelector")
@@ -34,12 +36,23 @@ updateBilletData = function(value){
 		})
 		toUpdate[i].value = row[0].val; 
 	}
+	
+	/* Update Job description */ 
+	document.getElementById("desc").value = descs.filter(function(x){
+		return x.posn == value;
+	})[0].txt;
 }
 
+toggleSelector = function(val){
+	
+}
+
+/* Initial fill */ 
 updateBilletData(data[0].posn);
 
 });
-  </script>
+	
+</script>
 
 <h5 >Please select your billet:</h5>
 <select id = "billetSelector" onchange="updateBilletData(this.value)" class = "center">
@@ -65,22 +78,22 @@ updateBilletData(data[0].posn);
 	</tr>
 	<tr> 
 		<td> <p> Last Occupied By:</p> </td> 
-		<td> <input type = "text" name = "lastOccupant" value = ""> </td>
+		<td> <input type = "text" name = "lastOccupant" value = "" class = "autopop"> </td>
 		<td> <p> Point of Contact:</p> </td> 
-		<td> <input type = "text" name = "poc" value = ""> </td>
+		<td> <input type = "text" name = "poc" value = "" class = "autopop"> </td>
 	</tr>
 </table>
 </fieldset>
 <fieldset>
 	<p> Advanced Academic Degree Requirement (Level): </p>
-	<select name = "aad"> 
+	<select name = "aadLevel" class = "autopop"> 
 		<option value = "bs"> None </option>
 		<option value = "ms"> Master's </option>
 		<option value = "phd"> PhD </option>
 	</select>
 	<br> <br> 
 	<p> Advanced Academic Degree Requirement (Degree): </p>
-	<input type = "text" value = "N/A">
+	<input type = "text" name = "aadDegree" class = "autopop" value = "N/A">
 </fieldset>
 <fieldset>
 	<p>Acquisition Level: </p>
@@ -95,17 +108,17 @@ updateBilletData(data[0].posn);
 <tr>
 	<td> 
 		<p>Percentage of Time TDY (Approximate): </p>
-		<select name = "acqLevel" >
+		<select name = "tdy" class = "autopop">
 		<option value = "0"> 0% </option>
 		<option value = "5"> 5% </option>
 		<option value = "10"> 10% </option>
 		<option value = "25"> 25% </option>
-		<option value = ">50"> More than 50% </option>
+		<option value = ">25"> More than 25% </option>
 		</select>
 	</td>
 	<td style = "padding: 0 30px 0 30px;"> 
 		<p>Deployable: </p>
-		<select name = "deployable" >
+		<select name = "deployable" class = "autopop">
 		<option value = "yes"> Yes </option>
 		<option value = "no"> No </option>
 		</select>
@@ -118,14 +131,14 @@ updateBilletData(data[0].posn);
 	<table> 
 		<tr> 
 			<td> Start: </td> 
-			<td> <input type = "text" name = "start" value = ""> </td>
+			<td> <input type = "text" name = "start" class = "autopop" value = ""> </td>
 			<td> Stop: </td> 
-			<td> <input type = "text" name = "stop" value = ""> </td>
+			<td> <input type = "text" name = "stop" class = "autopop" value = ""> </td>
 		</tr>
 	</table>
 </fieldset>
 <fieldset>
 	<p> Job Description: </p>
-	<textarea name = "desc" cols = "100" rows = "10"> </textarea>
+	<textarea id = "desc" name = "desc" cols = "100" rows = "10"> </textarea>
 </fieldset>
 </form>
