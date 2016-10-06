@@ -21,7 +21,12 @@ d3.select("#billetSelector")
   	return d.posn;
   });
 
+var selected = data[0].posn; 
+
 updateBilletData = function(value){ 
+
+	selected = value; 
+
 	/* Subset to the data that we need */ 
 	var myData = data.filter(function(x) {
 		return x.posn == value;
@@ -48,19 +53,33 @@ toggleSelector = function(val){
 }
 
 /* Initial fill */ 
-updateBilletData(data[0].posn);
+updateBilletData(selected);
 
 });
 	
 </script>
-
-<h5 >Please select your billet:</h5>
-<select id = "billetSelector" onchange="updateBilletData(this.value)" class = "center">
-<!-- Template, javascript will fill in --> 
-</select>
-
-
 <form> 
+<h5 >Please select your billet:</h5>
+<table> 
+<tr> 
+<td> 
+	<select id = "billetSelector" 
+	        onchange = "updateBilletData(this.value);" 
+	        class = "center"
+	        style = "width: 100px;"
+	        >
+	<!-- Template, javascript will fill in --> 
+	</select>
+</td>
+<td> <input type = "submit" value = "Save Changes"> </td>
+<td> <button onchange = "updateBilletData(selected); "> Reset </button>
+<td> 
+
+</td>
+</tr>
+</table>
+
+
 <br><br> 
 <fieldset>
 <table> 
