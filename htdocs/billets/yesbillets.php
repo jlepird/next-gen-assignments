@@ -1,10 +1,25 @@
+<?php session_start();
+// If user hasn't logged in, have them do that now. 
+if (!isset($_SESSION["billets"])) {
+    die("You don't have the correct permissions to view this page.");
+}
+?>
+
 <script type = "text/javascript">
 	/* TODO: Add var declaration to avoid polluting global namespace */ 
 	vals = <?php echo $res; ?>;
 	data = <?php echo $data; ?>;
 	descs = <?php echo $descs; ?>;
 	
-	
+	// Global var showing what we currently have selected. 
+	var selected = <?php 
+		if (isset($_SESSION["lastViewed"])){
+			echo "'" . $_SESSION["lastViewed"] . "'" ; 
+		} else {
+			echo "data[0].posn";
+		}
+	?>;  
+
 /* Run on Page Load */ 
 $( function(){ 
 
@@ -21,7 +36,7 @@ d3.select("#billetSelector")
   	return d.posn;
   });
 
-var selected = data[0].posn; 
+
 
 updateBilletData = function(value){ 
 
@@ -31,6 +46,9 @@ updateBilletData = function(value){
 	var myData = data.filter(function(x) {
 		return x.posn == value;
 	}); 
+
+	// Ensure correct drop down selected-- used when redirected back after submission
+	document.getElementById("billetSelector").value = value;
 
 
 	/* Update the values that we have */ 
@@ -58,12 +76,13 @@ updateBilletData(selected);
 });
 	
 </script>
-<form> 
+<form action="upload.php" method = "post"> 
 <h5 >Please select your billet:</h5>
 <table> 
 <tr> 
 <td> 
 	<select id = "billetSelector" 
+			name = "id"
 	        onchange = "updateBilletData(this.value);" 
 	        class = "center"
 	        style = "width: 100px;"
@@ -72,7 +91,7 @@ updateBilletData(selected);
 	</select>
 </td>
 <td> <input type = "submit" value = "Save Changes"> </td>
-<td> <button onchange = "updateBilletData(selected); "> Reset </button>
+<td> <button type = "button" onclick = "updateBilletData(selected); "> Reset </button>
 <td> 
 
 </td>

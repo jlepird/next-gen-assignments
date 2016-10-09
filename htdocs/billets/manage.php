@@ -31,6 +31,7 @@ if (!isset($_SESSION["uname"])) {
     	$descs = $sql->queryJSON("select nextGen.billetOwners.posn, txt from nextGen.billetDescs " . 
 	                    "left outer join nextGen.billetOwners on nextGen.billetDescs.posn = nextGen.billetOwners.posn" . 
 	                    " where user = '" . $_SESSION["uname"] . "';");
+    	$_SESSION["billets"] = $res;
     	include "./yesbillets.php";
     }
 

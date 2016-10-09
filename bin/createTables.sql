@@ -32,7 +32,7 @@ insert into billetOwners values
 drop table if exists billetData; 
 create table billetData (
 	posn varchar(50) not null references billetOwners.posn,
-	tkey  varchar(50), 
+	tkey varchar(50), 
 	val  varchar(100)
 );
 
@@ -48,7 +48,8 @@ insert into billetData values
 	('abc', 'start',        '0730'),
 	('abc', 'stop',         '1630'),
 	('abc', 'tdy',          '5'), 
-	('abc', 'deployable',   'yes'), 
+	('abc', 'deployable',   'yes'),
+	('abc', 'contact?',     'yes'), 
 	('def', 'afsc',         '38P'),
 	('def', 'grade',        'Maj'),
 	('def', 'location',     'Pentagon'),
@@ -60,7 +61,8 @@ insert into billetData values
 	('def', 'start',        '0730'),
 	('def', 'stop',         '1700'),
 	('def', 'tdy',          '25'),
-	('def', 'deployable',   'yes')
+	('def', 'deployable',   'no'),
+	('def', 'contact?',     'no')
 	;
 
 drop table if exists billetDescs;
@@ -81,7 +83,6 @@ create table allowableDegrees(
 
 -- Build up a query to grand all the correct rights 
 set @qry = concat('grant all on *.* to ', @user, '; ');
-select @qry; 
 
 prepare stmt from @qry; 
 execute stmt; 

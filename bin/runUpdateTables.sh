@@ -7,6 +7,4 @@ stmt="$stmt source createTables.sql;"
 stmt="$stmt load data local infile '`pwd`/../data/aadCodes.csv' into table allowableDegrees
 fields terminated by ',' enclosed by '\"';"
 
-echo $stmt
-
 sudo mysql -u root -p -e "$stmt"
