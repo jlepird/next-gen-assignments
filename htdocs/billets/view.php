@@ -13,8 +13,27 @@ if (!isset($_SESSION["uname"])) {
     	$billet = $_GET['billet']; 
     	$data = $sql->queryJSON("select posn, tkey, val from nextGen.billetData where posn = '" . $billet . "';");
         echo $data; 
-
     ?>; 
+
+    // Run on page load 
+    $(function(){
+	    /* Update the values that we have */ 
+		var toUpdate = document.getElementsByClassName("autopop");
+		for (var i = 0; i < toUpdate.length; ++i){
+			var row = data.filter(function(x){
+				return x.tkey == toUpdate[i].name; 
+			})
+			toUpdate[i].value = row[0].val;
+			toUpdate[i].disabled = "disabled";
+		}
+
+		document.getElementById("desc").value = '<?php echo $sql->queryValue("select txt from nextGen.billetDescs where posn = '" . $billet . "';") ?>'; 
+		document.getElementById("desc").disabled = "disabled";
+
+    })
+
+
+
     </script>
 <body>
 <?php include '../banner.php'; ?>
@@ -23,8 +42,9 @@ if (!isset($_SESSION["uname"])) {
 
 <div class = "col-md-5" > 
 
-
-
+<br> <br> <br> 
+<h4> Billet # <?php echo $billet ?> </h4>
+<?php include "table.html"; ?>
 
 
 </div>
