@@ -1,10 +1,12 @@
 #!/bin/bash 
 
-stmt="source createTables.sql;"
+stmt="set @user = '''$USER''@''localhost''';"
 
-stmt="$stmt load data infile '`pwd`/../data/aadCodes.csv' into table allowableDegrees
+stmt="$stmt source createTables.sql;"
+
+stmt="$stmt load data local infile '`pwd`/../data/aadCodes.csv' into table allowableDegrees
 fields terminated by ',' enclosed by '\"';"
 
 echo $stmt
 
-sudo mysql -u root -e "$stmt"
+sudo mysql -u root -p -e "$stmt"

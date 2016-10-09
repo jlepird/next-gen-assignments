@@ -79,11 +79,13 @@ create table allowableDegrees(
 	degree varchar(50)
 );
 
-grant select on users to 'ubuntu'@'localhost'; 
-grant select on billetOwners to 'ubuntu'@'localhost';
-grant select on allowableDegrees to 'ubuntu'@'localhost';
-grant select, update, insert on billetData to 'ubuntu'@'localhost';
-grant select, update, insert on billetDescs to 'ubuntu'@'localhost'; 
+-- Build up a query to grand all the correct rights 
+set @qry = concat('grant all on *.* to ', @user, '; ');
+select @qry; 
+
+prepare stmt from @qry; 
+execute stmt; 
+deallocate prepare stmt; 
 
 
 select 'Complete' as 'Update';  
