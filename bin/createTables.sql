@@ -48,8 +48,7 @@ insert into billetData values
 	('abc', 'start',        '0730'),
 	('abc', 'stop',         '1630'),
 	('abc', 'tdy',          '5'), 
-	('abc', 'deployable',   'yes'),
-	('abc', 'contact?',     'yes'),
+	('abc', 'deployable',   'yes'), 
 	('def', 'afsc',         '38P'),
 	('def', 'grade',        'Maj'),
 	('def', 'location',     'Pentagon'),
@@ -61,8 +60,7 @@ insert into billetData values
 	('def', 'start',        '0730'),
 	('def', 'stop',         '1700'),
 	('def', 'tdy',          '25'),
-	('def', 'deployable',   'yes'),
-	('def', 'contact?',     'no')
+	('def', 'deployable',   'yes')
 	;
 
 drop table if exists billetDescs;
@@ -75,9 +73,17 @@ insert into billetDescs values
 	('def', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam mauris, vulputate ut nisi pharetra, gravida aliquet erat. Pellentesque iaculis lobortis tortor, eu eleifend eros fringilla sed. Donec consequat purus eu sem pellentesque, vel porttitor mi aliquam. Vivamus ornare dolor eleifend consequat vestibulum. Etiam eleifend neque eu mauris aliquam consectetur. Ut feugiat nulla quis nisi tempor ornare vitae ac enim. Nam consectetur id nulla in congue. Sed et odio quis ante fermentum finibus ut sed massa. Suspendisse maximus gravida lorem vitae sagittis. Integer consectetur augue magna, molestie placerat ligula rhoncus ac. Proin dictum, lacus sit amet semper euismod, orci lacus condimentum dui, nec blandit lorem metus semper dui.')
 	;
 
+drop table if exists allowableDegrees;
+create table allowableDegrees(
+	code varchar(4),
+	degree varchar(50)
+);
+
 grant select on users to 'ubuntu'@'localhost'; 
 grant select on billetOwners to 'ubuntu'@'localhost';
+grant select on allowableDegrees to 'ubuntu'@'localhost';
 grant select, update, insert on billetData to 'ubuntu'@'localhost';
 grant select, update, insert on billetDescs to 'ubuntu'@'localhost'; 
+
 
 select 'Complete' as 'Update';  
