@@ -83,7 +83,7 @@ if (!isset($_SESSION["uname"])) {
 		});
 
 		// initialize the map
-		var map = L.map('map').setView([39.8282, -98.5795], 1);
+		var map = L.map('map').setView([39.8282, -60], 2);
 
 		// load a tile layer
 		L.tileLayer('https://api.mapbox.com/styles/v1/jlepird/ciu4azfa300by2jo1vhynt4tl/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiamxlcGlyZCIsImEiOiJjaXU0YWpzMDcwaG1mMnRvMWQ1OWUyajNtIn0.GdK0FhpdJkfEvN3HxPwDDw',
@@ -133,6 +133,8 @@ if (!isset($_SESSION["uname"])) {
     <br> <br> <br> <br> 
 
     <div id ="map" ></div>
+
+    <br> 
 
     <table id = "mainTable" class="display" cellspacing="0" width="100%">
     </table>
