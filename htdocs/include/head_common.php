@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" type = "text/css" />
 <link rel="stylesheet" href="/css/myvector.css" type="text/css" />
 <link rel="stylesheet" href="/css/a9.css" type = "text/css" />
-
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
 
 <!-- favicon stuff --> 
 <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
@@ -25,6 +25,8 @@
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
 <script type="text/javascript" src="http://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
 <script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+<script src="//maps.google.com/maps/api/js?sensor=true&key=AIzaSyAXNVtpYL6Im1QpsFmQ4-ggV2Kssq32yZI"></script>
+<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
 
 <!-- PHP functions --> 
 <?php include_once("funs.php"); ?>

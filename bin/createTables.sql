@@ -52,7 +52,7 @@ insert into billetData values
 	('abc', 'contact?',     'yes'), 
 	('def', 'afsc',         '38P'),
 	('def', 'grade',        'Maj'),
-	('def', 'location',     'Pentagon'),
+	('def', 'location',     'The Pentagon'),
 	('def', 'unit',         'AF/A1'), 
 	('def', 'lastOccupant', 'Maj Smith'),
 	('def', 'poc',          'A1 Supervisor'),
@@ -83,12 +83,18 @@ create table allowableDegrees(
 	degree varchar(50)
 );
 
+drop table if exists locations; 
+create table locations(
+	location varchar(100) not null references billetData.val,
+	lon numeric(16, 10), 
+	lat numeric(16, 10)
+);
+
 -- Build up a query to grand all the correct rights 
 set @qry = concat('grant all on *.* to ', @user, '; ');
 
 prepare stmt from @qry; 
 execute stmt; 
 deallocate prepare stmt; 
-
 
 select 'Complete' as 'Update';  
