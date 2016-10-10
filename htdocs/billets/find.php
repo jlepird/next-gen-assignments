@@ -48,6 +48,8 @@ if (!isset($_SESSION["uname"])) {
     $(function(){
 		$('#mainTable').DataTable({
 			data: outData,
+			dom: 'Bfrtip',
+			buttons: ['csv', 'excel'], 
 			columns: [
 				{title: "Billet #"},
 				{title: "AFSC"},

@@ -3,8 +3,10 @@
 
 <!-- CSS files --> 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" type = "text/css" />
 <link rel="stylesheet" href="/css/myvector.css" type="text/css" />
 <link rel="stylesheet" href="/css/a9.css" type = "text/css" />
+
 
 <!-- favicon stuff --> 
 <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
@@ -15,8 +17,14 @@
 <meta name="theme-color" content="#ffffff">
 
 <!-- Javascript libraries --> 
-<script src="https://d3js.org/d3.v4.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src = "https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js" ></script>
+<script type="text/javascript" src="https://d3js.org/d3.v4.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src = "https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js" ></script>
+<script type="text/javascript" src = "https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"> </script>
+<script type="text/javascript" src = "https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"> </script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script type="text/javascript" src="http://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+
 <!-- PHP functions --> 
 <?php include_once("funs.php"); ?>
