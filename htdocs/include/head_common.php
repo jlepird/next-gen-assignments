@@ -26,7 +26,7 @@
 <script type="text/javascript" src="http://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
 <script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
-<script type="text/javascript" src = "/include/leaflet.bouncemarker/bouncemarker.js"></script>
+<script type="text/javascript" src = "/include/bouncemarker.js"></script>
 
 <!-- PHP functions --> 
 <?php include_once("funs.php"); ?>
