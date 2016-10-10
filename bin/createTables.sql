@@ -39,7 +39,7 @@ create table billetData (
 insert into billetData values 
 	('abc', 'afsc',         '61A'),
 	('abc', 'grade',        'Lt Col'),
-	('abc', 'location',     'Pentagon'),
+	('abc', 'location',     'Ramstein Air Base'),
 	('abc', 'unit',         'AF/A9'), 
 	('abc', 'lastOccupant', 'Capt Snuffy'),
 	('abc', 'poc',          'A9A Supervisor'),

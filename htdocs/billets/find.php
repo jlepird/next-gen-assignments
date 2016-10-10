@@ -83,30 +83,26 @@ if (!isset($_SESSION["uname"])) {
 		});
 
 		// initialize the map
-		var map = L.map('map').setView([39.8282, -98.5795], 4);
+		var map = L.map('map').setView([39.8282, -98.5795], 1);
 
 		// load a tile layer
 		L.tileLayer('https://api.mapbox.com/styles/v1/jlepird/ciu4azfa300by2jo1vhynt4tl/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiamxlcGlyZCIsImEiOiJjaXU0YWpzMDcwaG1mMnRvMWQ1OWUyajNtIn0.GdK0FhpdJkfEvN3HxPwDDw',
 		{
 		  attribution: 'Tiles by <a href="https://www.mapbox.com/">MapBox</a>',
 		  maxZoom: 17,
-		  minZoom: 3
+		  minZoom: 1
 		}).addTo(map);
 
 		// Plot the locations of our data 
 		for (var i = 0; i < data.length; ++i){
 			var id = data[i].id;
-			var location = data[i].location; 
-			var unit = data[i].unit;
-
-			console.log("Inside: Id = " + id + " Lat = " + data[i].lat + " Lon = " + data[i].lon); 
 			 
-			var marker = L.marker([data[i].lon + Math.random() * 0.001, 
-				                   data[i].lat + Math.random() * 0.001]).addTo(map);
+			var marker = new L.marker([data[i].lon, data[i].lat],
+				                   {bounceOnAdd: true}).addTo(map);
 
 			marker.bindPopup("Billet: <a href='/billets/view.php?billet=" + id + "'>" + id + "</a>" + 
-				              "<br>Location: " + location + 
-				              "<br>Unit: " +     unit); 
+				              "<br>Location: " + data[i].location + 
+				              "<br>Unit: " +     data[i].unit); 
 				 
 		}
 

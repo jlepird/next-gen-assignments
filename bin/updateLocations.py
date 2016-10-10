@@ -7,6 +7,8 @@ This file uses python's geolocation tools to maintain a table, `locations` which
 import MySQLdb
 from geopy.geocoders import Nominatim
 import os 
+import math 
+import random
 
 # Connect to the database 
 db = MySQLdb.connect(host   = "localhost",
@@ -26,6 +28,9 @@ res = cur.fetchall()
 # Init geolocator object 
 geolocator = Nominatim() 
 
+# How much should the points be "jittered" to prevent overplotting? 
+jitter = 0.001
+
 # For each unique location
 for row in res:
 
@@ -33,7 +38,9 @@ for row in res:
 	loc = geolocator.geocode(row[0])
 
 	# Add the lat/lon into the sql table  
-	cmd = "insert into locations values ('%s', %.10f, %.10f);" % (row[0], loc.latitude, loc.longitude)
+	cmd = "insert into locations values ('%s', %.10f, %.10f);" % (row[0],
+	                                                              loc.latitude  + (random.random() - 0.5) * jitter, 
+		                                                          loc.longitude + (random.random() - 0.5) * jitter)
 	# print cmd # for debug 
 	
 	# Execute the command and flush the database 
