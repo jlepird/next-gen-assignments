@@ -32,7 +32,7 @@ insert into billetOwners values
 drop table if exists billetData; 
 create table billetData (
 	posn varchar(50) not null references billetOwners.posn,
-	tkey varchar(50), 
+	tkey varchar(50) not null, 
 	val  varchar(100)
 );
 
@@ -64,6 +64,8 @@ insert into billetData values
 	('def', 'deployable',   'no'),
 	('def', 'contact?',     'no')
 	;
+
+
 
 drop table if exists billetDescs;
 create table billetDescs (

@@ -2,6 +2,7 @@
 <title> Air Force Next-Gen Assignments System</title>
 
 <!-- CSS files --> 
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
 <link rel="stylesheet" href="/css/myvector.css" type="text/css" />
 <link rel="stylesheet" href="/css/a9.css" type = "text/css" />
 
@@ -16,7 +17,6 @@
 <!-- Javascript libraries --> 
 <script src="https://d3js.org/d3.v4.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
-
+<script src = "https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js" ></script>
 <!-- PHP functions --> 
 <?php include_once("funs.php"); ?>
