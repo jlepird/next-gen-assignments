@@ -8,3 +8,5 @@ stmt="$stmt load data local infile '`pwd`/../data/aadCodes.csv' into table allow
 fields terminated by ',' enclosed by '\"';"
 
 sudo mysql -u root -p -e "$stmt"
+
+./updateLocations.py
