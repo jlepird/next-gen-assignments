@@ -31,7 +31,7 @@
 		<td><input type = "password" name = "password" required/> </td>
 	</tr>
 	<tr>
-	<td> <button type="submit">Submit</button> </td>
+	<td> <button type="submit" class = "btn btn-primary">Submit</button> </td>
 	</tr>
 	</table>
 </form>

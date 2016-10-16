@@ -92,8 +92,8 @@ updateBilletData(selected);
 	<!-- Template, javascript will fill in --> 
 	</select>
 </td>
-<td> <input type = "submit" value = "Save Changes"> </td>
-<td> <button type = "button" onclick = "updateBilletData(selected); "> Reset </button>
+<td> <input type = "submit" class = "btn btn-primary" value = "Save Changes"> </td>
+<td> <button type = "button" class = "btn btn-primary" onclick = "updateBilletData(selected); "> Reset </button>
 <td> 
 
 </td>

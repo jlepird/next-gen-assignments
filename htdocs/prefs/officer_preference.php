@@ -31,22 +31,39 @@ if ($_SESSION['isAirman'] != 1 ){
 		    initialPrefs.forEach(function(x){
 		    	$("#billets" + x.pref)[0].value = x.posn; 
 		    });
+
 		  });
 
 	    var numPrefs = 10; 
+
+
+	    // Make array of billet names for enforcement later 
+	    var billetNames = []; 
+	    billets.forEach(function(x, i ){
+	    	billetNames.push(x.posn); 
+	    }); 
 
 	    var verify = function(x){
 	    	myId = +x.id.substr(7); // Get our preference number
 
 	    	var foundError = false; 
-	    	// Check to see if it's a duplicate
+	    	// Validate each element in our list 
 	    	for (var i = 1; i <= numPrefs; ++i){
-	    		// If entry nonzero, verify it's not a duplicate
-	    		var val = $("#billets" + i)[0].value; 
-	    		if (val){
+	
+	    		var val = $("#billets" + i)[0].value;
+
+	    		// Verify each billet 
+	    		if (val){ // if nonempty 
+
+	    			// Ensure it's an allowable one 
+	    			if (billetNames.indexOf(val) == -1){ 
+	    				foundError = true; 
+	    				$("#row" + i)[0].innerHTML = "&larr; Unknown Billet Number " + val;
+	    				break;
+	    			}
+	    			// Make sure it's not a duplicate of a one before it. 
 	    			$("#row" + i)[0].innerHTML = "";
 	    			for (var j = 1; j < i; ++j){
-	    				console.log(val == $("#billets" + j)[0].value); 
 		    			if (val == $("#billets" + j)[0].value) {
 		    				$("#row" + i)[0].innerHTML = "&larr; Repeat of Preference #" + j;
 		    				foundError = true;
@@ -57,10 +74,10 @@ if ($_SESSION['isAirman'] != 1 ){
 	    	}
 			if (foundError){
 				$("#submit")[0].disabled = "disabled"; 
-				$("#submit")[0].style.background = "#7a7d82"; 
+				//$("#submit")[0].style.background = "#7a7d82"; 
 			} else {
 				$("#submit")[0].disabled = ""; 
-				$("#submit")[0].style.background = "white"; 
+				//$("#submit")[0].style.background = "#286090"; 
 			}
 
 	    }
@@ -103,7 +120,7 @@ if ($_SESSION['isAirman'] != 1 ){
     	</table>
     </fieldset>
     	<fieldset>
-    		<center> <input id = "submit" type = "submit"> </center>
+    		<center> <input class = "btn btn-primary" id = "submit" type = "submit"> </center>
     	</fieldset>
     </form>
 
