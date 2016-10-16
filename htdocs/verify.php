@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once("./include/funs.php");
-$uname    = $_POST['uname'];
+$uname    = $sql->sanitize($_POST['uname']);
 $password = md5($_POST['password']);
 
 $email = $sql->queryValue("select email from nextGen.users where username = '" . $uname . 

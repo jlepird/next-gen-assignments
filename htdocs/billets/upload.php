@@ -18,6 +18,7 @@ if ($owner != $_SESSION["uname"]) {
 // Iterate over each POSTed value, and then update the SQL database appropriately. 
 foreach ($_POST as $key => $value) {
 	echo "Key: " . $key . " Value: " . $value . "<br>";
+	$value = $sql->sanitize($value); 
 	if ($key == "desc"){
 		$sql->execute("update nextGen.billetDescs set txt = '" . $value . "' where posn = '" . $id . "'; ");
 	} elseif ($key == "id"){
