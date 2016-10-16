@@ -3,35 +3,15 @@
 if (!isset($_SESSION["uname"])) {
     header("Location: ../login.php"); // comment this line to disable login (for debug) 
 }
+
+if ($_SESSION['isOwner'] and $_SESSION['isAirman']){
+    include "./select_role.php";
+} elseif ($_SESSION['isAirman']) { // if they are an owner, then display a page to submit a preference list of officers
+    header("Location: ./officer_preference.php");
+} elseif ($_SESSION['isOwner']) { // if they are an officer, then display a page to submit a preference list of assignments
+    header("Location: ./assignments_preference.php"); 
+} else {
+    die("Error-- Something has gone horribly wrong, and you don't have a role assigned to you."); 
+}
 ?>
-<html>
-    <head> 
-    <?php include '../include/head_common.php'; ?>
-    </head>
-<body>
-<?php include '../banner.php'; ?>
-<div class="col-md-3">  </div>
-    <div class="col-md-5">
-    <br> <br> <br>
-    <p> Pref List Filler Text </p>
 
-     <?php
-    $res1 = $sql->queryValue("select owner from nextGen.users where username = '" . $_SESSION["uname"] . "';");
-    $res2 = $sql->queryValue("select officer from nextGen.users where username = '" . $_SESSION["uname"] . "';");
-     
-    if ($res1 == 1) { // if they are an owner, then display a page to submit a preference list of officers
-    	include "./officer_preference.php";
-    }
-    if ($res2 == 1) { // if they are an officer, then display a page to submit a preference list of assignments
-    	include "./assignments_preference.php";
-    }
-        
-    ?>
-
-    </div>
-
-</div>
-
-
-</body>
-</html>

@@ -88,6 +88,10 @@ class mySQL {
 		}
 	}
 
+	public function sanitize($str){
+		return $this->_conn->real_escape_string($str);
+	}
+
 } 
 
 // Supply global variable sql with an instance 
@@ -104,6 +108,7 @@ if ($runTests){
 	$sql->execute("select 1 + 1;") or die("SQL Execution error in unit tests.");
 	$sql->queryValue("select 1 + 1;") == 2 or die("SQL queryValue error in unit tests.");
 	$sql->queryJSON("select 1 + 1 as bar;") == "[{\"bar\":\"2\"}]" or die("SQL queryJSON error in unit tests.");
+	$sql->sanitize("'") == "\\'" or die ("SQL Query Sanitiation Error"); 
 }
 ?> 
 

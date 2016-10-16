@@ -3,6 +3,9 @@
 if (!isset($_SESSION["uname"])) {
     header("Location: ../login.php"); // comment this line to disable login (for debug) 
 }
+if (!$_SESSION['isOwner'] != 1){
+	header("Location: ./input.php"); // Unless user owns billets, they have no reason to be on this page. 
+}
 ?>
 <html>
     <head> 
@@ -10,9 +13,10 @@ if (!isset($_SESSION["uname"])) {
     </head>
 <body>
 <?php include '../banner.php'; ?>
-
+<div class="col-md-3">  </div>
+    <div class="col-md-5">
     <br> <br> <br>
-    <p> You are an officer on the VML, so you will submit a preference list of assignments you want. </p>
+    <p> Pref List Filler Text </p>
 
 
     </div>

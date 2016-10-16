@@ -16,7 +16,7 @@ create table users(
 
 
 insert into users values 
-('a9', 'example@test.com',  md5('test'), 1, 0),
+('a9', 'example@test.com',  md5('test'), 1, 1),
 ('a1', 'example2@test.com', md5('test'), 0, 1);
 
 drop table if exists billetOwners;
@@ -89,6 +89,14 @@ create table locations(
 	lon numeric(16, 10), 
 	lat numeric(16, 10)
 );
+
+drop table if exists airmanPrefs;
+create table airmanPrefs (
+	user varchar(50) not null references users.username, 
+	posn varchar(50) not null references billetOwners.posn,
+	pref int not null
+);
+
 
 -- Build up a query to grand all the correct rights 
 set @qry = concat('grant all on *.* to ', @user, '; ');
