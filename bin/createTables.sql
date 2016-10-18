@@ -6,7 +6,7 @@ use nextGen;
 -- TODO: Remove drop statements before production!
 
 drop table if exists users;
-create table users(
+create table users (
     username varchar(50) primary key not null,
     email varchar(50) not null, 
     password binary(32) not null,
@@ -97,6 +97,22 @@ create table airmanPrefs (
 	pref int not null
 );
 
+drop table if exists billetPrefs;
+create table billetPrefs ( 
+	name varchar(100) not null references naems.name, 
+	posn varchar(50) not null references billetOwners.posn,
+	pref int not null
+);
+
+drop table if exists names; 
+create table names (
+	user varchar(50) not null references user.username, 
+	name varchar(100) primary key not null
+);
+
+insert into names values 
+	('a9', 'Maj Dysfunction'),
+	('a1', 'Capt Snuffy'); 
 
 -- Build up a query to grand all the correct rights 
 set @qry = concat('grant all on *.* to ', @user, '; ');
