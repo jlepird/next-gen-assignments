@@ -23,7 +23,7 @@ foreach ($_POST as $key => $value) {
 		$sql->execute("update nextGen.billetDescs set txt = '" . $value . "' where posn = '" . $id . "'; ");
 	} elseif ($key == "id"){
 		continue; 
-	} else {
+	} else { // here! add length handler
 		$sql->execute("update nextGen.billetData set val = '" . $value . "' where posn = '" . $id . "' and tkey = '" . $key . "'; ");	
 	}
 }

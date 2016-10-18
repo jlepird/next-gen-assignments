@@ -1,3 +1,8 @@
+<script> 
+$(function(){
+	$(".chosen-select").chosen({width: "95%"});
+}); 
+</script>
 
 <table> 
 	<tr> <td colspan="4">  <h5> <i> General Information </i> </h5>  </td> </tr>
@@ -44,7 +49,10 @@
 	</tr>
 	<tr> 
 		<td> <p> Advanced Academic Degree Requirement (Degree): </p> </td>
-		<td> <input type = "text" name = "aadDegree" class = "autopop" value = "N/A"> </td>
+		<td> <select multiple name = "aadDegree[]" class = "autopop chosen-select" value = "N/A">
+				<option> foo </option>
+				<option> bar </option>
+			</select> </td>
 	</tr>
 	<tr> 
 		<td> <p>Acquisition Level: </p> </td>
