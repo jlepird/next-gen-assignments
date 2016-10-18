@@ -6,10 +6,9 @@ if (!isset($_SESSION["billets"])) {
 ?>
 
 <script type = "text/javascript">
-	/* TODO: Add var declaration to avoid polluting global namespace */ 
-	vals = <?php echo $res; ?>;
-	data = <?php echo $data; ?>;
-	descs = <?php echo $descs; ?>;
+	var vals  = <?php echo $res;   ?>;
+	var data  = <?php echo $data;  ?>;
+	var descs = <?php echo $descs; ?>;
 	
 	// Global var showing what we currently have selected. 
 	var selected = <?php 

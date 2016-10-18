@@ -120,7 +120,7 @@ if ($_SESSION['isAirman'] != 1 ){
     	</table>
     </fieldset>
     	<fieldset>
-    		<center> <input class = "btn btn-primary" id = "submit" type = "submit"> </center>
+    		<center> <input class = "btn btn-primary" id = "submit" type = "submit" value = "Submit"> </center>
     	</fieldset>
     </form>
 

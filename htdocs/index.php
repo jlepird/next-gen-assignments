@@ -45,23 +45,10 @@ if (!isset($_SESSION["uname"])) {
             <li>Finally, after finding assignments that you want, you will create a prioritized list of assignments that you prefer to have.  You will then upload this 1-to-n list in the <a href="/prefs/input.php">My Preference List</a> section by 28 February 2017.</li>
         </ul>
         </p>
-            
-            <?php 
-
-
-            echo $sql->queryValue("select 'test';");
-
-
-            // Another debug: print the username that the user had at the beginning. 
-            echo "Uname = " . $_SESSION['uname'];
-            ?>
-        
-
-            <p class="text-right">
-                <a href="https://www.google.com">Sample Link</a>
-            </p>
 
     </div>
+    
+    <div class = "col-md-5"></div> 
 
 
 </body>

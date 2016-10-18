@@ -50,6 +50,7 @@ insert into billetData values
 	('abc', 'tdy',          '5'), 
 	('abc', 'deployable',   'yes'),
 	('abc', 'contact?',     'yes'), 
+	('abc', 'dutyTitle',    'Analyst'), 
 	('def', 'afsc',         '38P'),
 	('def', 'grade',        'Maj'),
 	('def', 'location',     'The Pentagon'),
@@ -62,7 +63,8 @@ insert into billetData values
 	('def', 'stop',         '1700'),
 	('def', 'tdy',          '25'),
 	('def', 'deployable',   'no'),
-	('def', 'contact?',     'no')
+	('def', 'contact?',     'no'),
+	('def', 'dutyTitle',    'Human Resources Specialist')
 	;
 
 
