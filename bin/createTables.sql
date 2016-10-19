@@ -120,8 +120,14 @@ insert into names values
 	
 drop table if exists acqLevels; 
 create table acqLevels (
-	code varchar(1) not null,
+	code varchar(1) primary key not null,
 	level varchar(100) not null
+); 
+
+drop table if exists coreCodes; 
+create table coreCodes (
+	afsc varchar(3) primary key not null,
+	txt varchar(100) not null
 ); 
 
 -- Build up a query to grand all the correct rights 

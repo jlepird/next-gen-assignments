@@ -1,0 +1,597 @@
+11A,AIRLIFT PILOT                                                                   
+11B,BOMBER PILOT                                                                    
+11F,FIGHTER PILOT                                                                   
+11G,GENERALIST PILOT                                                                
+11H,RESCUE PILOT                                                                    
+11K,TRAINER PILOT                                                                   
+11M,MOBILITY PILOT                                                                  
+11R,RECCE/SURV/ELECT WARFARE PILOT                                                  
+11S,SPECIAL OPERATIONS PILOT                                                        
+11U,REMOTELY PILOTED AIRCRAFT PILOT                                                 
+11X,PILOT                                                                           
+12,RESERVED                                                                        
+12B,BOMBER COMBAT SYSTEMSS OFFICER                                                  
+12F,FIGHTER COMBAT SYSTEMS OFFICER                                                  
+12G,GENERALIST NAVIGATOR                                                            
+12H,RESCUE COMBAT SYSTEMS OFFICER                                                   
+12K,TRAINER COMBAT SYSTEMS OFFICER                                                  
+12M,MOBILITY COMBAT SYSTEMS OFFICER                                                 
+12R,RECCE/SURV/ELECT WARFARE COMBAT SYSTEMS OFFICER                                 
+12S,SPECIAL OPERATIONS COMBAT SYSTEMS OFFICER                                       
+12T,TANKER NAVIGATOR                                                                
+12U,REMOTELY PILOTED AIRAFT COMBAT SYSTEMS OFFICER                                  
+12X,NAVIGATOR                                                                       
+13,RESERVED                                                                        
+13A,AIR TRAFFIC CONTROL  HIST                                                       
+13B,AIR BATTLE MANAGEMENT                                                           
+13C,SPECIAL TACTICS                                                                 
+13D,COMBAT RESCUE                                                                   
+13E,COMMAND & CONTROL OPS  HIST                                                     
+13L,AIR LIAISON OFFICER                                                             
+13M,AIRFIELD OPERATIONS                                                             
+13N,ICBM OPERATIONS                                                                 
+13S,SPACE OPERATIONS                                                                
+13U,REMOTELY PILOTED AIRCRAFT AIR BATTLE MANAGER                                    
+13X,"SPACE, NUCLEAR, MISSILE, C2                                                     "
+14F,INFORMATION OPERATIONS                                                          
+14N,INTELLIGENCE                                                                    
+15,RESERVED                                                                        
+15W,WEATHER                                                                         
+16,16XX   AIR TRAFFIC                                                              
+16F,REGIONAL AFFAIRS STRATEGIST                                                     
+16G,AIR FORCE OPS STAFF OFFICER                                                     
+16P,POLITICAL MILITARY AFFAIRS STRATEGIST                                           
+16R,PLANNING AND PROGRAMMING                                                        
+17,17XX   WEAPONS CONTROL                                                          
+17D,CYBERSPACE OPERATIONS                                                           
+17S,CYBER WARFARE OPERATIONS                                                        
+18,18XX   MISSILE OPS                                                              
+18A,ATTACK REMOTELY PILOTED AIRCRAFT PILOT                                          
+18R,RECCE REMOTELY PILOTED AIRCRAFT PILOT                                           
+18S,SPECIAL OPERATIONS REMOTELY PILOTED AIRCRAFT PILOT                              
+18X,18X-UNKNOWN                                                                     
+19,19XX   COMMAND POST                                                             
+1AA,HEALTH SERVICES ADMINISTRATOR  41A  AWAITING SPECIALTY MATCH  41AA              
+1AF,MEDICAL FACILITIES SPECIALTY MATCH  41AF                                        
+1AL,MEDICAL LOGISTICS SPECIALTY MATCH  41AL                                         
+1AM,MEDICAL RESOURCE MANAGEMENT SPECIALTY MATCH  41AM                               
+1AP,HEALTH PLANS MANAGEMENT SPECIALTY MATCH  41AP                                   
+1AR,MEDICAL READINESS SPECIALTY MATCH  41AR                                         
+1AS,INFORMATION SYSTEMS MANAGEMENT SPECIALTY MATCH  41AS                            
+1AX,HEALTH SERVICES ADMINISTRATOR  41A  WILL NOT BE SPECIALTY MATCHED  41AX         
+20,20XX   SPACE OPS                                                                
+20C,LOGISTICS GROUP COMMANDER                                                       
+21,21XX   POL MIL AFFAIRS                                                          
+21A,AIRCRAFT MAINT/MUNITIONS                                                        
+21B,OPERATIONS MAINTENANCE                                                          
+21G,LOGISTICS PLANS                                                                 
+21L,LOGISTICAN  HIST                                                                
+21M,SPACE & MISSILE MAINT                                                           
+21R,LOGISTICS READINESS OFFICER                                                     
+21S,SUPPLY                                                                          
+21T,TRANSPORTATION                                                                  
+22,RESERVED                                                                        
+22S,LOGISTICS                                                                       
+23,23XX   AUDIO VISUAL                                                             
+23S,LOGISTICS                                                                       
+24,RESERVED                                                                        
+24T,LOGISTICS                                                                       
+25,25XX   WEATHER                                                                  
+25L,LOGISTICS PLANS                                                                 
+26,26XX   SCIENTIFIC                                                               
+27,27XX   SYS ACQ                                                                  
+28,28XX   R AND D ENGR                                                             
+29,29XX   PROGRAM MANAGER  HIST                                                    
+2B1,THERAPIST  PHYSICAL  TRAINING  42B1                                             
+2B3,THERAPIST  PHYSICAL  STAFF  42B3                                                
+2B4,THERAPIST  PHYSICAL  ADMIN  42B4                                                
+2BX,PHYSICAL THERAPIST  42B                                                         
+2.00E+01,OPTOMETRIST  TRAINING  42E1                                                     
+2.00E+03,OPTOMETRIST  STAFF  42E3                                                        
+2.00E+04,OPTOMETRIST  ADMIN  42E4                                                        
+2EX,OPTOMETRIST  42E                                                                
+2F1,PODIATRIST  TRAINING  42F1                                                      
+2F3,PODIATRIST  STAFF  42F3                                                         
+2F4,PODIATRIST  ADMIN  42F4                                                         
+2FX,PODIATRIST  42F                                                                 
+2G1,PHYSICIAN ASSISTANT  TRAINING  42G1                                             
+2G3,PHYSICIAN ASSISTANT  STAFF  42G3                                                
+2G4,PHYSICIAN ASSISTANT  ADMIN  42G4                                                
+2GA,PHYSICIAN ASST  ORTHOPEDICS  42G A                                              
+2GB,PHYSICIAN ASST  OTOLARYNGOLOGY  42G B                                           
+2GC,PHYSICIAN ASST  GENERAL SURGERY  42G C                                          
+2GD,PHYSICIAN ASST  PERFUSIONIST  42G D                                             
+2GE,PHYSICIAN ASST  EMERGENCY MEDICINE  42G E                                       
+2GF,PHYSICIAN ASST  ONCOLOGY/BONE MARROW TRANSPLANT  42G F                          
+2GX,PHYSICIAN ASSISTANT  42G                                                        
+2N1,AUDIOLOGY/SPEECH PATHOLOGIST  TRAINING  42N                                     
+2N3,AUDIOLOGY/SPEECH PATHOLOGIST  STAFF  42N                                        
+2N4,AUDIOLOGY/SPEECH PATHOLOGIST  ADMIN  42N                                        
+2NA,AUDIOLOGIST  42N A                                                              
+2NB,SPEECH PATHOLOGIST  42N B                                                       
+2NX,AUDIOLOGY/SPEECH PATHOLOGIST  42N                                               
+2P1,PSYCHOLOGIST  CLINICAL  TRAINING  42P1                                          
+2P3,PSYCHOLOGIST  CLINICAL  STAFF  43P3                                             
+2P4,PSYCHOLOGIST  CLINICAL  ADMIN  42P4                                             
+2PA,PSYCHOLOGIST  CLINICAL NEUROPSYCHOLOGIST  42P A                                 
+2PB,PSYCHOLOGIST  HEALTH PSYCHOLOGIST  42P B                                        
+2PC,PSYCHOLOGIST  CHILD AND ADOLESCENT  42P C                                       
+2PD,PSYCHOLOGIST  AVIATION PSYCHOLOGIST  42P D                                      
+2PX,CLINICAL PSYCHOLOGIST  42P                                                      
+2S1,CLINICAL SOCIAL WORKER  TRAINING  42S1                                          
+2S3,CLINICAL SOCIAL WORKER  STAFF  42S3                                             
+2S4,CLINICAL SOCIAL WORKER  ADMIN  42S4                                             
+2SX,CLINICAL SOCIAL WORKER  42S                                                     
+2T1,THERAPIST  OCCUPATIONAL  TRAINING  42T1                                         
+2T3,THERAPIST  OCCUPATIONAL  STAFF  42T3                                            
+2T4,THERAPIST  OCCUPATIONAL  ADMIN  42T4                                            
+2TX,OCCUPATIONAL THERAPIST  42T                                                     
+30C,SUPPORT COMMANDER                                                               
+31,31XX   MISSILE MAINT                                                            
+31P,SECURITY FORCES                                                                 
+32,RESERVED                                                                        
+32E,CIVIL ENGINEER                                                                  
+33,RESERVED                                                                        
+33C,COMMUNICATIONS COMDR  HIST                                                      
+33S,COMM COMPUTER SYSTEMS  HIST                                                     
+33V,VISUAL INFORMATION  HIST                                                        
+34,RESERVED                                                                        
+34M,MWR & SERVICES  HIST                                                            
+35,RESERVED                                                                        
+35B,BAND                                                                            
+35P,PUBLIC AFFAIRS                                                                  
+36,RESERVED                                                                        
+36E,PERS EDUCATION & TNG  HIST                                                      
+36P,PERSONNEL                                                                       
+36S,PERS SOCIAL ACTIONS  HIST                                                       
+36X,PERSONNEL  HIST                                                                 
+37,RESERVED                                                                        
+37A,INFORMATION MGMT  HIST                                                          
+37F,MANPOWER PERSONNEL  HIST                                                        
+38,RESERVED                                                                        
+38F,FORCE SUPPORT                                                                   
+38M,MANPOWER                                                                        
+38P,PERSONNEL                                                                       
+39,RESERVED                                                                        
+3A1,AEROSPACE PHYSIOLOGIST  TRAINING  43A1                                          
+3A3,AEROSPACE PHYSIOLOGIST  STAFF  43A3                                             
+3A4,AEROSPACE PHYSIOLOGIST  ADMIN  43A4                                             
+3AX,AEROSPACE PHYSIOLOGISTS  43A                                                    
+3B3,BIOMEDICAL SCIENTIST  STAFF  43B3                                               
+3B4,BIOMEDICAL SCIENTIST  ADMIN  43B4                                               
+3BA,CHIROPRACTOR  43B A                                                             
+3BX,BIOMEDICAL SCIENTIST  43B                                                       
+3D1,DIETITIAN  TRAINING  43D1                                                       
+3D3,DIETITIAN  STAFF  43D3                                                          
+3D4,DIETITIAN  ADMIN  43D4                                                          
+3DX,DIETITIAN  43D                                                                  
+3.00E+01,BIOENVIRONMENTAL ENGINEER  TRAINING  42E                                        
+3.00E+03,BIOENVIRONMENTAL ENGINEER  STAFF  43E                                           
+3.00E+04,BIOENVIRONMENTAL ENGINEER  ADMIN  43E                                           
+3EA,BIOENVIRONMENTAL ENGINEER  GENERAL  43E A                                       
+3EB,BIOENVIRONMENTAL ENGINEER  INDUSTRIAL HYGIENE  43E B                            
+3EC,BIOENVIRONMENTAL ENGINEER  MEDICAL CONSTRUCTION  43E C                          
+3ED,BIOENVIRONMENTAL ENGINEER  ENVIRONMENTAL  43E D                                 
+3EE,BIOENVIRONMENTAL ENGINEER  ARCHITECTURE  43E E                                  
+3EF,BIOENVIRONMENTAL ENGINEER  BIOMEDICAL  43E F                                    
+3EG,BIOENVIRONMENTAL ENGINEER/HEALTH PHYSICS  43E G                                 
+3EX,BIOENVIRONMENTAL ENGINEER  43E                                                  
+3H1,PUBLIC HEALTH  TRAINING  43H1                                                   
+3H3,PUBLIC HEALTH  STAFF  43H3                                                      
+3H4,PUBLIC HEALTH  ADMIN  43H4                                                      
+3HX,PUBLIC HEALTH  43H                                                              
+3M1,MEDICAL ENTOMOLOGIST  TRAINING  43M1                                            
+3M3,MEDICAL ENTOMOLOGIST  STAFF  43M3                                               
+3M4,MEDICAL ENTOMOLOGIST  ADMIN  43M4                                               
+3MX,MEDICAL ENTOMOLOGIST  43M                                                       
+3P1,PHARMACIST  TRAINING  43P1                                                      
+3P3,PHARMACIST  STAFF  43P3                                                         
+3P4,PHARMACIST  ADMIN  43P4                                                         
+3PX,PHARMACIST  43P                                                                 
+3T1,BIOMEDICAL LABORATORY  TRAINING  43T                                            
+3T3,BIOMEDICAL LABORATORY  STAFF  43T                                               
+3T4,BIOMEDICAL LABORATORY  ADMIN  43T                                               
+3TA,BIOMEDICAL LABORATORY  BIOMEDICAL  43T A                                        
+3TB,BIOMEDICAL LABORATORY  MICROBIOLOGY  43T B                                      
+3TC,BIOMEDICAL LABORATORY  CHEMISTRY  43T C                                         
+3TD,BIOMEDICAL LABORATORY  ENVIRONMENTAL & INDUSTRIAL HYGIENE CHEMISTRY  43T D      
+3TE,BIOMEDICAL LABORATORY  BLOOD BANK  43T E                                        
+3TF,BIOMEDICAL LABORATORY  TOXICOLOGIST  43T F                                      
+3TG,BIOMEDICAL LABORATORY  OTHER  43T G                                             
+3TH,BIOMEDICAL LABORATORY  HEMATOLOGY  43T H                                        
+3TX,BIOMEDICAL LABORATORY  43T                                                      
+3VE,LABORATORY ANIMAL  43V E                                                        
+3VX,VETERINARY CLINICIAN  43V                                                       
+3Y1,PHYSICIST  HEALTH  TRAINING  43Y1                                               
+3Y3,PHYSICIST  HEALTH  STAFF  43Y3                                                  
+3Y4,PHYSICIST  HEALTH  ADMIN  43Y4                                                  
+3YA,PHYSICIST  MEDICAL  43Y A                                                       
+3YX,HEALTH PHYSICIST  43Y                                                           
+40,40XX   ACFT MAINT                                                               
+41,RESERVED                                                                        
+41A,HEALTH SERVICES ADMINISTRATOR  MSC                                              
+42,RESERVED                                                                        
+42B,PHYSICAL THERAPIST  BSC                                                         
+42E,OPTOMETRIST  BSC                                                                
+42F,PODIATRIST  BSC                                                                 
+42G,PHYSICIAN ASSISTANT  BSC                                                        
+42N,AUDIOLOGIST/SPEECH PATHOLOGIST  BSC                                             
+42P,CLINICAL PSYCHOLOGIST  BSC                                                      
+42S,CLINICAL SOCIAL WORKER  BSC                                                     
+42T,OCCUPATIONAL THERAPIST  BSC                                                     
+43,RESERVED                                                                        
+43A,AEROSPACE PHYSIOLOGIST  BSC                                                     
+43D,DIETITIAN  BSC                                                                  
+43E,BIOENVIRONMENTAL ENGINEER  BSC                                                  
+43H,PUBLIC HEALTH  BSC                                                              
+43M,MEDICAL ENTOMOLOGIST  BSC                                                       
+43P,PHARMACIST  BSC                                                                 
+43T,BIOMEDICAL LABORATORY  BSC                                                      
+44,RESERVED                                                                        
+44B,PREVENTIVE MEDICINE  MC                                                         
+44D,PATHOLOGIST  MC                                                                 
+44E,EMERGENCY SERVICES PHYSICIAN  MC                                                
+44F,FAMILY PHYSICIAN  MC                                                            
+44G,GENERAL PRACTICE PHYSICIAN  MC                                                  
+44H,NUCLEAR MEDICINE PHYSICIAN  MC                                                  
+44J,CLINICAL GENETICIST  MC                                                         
+44K,PEDIATRICIAN  MC                                                                
+44M,INTERNIST  MC                                                                   
+44N,NEUROLOGIST  MC                                                                 
+44O,PHYSICIAN  MC                                                                   
+44P,PSYCHIATRIST  MC                                                                
+44R,DIAGNOSTIC RADIOLOGIST  MC                                                      
+44S,DERMATOLOGIST  MC                                                               
+44T,RADIOTHERAPIST  MC                                                              
+44U,OCCUPATIONAL MEDICINE  MC                                                       
+44Y,CRITICAL CARE MEDICINE  MC                                                      
+44Z,ALLERGIST  MC                                                                   
+45,RESERVED                                                                        
+45A,ANESTHESIOLOGIST  MC                                                            
+45B,ORTHOPEDIC SURGEON  MC                                                          
+45E,OPHTHALMOLOGIST  MC                                                             
+45G,OBSTETRICIAN & GYNECOLOGIST  MC                                                 
+45N,OTORHINOLARYNGOLOGIST  MC                                                       
+45P,PHYSICAL MEDICINE PHYSICIAN  MC                                                 
+45S,SURGEON  MC                                                                     
+45U,UROLOGIST  MC                                                                   
+46,RESERVED                                                                        
+46F,FLIGHT NURSE  NC                                                                
+46N,CLINICAL NURSE  NC                                                              
+46P,MENTAL HEALTH NC                                                                
+46S,OPERATING ROOM NURSE  NC                                                        
+46Y,PRIVILEGED ADV PRACTICE NURSE  P APN   NC                                       
+47,RESERVED                                                                        
+47B,ORTHODONTIST  DC                                                                
+47D,ORAL & MAILLOFACIAL PATHOLOGIST  DC                                             
+47E,ENDODONTIST  DC                                                                 
+47G,DENTIST  DC                                                                     
+47H,PERIODONTIST  DC                                                                
+47K,PEDIATRIC DENTIST  DC                                                           
+47P,PROSTHODONTIST  DC                                                              
+47S,ORAL/MAILLOFACIAL SURGEON  DC                                                   
+48,RESERVED                                                                        
+48A,AEROSPACE MEDICINE SPECIALIST  MC                                               
+48G,GENERAL MEDICAL OFFICER  FLIGHT SURGEON  MC                                     
+48R,RESIDENCY TRAINED FLIGHT SURGEON                                                
+48V,PILOT PHYSICIAN  MC                                                             
+49,49XX   COMM/COMP                                                                
+4AX,CHIEF  HOSPITAL/CLINIC SERVICES  44A                                            
+4B1,PREVENTIVE MEDICINE SPECIALIST  TRAINING  44B1                                  
+4B3,PREVENTIVE MEDICINE SPECIALIST  STAFF  44B3                                     
+4B4,PREVENTIVE MEDICINE SPECIALIST  ADMIN  44B4                                     
+4B8,PREVENTIVE MEDICINE SPECIALIST  FLIGHT MEDICINE  48R3                           
+4D1,PATHOLOGIST  TRAINING  44D1                                                     
+4D3,PATHOLOGIST  STAFF  44D3                                                        
+4D4,PATHOLOGIST  ADMIN  44D4                                                        
+4D8,PATHOLOGIST  FLIGHT MEDICINE  48R3                                              
+4DA,PATHOLOGIST  HEMATOLOGY  44D A                                                  
+4DB,PATHOLOGIST  CYTOLOGY  44D B                                                    
+4DC,PATHOLOGIST  GYNECOLOGY  44D C                                                  
+4DD,PATHOLOGIST  FORENSIC  44D D                                                    
+4DE,PATHOLOGIST  NEUROPATHOLOGY  44D E                                              
+4DF,PATHOLOGIST  PEDIATRIC  44D F                                                   
+4DG,PATHOLOGIST  TRANSFUSION MEDICINE  44D G                                        
+4DH,PATHOLOGIST  MICROBIOLOGY  44D H                                                
+4DK,PATHOLOGIST  DERMATOLOGY  44D K                                                 
+4DX,PATHOLOGIST  44D                                                                
+4.00E+01,EMERGENCY MEDICINE  TRAINING  44E1A                                             
+4.00E+04,EMERGENCY MEDICINE  ADMIN  44E4A                                                
+4.00E+08,EMERGENCY MEDICINE  FLIGHT MEDICINE  48R3                                       
+4EA,EMERGENCY MEDICINE SPECIALIST  44E3A                                            
+4EX,EMERGENCY SERVICES PHYSICIAN  44E                                               
+4F1,FAMILY MEDICINE  TRAINING  44F1                                                 
+4F3,FAMILY MEDICINE  STAFF  44F3                                                    
+4F4,FAMILY MEDICINE  ADMIN  44F4                                                    
+4F8,FAMILY MEDICINE  FLIGHT MEDICINE  48R3                                          
+4FX,FAMILY PHYSICIAN  44F                                                           
+4GX,GENERAL PRACTICE PHYSICIAN  44G                                                 
+4H1,NUCLEAR MEDICINE PHYSICIAN  TRAINING  44H1                                      
+4H3,NUCLEAR MEDICINE PHYSICIAN  STAFF  44H3                                         
+4H4,NUCLEAR MEDICINE PHYSICIAN  ADMIN  44H4                                         
+4H8,NUCLEAR MEDICINE PHYSICIAN  FLIGHT MEDICINE  48R3                               
+4HX,NUCLEAR MEDICINE PHYSICIAN  44H                                                 
+4J3,CLINICAL GENETICIST  STAFF  44J3                                                
+4J4,CLINICAL GENETICIST  ADMIN  44J4                                                
+4J8,CLINICAL GENETICIST  FLIGHT MEDICINE  48R3                                      
+4JX,CLINICAL GENETICIST  44J                                                        
+4K1,PEDIATRICIAN  TRAINING  44K1                                                    
+4K3,PEDIATRICIAN  STAFF  44K3                                                       
+4K4,PEDIATRICIAN  ADMIN  44K4                                                       
+4K8,PEDIATRICIAN  FLIGHT MEDICINE                                                   
+4KA,PEDIATRICIAN  ADOLESCENT  44K A                                                 
+4KB,PEDIATRICIAN  CARDIOLOGY  44K B                                                 
+4KC,PEDIATRICIAN  DEVELOPMENTALIST  44K C                                           
+4KD,PEDIATRICIAN  ENDOCRINOLOGIST  44K D                                            
+4KE,PEDIATRICIAN  NEONATALOGIST  44K E                                              
+4KF,PEDIATRICIAN  GASTREONTOLOGY  44K F                                             
+4KG,PEDIATRICIAN  HEMATOLOGY  44K G                                                 
+4KH,PEDIATRICIAN  NEUROLOGY  44K H                                                  
+4KK,PEDIATRICIAN  INFECTIOUS DISEASE  44K K                                         
+4M1,INTERNAL MEDICINE  TRAINING  44M1                                               
+4M3,INTERNAL MEDICINE  STAFF  44M3                                                  
+4M4,INTERNAL MEDICINE  ADMIN  44M4                                                  
+4M8,INTERNAL MEDICINE  FLIGHT MEDICINE  48R3                                        
+4MA,INTERNAL MEDICINE  HEM/ONC  44M A                                               
+4MB,INTERNAL MEDICINE  CARDILOGY  44M B                                             
+4MC,INTERNAL MEDICINE  ENDOCRINOLOGY  44M C                                         
+4MD,INTERNAL MEDICINE  GASTREONTOLOGY  44M D                                        
+4MF,INTERNAL MEDICINE  RHEUNATOLOGY  44M F                                          
+4MG,INTERNAL MEDICINE  PULMONOLOGY  44M G                                           
+4MH,INTERNAL MEDICINE  INFECTIOUS DISEASE  44M H                                    
+4MJ,INTERNAL MEDICINE  NEPHROLOGY  44M J                                            
+4N1,NEUROLOGY  TRAINING  44N1                                                       
+4N3,NEUROLOGY  STAFF  44N3                                                          
+4N4,NEUROLOGY  ADMIN  44N4                                                          
+4N8,NEUROLOGY  FLIGHT MEDICINE  48R3                                                
+4P1,PSYCHIATRY  TRAINING  44P1                                                      
+4P3,PSYCHIATRY  STAFF  44P3                                                         
+4P4,PSYCHIATRY  ADMIN  44P4                                                         
+4P8,PSYCHIATRY  FLIGHT MEDICINE  48R3                                               
+4PA,PSYCHIATRY  CHILD  44P A                                                        
+4PB,PSYCHIATRY  FORENSIC  44P B                                                     
+4R1,RADIOLOGY  TRAINING  44R1                                                       
+4R3,RADIOLOGY  STAFF  44R3                                                          
+4R4,RADIOLOGY  ADMIN  44R4                                                          
+4R8,RADIOLOGY  FLIGHT MEDICINE  48R3                                                
+4RA,RADIOLOGY  NEORORADIOLOGY  44R A                                                
+4RB,RADIOLOGY  INTERVENTIONAL  44R B                                                
+4RC,RADIOLOGY  PEDIATRIC  44R C                                                     
+4RD,RADIOLOGY  NUCLEAR MEDICINE  44R D                                              
+4RE,RADIOLOGY  MUSCULOSKELETAL  44R E                                               
+4RF,RADIOLOGY  GASTROINTESTINAL  44R F                                              
+4S1,DERMATOLOGY  TRAINING  44S1                                                     
+4S3,DERMATOLOGY  STAFF  44S3                                                        
+4S4,DERMATOLOGY  ADMIN  44S4                                                        
+4S8,DERMATOLOGY  FLIGHT MEDICINE  48R3                                              
+4SA,DERMATOLOGIC SURGERY  44S A                                                     
+4SB,DERMATOPATHOLOGY  44S B                                                         
+4T1,RADIOTHERAPIST  TRAINING  44T1                                                  
+4T3,RADIOTHERAPIST  STAFF  44T3                                                     
+4T4,RADIOTHERAPIST  ADMIN  44T4                                                     
+4T8,RADIOTHERAPIST  FLIGHT MEDICINE  48R3                                           
+4TX,RADIOTHERAPIST  44T                                                             
+4U1,OCCUPATIONAL MEDICINE  TRAINING  44U1                                           
+4U3,OCCUPATIONAL MEDICINE  STAFF  44U3                                              
+4U4,OCCUPATIONAL MEDICINE  ADMIN  44U4                                              
+4U8,OCCUPATIONAL MEDICINE  FLIGHT MEDICINE  48R3                                    
+4YA,CRITCIAL CARE MEDICINE PEDIATRICS  44Y A                                        
+4YX,CRITICAL CARE MEDICINE  44Y                                                     
+4Z1,ALLERGIST  TRAINING  44Z1                                                       
+4Z3,ALLERGIST  STAFF  44Z3                                                          
+4Z4,ALLERGIST  ADMIN  44Z4                                                          
+4Z8,ALLERGIST  FLIGHT MEDICINE  48R3                                                
+4ZX,ALLERGIST  44Z                                                                  
+50,50XX   DISASTER PREP                                                            
+51,RESERVED                                                                        
+51J,JUDGE ADVOCATE                                                                  
+52,RESERVED                                                                        
+52R,CHAPLAIN                                                                        
+53,RESERVED                                                                        
+54,RESERVED                                                                        
+55,55XX   CIVIL                                                                    
+56,57 57XX GEODETIC  HIST                                                          
+57,57XX   GEODETIC                                                                 
+58,RESERVED                                                                        
+59,RESERVED                                                                        
+5A1,ANESTHESIOLOGIST  TRAINING  45A1                                                
+5A3,ANESTHESIOLOGIST  STAFF  45A3                                                   
+5A4,ANESTHESIOLOGIST  ADMIN  45A4                                                   
+5A8,ANESTHESIOLOGIST  FLIGHT MEDICINE  48R3                                         
+5AX,ANESTHESIOLOGIST  45A                                                           
+5B1,ORTHOPEDIST  TRAINING  45B1                                                     
+5B3,ORTHOPEDIST  STAFF  45B3                                                        
+5B4,ORTHOPEDIST  ADMIN  45B4                                                        
+5B8,ORTHOPEDIST  FLIGHT MEDICINE  48R3                                              
+5BA,ORTHOPEDIST  HAND SURGERY  45B A                                                
+5BB,ORTHOPEDIST  PEDIATRICS  45B B                                                  
+5BC,ORTHOPEDIST  BIOMECHANICAL  45B C                                               
+5BD,ORTHOPEDIST  SPORTS MEDICINE  45B D                                             
+5BE,ORTHOPEDIST  SPINE SURGERY  45B E                                               
+5BF,ORTHOPEDIST  ONCOLOGY  45B F                                                    
+5BG,ORTHOPEDIST  REPLACEMENT ARTHROPLASTY  45B G                                    
+5BH,ORTHOPEDIST  TRAUMATOLOGY  45B H                                                
+5BX,ORTHOPEDIC SURGEON  45B                                                         
+5.00E+01,OPHTHALMOLOGIST  TRAINING  45E1                                                 
+5.00E+03,OPHTHALMOLOGIST  STAFF  45E3                                                    
+5.00E+04,OPHTHALMOLOGIST  ADMIN  45E4                                                    
+5.00E+08,OPHTHALMOLOGIST  FLIGHT MEDICINE  48R3                                          
+5EA,OPHTHALMOLOGIST  OCULOPLASTICS  45E A                                           
+5EB,OPHTHALMOLOGIST  CORNEA/EXTERNAL DISEASE  45E B                                 
+5EC,OPHTHALMOLOGIST  GLAUCOMA  45E C                                                
+5ED,OPHTHALMOLOGIST  NEURO OPHTHALMOLOGY  45E D                                     
+5EE,OPHTHALMOLOGIST  OPHTHALMOLOGIST  PATHOLOGY  45E E                              
+5EF,OPHTHALMOLOGIST  STRABISMUS/PEDIATRICS  45E F                                   
+5EG,OPHTHALMOLOGIST  VITREOUS/RETINA  45E G                                         
+5EX,OPHTHALMOLOGIST  45E                                                            
+5G1,OBSTETRICIAN AND GYNECOLOGIST  TRAINING  45G1                                   
+5G3,OBSTETRICIAN AND GYNECOLOGIST  STAFF  45G3                                      
+5G4,OBSTETRICIAN AND GYNECOLOGIST  ADMIN  45G4                                      
+5G8,OBSTETRICIAN AND GYNECOLOGIST  FLIGHT MEDICINE  48R3                            
+5GA,OBSTETRICIAN AND GYNECOLOGIST  ENDOCRINOLOGY  45G A                             
+5GB,OBSTETRICIAN AND GYNECOLOGIST  ONCOLOGY  45G B                                  
+5GC,OBSTETRICIAN AND GYNECOLOGIST  PATHOLOGY  45G C                                 
+5GD,OBSTETRICIAN AND GYNECOLOGIST  MATERNAL FETAL MEDICINE  45G D                   
+5GE,OBSTETRICIAN AND GYNECOLOGIST  UROGYNECOLOGY/PELVIC RECONSTRUCTIVE SURG  45G E  
+5GX,OBSTETRICIAN AND GYNECOLOGIST  45G                                              
+5N1,OTORHINOLARYNGOLOGIST  TRAINING  45N1                                           
+5N3,OTORHINOLARYNGOLOGIST  STAFF  45N3                                              
+5N4,OTORHINOLARYNGOLOGIST  ADMIN  45N4                                              
+5N8,OTORHINOLARYNGOLOGIST  FLIGHT MEDICINE  48R3                                    
+5NA,OTORHINOLARYNGOLOGIST  OTOLOGY NEUROLOGY  45N A                                 
+5NB,OTORHINOLARYNGOLOGIST  HEAD/NECK ONCOLOGY  45N B                                
+5NC,OTORHINOLARYNGOLOGIST  PEDIATRIC OTOLOGIST  45N C                               
+5ND,OTORHINOLARYNGOLOGIST  FACILA PLASTICS  45N D                                   
+5NX,OTORHINOLARYNGOLOGIST  45N                                                      
+5P1,PHYSICAL MEDICINE PHYSICIAN  TRAINING  45P1                                     
+5P3,PHYSICAL MEDICINE PHYSICIAN  STAFF  45P                                         
+5P4,PHYSICAL MEDICINE PHYSICIAN  ADMIN  45P                                         
+5P8,PHYSICAL MEDICINE PHYSICIAN  FLIGHT MEDICINE  48R3                              
+5PX,PHYSICAL MEDICINE PHYSICIAN  45P                                                
+5S1,SURGEON  TRAINING  45S1                                                         
+5S3,SURGEON  STAFF  45S3                                                            
+5S4,SURGEON  ADMIN  45S4                                                            
+5S8,SURGEON  FLIGHT MEDICINE  48R3                                                  
+5SA,SURGEON  THORACIC  45S A                                                        
+5SB,SURGEON  COLON AND RECTAL  45S B                                                
+5SC,SURGEON  CARDIAC  45S C                                                         
+5SD,SURGEON  PEDIATRIC  45S D                                                       
+5SE,SURGEON  PERIPHERAL VASCULAR  45S E                                             
+5SF,SURGEON  NEUROLOGICAL  45S F                                                    
+5SG,SURGEON  PLASTIC  45S G                                                         
+5SH,SURGEON  ONCOLOGY  45S H                                                        
+5SJ,SURGEON  MULTIORGAN TRANSPLANT  45S J                                           
+5SX,SURGEON  45S                                                                    
+5U1,UROLOGIST  TRAINING  45U1                                                       
+5U3,UROLOGIST  STAFF  45U3                                                          
+5U4,UROLOGIST  ADMIN  45U4                                                          
+5U8,UROLOGIST  FLIGHT MEDICINE  48R3                                                
+5UA,UROLOGIST  PEDIATRICS  45U A                                                    
+5UB,UROLOGIST  ONCOLOGY  45U B                                                      
+5UX,UROLOGIST  45U                                                                  
+60,60XX   TRANSPORTATION                                                           
+60C,PROGRAM DIRECTOR                                                                
+61A,OPERATIONS RESEARCH ANALYST                                                     
+61B,BEHAVIORAL SCIENCE/HUMAN FACTORS SCIENTIST                                      
+61C,CHEMIST BIOLOGIST                                                               
+61D,PHYSICIST/NUCLEAR ENGINEER                                                      
+61S,SCIENTIST  HIST                                                                 
+62,62XX   SERVICES  HIST                                                           
+62E,DEVELOPMENTAL ENGINEER                                                          
+62S,MATERIEL LEADER                                                                 
+63,RESERVED                                                                        
+63A,ACQUISTION MANAGER                                                              
+63G,SENIOR MATERIEL LEADER                                                          
+63S,MATERIEL LEADER                                                                 
+64,64XX   SUPPLY                                                                   
+64P,CONTRACTING                                                                     
+65,65XX   CONTRACTING                                                              
+65A,AUDIT                                                                           
+65F,FINANCE                                                                         
+65W,COST ANALYSIS                                                                   
+66,66XX   LOG PLANS                                                                
+67,67XX   FINANCE                                                                  
+68,RESERVED                                                                        
+69,69XX   BUDGET  HIST                                                             
+6AA,NURSING ADMINISTRATOR  WOMENS HEALTH NP  46A                                    
+6AB,NURSING ADMINISTRATOR  PEDIATRIC NP  46A                                        
+6AC,NURSING ADMINISTRATOR  ADULT/PRIM CARE NP  46A                                  
+6AD,NURSING ADMINISTRATOR  STAFF DEV  46A                                           
+6AF,NURSING ADMINISTRATOR  CRITICAL CARE  46A                                       
+6AG,NURSING ADMINISTRATOR  MIDWIFE OR OB  46A                                       
+6AH,NURSING ADMINISTRATOR  FAMILY NP  46A                                           
+6AM,NURSING ADMINISTRATOR  NURSE ANESTHETIST  46A                                   
+6AN,NURSING ADMINISTRATOR  CLINICAL NURSE  46A                                      
+6AP,NURSING ADMINISTRATOR  MENTAL HEALTH  46A                                       
+6AS,NURSING ADMINISTRATOR  OPERATING ROOM  46A                                      
+6AX,NURSING ADMINISTRATOR  46A                                                      
+6FX,FLIGHT NURSE  46F                                                               
+6G1,NURSE MIDWIFE  TRAINING  46G1                                                   
+6G3,NURSE MIDWIFE  STAFF  46G3                                                      
+6GX,NURSE MIDWIFE  46G                                                              
+6M1,NURSE ANESTHETIST  TRAINING  46M1                                               
+6M3,NURSE ANESTHETIST  STAFF  46M3                                                  
+6MX,NURSE ANESTHETIST  46M                                                          
+6N1,CLINICAL NURSE  TRAINING  AFIT  DE  ADMIN HOLD  ETC    46N1                     
+6N3,CLINICAL NURSE  STAFF  46N3                                                     
+6N4,CLINICAL NURSE  CAREER BROADENING  AO  AIRSTAFF  RECRUITING   46N4              
+6NA,WOMENS HEALTH CARE NURSE PRACTITIONER  46N A                                    
+6NB,PEDIATRIC NURSE PRACTITIONER  46N B                                             
+6NC,ADULT/PRIMARY CARE NURSE PRACTITIONER  46N C                                    
+6ND,STAFF DEVELOPMENT  46N D                                                        
+6NE,CRITICAL CARE  46N E                                                            
+6NF,NEONATAL INTENSIVE CARE  46N F                                                  
+6NG,OBSTETRICAL  46N G                                                              
+6NH,FAMILY NURSE PRACTITIONER  46N H                                                
+6NX,CLINICAL NURSE  46N                                                             
+6P3,MENTAL HEALTH NURSE  46P3                                                       
+6PA,MENTAL HEALTH NURSE SPECIALIST  46P A                                           
+6PX,MENTAL HEALTH NURSE  46P                                                        
+6S1,OPERATING ROOM NURSE  TRAINING  46S1                                            
+6S3,OPERATING ROOM NURSE  STAFF  46S3                                               
+6SX,OPERATING ROOM NURSE  46S                                                       
+70,70XX   ADMINISTRATION                                                           
+71,RESERVED                                                                        
+71S,SPECIAL INVESTIGATIONS                                                          
+72,RESERVED                                                                        
+73,73XX   PERSONNEL                                                                
+74,74XX   MANPOWER                                                                 
+75,75XX   EDUC AND TRAINING                                                        
+76,769X   CHIEF  MISSION SUPPORT                                                   
+77,RESERVED                                                                        
+78,78XX   MWR/SERVICES                                                             
+79,79XX   INFORMATION                                                              
+7B1,ORTHODONTIST  TRAINING  47B1                                                    
+7B3,ORTHODONTIST  STAFF  47B3                                                       
+7B4,ORTHODONTIST  ADMIN  47B4                                                       
+7BX,ORTHODONTIST  47B                                                               
+7D1,ORAL AND MAXILLOFACIAL PATHOLOGIST  TRAINING  47D1                              
+7D3,ORAL AND MAXILLOFACIAL PATHOLOGIST  STAFF  47D3                                 
+7D4,ORAL AND MAXILLOFACIAL PATHOLOGIST  ADMIN  47D4                                 
+7DX,ORAL AND MAXILLOFACIAL PATHOLOGIST  47D                                         
+7.00E+01,ENDODONTIST  TRAINING  47E1                                                     
+7.00E+03,ENDODONTIST  STAFF  47E3                                                        
+7.00E+04,ENDODONTIST  ADMIN  47E4                                                        
+7EX,ENDODONTIST  47E                                                                
+7G3,DENTIST  STAFF  47G3                                                            
+7G4,DENTIST  ADMIN  47G4                                                            
+7GA,COMPREHENSIVE  47G A                                                            
+7GB,ADVANCED CLINICAL  47G B                                                        
+7GC,GENERAL CLINICAL  47G C                                                         
+7GD,PUBLIC HEALTH  47G D                                                            
+7GE,DENTAL MATERIALS SCIENCE  47G E                                                 
+7GF,ORAL AND MAXILLOFACIAL RADIOLOGY  47G F                                         
+7GG,TEMPOROMANDIBULAR DISORDERS  47G G                                              
+7GH,HOSPITAL DENTISTRY  47G H                                                       
+7GX,DENTIST  47G                                                                    
+7H1,PERIODONTIST  TRAINING  47H1                                                    
+7H3,PERIODONTIST  STAFF  47H3                                                       
+7H4,PERIODONTIST  ADMIN  47H4                                                       
+7HX,PERIODONTIST  47H                                                               
+7K1,PEDIATRIC DENTIST  TRAINING  47K1                                               
+7K3,PEDIATRIC DENTIST  STAFF  47K3                                                  
+7K4,PEDIATRIC DENTIST  ADMIN  47K4                                                  
+7KX,PEDIATRIC DENTIST  47K                                                          
+7P1,PROSTHODONTIST  TRAINING  47P1                                                  
+7P3,PROSTHODONTIST  STAFF  47P3                                                     
+7P4,PROSTHODONTIST  ADMIN  47P4                                                     
+7PA,MAXILLOFACIAL PROSTHETICS  47P A                                                
+7PB,AREA DENTAL LABORATORY  47P B                                                   
+7PC,DENTAL MATERIALS  47P C                                                         
+7PX,PROSTHODONTIST  47P                                                             
+7S1,ORAL AND MAXILLOFACIAL SURGEON  TRAINING  47S1                                  
+7S3,ORAL AND MAXILLOFACIAL SURGEON  STAFF  47S3                                     
+7S4,ORAL AND MAXILLOFACIAL SURGEON  ADMIN  47S4                                     
+7SA,TEMPOROMANDIBULAR JOINT  47S A                                                  
+7SB,FACIAL ESTHETICS  47S B                                                         
+7SC,MAXILLOFACIAL RECONSTRUCTION  47S C                                             
+7SX,ORAL AND MAXILLOFACIAL SURGEON  47S                                             
+80,80XX   INTELLIGENCE                                                             
+81,81XX   SECURITY                                                                 
+81T,INSTRUCTOR                                                                      
+82,82XX   OSI                                                                      
+82A,82A-UNKNOWN                                                                     
+83,RESERVED                                                                        
+83R,RECRUITING SERVICE                                                              
+84,RESERVED                                                                        
+84H, AFR USE ONLY  HISTORIAN                                                        

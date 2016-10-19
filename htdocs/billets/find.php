@@ -10,7 +10,7 @@ if (!isset($_SESSION["uname"])) {
     <?php include '../include/head_common.php'; ?>
 
     <script type = "text/javascript" >
-    var data = <?php echo $sql->queryJSON("select posn, tkey, val from nextGen.billetData;"); ?>; 
+    var data = <?php echo $sql->queryJSON("select posn, tkey, val from nextGen.billetData order by posn;"); ?>; 
 
     var lat_lon = <?php echo $sql->queryJSON("select * from nextGen.locations;"); ?>; 
 
@@ -35,7 +35,11 @@ if (!isset($_SESSION["uname"])) {
     		// Build out the row 
     		scratch.id = id; 
     		for (var j = 0; j < myData.length; ++j){
-    			scratch[myData[j].tkey] = myData[j].val;
+    			if (Object.keys(scratch).indexOf(myData[j].tkey) == -1){
+    				scratch[myData[j].tkey] = myData[j].val;
+    			} else { 
+    				scratch[myData[j].tkey] += ", " + myData[j].val;
+    			}
     		}
 
     		// Get the corresponding lat/lon data
@@ -51,7 +55,7 @@ if (!isset($_SESSION["uname"])) {
     		completed.push(id); 
     	}
     }
-
+	test = data; 
     // rename and de-allocate extra 
     data = outData; outData = []; 
 
@@ -60,6 +64,7 @@ if (!isset($_SESSION["uname"])) {
     	outData.push(["<a href='/billets/view.php?billet=" + data[i].id + "'>" + data[i].id + "</a>",
     		          data[i].afsc, 
     		          data[i].grade,
+    		          data[i].dutyTitle,
     		          data[i].location,
     		          data[i].unit]
     		          );
@@ -77,8 +82,10 @@ if (!isset($_SESSION["uname"])) {
 				{title: "Billet #"},
 				{title: "AFSC"},
 				{title: "Grade"},
+				{title: "Duty Title"},
 				{title: "Location"},
 				{title: "Unit"}
+				
 			]
 		});
 
@@ -127,9 +134,9 @@ if (!isset($_SESSION["uname"])) {
     </head>
 <body>
 <?php include '../banner.php'; ?>
-<div class="col-md-3" align="right">  
+<div class="col-md-1" align="right">  
 </div>
-<div class="col-md-5">
+<div class="col-md-10">
     <br> <br> <br> <br> 
 
     <div id ="map" ></div>

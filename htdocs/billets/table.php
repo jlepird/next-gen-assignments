@@ -2,6 +2,7 @@
 $(function(){
 	// {width: "95%"}
 	$(".chosen-select-large").chosen({width: "200"});
+	$(".chosen-select-medium").chosen({width: "150"});
 	$(".chosen-select-small").chosen({width: "100"});
 }); 
 </script>
@@ -10,8 +11,17 @@ $(function(){
 	<tr> <td colspan="4">  <h5> <i> General Information </i> </h5>  </td> </tr>
 	<tr> <td colspan="2" > <i> Duty Title: </i> </td> <td colspan = "3" > <input type = "text" name = "dutyTitle" size = "35" value = "" class = "autopop"> </td></tr>
 	<tr> 
-		<td> <p> Billet AFSC: </p> </td> 
-		<td> <input type = "text" name = "afsc" value = "" size = "3" class = "autopop"> </td> 
+		<td> <p> Allowable AFSCs: </p> </td> 
+		<td> <select name = "afsc[]" value = "" class = "autopop chosen-select-medium" multiple>
+						<?php
+				$res = $sql->execute("select afsc, txt from nextGen.coreCodes;");
+				while ($row = $res->fetch_array()){
+					echo "<option value = '" . $row[0] . "'> " . $row[0] . ": " . $row[1] . "</option>";  
+				}
+				$res->free(); 
+			?>
+			</select
+		 </td> 
 		<td> <p> Grade: </p> </td> 
 		<td> <select name = "grade[]" value = "" class = "autopop chosen-select-large" multiple data-placeholder="Select Allowable Grades">
 			<option value = "O1"> 2nd Lieutenent </option>
