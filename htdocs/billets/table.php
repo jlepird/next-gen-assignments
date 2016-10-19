@@ -13,7 +13,7 @@ $(function(){
 		<td> <p> Billet AFSC: </p> </td> 
 		<td> <input type = "text" name = "afsc" value = "" size = "3" class = "autopop"> </td> 
 		<td> <p> Grade: </p> </td> 
-		<td> <select name = "grade[]" value = "" class = "autopop chosen-select-large" multiple>
+		<td> <select name = "grade[]" value = "" class = "autopop chosen-select-large" multiple data-placeholder="Select Allowable Grades">
 			<option value = "O1"> 2nd Lieutenent </option>
 			<option value = "O2"> 1st Lieutenent </option>
 			<option value = "O3"> Captain </option>
