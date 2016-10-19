@@ -19,18 +19,19 @@ if ($_SESSION['isAirman'] != 1 ){
 
 	    // After page load, populate datalist with options
 	    $(function(){
-		    d3.select("#billets")
-		      .selectAll("option")
-		      .data(billets)
-		      .enter()
-		      .append("option")
-		      .attr("value", function(x){
-		      	return x.posn;
-		      });
+	    	// Add options
+	    	$(".chosen-select").each(function(i, x){
+	    		$(x).append($("<option>", {value: "", text: "No Preference"}));
+	    		$(billets).each(function(i, billet){
+	    			$(x).append($("<option>", {value: billet.posn, text: billet.posn}));
+	    		})
+	    	});
 
 		    initialPrefs.forEach(function(x){
 		    	$("#billets" + x.pref)[0].value = x.posn; 
 		    });
+		    
+		    $(".chosen-select").chosen({width: "200"});
 
 		  });
 
@@ -97,25 +98,25 @@ if ($_SESSION['isAirman'] != 1 ){
     <fieldset id = "prefs">
     	<table> 
     			<tr> <td> Preference #1: </td> <td> 
-    	<input list = "billets" id = "billets1" name = "billets1" onchange = "verify(this);"> </td> <td id = "row1"> </td></tr>
+    	<select class = "chosen-select" id = "billets1" name = "billets1" onchange = "verify(this);"> </td> <td id = "row1"> </td></tr>
     			<tr> <td> Preference #2: </td> <td> 
-    	<input list = "billets" id = "billets2" name = "billets2" onchange = "verify(this);"> </td> <td id = "row2"> </td</tr>
+    	<select class = "chosen-select" id = "billets2" name = "billets2" onchange = "verify(this);"> </td> <td id = "row2"> </td</tr>
     	    	<tr> <td> Preference #3: </td> <td> 
-    	<input list = "billets" id = "billets3" name = "billets3" onchange = "verify(this);"> </td> <td id = "row3"> </td</tr>
+    	<select class = "chosen-select" id = "billets3" name = "billets3" onchange = "verify(this);"> </td> <td id = "row3"> </td</tr>
     	    	<tr> <td> Preference #4: </td> <td> 
-    	<input list = "billets" id = "billets4" name = "billets4" onchange = "verify(this);"> </td> <td id = "row4"> </td</tr>
+    	<select class = "chosen-select" id = "billets4" name = "billets4" onchange = "verify(this);"> </td> <td id = "row4"> </td</tr>
     	    	<tr> <td> Preference #5: </td> <td> 
-    	<input list = "billets" id = "billets5" name = "billets5" onchange = "verify(this);"> </td> <td id = "row5"> </td</tr>
+    	<select class = "chosen-select" id = "billets5" name = "billets5" onchange = "verify(this);"> </td> <td id = "row5"> </td</tr>
     	    	<tr> <td> Preference #6: </td> <td> 
-    	<input list = "billets" id = "billets6" name = "billets6" onchange = "verify(this);"> </td> <td id = "row6"> </td</tr>
+    	<select class = "chosen-select" id = "billets6" name = "billets6" onchange = "verify(this);"> </td> <td id = "row6"> </td</tr>
     	    	<tr> <td> Preference #7: </td> <td> 
-    	<input list = "billets" id = "billets7" name = "billets7" onchange = "verify(this);"> </td> <td id = "row7"> </td</tr>
+    	<select class = "chosen-select" id = "billets7" name = "billets7" onchange = "verify(this);"> </td> <td id = "row7"> </td</tr>
     	    	<tr> <td> Preference #8: </td> <td> 
-    	<input list = "billets" id = "billets8" name = "billets8" onchange = "verify(this);"> </td> <td id = "row8"> </td</tr>
+    	<select class = "chosen-select" id = "billets8" name = "billets8" onchange = "verify(this);"> </td> <td id = "row8"> </td</tr>
     	    	<tr> <td> Preference #9: </td> <td> 
-    	<input list = "billets" id = "billets9" name = "billets9" onchange = "verify(this);"> </td> <td id = "row9"> </td</tr>
+    	<select class = "chosen-select" id = "billets9" name = "billets9" onchange = "verify(this);"> </td> <td id = "row9"> </td</tr>
     	    	<tr> <td> Preference #10: </td> <td> 
-    	<input list = "billets" id = "billets10" name = "billets10" onchange = "verify(this);"> </td> <td id = "row10"> </td</tr>
+    	<select class = "chosen-select" id = "billets10" name = "billets10" onchange = "verify(this);"> </td> <td id = "row10"> </td</tr>
 
     	</table>
     </fieldset>
