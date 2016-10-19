@@ -58,9 +58,14 @@ $(function(){
 	</tr>
 	<tr> 
 		<td> <p> Advanced Academic Degree Requirement (Degree): </p> </td>
-		<td> <select  = "100" id = "aadDegree" multiple name = "aadDegree[]" class = "autopop chosen-select-large" data-placeholder="Select Applicable AAD Codes">
-				<option value = "foo" > foo </option>
-				<option value = "foo" > bar </option>
+		<td> <select  = "100" id = "aadDegree" multiple name = "aadDegree[]" class = "autopop chosen-select-large" data-placeholder="None">
+			<?php
+				$res = $sql->execute("select code, degree from nextGen.allowableDegrees;");
+				while ($row = $res->fetch_array()){
+					echo "<option value = '" . $row[0] . "'> " . $row[0]. ": " . $row[1] . "</option>";  
+				}
+				$res->free(); 
+			?>
 			</select> </td>
 	</tr>
 	<tr> 

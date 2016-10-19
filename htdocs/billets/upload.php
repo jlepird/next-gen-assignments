@@ -18,12 +18,19 @@ if ($owner != $_SESSION["uname"]) {
 // Iterate over each POSTed value, and then update the SQL database appropriately. 
 foreach ($_POST as $key => $value) {
 	echo "Key: " . $key . " Value: " . $value . "<br>";
-	$value = $sql->sanitize($value); 
 	if ($key == "desc"){
+		$value = $sql->sanitize($value); 
 		$sql->execute("update nextGen.billetDescs set txt = '" . $value . "' where posn = '" . $id . "'; ");
 	} elseif ($key == "id"){
 		continue; 
-	} else { // here! add length handler
+	} elseif (is_array($value)) { 
+		$sql->execute("delete from nextGen.billetData where posn = '" . $id . "' and tkey = '" . $key . "';");
+		foreach($value as $val){
+			$val = $sql->sanitize($val); 
+			$sql->execute("insert into nextGen.billetData values ('" . $id . "','" . $key . "','" . $val . "'); ");	
+		}
+	} else { 
+		$value = $sql->sanitize($value); 
 		$sql->execute("update nextGen.billetData set val = '" . $value . "' where posn = '" . $id . "' and tkey = '" . $key . "'; ");	
 	}
 }
