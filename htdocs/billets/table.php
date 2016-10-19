@@ -50,7 +50,7 @@ $(function(){
 	<tr> <td colspan="4"> <h5> <i> Degrees and Certifications </i> </h5>  </td> </tr>
 	<tr> 
 		<td> <p> Advanced Academic Degree Requirement (Level): </p> </td>
-		<td> <select name = "aadLevel" class = "autopop chosen-select-large" data-placeholder="Select AAD Level"> 
+		<td> <select name = "aadLevel[]" class = "autopop chosen-select-large" data-placeholder="Select AAD Level" multiple> 
 			<option value = "bs"> None </option>
 			<option value = "ms"> Master's </option>
 			<option value = "phd"> PhD </option>
