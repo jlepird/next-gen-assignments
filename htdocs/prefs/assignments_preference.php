@@ -80,7 +80,7 @@ if (! $authorized){
 	    			$("#row" + i)[0].innerHTML = "";
 	    			for (var j = 1; j < i; ++j){
 		    			if (val == $("#airman" + j)[0].value) {
-		    				$("#row" + i)[0].innerHTML = "&larr; Repeat of Preference #" + j;
+		    				$("#row" + i)[0].innerHTML = "&larr; Repeat of #" + j;
 		    				foundError = true;
 		    				break;
 		    			}

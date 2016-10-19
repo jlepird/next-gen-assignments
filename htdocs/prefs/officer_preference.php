@@ -66,7 +66,7 @@ if ($_SESSION['isAirman'] != 1 ){
 	    			$("#row" + i)[0].innerHTML = "";
 	    			for (var j = 1; j < i; ++j){
 		    			if (val == $("#billets" + j)[0].value) {
-		    				$("#row" + i)[0].innerHTML = "&larr; Repeat of Preference #" + j;
+		    				$("#row" + i)[0].innerHTML = "&larr; Repeat of #" + j;
 		    				foundError = true;
 		    				break;
 		    			}
