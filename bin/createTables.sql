@@ -51,6 +51,7 @@ insert into billetData values
 	('abc', 'deployable',   'yes'),
 	('abc', 'contact?',     'yes'), 
 	('abc', 'dutyTitle',    'Analyst'), 
+	('abc', 'acqLevel',     '1'),
 	('def', 'afsc',         '38P'),
 	('def', 'grade',        'O4'),
 	('def', 'location',     'The Pentagon'),
@@ -64,7 +65,8 @@ insert into billetData values
 	('def', 'tdy',          '25'),
 	('def', 'deployable',   'no'),
 	('def', 'contact?',     'no'),
-	('def', 'dutyTitle',    'Human Resources Specialist')
+	('def', 'dutyTitle',    'Human Resources Specialist'),
+	('def', 'acqLevel',     ' ')
 	;
 
 
@@ -115,6 +117,12 @@ create table names (
 insert into names values 
 	('a9', 'Maj Dysfunction'),
 	('a1', 'Capt Snuffy'); 
+	
+drop table if exists acqLevels; 
+create table acqLevels (
+	code varchar(1) not null,
+	level varchar(100) not null
+); 
 
 -- Build up a query to grand all the correct rights 
 set @qry = concat('grant all on *.* to ', @user, '; ');

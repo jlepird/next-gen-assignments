@@ -70,10 +70,14 @@ $(function(){
 	</tr>
 	<tr> 
 		<td> <p>Acquisition Level: </p> </td>
-		<td> <select name = "acqLevel" class = "chosen-select-large" >
-			<option value = "temp1"> Option 1 </option>
-			<option value = "temp2"> Option 2 </option>
-			<option value = "temp3"> Option 3 </option>
+		<td> <select name = "acqLevel" class = "autopop chosen-select-large" >
+			<?php
+				$res = $sql->execute("select code, level from nextGen.acqLevels;");
+				while ($row = $res->fetch_array()){
+					echo "<option value = '" . $row[0] . "'> " . $row[1] . "</option>";  
+				}
+				$res->free(); 
+			?>
 		</select> </td>
 	</tr>
 </table>

@@ -19,23 +19,7 @@ if (!isset($_SESSION["billets"])) {
 		}
 	?>;  
 
-/* Run on Page Load */ 
-$( function(){ 
-
-// Populate the drop down menu
-d3.select("#billetSelector")
-  .selectAll("option")
-  .data(vals)
-  .enter()
-  .append("option")
-  .text(function(d) {
-  	return d.posn;
-  })
-  .attr("value", function(d) {
-  	return d.posn;
-  });
-
-
+//TODO: Fix autopopulation issue with chosen() drop-downs 
 
 updateBilletData = function(value){ 
 
@@ -79,6 +63,25 @@ updateBilletData = function(value){
 		return x.posn == value;
 	})[0].txt;
 }
+
+
+/* Run on Page Load */ 
+$( function(){ 
+
+// Populate the drop down menu
+d3.select("#billetSelector")
+  .selectAll("option")
+  .data(vals)
+  .enter()
+  .append("option")
+  .text(function(d) {
+  	return d.posn;
+  })
+  .attr("value", function(d) {
+  	return d.posn;
+  });
+
+
 
 /* Initial fill */ 
 updateBilletData(selected);
