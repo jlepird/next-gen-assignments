@@ -31,4 +31,4 @@
 <script type="text/javascript" src = "/include/chosen/chosen.jquery.js"></script>
 
 <!-- PHP functions --> 
-<?php include_once("funs.php"); ?>
+<?php include_once("./funs.php"); ?>
