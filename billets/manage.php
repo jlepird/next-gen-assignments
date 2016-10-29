@@ -21,15 +21,15 @@ if (!isset($_SESSION["uname"])) {
 
 
     <br> <br> <br>
-    <?php $res = $sql->queryJSON("select posn from nextGen.billetOwners where user = '" . $_SESSION["uname"] . "';");
+    <?php $res = $sql->queryJSON("select posn from billetOwners where user = '" . $_SESSION["uname"] . "';");
     if ($res == "[]") {
     	include "./nobillets.php";
     } else {
-    	$data = $sql->queryJSON("select nextGen.billetOwners.posn, tkey, val from nextGen.billetData " . 
-	                    "left outer join nextGen.billetOwners on nextGen.billetData.posn = nextGen.billetOwners.posn" . 
+    	$data = $sql->queryJSON("select billetOwners.posn, tkey, val from billetData " . 
+	                    "left outer join billetOwners on billetData.posn = billetOwners.posn" . 
 	                    " where user = '" . $_SESSION["uname"] . "';");
-    	$descs = $sql->queryJSON("select nextGen.billetOwners.posn, txt from nextGen.billetDescs " . 
-	                    "left outer join nextGen.billetOwners on nextGen.billetDescs.posn = nextGen.billetOwners.posn" . 
+    	$descs = $sql->queryJSON("select billetOwners.posn, txt from billetDescs " . 
+	                    "left outer join billetOwners on nextGen.billetDescs.posn = nextGen.billetOwners.posn" . 
 	                    " where user = '" . $_SESSION["uname"] . "';");
     	$_SESSION["billets"] = $res;
     	include "./yesbillets.php";

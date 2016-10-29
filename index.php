@@ -3,6 +3,7 @@
 if (!isset($_SESSION["uname"])) {
     header("Location: /login.php"); // comment this line to disable login (for debug) 
 }
+
 ?>
 <html>
     <head> 
@@ -45,6 +46,7 @@ if (!isset($_SESSION["uname"])) {
             <li>Finally, after finding assignments that you want, you will create a prioritized list of assignments that you prefer to have.  You will then upload this 1-to-n list in the <a href="/prefs/input.php">My Preference List</a> section by 28 February 2017.</li>
         </ul>
         </p>
+
 
     </div>
     
