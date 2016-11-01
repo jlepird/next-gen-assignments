@@ -701,7 +701,7 @@
 2FDY,LANG  PUB RELAT & RELT COMM                                                                                   
 2FDZ,2FDZ-UNKNOWN                                                                                                  
 2FEA,LANG SPEECH ORAL INTERPRETA                                                                                   
-2-Feb,LANG SPEECH  PHONETICS                                                                                        
+2FEB,LANG SPEECH  PHONETICS                                                                                        
 2FEC,LANG SPEECH TECH OF DELIVER                                                                                   
 2FEX,LANG SPEECH  OTHER                                                                                            
 2FEY,LANGUAGE  SPEECH                                                                                              
@@ -1265,7 +1265,7 @@
 4DXY,ARCHITECTURAL ENG OTHER                                                                                       
 4DYY,ARCHITECTURAL ENGINEERING                                                                                     
 4DZZ,4DZZ-UNKNOWN                                                                                                  
-4.00E+66,4E66-UNKNOWN                                                                                                  
+4E66,4E66-UNKNOWN                                                                                                  
 4EAA,ASTR ENG DSGN COMPONENT DSG                                                                                   
 4EAB,ASTR ENG DSGN CONF/DS/MA/BV                                                                                   
 4EAC,ASTR ENG DSGN CONF/DS/UM/BV                                                                                   
@@ -1589,7 +1589,7 @@
 4LYX,4LYX-UNKNOWN                                                                                                  
 4LYY,INDUSTRIAL ENGINEERING                                                                                        
 4LZZ,4LZZ-UNKNOWN                                                                                                  
-4-May,MECH ENG AUTOMOTIVE ENG                                                                                       
+4MAY,MECH ENG AUTOMOTIVE ENG                                                                                       
 4MBA,MECH ENG DYNAM OF MACHINERY                                                                                   
 4MBB,MECH ENG DYNAM FLUID DYNAMI                                                                                   
 4MBC,MECH ENG DYNAM GAS DYNAMICS                                                                                   
@@ -2224,7 +2224,7 @@
 7DDZ,7DDZ-UNKNOWN                                                                                                  
 7DEA,CARDIOTHORACIC SURGERY                                                                                        
 7DEB,COLO RECTAL SURGERY                                                                                           
-7-Dec,PEDIATRIC SURGERY                                                                                             
+7DEC,PEDIATRIC SURGERY                                                                                             
 7DED,SURGICAL ONCOLOGY                                                                                             
 7DEF,VASCULAR SURGERY                                                                                              
 7DEG,MED/SURG TRAUMA CRITICAL CARE                                                                                 
@@ -2680,7 +2680,7 @@
 8DDZ,8DDZ-UNKNOWN                                                                                                  
 8DEA,EARTH SCI PALEONT MICROPALE                                                                                   
 8DEB,EARTH SCI PALEONT PALEOBOTA                                                                                   
-8-Dec,EARTH SCI PAL PALEOZOOLOGY                                                                                    
+8DEC,EARTH SCI PAL PALEOZOOLOGY                                                                                    
 8DED,EARTH SCI PAL PALYNOLOGY                                                                                      
 8DEX,EARTH SCI PAL OTHER                                                                                           
 8DEY,EARTH SCIENCE PALEONTOLOGY                                                                                    
@@ -2766,7 +2766,7 @@
 8FDX,8FDX-UNKNOWN                                                                                                  
 8FDY,SOLAR AND SPACE SCIENCES                                                                                      
 8FEA,SYNOPTIC METEOROLOGY                                                                                          
-8-Feb,MESOMETEOROLOGY                                                                                               
+8FEB,MESOMETEOROLOGY                                                                                               
 8FEC,MICROMETEOROLOGY                                                                                              
 8FED,CONVECTIVE METEOROLOGY                                                                                        
 8FEE,MARINE METEOROLOGY                                                                                            
@@ -3303,7 +3303,7 @@
 9FDX,PSYCH EDUCATION OTHER                                                                                         
 9FDY,PSYCH EDUCATIONAL PSYCH                                                                                       
 9FEA,PSYCH EXP ANIMAL LEARNING                                                                                     
-9-Feb,PSYCH EXP AUDITION                                                                                            
+9FEB,PSYCH EXP AUDITION                                                                                            
 9FEC,PSYCH EXP CNS FUNCTIONS                                                                                       
 9FED,PSYCH EXP COMM RESEARCH                                                                                       
 9FEE,PSYCH EXP COMPARATIVE PSYC                                                                                    

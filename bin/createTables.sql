@@ -80,7 +80,7 @@ insert into billetDescs values
 drop table if exists allowableDegrees cascade;
 create table allowableDegrees(
 	code varchar(4),
-	degree varchar(50)
+	degree varchar(100)
 );
 
 drop table if exists locations cascade; 
@@ -89,6 +89,10 @@ create table locations(
 	lon numeric(16, 10), 
 	lat numeric(16, 10)
 );
+
+insert into locations values 
+	('Ramstein Air Base', 49.4417857579 ,   7.6008885732),
+    ('The Pentagon'     , 38.8707481657 , -77.0540203771);
 
 drop table if exists airmanPrefs cascade;
 create table airmanPrefs (
@@ -99,7 +103,7 @@ create table airmanPrefs (
 
 drop table if exists names cascade; 
 create table names (
-	username varchar(50) unique not null references users (username), 
+	username varchar(50) not null references users (username), 
 	name varchar(100) primary key not null
 );
 
@@ -109,7 +113,7 @@ insert into names values
 
 drop table if exists billetPrefs cascade;
 create table billetPrefs ( 
-	name varchar(100) not null references names (username), 
+	name varchar(100) not null references names (name), 
 	posn varchar(50) not null references billetOwners (posn),
 	pref int not null
 );

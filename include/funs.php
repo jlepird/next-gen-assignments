@@ -15,7 +15,7 @@ SQL Functions
 /* Useage:
 
 // Returns a string of the result if the result has one row and one column 
-$sql->queryValue("select val from tbl where name = 'Jack';")l
+$sql->queryValue("select val from tbl where name = 'Jack';")
 
 // Returns a JSON of the table returned. 
 $sql->queryValue("select * from tbl;"); 
@@ -63,7 +63,7 @@ class SQL {
 			die("More than one column specified in query " . $cmd);
 		}
 		return $row[0];
-
+		pg_free_result($res);
 	}
 
 	public function queryJSON($cmd){
@@ -77,6 +77,7 @@ class SQL {
 		} else {
 			return "[]";
 		}
+		pg_free_result($res);
 	}
 
 	public function sanitize($str){

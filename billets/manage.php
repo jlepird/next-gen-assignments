@@ -7,6 +7,23 @@ if (!isset($_SESSION["uname"])) {
 <html>
     <head> 
     <?php include '../include/head_common.php'; ?>
+    <?php 
+    if ($_SESSION['isOwner']){
+        if (isset($_GET["billet"])){
+            $billet = $_GET["billet"]; 
+        } else { 
+            $billet = $sql->queryValue("select posn from billetOwners where username = '" . $_SESSION["uname"] . "' limit 1;");
+            header("Location: /billets/manage.php?billet=" . $billet); 
+        }
+
+        $data = $sql->queryJSON("select billetOwners.posn, tkey, val from billetData " . 
+                        "left outer join billetOwners on billetData.posn = billetOwners.posn" . 
+                        " where username = '" . $_SESSION["uname"] . "' and billetData.posn = '" . $billet . "';");
+        $descs = $sql->queryJSON("select billetOwners.posn, txt from billetDescs " . 
+                        "left outer join billetOwners on billetDescs.posn = billetOwners.posn" . 
+                        " where username = '" . $_SESSION["uname"] . "' and billetDescs.posn = '" . $billet . "';");
+    }
+    ?>
 
     </head>
 <body>
@@ -21,17 +38,12 @@ if (!isset($_SESSION["uname"])) {
 
 
     <br> <br> <br>
-    <?php $res = $sql->queryJSON("select posn from billetOwners where user = '" . $_SESSION["uname"] . "';");
-    if ($res == "[]") {
-    	include "./nobillets.php";
+    <?php 
+    if (!$_SESSION['isOwner']) {
+    	echo "<p> You currently have no billets assigned to you. If you think this is in error, please <a href = \"/help/contact.php\"> contact us. </a> </p>";
     } else {
-    	$data = $sql->queryJSON("select billetOwners.posn, tkey, val from billetData " . 
-	                    "left outer join billetOwners on billetData.posn = billetOwners.posn" . 
-	                    " where user = '" . $_SESSION["uname"] . "';");
-    	$descs = $sql->queryJSON("select billetOwners.posn, txt from billetDescs " . 
-	                    "left outer join billetOwners on nextGen.billetDescs.posn = nextGen.billetOwners.posn" . 
-	                    " where user = '" . $_SESSION["uname"] . "';");
-    	$_SESSION["billets"] = $res;
+
+    	$_SESSION["included"] = true;
     	include "./yesbillets.php";
     }
 

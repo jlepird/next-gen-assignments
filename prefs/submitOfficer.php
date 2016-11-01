@@ -9,13 +9,15 @@ if ($_SESSION['isAirman'] != 1 ){
 
 include '../include/head_common.php';
 
-$sql->execute("delete from nextGen.airmanPrefs where user = '" . $_SESSION["uname"] . "';"); 
+$sql->execute("delete from airmanPrefs where username = '" . $_SESSION["uname"] . "';"); 
 for ($i = 1; $i <= 10; $i++){
 	$billet = $sql->sanitize($_POST["billets" . $i]);
 	if ($billet != "") {
-		$sql->execute("insert into nextGen.airmanPrefs values ('" . $_SESSION["uname"] . "','" . $billet . "', " . $i . ");");
+		$sql->execute("insert into airmanPrefs values ('" . $_SESSION["uname"] . "','" . $billet . "', " . $i . ");");
 	}
 }
+
+$_SESSION["justSubmitted"] = True; 
 
 header("Location: officer_preference.php");
 

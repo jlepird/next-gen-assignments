@@ -3,19 +3,28 @@
 if (!isset($_SESSION["uname"])) {
     header("Location: ../login.php"); // comment this line to disable login (for debug) 
 }
-if ($_SESSION['isAirman'] != 1 ){
+if ($_SESSION['isAirman'] != 't' ){
 	header("Location: ./input.php"); // Unless user is being assigned, they have no reason to be on this page. 
 }
 ?>
 <html>
     <head> 
     <?php include '../include/head_common.php'; ?>
+
+    <script type="text/javascript">
+    <?php
+    	if ($_SESSION["justSubmitted"]){
+    		echo "alert('Preferences Successfully Submitted!');";
+    		$_SESSION["justSubmitted"] = False;
+    	} 
+    ?>
+    </script>
     </head>
     <script>
     	// Get list of billets
-	    var billets = <?php echo $sql->queryJSON("select distinct posn from nextGen.billetOwners;"); ?>;
+	    var billets = <?php echo $sql->queryJSON("select distinct posn from billetOwners;"); ?>;
 
-	    var initialPrefs = <?php echo $sql->queryJSON("select posn, pref from nextGen.airmanPrefs where user = '" . $_SESSION["uname"] . "';"); ?>; 
+	    var initialPrefs = <?php echo $sql->queryJSON("select posn, pref from airmanPrefs where username = '" . $_SESSION["uname"] . "';"); ?>; 
 
 	    // After page load, populate datalist with options
 	    $(function(){

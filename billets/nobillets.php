@@ -1,1 +1,0 @@
-<p> You currently have no billets assigned to you. If you think this is in error, please <a href = "/help/contact.php"> contact us. </a> </p>

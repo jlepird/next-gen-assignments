@@ -86,9 +86,9 @@
 2B3,THERAPIST  PHYSICAL  STAFF  42B3                                                
 2B4,THERAPIST  PHYSICAL  ADMIN  42B4                                                
 2BX,PHYSICAL THERAPIST  42B                                                         
-2.00E+01,OPTOMETRIST  TRAINING  42E1                                                     
-2.00E+03,OPTOMETRIST  STAFF  42E3                                                        
-2.00E+04,OPTOMETRIST  ADMIN  42E4                                                        
+2E1,OPTOMETRIST  TRAINING  42E1                                                     
+2E3,OPTOMETRIST  STAFF  42E3                                                        
+2E4,OPTOMETRIST  ADMIN  42E4                                                        
 2EX,OPTOMETRIST  42E                                                                
 2F1,PODIATRIST  TRAINING  42F1                                                      
 2F3,PODIATRIST  STAFF  42F3                                                         
@@ -165,9 +165,9 @@
 3D3,DIETITIAN  STAFF  43D3                                                          
 3D4,DIETITIAN  ADMIN  43D4                                                          
 3DX,DIETITIAN  43D                                                                  
-3.00E+01,BIOENVIRONMENTAL ENGINEER  TRAINING  42E                                        
-3.00E+03,BIOENVIRONMENTAL ENGINEER  STAFF  43E                                           
-3.00E+04,BIOENVIRONMENTAL ENGINEER  ADMIN  43E                                           
+3E1,BIOENVIRONMENTAL ENGINEER  TRAINING  42E                                        
+3E3,BIOENVIRONMENTAL ENGINEER  STAFF  43E                                           
+3E4,BIOENVIRONMENTAL ENGINEER  ADMIN  43E                                           
 3EA,BIOENVIRONMENTAL ENGINEER  GENERAL  43E A                                       
 3EB,BIOENVIRONMENTAL ENGINEER  INDUSTRIAL HYGIENE  43E B                            
 3EC,BIOENVIRONMENTAL ENGINEER  MEDICAL CONSTRUCTION  43E C                          
@@ -295,9 +295,9 @@
 4DH,PATHOLOGIST  MICROBIOLOGY  44D H                                                
 4DK,PATHOLOGIST  DERMATOLOGY  44D K                                                 
 4DX,PATHOLOGIST  44D                                                                
-4.00E+01,EMERGENCY MEDICINE  TRAINING  44E1A                                             
-4.00E+04,EMERGENCY MEDICINE  ADMIN  44E4A                                                
-4.00E+08,EMERGENCY MEDICINE  FLIGHT MEDICINE  48R3                                       
+4E1,EMERGENCY MEDICINE  TRAINING  44E1A                                             
+4E4,EMERGENCY MEDICINE  ADMIN  44E4A                                                
+4E8,EMERGENCY MEDICINE  FLIGHT MEDICINE  48R3                                       
 4EA,EMERGENCY MEDICINE SPECIALIST  44E3A                                            
 4EX,EMERGENCY SERVICES PHYSICIAN  44E                                               
 4F1,FAMILY MEDICINE  TRAINING  44F1                                                 
@@ -412,10 +412,10 @@
 5BG,ORTHOPEDIST  REPLACEMENT ARTHROPLASTY  45B G                                    
 5BH,ORTHOPEDIST  TRAUMATOLOGY  45B H                                                
 5BX,ORTHOPEDIC SURGEON  45B                                                         
-5.00E+01,OPHTHALMOLOGIST  TRAINING  45E1                                                 
-5.00E+03,OPHTHALMOLOGIST  STAFF  45E3                                                    
-5.00E+04,OPHTHALMOLOGIST  ADMIN  45E4                                                    
-5.00E+08,OPHTHALMOLOGIST  FLIGHT MEDICINE  48R3                                          
+5E1,OPHTHALMOLOGIST  TRAINING  45E1                                                 
+5E3,OPHTHALMOLOGIST  STAFF  45E3                                                    
+5E4,OPHTHALMOLOGIST  ADMIN  45E4                                                    
+5E8,OPHTHALMOLOGIST  FLIGHT MEDICINE  48R3                                          
 5EA,OPHTHALMOLOGIST  OCULOPLASTICS  45E A                                           
 5EB,OPHTHALMOLOGIST  CORNEA/EXTERNAL DISEASE  45E B                                 
 5EC,OPHTHALMOLOGIST  GLAUCOMA  45E C                                                
@@ -549,9 +549,9 @@
 7D3,ORAL AND MAXILLOFACIAL PATHOLOGIST  STAFF  47D3                                 
 7D4,ORAL AND MAXILLOFACIAL PATHOLOGIST  ADMIN  47D4                                 
 7DX,ORAL AND MAXILLOFACIAL PATHOLOGIST  47D                                         
-7.00E+01,ENDODONTIST  TRAINING  47E1                                                     
-7.00E+03,ENDODONTIST  STAFF  47E3                                                        
-7.00E+04,ENDODONTIST  ADMIN  47E4                                                        
+7E1,ENDODONTIST  TRAINING  47E1                                                     
+7E3,ENDODONTIST  STAFF  47E3                                                        
+7E4,ENDODONTIST  ADMIN  47E4                                                        
 7EX,ENDODONTIST  47E                                                                
 7G3,DENTIST  STAFF  47G3                                                            
 7G4,DENTIST  ADMIN  47G4                                                            

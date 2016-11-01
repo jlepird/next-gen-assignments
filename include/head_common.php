@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
 <link rel="stylesheet" href="/include/chosen/chosen.css" />
 
+
 <!-- favicon stuff --> 
 <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
 <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
@@ -23,8 +24,8 @@
 <script type="text/javascript" src = "https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js" ></script>
 <script type="text/javascript" src = "https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"> </script>
 <script type="text/javascript" src = "https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"> </script>
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script type="text/javascript" src="http://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
 <script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
 <script type="text/javascript" src = "/include/bouncemarker.js"></script>
@@ -32,5 +33,5 @@
 
 <!-- PHP functions --> 
 <?php 
-include_once("./include/funs.php"); 
+include_once( $_SERVER['DOCUMENT_ROOT'] . "/include/funs.php"); 
 ?>
