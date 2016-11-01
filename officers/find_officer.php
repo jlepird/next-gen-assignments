@@ -13,9 +13,11 @@ if (!isset($_SESSION["uname"])) {
 <div class="col-md-3">  </div>
     <div class="col-md-5">
     <br> <br> <br>
-    <p>You will be able to search for experienced officers via the Air Force MyVECTOR database. While searching through the website, it is recommended you take notes and create a prioritized list of preferred officers that you find suitable for each one of your billets. Please submit this prioritized list through the "My Preference List" link above by 28 February 2017.
+    <p>You will be able to search for experienced officers via the Air Force MyVector database. While searching through the website, it is recommended you take notes and create a prioritized list of preferred officers that you find suitable for each one of your billets. Please submit this prioritized list through the <a href="../prefs/input.php">My Preference List</a> by 3 March 2017.
 
-<p><a href="https://afvec.langley.af.mil/myvector/" target="_blank">Proceed to MyVECTOR</a>
+<p><a href="https://afvec.langley.af.mil/myvector/" target="_blank">Proceed to MyVector</a>
+
+    <p><i>Instructions with screenshots of how to search for officers on MyVector should go here.</i>
     </div>
 
 
