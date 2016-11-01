@@ -17,13 +17,23 @@ if (!isset($_SESSION["uname"])) {
     <br> <br>
         <h2>Contact Information</h2>
 
-        <h3> 1Lt Jack Lepird </h3>
-        <p> john.r.lepird.mil@mail.mil
+        <h4> A1 </h4>
+        <h5> Lt Col Julie Wiemer</h5>
+        <p> <a href="mailto:julie.a.wiemer.mil@mail.mil">julie.a.wiemer.mil@mail.mil</a> </p>
+        <p> 703-614-2317 (commercial) </p>
+
+        <h4> A9 </h4>
+        <h5> 1Lt Jack Lepird </h5>
+        <p> <a href="mailto:john.r.lepird.mil@mail.mil"> john.r.lepird.mil@mail.mil</a></p>
         <p> 571-256-7711 (commercial) </p>
         
-        <h3> Ms. Courtney Knoth</h3>
-        <p> courtney.l.knoth.civ@mail.mil</p>
+        <h5> Ms. Courtney Knoth</h5>
+        <p> <a href="mailto:courtney.l.knoth.civ@mail.mil">courtney.l.knoth.civ@mail.mil </a></p>
         <p> 571-256-2041 (commercial) </p>
+        
+        <h5> Mr. Jay Sanchez</h5>
+        <p> <a href="mailto:jay.p.sanchez.civ@mail.mil" > jay.p.sanchez.civ@mail.mil</a></p>
+        <p> 571-256-7734 (commercial) </p>
 
     </div>
 
