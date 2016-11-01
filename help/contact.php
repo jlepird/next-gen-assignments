@@ -18,22 +18,22 @@ if (!isset($_SESSION["uname"])) {
         <h2>Contact Information</h2>
 
         <h4> A1 </h4>
-        <h5> Lt Col Julie Wiemer</h5>
-        <p> <a href="mailto:julie.a.wiemer.mil@mail.mil">julie.a.wiemer.mil@mail.mil</a> </p>
-        <p> 703-614-2317 (commercial) </p>
+        <p><b> Lt Col Julie Wiemer </b><br>
+        <a href="mailto:julie.a.wiemer.mil@mail.mil">julie.a.wiemer.mil@mail.mil</a> <br>
+        703-614-2317 (commercial) </p>
 
         <h4> A9 </h4>
-        <h5> 1Lt Jack Lepird </h5>
-        <p> <a href="mailto:john.r.lepird.mil@mail.mil"> john.r.lepird.mil@mail.mil</a></p>
-        <p> 571-256-7711 (commercial) </p>
+        <p><b> 1Lt Jack Lepird </b><br>
+        <a href="mailto:john.r.lepird.mil@mail.mil"> john.r.lepird.mil@mail.mil</a><br>
+        571-256-7711 (commercial) </p>
         
-        <h5> Ms. Courtney Knoth</h5>
-        <p> <a href="mailto:courtney.l.knoth.civ@mail.mil">courtney.l.knoth.civ@mail.mil </a></p>
-        <p> 571-256-2041 (commercial) </p>
+        <p><b> Ms. Courtney Knoth </b><br>
+        <a href="mailto:courtney.l.knoth.civ@mail.mil">courtney.l.knoth.civ@mail.mil </a><br>
+        571-256-2041 (commercial) </p>
         
-        <h5> Mr. Jay Sanchez</h5>
-        <p> <a href="mailto:jay.p.sanchez.civ@mail.mil" > jay.p.sanchez.civ@mail.mil</a></p>
-        <p> 571-256-7734 (commercial) </p>
+        <p><b> Mr. Jay Sanchez </b><br>
+        <a href="mailto:jay.p.sanchez.civ@mail.mil" > jay.p.sanchez.civ@mail.mil</a><br>
+        571-256-7734 (commercial) </p>
 
     </div>
 

@@ -25,7 +25,7 @@ if (!isset($_SESSION["uname"])) {
 
     <div class="col-md-3">  </div>
 
-    <div class="col-md-9">
+    <div class="col-md-6">
         <h1>Getting Started</h1>
 
 <p>As an active participant on the FY17 Summer VML cycle, you have been chosen to help shape the future Air Force assignment system. You are part of an initial pilot program to help test proposed ideas and processes that have the goal of improving the current system by making it more decentralized, transparent, and user friendly. If you are interested in more technical details about this test program, see the <a href="/help/about.php"> About</a> section.</p>
