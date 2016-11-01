@@ -1,12 +1,13 @@
 <?php session_start();
 // If user hasn't logged in, have them do that now. 
 if (!isset($_SESSION["uname"])) {
-    header("Location: login.php"); // comment this line to disable login (for debug) 
+    header("Location: /login.php"); // comment this line to disable login (for debug) 
 }
 ?>
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+<!DOCTYPE html> 
 <html>
     <head> 
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/include/head_common.php'; ?>
 
     <script type = "text/javascript" >
@@ -101,6 +102,7 @@ if (!isset($_SESSION["uname"])) {
 		}).addTo(map);
 
 		// Plot the locations of our data 
+		
 		for (var i = 0; i < data.length; ++i){
 			var id = data[i].id;
 			 
@@ -112,10 +114,7 @@ if (!isset($_SESSION["uname"])) {
 				              "<br>Unit: " +     data[i].unit); 
 				 
 		}
-
-
 		
-
     });
 
 
@@ -124,16 +123,17 @@ if (!isset($_SESSION["uname"])) {
 
     <style>
     	#map {
-		  width: 100%;
-		  height: 100%;
-		  margin: 0;
-		  padding: 0;
+		  width: 900px;
+		  height: 600px;
+		  margin: 10px;
+		  padding: 10px;
 		}
     </style>
 
     </head>
 <body>
 <?php include '../banner.php'; ?>
+
 <div class="col-md-1" align="right">  
 </div>
 <div class="col-md-10">

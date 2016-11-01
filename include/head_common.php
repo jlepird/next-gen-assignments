@@ -2,11 +2,11 @@
 <title> Air Force Next-Gen Assignments System</title>
 
 <!-- CSS files --> 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
-<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" type = "text/css" />
+<link rel="stylesheet" href="/include/datatables/jquery.dataTables.min.css" type = "text/css"/>
+<link rel="stylesheet" href="/include/datatables/buttons.dataTables.min.css" type = "text/css" />
 <link rel="stylesheet" href="/css/myvector.css" type="text/css" />
 <link rel="stylesheet" href="/css/a9.css" type = "text/css" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+<link rel="stylesheet" href="/include/leaflet/leaflet.css" />
 <link rel="stylesheet" href="/include/chosen/chosen.css" />
 
 
@@ -19,17 +19,17 @@
 <meta name="theme-color" content="#ffffff">
 
 <!-- Javascript libraries --> 
-<script type="text/javascript" src="https://d3js.org/d3.v4.js"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script type="text/javascript" src = "https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js" ></script>
-<script type="text/javascript" src = "https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"> </script>
-<script type="text/javascript" src = "https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"> </script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-<script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
-<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
-<script type="text/javascript" src = "/include/bouncemarker.js"></script>
-<script type="text/javascript" src = "/include/chosen/chosen.jquery.js"></script>
+<script type="text/javascript" src="//d3js.org/d3.v4.js"></script>
+<script type="text/javascript" src="/include/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/include/datatables/jquery.dataTables.min.js" ></script>
+<script type="text/javascript" src="/include/datatables/dataTables.buttons.min.js"> </script>
+<script type="text/javascript" src="/include/datatables/buttons.flash.min.js"> </script>
+<script type="text/javascript" src="/include/datatables/jszip.min.js"></script>
+<script type="text/javascript" src="/include/datatables/buttons.html5.min.js"></script>
+<script type="text/javascript" src="/include/datatables/buttons.print.min.js"></script>
+<script type="text/javascript" src="/include/leaflet/leaflet.js"></script>
+<script type="text/javascript" src="/include/bouncemarker.js"></script>
+<script type="text/javascript" src="/include/chosen/chosen.jquery.js"></script>
 
 <!-- PHP functions --> 
 <?php 
