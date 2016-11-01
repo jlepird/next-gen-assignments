@@ -1,34 +1,22 @@
 <?php session_start();
 // If user hasn't logged in, have them do that now. 
-if (!isset($_SESSION["billets"])) {
+if (!isset($_SESSION["included"])) {
     die("You don't have the correct permissions to view this page.");
 }
 ?>
 
 <script type = "text/javascript">
-	var vals  = <?php echo $res;   ?>;
 	var data  = <?php echo $data;  ?>;
 	var descs = <?php echo $descs; ?>;
 	
 	// Global var showing what we currently have selected. 
 	var selected = <?php 
-		if (isset($_SESSION["lastViewed"])){
-			echo "'" . $_SESSION["lastViewed"] . "'" ; 
-		} else {
-			echo "data[0].posn";
-		}
+		echo "'" . $billet . "'";
 	?>;  
-
-//TODO: Fix autopopulation issue with chosen() drop-downs 
 
 updateBilletData = function(value){ 
 
 	selected = value; 
-
-	/* Subset to the data that we need */ 
-	var myData = data.filter(function(x) {
-		return x.posn == value;
-	}); 
 
 	// Ensure correct drop down selected-- used when redirected back after submission
 	document.getElementById("billetSelector").value = value;
@@ -37,7 +25,7 @@ updateBilletData = function(value){
 	/* Update the values that we have */ 
 	var toUpdate = document.getElementsByClassName("autopop");
 	for (var i = 0; i < toUpdate.length; ++i){
-		var row = myData.filter(function(x){
+		var row = data.filter(function(x){
 			return x.tkey == toUpdate[i].name.replace("[]", ""); 
 		}); 
 		if (row.length == 1) {
@@ -68,25 +56,13 @@ updateBilletData = function(value){
 /* Run on Page Load */ 
 $( function(){ 
 
-// Populate the drop down menu
-d3.select("#billetSelector")
-  .selectAll("option")
-  .data(vals)
-  .enter()
-  .append("option")
-  .text(function(d) {
-  	return d.posn;
-  })
-  .attr("value", function(d) {
-  	return d.posn;
-  });
+	// Ensure correct drop down selected-- used when redirected back after submission
+	document.getElementById("billetSelector").value = selected;
 
+	/* Initial fill */ 
+	updateBilletData(selected);
 
-
-/* Initial fill */ 
-updateBilletData(selected);
-
-});
+	});
 	
 </script>
 
@@ -98,11 +74,17 @@ updateBilletData(selected);
 <td> 
 	<select id = "billetSelector" 
 			name = "id"
-	        onchange = "updateBilletData(this.value);" 
+	        onchange = "document.location.href = '/billets/manage.php?billet=' + this.value;" 
 	        class = "center chosen-select-large"
 	        style = "width: 100px;"
 	        >
-	<!-- Template, javascript will fill in --> 
+	<?php // Populate the options for the user. 
+		$res = $sql->execute("select posn from billetOwners where username = '" . $_SESSION["uname"] . "';");
+		while ($row = pg_fetch_array($res)){
+			echo "<option value = '" . $row[0] . "'> " . $row[0]. ": " . $row[1] . "</option>";  
+		}
+		pg_free_result($res); 
+	?> 
 	</select>
 </td>
 <td> <input type = "submit" class = "btn btn-primary" value = "Save Changes"> </td>

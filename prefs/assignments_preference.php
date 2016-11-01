@@ -3,14 +3,14 @@
 if (!isset($_SESSION["uname"])) {
     header("Location: ../login.php"); // comment this line to disable login (for debug) 
 }
-if ($_SESSION['isOwner'] != 1 ){
+if ($_SESSION['isOwner'] != 't' ){
 	header("Location: ./input.php"); // Unless user is being assigned, they have no reason to be on this page. 
 }
 include '../include/head_common.php';
-$res = $sql->execute("select posn from nextGen.billetOwners where user = '" . $_SESSION["uname"] . "';"); 
+$res = $sql->execute("select posn from billetOwners where username = '" . $_SESSION["uname"] . "';"); 
 
 $authorized = false; 
-while ($row = $res->fetch_row()){
+while ($row = pg_fetch_row($res)){
 	if ($row[0] == $_GET["billet"]){
 		$authorized = true;
 		break; 
@@ -24,12 +24,21 @@ if (! $authorized){
 <html>
     <head> 
     <?php include '../include/head_common.php'; ?>
+    
+    <script type="text/javascript">
+    <?php
+    	if ($_SESSION["justSubmitted"]){
+    		echo "alert('Preferences Successfully Submitted!');";
+    		$_SESSION["justSubmitted"] = False;
+    	} 
+    ?>
+    </script>
     </head>
     <script>
     	// Get list of airmen
-	    var airmen = <?php echo $sql->queryJSON("select distinct name from nextGen.names;"); ?>;
+	    var airmen = <?php echo $sql->queryJSON("select distinct name from names;"); ?>;
 
-	    var initialPrefs = <?php echo $sql->queryJSON("select name, pref from nextGen.billetPrefs where posn = '" . $_GET["billet"] . "';"); ?>; 
+	    var initialPrefs = <?php echo $sql->queryJSON("select name, pref from billetPrefs where posn = '" . $_GET["billet"] . "';"); ?>; 
 
 	    // After page load, populate datalist with options
 	    $(function(){

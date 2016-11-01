@@ -24,7 +24,3 @@ fieldset {
 td {
 	padding: 0 2px 0 2px; 
 }
-
-.chosen-select-small[disabled]{
-    font-color : "black"; 
-}

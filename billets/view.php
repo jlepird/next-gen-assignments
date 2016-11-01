@@ -9,9 +9,9 @@ if (!isset($_SESSION["uname"])) {
     <?php include '../include/head_common.php'; ?>
     </head>
     <script type = "text/javascript"> 
-    var myData = <?php
+    var data = <?php
     	$billet = $_GET['billet']; 
-    	$data = $sql->queryJSON("select posn, tkey, val from nextGen.billetData where posn = '" . $billet . "';");
+    	$data = $sql->queryJSON("select posn, tkey, val from billetData where posn = '" . $billet . "';");
         echo $data; 
     ?>; 
 
@@ -20,7 +20,7 @@ if (!isset($_SESSION["uname"])) {
         /* Update the values that we have */ 
         var toUpdate = document.getElementsByClassName("autopop");
         for (var i = 0; i < toUpdate.length; ++i){
-            var row = myData.filter(function(x){
+            var row = data.filter(function(x){
                 return x.tkey == toUpdate[i].name.replace("[]", ""); 
             }); 
             if (row.length == 1) {
@@ -42,7 +42,7 @@ if (!isset($_SESSION["uname"])) {
             toUpdate[i].disabled = "disabled"; 
         }
 
-		document.getElementById("desc").value = '<?php echo $sql->queryValue("select txt from nextGen.billetDescs where posn = '" . $billet . "';") ?>'; 
+		document.getElementById("desc").value = '<?php echo $sql->queryValue("select txt from billetDescs where posn = '" . $billet . "';") ?>'; 
 		document.getElementById("desc").disabled = "disabled";
 
     })

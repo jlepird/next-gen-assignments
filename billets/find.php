@@ -1,18 +1,18 @@
 <?php session_start();
 // If user hasn't logged in, have them do that now. 
 if (!isset($_SESSION["uname"])) {
-    header("Location: ../login.php"); // comment this line to disable login (for debug) 
+    header("Location: login.php"); // comment this line to disable login (for debug) 
 }
 ?>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
 <html>
     <head> 
-    <?php include '../include/head_common.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/include/head_common.php'; ?>
 
     <script type = "text/javascript" >
-    var data = <?php echo $sql->queryJSON("select posn, tkey, val from nextGen.billetData order by posn;"); ?>; 
+    var data = <?php echo $sql->queryJSON("select posn, tkey, val from billetData order by posn;"); ?>; 
 
-    var lat_lon = <?php echo $sql->queryJSON("select * from nextGen.locations;"); ?>; 
+    var lat_lon = <?php echo $sql->queryJSON("select * from locations;"); ?>; 
 
     // Restructure the data from "long" form to "wide" form. 
     var completed = [];

@@ -1,37 +1,33 @@
-drop database nextGen;
-create database nextGen; 
-
-use nextGen; 
 
 -- TODO: Remove drop statements before production!
 
-drop table if exists users;
+drop table if exists users cascade;
 create table users (
     username varchar(50) primary key not null,
     email varchar(50) not null, 
-    password binary(32) not null,
-    owner bit not null,
-    officer bit not null
+    password varchar(32) not null,
+    owner boolean not null,
+    officer boolean not null
 ); 
 
 
 insert into users values 
-('a9', 'example@test.com',  md5('test'), 1, 1),
-('a1', 'example2@test.com', md5('test'), 0, 1);
+('a9', 'example@test.com',  md5('test'), true, true),
+('a1', 'example2@test.com', md5('test'), false, true);
 
-drop table if exists billetOwners;
+drop table if exists billetOwners cascade;
 create table billetOwners(
 	posn varchar(50) primary key not null,
-	user varchar(50) not null references users.username
+	username varchar(50) references users (username)
 );
 
 insert into billetOwners values
 ( 'abc', 'a9'),
 ( 'def', 'a9');
 
-drop table if exists billetData; 
+drop table if exists billetData cascade; 
 create table billetData (
-	posn varchar(50) not null references billetOwners.posn,
+	posn varchar(50) not null references billetOwners (posn),
 	tkey varchar(50) not null, 
 	val  varchar(100)
 );
@@ -71,9 +67,9 @@ insert into billetData values
 
 
 
-drop table if exists billetDescs;
+drop table if exists billetDescs cascade;
 create table billetDescs (
-	posn varchar(50) not null references billetOwners.posn,
+	posn varchar(50) not null references billetOwners (posn),
 	txt varchar(5000)
 );
 insert into billetDescs values 
@@ -81,60 +77,57 @@ insert into billetDescs values
 	('def', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam mauris, vulputate ut nisi pharetra, gravida aliquet erat. Pellentesque iaculis lobortis tortor, eu eleifend eros fringilla sed. Donec consequat purus eu sem pellentesque, vel porttitor mi aliquam. Vivamus ornare dolor eleifend consequat vestibulum. Etiam eleifend neque eu mauris aliquam consectetur. Ut feugiat nulla quis nisi tempor ornare vitae ac enim. Nam consectetur id nulla in congue. Sed et odio quis ante fermentum finibus ut sed massa. Suspendisse maximus gravida lorem vitae sagittis. Integer consectetur augue magna, molestie placerat ligula rhoncus ac. Proin dictum, lacus sit amet semper euismod, orci lacus condimentum dui, nec blandit lorem metus semper dui.')
 	;
 
-drop table if exists allowableDegrees;
+drop table if exists allowableDegrees cascade;
 create table allowableDegrees(
 	code varchar(4),
-	degree varchar(50)
+	degree varchar(100)
 );
 
-drop table if exists locations; 
+drop table if exists locations cascade; 
 create table locations(
-	location varchar(100) not null references billetData.val,
+	location varchar(100) not null,
 	lon numeric(16, 10), 
 	lat numeric(16, 10)
 );
 
-drop table if exists airmanPrefs;
+insert into locations values 
+	('Ramstein Air Base', 49.4417857579 ,   7.6008885732),
+    ('The Pentagon'     , 38.8707481657 , -77.0540203771);
+
+drop table if exists airmanPrefs cascade;
 create table airmanPrefs (
-	user varchar(50) not null references users.username, 
-	posn varchar(50) not null references billetOwners.posn,
+	username varchar(50) not null references users (username), 
+	posn varchar(50) not null references billetOwners (posn),
 	pref int not null
 );
 
-drop table if exists billetPrefs;
-create table billetPrefs ( 
-	name varchar(100) not null references naems.name, 
-	posn varchar(50) not null references billetOwners.posn,
-	pref int not null
-);
-
-drop table if exists names; 
+drop table if exists names cascade; 
 create table names (
-	user varchar(50) not null references user.username, 
+	username varchar(50) not null references users (username), 
 	name varchar(100) primary key not null
 );
 
 insert into names values 
 	('a9', 'Maj Dysfunction'),
 	('a1', 'Capt Snuffy'); 
+
+drop table if exists billetPrefs cascade;
+create table billetPrefs ( 
+	name varchar(100) not null references names (name), 
+	posn varchar(50) not null references billetOwners (posn),
+	pref int not null
+);
 	
-drop table if exists acqLevels; 
+drop table if exists acqLevels cascade; 
 create table acqLevels (
 	code varchar(1) primary key not null,
 	level varchar(100) not null
 ); 
 
-drop table if exists coreCodes; 
+drop table if exists coreCodes cascade; 
 create table coreCodes (
 	afsc varchar(3) primary key not null,
 	txt varchar(100) not null
 ); 
 
--- Build up a query to grand all the correct rights 
-set @qry = concat('grant all on *.* to ', @user, '; ');
-
-prepare stmt from @qry; 
-execute stmt; 
-deallocate prepare stmt; 
-
-select 'Complete' as 'Update';  
+select 'Complete' as Update;  

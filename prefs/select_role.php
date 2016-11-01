@@ -11,7 +11,7 @@ if (!isset($_SESSION["uname"])) {
 <script>
 
 // Get list of billets assigned to user-- don't need to worry about security, it's verifyied by the php page.  
-var billets = <?php echo $sql->queryJSON("select posn from nextGen.billetOwners where user = '" . $_SESSION["uname"] . "';"); ?>; 
+var billets = <?php echo $sql->queryJSON("select posn from billetOwners where username = '" . $_SESSION["uname"] . "';"); ?>; 
 
 // Populate after page load. 
 $(function(){

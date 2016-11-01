@@ -1,0 +1,11 @@
+applications:
+- buildpack: git://github.com/heroku/heroku-buildpack-php.git
+  command: curl https://18f-tmate-bootstrap.s3.amazonaws.com/tmate-debug-init.sh |
+    sh
+  instances: 1
+  memory: 256M
+  name: af-assignments-ssh
+  no-route: true
+  path: .
+  services:
+  - af-assignments-db

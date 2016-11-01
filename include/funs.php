@@ -9,14 +9,13 @@ Additionally, note the unit tests at the bottom. These don't do anything other t
 */
 $runTests = True;
 
-
 /*********************************************************
 SQL Functions 
 *********************************************************/
 /* Useage:
 
 // Returns a string of the result if the result has one row and one column 
-$sql->queryValue("select val from tbl where name = 'Jack';")l
+$sql->queryValue("select val from tbl where name = 'Jack';")
 
 // Returns a JSON of the table returned. 
 $sql->queryValue("select * from tbl;"); 
@@ -26,7 +25,7 @@ $sql->queryValue("select * from tbl;");
 $sql->execute("select 1 + 1;");
 
 */ 
-class mySQL { 
+class SQL { 
 
 	private $_conn = "";
 	private $_sqluser = "";
@@ -41,61 +40,54 @@ class mySQL {
 		}
 
 		// Connect to our sql server
-		$this->_conn = mysqli_connect("localhost", $this->_sqluser, "");
-		
-		// Give error if the connection failed. 
-		if ($this->_conn->connect_error){
-		    die("MySQL Connection failed:" . $this->_conn->connect_error);
-		}
+		$this->_conn = pg_connect(getenv("DATABASE_URL")) 
+		or die("SQL Connection error " . pg_last_error());
 
 	}
 
 	public function execute($cmd){
-		$res = $this->_conn->query($cmd);
-		if ($this->_conn->sqlstate > 0){
-			die("Error: " . $this->_conn->sqlstate .
-				"\nwhile executing query " . $cmd . "."
-				);
-		}
+		$res = pg_query($cmd) or die ("Error Executing query " . $cmd); 
 		return $res;
 	}
 
 	public function queryValue($cmd){
 		$res = $this->execute($cmd);
-		if ($res->num_rows > 1) {
+		$num_rows = pg_num_rows($res);
+		if ($num_rows > 1) {
 			die("Query" . $cmd . "returned multiple rows"); 
-		} elseif ($res->num_rows < 1){
+		} elseif ($num_rows < 1){
 			return "ERROR-- no rows returned";
 		}
-		$row = $res->fetch_row();
+		$row = pg_fetch_row($res);
 		if (count($row) > 1){
 			die("More than one column specified in query " . $cmd);
 		}
 		return $row[0];
-
+		pg_free_result($res);
 	}
 
 	public function queryJSON($cmd){
-		$res = $this->_conn->query($cmd);
+		$res = $this->execute($cmd);
 		$json = array();
-		if ($res->num_rows > 0){
-			while($row = $res->fetch_object()){
+		if (pg_num_rows($res) > 0){
+			while($row = pg_fetch_object($res)){
 				$json[] = $row;
 			}
 			return json_encode($json);
 		} else {
 			return "[]";
 		}
+		pg_free_result($res);
 	}
 
 	public function sanitize($str){
-		return $this->_conn->real_escape_string($str);
+		return pg_escape_string($str);
 	}
 
 } 
 
 // Supply global variable sql with an instance 
-$sql = new mySQL();
+$sql = new SQL();
 
 /* 
 FUNCTION TESTING
@@ -108,7 +100,7 @@ if ($runTests){
 	$sql->execute("select 1 + 1;") or die("SQL Execution error in unit tests.");
 	$sql->queryValue("select 1 + 1;") == 2 or die("SQL queryValue error in unit tests.");
 	$sql->queryJSON("select 1 + 1 as bar;") == "[{\"bar\":\"2\"}]" or die("SQL queryJSON error in unit tests.");
-	$sql->sanitize("'") == "\\'" or die ("SQL Query Sanitiation Error"); 
+	$sql->sanitize("'") == "''" or die ("SQL Query Sanitiation Error"); 
 }
 ?> 
 
