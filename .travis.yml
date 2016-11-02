@@ -7,6 +7,7 @@ before_script:
 - export DATABASE_URL="travis_ci_test"
 - cd bin && ./setupSQL.sh
 script: echo Done
+edge: true
 deploy:
   provider: cloudfoundry
   api: https://api.cloud.gov
