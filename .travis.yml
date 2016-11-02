@@ -7,14 +7,3 @@ before_script:
 - export DATABASE_URL="travis_ci_test"
 - cd bin && ./setupSQL.sh
 script: echo Done
-deploy:
-  edge: true
-  provider: cloudfoundry
-  api: https://api.cloud.gov
-  username: john.r.lepird.mil@mail.mil
-  password:
-    secure: KSAsyuxQ6IMs91BbsQOAQhoc8ZAwKsPrgUispt6Ely7gC6WDj8BThMLIBd4knYMtkZV4fMrnlAdzojTC1nCAfyDH0v6lxrV4Y/ZXSg6FMnIh/jrumXnR/qM918InDkyTP0tN4EHuOPolpyTzphxGtYzGT/08Nrzdr2ZuojnGWHM6UjXcR8/RfEnv7TajrgsogLrspOln+mcf+uDifQwjzeZIdWyG2dPyCrXixBLyzO6o98AartzFFZyJHLF2yncs4l8enueW3fyQqZU7nXqj0Ukes4nLZDul2vpkxpttYHNX6zbU92arLtz22qWYxc7aAlbZaLzPZ8u0591BkAGJTJcefQLnA/9gzwPp3H5kTIQILEdgWMr928AnkQWLWBAFYPu2IyP6vKUH2DNARO3smyhLSWD6cg/Qx42ZV7pMsP7GkVyVXhgfIAA9k3+wm+MeJYOHIzhwTIUFv4+1HB5EahZgNxLG0+VlMEEtNenydxCD60WL55lYU6J3TnCwvS7fHvWz4dtTl0K1n31NgHD3m41LArLYgOnjKqLM5UXRRxcAu1Nn6T/01UY2jzyaCQ/47P1YhciaLbhSabGQcQ1V0+6I4VJ6VD8zum9gpZbM7kVy8FLr2rEGnA8TTccHldukrSjJ78AE6TArZdGS05UAmIMDi8LH2BF5W8ujgj4TVpM=
-  organization: sandbox-mail
-  space: john.r.lepird.mil
-  on:
-    repo: jlepird/next-gen-assignments
