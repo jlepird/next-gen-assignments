@@ -1,3 +1,4 @@
+<!DOCTYPE html> 
 <html>
     <head> 
     <?php include './include/head_common.php'; ?>
@@ -18,8 +19,6 @@
 
 <div class="col-md-5">
 
-<h3> Login </h3>
-
 <h4> Notice and Consent Statement </h4>
 
 You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.
@@ -34,11 +33,12 @@ By using this IS (which includes any device attached to this IS), you consent to
     </li><li>Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.
 	</li>
 </ol>
-By logging in, you agree to these terms.
+
 
 <center>
 <form action=verify.php method="post"> 
 <fieldset>
+	By logging in, you agree to these terms.
 	<table>
 	<tr> 
 		<td> Username: </td>

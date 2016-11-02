@@ -7,6 +7,7 @@ if ($_SESSION['isAirman'] != 't' ){
 	header("Location: ./input.php"); // Unless user is being assigned, they have no reason to be on this page. 
 }
 ?>
+<!DOCTYPE html> 
 <html>
     <head> 
     <?php include '../include/head_common.php'; ?>
