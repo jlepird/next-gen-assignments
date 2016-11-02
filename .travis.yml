@@ -4,6 +4,6 @@ services:
     - postgresql
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
-  - set DATABASE_URL="travis_ci_test"
+  - export DATABASE_URL="travis_ci_test"
   - ./bin/setupSQL.sh
 script: echo Done 
