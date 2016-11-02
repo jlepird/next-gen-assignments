@@ -36,8 +36,9 @@ By using this IS (which includes any device attached to this IS), you consent to
 </ol>
 By logging in, you agree to these terms.
 
-
+<center>
 <form action=verify.php method="post"> 
+<fieldset>
 	<table>
 	<tr> 
 		<td> Username: </td>
@@ -51,7 +52,9 @@ By logging in, you agree to these terms.
 	<td> <button type="submit" class = "btn btn-primary">Submit</button> </td>
 	</tr>
 	</table>
+</fieldset
 </form>
+</center>
 </div>
 </body>
 </html>
