@@ -1,9 +1,19 @@
 language: php
-php: "7.0"
-services: 
-    - postgresql
+php: '7.0'
+services:
+- postgresql
 before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - export DATABASE_URL="travis_ci_test"
-  - cd bin && ./setupSQL.sh
-script: echo Done 
+- psql -c 'create database travis_ci_test;' -U postgres
+- export DATABASE_URL="travis_ci_test"
+- cd bin && ./setupSQL.sh
+script: echo Done
+deploy:
+  provider: cloudfoundry
+  api: https://api.cloud.gov
+  username: john.r.lepird.mil@mail.mil
+  password:
+    secure: fOQYj5PmS4Mn8+V34TToDvSqk7ObfdmmhTzgrYNQK7jY4p72nW/HyKXakIUHUSYo+UZ9XhIeaX8SOb1nhF4SV5iR2BOCiaINjz1nv8GolnxtOVZ+pyWHirQQjnVx3LgIj0/RePCEGiKqFozWHSPblndi5GI81vHtMi8r78nnLFKWX/z0eF68/d2qoq3P0f4thkJBGCHmeM4QCT2P0Lwy04Nu0yHvri7f/ngvgXUr6poQiInN1t0xfb35JtQZzh2R5oMwoiF+ELs3wYiBaYtyb8gJPgaWNp3qrHPAGETiZh+N63h5UB5SfNTUQr3Lm51mSoBgd1iHjAcJA2FjpPlJuaaXXq+tY3W21pXiYKEcSLi8f3vh8HeMY58244XgXfiSdAhkuTomK41aMZtbpFA+Lovzz2zDgpjaEq3y0orZguFoY8cMQYQ5ew6Cpzks2t15126tSB5hSiMiZ8KeMw2J0+s9DU3vWWFtw+Qqse6aD+7e2QsXkfStIiO4cZ0OzIJ6mD4C1X1+Zq05/F2+sVi7CDgqyFLHO4W+khn7XrXMV8VBOxvWuE8Ee5VvV/Jvba9FEOJuaGPa3wgjugZNXn/rM1R3H4I+rTmFC9PDKH7D6KMCojN6zP0UfUGWp6eUspbgENKUE/tAMEUgFGAd435L4vxJ2sgGy3ykSq7hp0dNfTw=
+  organization: sandbox-mail
+  space: john.r.lepird.mil
+  on:
+    repo: jlepird/next-gen-assignments
