@@ -40,7 +40,13 @@ class SQL {
 		}
 
 		// Connect to our sql server
-		$this->_conn = pg_connect(getenv("DATABASE_URL")) 
+		if (strpos(getenv("DATABASE_URL"), "postgres://") !== false){
+			$connection_string = getenv("DATABASE_URL"); 
+		} else {
+			$connection_string = "dbname=" . getenv("DATABASE_URL"); 
+		}
+
+		$this->_conn = pg_connect($connection_string)
 		or die("SQL Connection error " . pg_last_error());
 
 	}
