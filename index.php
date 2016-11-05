@@ -5,6 +5,7 @@ if (!isset($_SESSION["uname"])) {
 }
 
 ?>
+<!DOCTYPE html> 
 <html>
     <head> 
     <?php include './include/head_common.php'; ?>
@@ -30,7 +31,7 @@ if (!isset($_SESSION["uname"])) {
 
 <p>As an active participant on the FY17 Summer VML cycle, you have been chosen to help shape the future Air Force assignment system. You are part of an initial pilot program to help test proposed ideas and processes that have the goal of improving the current system by making it more decentralized, transparent, and user friendly. If you are interested in more technical details about this test program, see the <a href="/help/about.php"> About</a> section.</p>
 
-        <h3>If you were a billet owner on the FY17 Summer VML...</h3>
+        <h3>For billet owners:</h3>
 
         <ul>
             <li>Your first step is to provide detailed information on the assignments that you owned during the past VML cycle.  Enter the data in the <a href="/billets/manage.php">Manage Billets</a> link.  This will provide officers more information as they search for assignments.  You will be asked to provide more detailed information that you would typically provide.  Please provide this information by 3 February 2017.</li>
@@ -38,7 +39,7 @@ if (!isset($_SESSION["uname"])) {
             <li>After searching through <a href="https://afvec.langley.af.mil/myvector/" target="_blank">MyVector</a>, you will create a prioritized list of preferred officers that you believe are the best match for each one of your assignments. Please submit this prioritized list through the <a href="/prefs/input.php">My Preference List</a> link above by 3 March 2017.</li>
         </ul>
             
-        <h3>If you were an officer on the FY17 Summer VML...</h3>    
+        <h3>For officers on the VML...</h3>    
             
         <ul>
             <li>Your first step is to input your work experience, skills, and other relevant information in <a href="https://afvec.langley.af.mil/myvector/" target="_blank">MyVector</a>. This information will be seen by billet owners as they search for officers that are most suitable for their positions.  The more information you provide, the better the billet owners will be able to make an assessment on choosing specific officers. Please provide this information by 3 February 2017.</li>

@@ -21,6 +21,7 @@ if (! $authorized){
 }
 
 ?>
+<!DOCTYPE html> 
 <html>
     <head> 
     <?php include '../include/head_common.php'; ?>

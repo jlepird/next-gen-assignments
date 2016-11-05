@@ -1,8 +1,8 @@
 <script> 
 $(function(){
-		$(".chosen-select-large").chosen({width: "200", allow_single_deselect: true});
-		$(".chosen-select-medium").chosen({width: "150", allow_single_deselect: true});
-		$(".chosen-select-small").chosen({width: "100", allow_single_deselect: true});
+		$(".chosen-select-large").chosen({width: "200px", allow_single_deselect: true});
+		$(".chosen-select-medium").chosen({width: "150px", allow_single_deselect: true});
+		$(".chosen-select-small").chosen({width: "100px", allow_single_deselect: true});
 		$(".chosen-disabled").removeClass("chosen-disabled"); 
 }); 
 </script>
@@ -48,10 +48,10 @@ $(function(){
 </table>
 </fieldset>
 <fieldset>
-<table> 
+<table style = "width:100%"> 
 	<tr> <td colspan="4"> <h5> <i> Degrees and Certifications </i> </h5>  </td> </tr>
 	<tr> 
-		<td> <p> Advanced Academic Degree Requirement (Level): </p> </td>
+		<td> <p> Preferred Education Level: </p> </td>
 		<td> <select name = "aadLevel[]" class = "autopop chosen-select-large" data-placeholder="Select AAD Level" multiple> 
 			<option value = "bs"> None </option>
 			<option value = "ms"> Master's </option>
@@ -59,7 +59,7 @@ $(function(){
 		</select> </td>
 	</tr>
 	<tr> 
-		<td> <p> Advanced Academic Degree Requirement (Degree): </p> </td>
+		<td> <p> Preferred Academic Degree: </p> </td>
 		<td> <select  = "100" id = "aadDegree" multiple name = "aadDegree[]" class = "autopop chosen-select-large" data-placeholder="None">
 			<?php
 				$res = $sql->execute("select code, degree from allowableDegrees;");

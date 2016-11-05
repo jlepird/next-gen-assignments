@@ -4,6 +4,7 @@ if (!isset($_SESSION["uname"])) {
     header("Location: ../login.php"); // comment this line to disable login (for debug) 
 }
 ?>
+<!DOCTYPE html> 
 <html>
     <head> 
     <?php include '../include/head_common.php'; ?>
