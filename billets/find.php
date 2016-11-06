@@ -12,9 +12,9 @@ if (!isset($_SESSION["uname"])) {
 
     <script type = "text/javascript" >
 
-    var data = <?php echo $sql->queryJSON("select posn, tkey, val from billetData order by posn;"); ?>; 
+    var data = <?php echo $sql->queryJSON("select posn, tkey, val from billetData where tkey not like '%mail%' and tkey not in ('poc', 'lastOccupant') order by posn;"); ?>; 
 
-    var lat_lon = <?php echo $sql->queryJSON("select * from locations;"); ?>; 
+    var favorites = <?php echo $sql->queryJSON("select posn from favorites where username = '" . $_SESSION["uname"] . "';") ?>;
 
     // Restructure the data from "long" form to "wide" form. 
     var completed = [];
@@ -43,15 +43,6 @@ if (!isset($_SESSION["uname"])) {
     				scratch[myData[j].tkey] += ", " + myData[j].val;
     			}
     		}
-
-            /*
-    		// Get the corresponding lat/lon data
-    		var myLat_Lon = lat_lon.filter(function(x){
-    			return x.location == scratch.location;
-    		});
-    		scratch.lat = +myLat_Lon[0].lat;
-    		scratch.lon = +myLat_Lon[0].lon;
-            */
 
     		// Add the row 
     		outData.push(scratch);
@@ -87,9 +78,20 @@ if (!isset($_SESSION["uname"])) {
     {
         return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
     }
+
+    function toggleFavorite(billet, x){
+        $.ajax({
+            url:"/billets/changeFavorite.php",
+            type: 'post',
+            data: {"billet" : billet,
+                   "case" : x.checked}
+        });
+    }
+
     // Build a giant array of the data for table display 
     for (var i = 0; i < data.length; ++i){
-    	outData.push(["<a href='/billets/view.php?billet=" + data[i].id + "'>" + data[i].id + "</a>",
+    	outData.push(["<input type = 'checkbox' onchange='toggleFavorite(\"" + data[i].id + "\", this)' data-toggle='toggle' class = 'toggle' id = 'fav" + data[i].id + "'>",
+            "<a href='/billets/view.php?billet=" + data[i].id + "'>" + data[i].id + "</a>",
     		          data[i].afsc, 
     		          data[i].grade,
     		          data[i].dutyTitle,
@@ -146,13 +148,27 @@ if (!isset($_SESSION["uname"])) {
         var billetsDim = billets.dimension(function(x){
             return x.id;
         });
+
+
+        // Set ordering for favorites
+        /* Create an array with the values of all the checkboxes in a column */
+        // Function stolen shamelessly from https://datatables.net/examples/plug-ins/dom_sort
+        $.fn.dataTable.ext.order['dom-checkbox'] = function  ( settings, col )
+        {
+            return this.api().column( col, {order:'index'} ).nodes().map( function ( td, i ) {
+                return $('input', td).prop('checked') ? '1' : '0';
+            } );
+        }
+ 
+
         // Populate the table 
         var table = $('#mainTable').DataTable({
                 data: outData,
                 dom: 'Bfrtip',
                 buttons: ['csv', 'excel'], 
                 columns: [
-                    {title: "Billet #"},
+                    {title: "Favorite", "orderDataType": "dom-checkbox"},
+                    {title: "Billet Number"},
                     {title: "AFSC"},
                     {title: "Grade"},
                     {title: "Duty Title"},
@@ -165,19 +181,41 @@ if (!isset($_SESSION["uname"])) {
                     
                 ]
             });
+        table.draw();
         var selected = [];
+        billetsDim.top(Infinity).forEach(function(x){
+                selected.push(x.id);
+            });
         $.fn.dataTable.ext.search.push(
             function(settings, data, dataIndex){
-                return selected.indexOf(data[0]) >= 0;
+                return selected.indexOf(data[1]) >= 0;
+
         });
+
+        // Inital checkboxing 
+        $(favorites).each(function(i,x){
+            $("#fav" + x.posn).attr("checked", "checked");
+        })
         
+        
+
+        var toggleOptions = {
+            on: "<span style='font-size: 100%;'> &starf; </span>",
+            off: ""
+        };
         var updateTable = function(foo, bar){
             selected = [];
             billetsDim.top(Infinity).forEach(function(x){
                 selected.push(x.id);
             });
             table.draw();
+            //$(".toggle").each(function(i,x){
+            //    $(x).bootstrapToggle(toggleOptions);
+            //});
         }
+        $(".toggle").each(function(i,x){
+                $(x).bootstrapToggle(toggleOptions);
+        });
 
         // ============= BEGIN CHARTING ===============
 
@@ -491,7 +529,7 @@ if (!isset($_SESSION["uname"])) {
     </div>
 
     <div class = "row">
-        <div id = "afscPrefixPie" class = "dc-chart">
+        <div id = "afscPrefixPie" class = "dc-chart" >
             <strong> Preferred AFSC Prefix </strong>
             <a class="reset"
                   href='javascript:afscPrefixPieChart.filterAll();dc.redrawAll();'

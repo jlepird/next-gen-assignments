@@ -16,6 +16,22 @@ if (!isset($_SESSION["uname"])) {
         echo $data; 
     ?>; 
 
+    var favorited = <?php echo "'" . $sql->queryValue("select count(*) from favorites where username = '" . $_SESSION["uname"] . "' and posn = '" . $billet . "';") . "'"; ?>;
+
+    var toggleOptions = {
+        on: "<span style='font-size: 100%;'> &starf; </span>",
+        off: ""
+    };
+
+    function toggleFavorite(x){
+        $.ajax({
+            url:"/billets/changeFavorite.php",
+            type: 'post',
+            data: {"billet" : <?php echo "'" . $billet . "'"; ?>,
+                   "case" : x.checked}
+        });
+    }
+
     // Run on page load 
     $(function(){
         /* Update the values that we have */ 
@@ -46,7 +62,18 @@ if (!isset($_SESSION["uname"])) {
 		document.getElementById("desc").value = '<?php echo $sql->queryValue("select txt from billetDescs where posn = '" . $billet . "';") ?>'; 
 		document.getElementById("desc").disabled = "disabled";
 
-    })
+        if (favorited != "0"){
+            $("#fav").attr("checked", "checked");
+        }
+
+        $("#fav").bootstrapToggle({
+            on: "<span style='font-size: 100%;'> &starf; </span>",
+            off: ""
+        });
+
+
+
+    });
 
 
 
@@ -59,8 +86,23 @@ if (!isset($_SESSION["uname"])) {
 <div class = "col-md-5" > 
 
 <br> <br> <br> 
-<h4> Billet # <?php echo $billet ?> </h4>
-<?php include "table.php"; ?>
+<div class = "row" style = "margin-left: 10px;">
+<h4> Billet #<?php echo $billet ?> </h4> 
+
+Favorite this billet: 
+<input type = 'checkbox' onchange='toggleFavorite(this)' id = "fav">
 
 
 </div>
+
+
+<fieldset>
+<?php include "table.php"; ?>
+
+</form>
+
+</div>
+</div>
+
+</body>
+</html>

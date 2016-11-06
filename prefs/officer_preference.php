@@ -25,23 +25,70 @@ if ($_SESSION['isAirman'] != 't' ){
     	// Get list of billets
 	    var billets = <?php echo $sql->queryJSON("select distinct posn from billetOwners;"); ?>;
 
+	    var billetLocs = <?php echo $sql->queryJSON("select posn, val from billetData where tkey = 'location';"); ?>;
+	    // Rename key 
+	    billetLocs = $(billetLocs).each(function(i, x){
+	    	x.location = x.val;
+	    	delete x.val;
+	    });
+
+	    var billetUnits = <?php echo $sql->queryJSON("select posn, val from billetData where tkey = 'unit';"); ?>;
+	    // Rename key 
+	    billetUnits = $(billetUnits).each(function(i, x){
+	    	x.unit = x.val;
+	    	delete x.val;
+	    });
+
+	    var billetTitles = <?php echo $sql->queryJSON("select posn, val from billetData where tkey = 'dutyTitle';"); ?>;
+	    // Rename key 
+	    billetTitles = $(billetTitles).each(function(i, x){
+	    	x.title = x.val;
+	    	delete x.val;
+	    });
+
+	    var billetFavs = <?php echo $sql->queryJSON("select posn from favorites where username = '". $_SESSION["uname"] . "';"); ?>;
+	    // Rename key 
+	    billetFavs = $(billetFavs).each(function(i, x){
+	    	x.favorite = true;
+	    });
+
+	    billets = $.extend(true, billetFavs, billets, billetLocs, billetUnits, billetTitles);
+
+	    billets = billets.sort(function(a,b){
+	    	return ("favorite" in b) - ("favorite" in a);
+	    })
+
 	    var initialPrefs = <?php echo $sql->queryJSON("select posn, pref from airmanPrefs where username = '" . $_SESSION["uname"] . "';"); ?>; 
 
 	    // After page load, populate datalist with options
 	    $(function(){
+	    	// Define available otpions 
+	    	var options = "";
+    		options += "<option value=''>No Preference</option>";
+    		options += "<optgroup label='Favorites'>";
+
+    		var haveMoreFavorites = true;
+    		$(billets).each(function(i, billet){
+    			if (haveMoreFavorites & !("favorite" in billet)){
+    				haveMoreFavorites = false;
+    				options += "</optgroup>";
+    				options += "<optgroup label = 'Others'>";
+    			}
+    			options += "<option value='" + billet.posn + "'>" + billet.posn + ' - ' + billet.title + ' - ' + billet.unit + ' - ' + billet.location + "</option>";
+    		});
+    		options += "</optgroup>";
+
+	    		
 	    	// Add options
 	    	$(".chosen-select").each(function(i, x){
-	    		$(x).append($("<option>", {value: "", text: "No Preference"}));
-	    		$(billets).each(function(i, billet){
-	    			$(x).append($("<option>", {value: billet.posn, text: billet.posn}));
-	    		})
+	    		$(x).append(options);	    		
 	    	});
 
 		    initialPrefs.forEach(function(x){
 		    	$("#billets" + x.pref)[0].value = x.posn; 
 		    });
 		    
-		    $(".chosen-select").chosen({width: "200"});
+		    $(".chosen-select").chosen({width: "400px"});
 
 		  });
 
@@ -50,7 +97,7 @@ if ($_SESSION['isAirman'] != 't' ){
 
 	    // Make array of billet names for enforcement later 
 	    var billetNames = []; 
-	    billets.forEach(function(x, i ){
+	    billets.each(function(i, x ){
 	    	billetNames.push(x.posn); 
 	    }); 
 

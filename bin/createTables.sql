@@ -134,4 +134,10 @@ create table coreCodes (
 	txt varchar(100) not null
 ); 
 
+drop table if exists favorites cascade;
+create table favorites (
+	username varchar(50) not null references users (username),
+	posn varchar(50) not null references billetOwners (posn)
+);
+
 select 'Complete' as Update;  
