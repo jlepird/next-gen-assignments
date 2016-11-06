@@ -181,6 +181,20 @@ if (!isset($_SESSION["uname"])) {
 
         // ============= BEGIN CHARTING ===============
 
+        // ************* AFSC prefix pie chart ***************
+        var afscPrefix = billets.dimension(function(x){
+            return x.afsc.substring(0, 1); 
+        });
+        var afscPrefixGroup = afscPrefix.group();
+
+        afscPrefixPieChart = dc.pieChart("#afscPrefixPie");
+        afscPrefixPieChart.width(180)
+                    .height(180)
+                    .radius(80)
+                    .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
+                    .dimension(afscPrefix)
+                    .group(afscPrefixGroup)
+                    .on("filtered", updateTable);
 
         // ************* AFSC pie chart ***************
         var afscs = billets.dimension(function(x){
@@ -477,6 +491,13 @@ if (!isset($_SESSION["uname"])) {
     </div>
 
     <div class = "row">
+        <div id = "afscPrefixPie" class = "dc-chart">
+            <strong> Preferred AFSC Prefix </strong>
+            <a class="reset"
+                  href='javascript:afscPrefixPieChart.filterAll();dc.redrawAll();'
+                  style="display: none;">reset</a>
+            <div class = "clearfix"></div>
+        </div>
         <div id = "afscPie" class = "dc-chart">
             <strong> Preferred AFSCs </strong>
             <a class="reset"
