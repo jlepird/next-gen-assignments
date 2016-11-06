@@ -22,16 +22,21 @@ if ($_SESSION['isAirman'] != 't' ){
     </script>
     </head>
     <script>
-    	// Get list of billets
-	    var billets = <?php echo $sql->queryJSON("select distinct posn from billetOwners;"); ?>;
+    // First, we need a list of all the billets we can populate. 
 
+    	
+    	// Get names of available billets. Need to do this in case other fields are missing for some reason 
+	    var rawBillets = <?php echo $sql->queryJSON("select distinct posn from billetOwners;"); ?>;
+		
+	    // Get a list of their locations. 
 	    var billetLocs = <?php echo $sql->queryJSON("select posn, val from billetData where tkey = 'location';"); ?>;
-	    // Rename key 
+	    // Rename key for merge
 	    billetLocs = $(billetLocs).each(function(i, x){
 	    	x.location = x.val;
 	    	delete x.val;
 	    });
 
+	    // Get the units of available billets 
 	    var billetUnits = <?php echo $sql->queryJSON("select posn, val from billetData where tkey = 'unit';"); ?>;
 	    // Rename key 
 	    billetUnits = $(billetUnits).each(function(i, x){
@@ -39,6 +44,7 @@ if ($_SESSION['isAirman'] != 't' ){
 	    	delete x.val;
 	    });
 
+	    // Get the duty titles of available billets 
 	    var billetTitles = <?php echo $sql->queryJSON("select posn, val from billetData where tkey = 'dutyTitle';"); ?>;
 	    // Rename key 
 	    billetTitles = $(billetTitles).each(function(i, x){
@@ -46,18 +52,27 @@ if ($_SESSION['isAirman'] != 't' ){
 	    	delete x.val;
 	    });
 
+	    // Get list of billets the user has favorited
 	    var billetFavs = <?php echo $sql->queryJSON("select posn from favorites where username = '". $_SESSION["uname"] . "';"); ?>;
-	    // Rename key 
-	    billetFavs = $(billetFavs).each(function(i, x){
-	    	x.favorite = true;
-	    });
 
-	    billets = $.extend(true, billetFavs, billets, billetLocs, billetUnits, billetTitles);
+	    // Merge the objects. 
+	    billets = $.extend(true, {}, rawBillets, billetLocs, billetUnits, billetTitles);
 
-	    billets = billets.sort(function(a,b){
-	    	return ("favorite" in b) - ("favorite" in a);
+	    $(billets).each(function(i,x){
+	    	x.favorite = false; 
+	    	$(billetFavs).each(function(i, y){
+	    		if (x.posn == y.posn) {
+	    			x.favorite = true;
+	    		}
+	    	})
 	    })
 
+	    // Re-order the array so that the favorites come first
+	    billets = billets.sort(function(a,b){ // sort expects a compare function
+	    	return (b.favorite) - (a.favorite);
+	    })
+
+	    // Get the list of preferences the user has (if any)
 	    var initialPrefs = <?php echo $sql->queryJSON("select posn, pref from airmanPrefs where username = '" . $_SESSION["uname"] . "';"); ?>; 
 
 	    // After page load, populate datalist with options
@@ -67,18 +82,18 @@ if ($_SESSION['isAirman'] != 't' ){
     		options += "<option value=''>No Preference</option>";
     		options += "<optgroup label='Favorites'>";
 
+    		// build out the options string
     		var haveMoreFavorites = true;
     		$(billets).each(function(i, billet){
-    			if (haveMoreFavorites & !("favorite" in billet)){
+    			if (haveMoreFavorites & !billet.favorite){
     				haveMoreFavorites = false;
     				options += "</optgroup>";
     				options += "<optgroup label = 'Others'>";
     			}
-    			options += "<option value='" + billet.posn + "'>" + billet.posn + ' - ' + billet.title + ' - ' + billet.unit + ' - ' + billet.location + "</option>";
+    			options += "<option value='" + billet.posn + "'>#" + billet.posn + ' - ' + billet.title + ' - ' + billet.unit + ' - ' + billet.location + "</option>";
     		});
     		options += "</optgroup>";
 
-	    		
 	    	// Add options
 	    	$(".chosen-select").each(function(i, x){
 	    		$(x).append(options);	    		
@@ -92,6 +107,7 @@ if ($_SESSION['isAirman'] != 't' ){
 
 		  });
 
+	    // Hard-coded value for number of preferences available
 	    var numPrefs = 10; 
 
 
@@ -101,6 +117,7 @@ if ($_SESSION['isAirman'] != 't' ){
 	    	billetNames.push(x.posn); 
 	    }); 
 
+	    // This function ensures that the preferences are sensible
 	    var verify = function(x){
 	    	myId = +x.id.substr(7); // Get our preference number
 
