@@ -179,6 +179,10 @@ if (!isset($_SESSION["uname"])) {
             table.draw();
         }
 
+        // ============= BEGIN CHARTING ===============
+
+
+        // ************* AFSC pie chart ***************
         var afscs = billets.dimension(function(x){
             return x.afsc; 
         });
@@ -188,10 +192,12 @@ if (!isset($_SESSION["uname"])) {
         afscPieChart.width(180)
                     .height(180)
                     .radius(80)
+                    .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
                     .dimension(afscs)
                     .group(afscGroup)
                     .on("filtered", updateTable);
 
+        // ************* Grade chart ***************
         var grades = billets.dimension(function(x){
             if (x.grade.indexOf("O1") >= 0){
                 return "O1";
@@ -211,10 +217,13 @@ if (!isset($_SESSION["uname"])) {
                      .height(180)
                      .dimension(grades)
                      .group(gradeGroup)
+                     .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
                      .margins({top: 10, right: 50, bottom: 30, left: 40})
                      .elasticX(true)
                      .on("filtered", updateTable)
                      .xAxis().ticks(1);
+
+        // ************* AAD Level ***************
 
         // Need to find the *minimum" aad level
         var aads = billets.dimension(function(x){
@@ -234,6 +243,7 @@ if (!isset($_SESSION["uname"])) {
                 .group(aadGroup)
                 .margins({top: 10, right: 50, bottom: 30, left: 40})
                 .elasticX(true)
+                .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
                 .label(function(d){
                     if (d.key == "ms"){
                         return "MS";
@@ -246,6 +256,7 @@ if (!isset($_SESSION["uname"])) {
                 .on("filtered", updateTable)
                 .xAxis().ticks(1);
 
+        // ************* ACQ Levels  ***************
         var acqLevels = billets.dimension(function(x){
             return toTitleCase(acqDisplay[x.acqLevel]);
         });
@@ -254,12 +265,14 @@ if (!isset($_SESSION["uname"])) {
         acqLevelChart.width(barWidth)
                      .height(180)
                      .dimension(acqLevels)
+                     .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
                      .group(acqLevelGroup)
                      .margins({top: 10, right: 50, bottom: 30, left: 40})
                      .elasticX(true)
                      .on("filtered", updateTable)
                      .xAxis().ticks(1);
 
+        // ************* CONUS pie chart ***************
         var conus = billets.dimension(function(x){
             return x.state == "OCONUS" ? "OCONUS" : "CONUS"; 
         });
@@ -269,11 +282,12 @@ if (!isset($_SESSION["uname"])) {
         conusPieChart.width(180)
                      .height(180)
                      .radius(80)
+                     .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
                      .dimension(conus)
                      .group(conusGroup)
                      .on("filtered", updateTable);
 
-
+        // ************* Contact pie chart ***************
         var contact = billets.dimension(function(x){
             return x["contact?"] == "yes" ? "Yes" : "No"; 
         });
@@ -283,10 +297,12 @@ if (!isset($_SESSION["uname"])) {
         contactPieChart.width(180)
                      .height(180)
                      .radius(80)
+                     .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
                      .dimension(contact)
                      .group(contactGroup)
                      .on("filtered", updateTable);
 
+        // ************* Deployable pie chart ***************
         var deployable = billets.dimension(function(x){
             return x["deployable"] == "yes" ? "Yes" : "No"; 
         });
@@ -296,10 +312,12 @@ if (!isset($_SESSION["uname"])) {
         deployablePieChart.width(180)
                      .height(180)
                      .radius(80)
+                     .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
                      .dimension(deployable)
                      .group(deployableGroup)
                      .on("filtered", updateTable);
 
+        // ************* Predictable pie chart ***************
         var predictable = billets.dimension(function(x){
             return x.regularHours == "yes" ? "Yes" : "No"; 
         });
@@ -309,14 +327,12 @@ if (!isset($_SESSION["uname"])) {
         predictablePieChart.width(180)
                      .height(180)
                      .radius(80)
+                     .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
                      .dimension(predictable)
                      .group(predictableGroup)
                      .on("filtered", updateTable);
 
-        var states = billets.dimension(function(x){
-            return x.state;
-        });
-
+        // ************* Start Time Chart ***************
         var startTime = billets.dimension(function(x){
             var hr = +x.start.substring(0, 2);
             var min = +x.start.substring(2, 4)
@@ -337,8 +353,6 @@ if (!isset($_SESSION["uname"])) {
             return x.key;
         });
 
-
-
         startTimeChart = dc.barChart("#startTimeChart")
                                .width("300")
                                .height("180")
@@ -354,7 +368,7 @@ if (!isset($_SESSION["uname"])) {
                                 return timeFormat(Math.round(v)) + ":" + timeFormat(v % 1 * 30);
                                }).ticks(3);
 
-
+        // ************* Stop Time Chart ***************
         var stopTime = billets.dimension(function(x){
             var hr = +x.stop.substring(0, 2);
             var min = +x.stop.substring(2, 4)
@@ -391,11 +405,14 @@ if (!isset($_SESSION["uname"])) {
                                 return timeFormat(Math.round(v)) + ":" + timeFormat(v % 1 * 30);
                                }).ticks(3);
 
-
+        // ************* Map ***************
+        var states = billets.dimension(function(x){
+            return x.state;
+        });
         var statesGroup = states.group();
         usChart = dc.geoChoroplethChart("#conusMap");
         d3.json("../data/us-states.json", function(statesJSON){
-                    usChart.width(990)
+                    usChart.width(900)
                     .height(500)
                     .dimension(states)
                     .group(statesGroup)
@@ -410,7 +427,8 @@ if (!isset($_SESSION["uname"])) {
                     .title(function (d) {
                         return "State: " + d.key + "\nBillets Available: " + numberFormat(d.value ? d.value : 0);
                     })
-                    .on("filtered", updateTable);
+                    .on("filtered", updateTable)
+                    .projection(d3.geo.albersUsa());
 
                     dc.renderAll();
         });
@@ -422,7 +440,7 @@ if (!isset($_SESSION["uname"])) {
 
     <style>
     	.map {
-		  width: 700px;
+		  width: 900px;
 		  height: 600px;
 		  margin: 10px;
 		  padding: 10px;
@@ -449,7 +467,7 @@ if (!isset($_SESSION["uname"])) {
     </div>
     </div>
 
-    <div id = "conusPie" class = "dc-chart" style = "padding: 200px;">
+    <div id = "conusPie" class = "dc-chart" style = "padding: 50px;">
         <strong> Location (Overseas) </strong>
         <a class="reset"
               href='javascript:conusPieChart.filterAll();dc.redrawAll();'
