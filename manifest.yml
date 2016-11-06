@@ -1,6 +1,6 @@
 ---
 applications:
-- name: af-assignments
+- name: af-assignments-experiment
   memory: 256M
   buildpack: git://github.com/heroku/heroku-buildpack-php.git
   services:
