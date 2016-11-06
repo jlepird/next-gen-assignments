@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/css/a9.css" type = "text/css" />
 <link rel="stylesheet" href="/include/leaflet/leaflet.css" />
 <link rel="stylesheet" href="/include/chosen/chosen.css" />
-
+<link rel="stylesheet" href="/include/dc/web/css/dc.min.css" />
 
 <!-- favicon stuff --> 
 <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
@@ -19,7 +19,6 @@
 <meta name="theme-color" content="#ffffff">
 
 <!-- Javascript libraries --> 
-<script type="text/javascript" src="//d3js.org/d3.v4.js"></script>
 <script type="text/javascript" src="/include/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="/include/datatables/jquery.dataTables.min.js" ></script>
 <script type="text/javascript" src="/include/datatables/dataTables.buttons.min.js"> </script>
@@ -30,6 +29,10 @@
 <script type="text/javascript" src="/include/leaflet/leaflet.js"></script>
 <script type="text/javascript" src="/include/bouncemarker.js"></script>
 <script type="text/javascript" src="/include/chosen/chosen.jquery.js"></script>
+<script type="text/javascript" src="/include/dc/web/js/d3.js"></script>
+<script type="text/javascript" src="/include/dc/web/js/crossfilter.js"></script>
+<script type="text/javascript" src="/include/dc/web/js/colorbrewer.js"></script>
+<script type="text/javascript" src="/include/dc/web/js/dc.js"></script>
 
 <!-- PHP functions --> 
 <?php 

@@ -35,7 +35,7 @@ create table billetData (
 insert into billetData values 
 	('abc', 'afsc',         '61A'),
 	('abc', 'grade',        'O5'),
-	('abc', 'location',     'Ramstein Air Base'),
+	('abc', 'location',     'JB Anacostia'),
 	('abc', 'unit',         'AF/A9'), 
 	('abc', 'lastOccupant', 'Capt Snuffy'),
 	('abc', 'poc',          'A9A Supervisor'),
@@ -48,6 +48,8 @@ insert into billetData values
 	('abc', 'contact?',     'yes'), 
 	('abc', 'dutyTitle',    'Analyst'), 
 	('abc', 'acqLevel',     '1'),
+	('abc', 'state',        'VA'),
+	('abc', 'regularHours', 'yes'),
 	('def', 'afsc',         '38P'),
 	('def', 'grade',        'O4'),
 	('def', 'location',     'The Pentagon'),
@@ -56,13 +58,15 @@ insert into billetData values
 	('def', 'poc',          'A1 Supervisor'),
 	('def', 'aadLevel',     'bs'),
 	('def', 'aadDegree',    'None'), 
-	('def', 'start',        '0730'),
+	('def', 'start',        '0830'),
 	('def', 'stop',         '1700'),
 	('def', 'tdy',          '25'),
 	('def', 'deployable',   'no'),
 	('def', 'contact?',     'no'),
 	('def', 'dutyTitle',    'Human Resources Specialist'),
-	('def', 'acqLevel',     ' ')
+	('def', 'acqLevel',     ' '),
+	('def', 'state',        'MD'),
+	('def', 'regularHours', 'yes')
 	;
 
 
