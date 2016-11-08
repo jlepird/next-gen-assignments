@@ -68,7 +68,7 @@ class SQL {
 		if (count($row) > 1){
 			die("More than one column specified in query " . $cmd);
 		}
-		return $row[0];
+		return json_encode($row[0]);
 		pg_free_result($res);
 	}
 
@@ -103,10 +103,10 @@ above are somehow screwed up. Only run these during development!
 
 if ($runTests){ 
 	// Should execute cleanly 
-	$sql->execute("select 1 + 1;") or die("SQL Execution error in unit tests.");
-	$sql->queryValue("select 1 + 1;") == 2 or die("SQL queryValue error in unit tests.");
-	$sql->queryJSON("select 1 + 1 as bar;") == "[{\"bar\":\"2\"}]" or die("SQL queryJSON error in unit tests.");
-	$sql->sanitize("'") == "''" or die ("SQL Query Sanitiation Error"); 
+	$sql->execute("select 1 + 1;")                                 or die("SQL Execution error in unit tests.");
+	$sql->queryValue("select 1 + 1;") == "\"2\""                   or die("SQL queryValue error in unit tests. Value was " . $sql->queryValue("select 1 + 1;"));
+	$sql->queryJSON("select 1 + 1 as bar;") == "[{\"bar\":\"2\"}]" or die("SQL queryJSON error in unit tests. Value was " . $sql->queryJSON("select 1 + 1 as bar;"));
+	$sql->sanitize("'") == "''"                                    or die("SQL Query Sanitiation Error. Value was " . $sql->sanitize("'")); 
 }
 ?> 
 

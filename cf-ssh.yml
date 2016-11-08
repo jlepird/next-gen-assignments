@@ -4,7 +4,7 @@ applications:
     sh
   instances: 1
   memory: 256M
-  name: af-assignments-ssh
+  name: af-assignments-experiment-ssh
   no-route: true
   path: .
   services:

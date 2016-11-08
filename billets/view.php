@@ -59,7 +59,7 @@ if (!isset($_SESSION["uname"])) {
             toUpdate[i].disabled = "disabled"; 
         }
 
-		document.getElementById("desc").value = '<?php echo $sql->queryValue("select txt from billetDescs where posn = '" . $billet . "';") ?>'; 
+		document.getElementById("desc").value = <?php echo $sql->queryValue("select txt from billetDescs where posn = '" . $billet . "';"); ?>; 
 		document.getElementById("desc").disabled = "disabled";
 
         if (favorited != "0"){

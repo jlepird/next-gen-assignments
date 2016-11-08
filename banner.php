@@ -2,7 +2,7 @@
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand page-scroll" href="/">
-                <p>Air Force Next-Gen Assignments System</p>
+                <p>Air Force Assignments Experiment</p>
             </a>
         </div>
 

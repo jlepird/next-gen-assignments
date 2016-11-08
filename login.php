@@ -8,7 +8,7 @@
 <div class="container">
 <div class="navbar-header">
 
-        <h4>Air Force Next-Gen Assignments System</h4>
+        <h4>Air Force Assignments Experiment</h4>
 
 </div>
 </div>

@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-<title> Air Force Next-Gen Assignments System</title>
+<title> Air Force Assignments Experiment</title>
 
 <!-- CSS files --> 
 <link rel="stylesheet" href="/include/datatables/jquery.dataTables.min.css" type = "text/css"/>

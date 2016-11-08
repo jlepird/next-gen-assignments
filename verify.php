@@ -15,8 +15,8 @@ if ($email == "ERROR-- no rows returned") {
 	// Populate session variables and redirect user to main page
 	$_SESSION['uname'] = $uname; 
 	$_SESSION['email'] = $email;
-	$_SESSION['isOwner'] = 't' == $sql->queryValue("select owner from users where username = '" . $uname . "' and password = '" . $password . "';");
-	$_SESSION['isAirman'] = 't' == $sql->queryValue("select officer from users where username = '" . $uname . "' and password = '" . $password . "';");
+	$_SESSION['isOwner'] =  '"t"' == $sql->queryValue("select owner   from users where username = '" . $uname . "' and password = '" . $password . "';");
+	$_SESSION['isAirman'] = '"t"' == $sql->queryValue("select officer from users where username = '" . $uname . "' and password = '" . $password . "';");
 
 	header("Location: index.php");
 }

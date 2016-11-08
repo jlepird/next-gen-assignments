@@ -59,6 +59,12 @@ if (!isset($_SESSION["uname"])) {
         "ms" : "MS",
         "phd": "PhD"
     };
+    
+    var aads = <?php echo $sql->queryJSON("select code, degree from allowableDegrees;"); ?>;
+    var aadDisplay = {};
+    $(aads).each(function(i, x){
+        aadDisplay[x.code] = x.degree;
+    });
 
     var acqDisplay = {
         " " : " None",                                                                   
@@ -75,9 +81,11 @@ if (!isset($_SESSION["uname"])) {
     }
 
     function toTitleCase(str)
-    {
+    { try{
         return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-    }
+    } catch(e){
+        return;
+    }}
 
     function toggleFavorite(billet, x){
         $.ajax({
@@ -99,7 +107,7 @@ if (!isset($_SESSION["uname"])) {
                       data[i].state,
     		          data[i].unit,
                       degreeDisplay[data[i].aadLevel],
-                      toTitleCase(data[i].aadDegree),
+                      toTitleCase(aadDisplay[data[i].aadDegree]),
                       toTitleCase(acqDisplay[data[i].acqLevel])]
     		          );
     }
@@ -160,24 +168,43 @@ if (!isset($_SESSION["uname"])) {
             } );
         }
  
-
+        var toggleOptions = {
+            on: "<span style='font-size: 100%;'> &starf; </span>",
+            off: ""
+        };
+        
+        function makeAllToggle(){
+            $(".toggle").each(function(i,x){
+                if ($(x).hasClass("toggleComplete")){
+                    return;
+                } else {
+                    $(x).bootstrapToggle(toggleOptions);
+                    $(x).addClass("toggleComplete");
+                    return;
+                }
+            })
+        }
+        
         // Populate the table 
         var table = $('#mainTable').DataTable({
                 data: outData,
                 dom: 'Bfrtip',
+                "footerCallback": function(row, data, start, end, display){
+                        makeAllToggle();
+                    },
                 buttons: ['csv', 'excel'], 
                 columns: [
                     {title: "Favorite", "orderDataType": "dom-checkbox"},
-                    {title: "Billet Number"},
-                    {title: "AFSC"},
-                    {title: "Grade"},
-                    {title: "Duty Title"},
-                    {title: "Location"},
-                    {title: "State"},
-                    {title: "Unit"},
-                    {title: "Degree"},
-                    {title: "Degree Specialty"},
-                    {title: "Acquisition Level"}
+                    {title: "Billet Number", "defaultContent": "<i>None</i>"},
+                    {title: "AFSC", "defaultContent": "<i>None</i>"},
+                    {title: "Grade", "defaultContent": "<i>None</i>"},
+                    {title: "Duty Title", "defaultContent": "<i>None</i>"},
+                    {title: "Location", "defaultContent": "<i>None</i>"},
+                    {title: "State", "defaultContent": "<i>None</i>"},
+                    {title: "Unit", "defaultContent": "<i>None</i>"},
+                    {title: "Degree", "defaultContent": "<i>None</i>"},
+                    {title: "Degree Specialty", "defaultContent": "<i>None</i>"},
+                    {title: "Acquisition Level", "defaultContent": "<i>None</i>"}
                     
                 ]
             });
@@ -196,26 +223,19 @@ if (!isset($_SESSION["uname"])) {
         $(favorites).each(function(i,x){
             $("#fav" + x.posn).attr("checked", "checked");
         })
+    
+        // Initial toggle update
+        makeAllToggle();
         
-        
-
-        var toggleOptions = {
-            on: "<span style='font-size: 100%;'> &starf; </span>",
-            off: ""
-        };
-        var updateTable = function(foo, bar){
+        var updateTable = function(){
             selected = [];
             billetsDim.top(Infinity).forEach(function(x){
                 selected.push(x.id);
             });
             table.draw();
-            //$(".toggle").each(function(i,x){
-            //    $(x).bootstrapToggle(toggleOptions);
-            //});
+            makeAllToggle();
         }
-        $(".toggle").each(function(i,x){
-                $(x).bootstrapToggle(toggleOptions);
-        });
+        // Initial toggle update
 
         // ============= BEGIN CHARTING ===============
 
