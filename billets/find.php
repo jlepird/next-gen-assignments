@@ -186,12 +186,12 @@ if (!isset($_SESSION["uname"])) {
         }
         
         // Populate the table 
-        var table = $('#mainTable').DataTable({
+        var table = $('#mainTable')
+               .on('search.dt', function() {makeAllToggle();})
+               .on('page.dt', function() {makeAllToggle();})
+               .DataTable({
                 data: outData,
                 dom: 'Bfrtip',
-                "footerCallback": function(row, data, start, end, display){
-                        makeAllToggle();
-                    },
                 buttons: ['csv', 'excel'], 
                 columns: [
                     {title: "Favorite", "orderDataType": "dom-checkbox"},
@@ -582,7 +582,7 @@ if (!isset($_SESSION["uname"])) {
         <div id = "acqLevel">
             <strong> Minimum Acquisition Level </strong>
             <a class="reset"
-                  href='javascript:aadDegreeChart.filterAll();dc.redrawAll();'
+                  href='javascriptacqLevelChart.filterAll();dc.redrawAll();'
                   style="display: none;">reset</a>
             <div class = "clearfix"></div>
         </div>
@@ -592,7 +592,7 @@ if (!isset($_SESSION["uname"])) {
         <div id = "contactPie" class = "dc-chart">
             <strong> Allowed to Contact? </strong>
             <a class="reset"
-                  href='javascript:contactPie.filterAll();dc.redrawAll();'
+                  href='javascript:contactPieChart.filterAll();dc.redrawAll();'
                   style="display: none;">reset</a>
             <div class = "clearfix"></div>
         </div>
@@ -600,7 +600,7 @@ if (!isset($_SESSION["uname"])) {
         <div id = "deployablePie" class = "dc-chart">
             <strong> Deployable? </strong>
             <a class="reset"
-                  href='javascript:deployablePie.filterAll();dc.redrawAll();'
+                  href='javascript:deployablePieChart.filterAll();dc.redrawAll();'
                   style="display: none;">reset</a>
             <div class = "clearfix"></div>
         </div>
@@ -609,7 +609,7 @@ if (!isset($_SESSION["uname"])) {
         <div id = "predictablePie" class = "dc-chart">
             <strong> Predictable Hours? </strong>
             <a class="reset"
-                  href='javascript:predictablePie.filterAll();dc.redrawAll();'
+                  href='javascript:predictablePieChart.filterAll();dc.redrawAll();'
                   style="display: none;">reset</a>
             <div class = "clearfix"></div>
         </div>
