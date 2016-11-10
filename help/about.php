@@ -26,7 +26,13 @@
         
         <p>Officers to input their preferred assignment list. Billet owners to input their preferred officers list.  This is done via the <a href="/prefs/input.php">My Preference List</a> link.  <b>Deadline: 3 March 2017</b></p>
         
+    <h3> About this Webiste </h3>
+    <p>
+        This website was developed by AF/A9 and hosted by <a href="https://cloud.gov"> cloud.gov </a>. You can find our source code on our GitHub page <a href="https://github.com/jlepird/next-gen-assignments"> here </a> . 
         
+        <h5> Want to contribute? </h5>
+        <p> Then just <a href="https://help.github.com/articles/fork-a-repo/" > fork </a> our Github repository and submit a pull request with your changes-- we're happy to have your help. </p>
+    </p>
         
         <!--This contrast will be measured using</p>
            statistics such as the following:</p>
