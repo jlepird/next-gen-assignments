@@ -81,7 +81,7 @@ $( function(){
 	<?php // Populate the options for the user. 
 		$res = $sql->execute("select posn from billetOwners where username = '" . $_SESSION["uname"] . "';");
 		while ($row = pg_fetch_array($res)){
-			echo "<option value = '" . $row[0] . "'> " . $row[0]. ": " . $row[1] . "</option>";  
+			echo "<option value = '" . $row[0] . "'> " . $row[0] . "</option>";  
 		}
 		pg_free_result($res); 
 	?> 
