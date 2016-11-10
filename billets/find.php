@@ -505,6 +505,8 @@ if (!isset($_SESSION["uname"])) {
                     .projection(d3.geo.albersUsa());
 
                     dc.renderAll();
+                    
+                    $(".col-md-10").fadeIn();
         });
     });
 
@@ -527,7 +529,7 @@ if (!isset($_SESSION["uname"])) {
 
 <div class="col-md-1" align="right">  
 </div>
-<div class="col-md-10">
+<div class="col-md-10" hidden>
     <br> <br> <br> <br> 
 
     <div class = "row">
