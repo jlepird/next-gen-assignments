@@ -14,6 +14,7 @@ if (!isset($_SESSION["uname"])) {
             $billet = $_GET["billet"]; 
         } else { 
             $billet = $sql->queryValue("select posn from billetOwners where username = '" . $_SESSION["uname"] . "' limit 1;");
+            $billet = str_replace("\"", "", $billet);
             header("Location: /billets/manage.php?billet=" . $billet); 
         }
 

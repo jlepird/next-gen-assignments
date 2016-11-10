@@ -11,8 +11,9 @@ $id = $_POST["id"];
 
 // Ensure owner actually owns the position! 
 $owner = $sql->queryValue("select username from billetOwners where posn = '" . $id . "'; ");
+$owner = str_replace("\"", "",  $owner);
 if ($owner != $_SESSION["uname"]) {
-	die("User " . $_SESSION["uname"] . " not authorized to make changes to billet " . $id . ".");
+	die("User " . $_SESSION["uname"] . "vs" . $owner ." not authorized to make changes to billet " . $id . ".");
 }
 
 // Iterate over each POSTed value, and then update the SQL database appropriately. 
