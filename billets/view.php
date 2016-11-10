@@ -16,7 +16,7 @@ if (!isset($_SESSION["uname"])) {
         echo $data; 
     ?>; 
 
-    var favorited = <?php echo "'" . $sql->queryValue("select count(*) from favorites where username = '" . $_SESSION["uname"] . "' and posn = '" . $billet . "';") . "'"; ?>;
+    var favorited = <?php echo $sql->queryValue("select count(*) from favorites where username = '" . $_SESSION["uname"] . "' and posn = '" . $billet . "';"); ?>;
 
     var toggleOptions = {
         on: "<span style='font-size: 100%;'> &starf; </span>",
