@@ -71,7 +71,7 @@ if (!isset($_SESSION["uname"])) {
             off: ""
         });
 
-
+        $(".col-md-5").fadeIn(1000);
 
     });
 
@@ -83,7 +83,7 @@ if (!isset($_SESSION["uname"])) {
 
 <div class="col-md-3">  </div>
 
-<div class = "col-md-5" > 
+<div class = "col-md-5" hidden> 
 
 <br> <br> <br> 
 <div class = "row" style = "margin-left: 10px;">

@@ -26,14 +26,20 @@ if (!isset($_SESSION["uname"])) {
                         " where username = '" . $_SESSION["uname"] . "' and billetDescs.posn = '" . $billet . "';");
     }
     ?>
+    
+    <script type = "text/javascript">
+        $(function() {
+            $(".col-md-5").fadeIn(1000);
+        });
+    </script>
 
     </head>
 <body>
 <?php include '../banner.php'; ?>
 
-<div class="col-md-3">  </div>
+<div class="col-md-3" >  </div>
 
-    <div class="col-md-5">
+    <div class="col-md-5" hidden>
 
     <br> <br> <br>
     <p>As part of this test, you are requested to submit detailed information on each of your billets.  This information will be searchable and read by potential officers on the VML to inform their assignment preference list.

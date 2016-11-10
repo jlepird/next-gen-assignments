@@ -506,7 +506,7 @@ if (!isset($_SESSION["uname"])) {
 
                     dc.renderAll();
                     
-                    $(".col-md-10").fadeIn();
+                    $(".col-md-10").fadeIn(1000);
         });
     });
 
