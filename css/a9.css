@@ -24,3 +24,7 @@ fieldset {
 td {
 	padding: 0 2px 0 2px; 
 }
+
+input[type="text"]:disabled , textarea {
+    background: white;
+}
