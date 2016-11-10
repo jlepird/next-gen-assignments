@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/include/chosen/chosen.css" />
 <link rel="stylesheet" href="/include/dc/web/css/dc.min.css" />
 <link rel="stylesheet" href="/include/bootstrap-toggle/css/bootstrap-toggle.min.css" />
+<link rel="stylesheet" href="/include/datatables/colReorder.dataTables.min.css" />
 
 <!-- favicon stuff --> 
 <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
@@ -35,7 +36,7 @@
 <script type="text/javascript" src="/include/dc/web/js/colorbrewer.js"></script>
 <script type="text/javascript" src="/include/dc/web/js/dc.js"></script>
 <script type="text/javascript" src="/include/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
-
+<script type="text/javascript" src="/include/datatables/dataTables.colReorder.min.js"></script>
 
 
 <!-- PHP functions --> 

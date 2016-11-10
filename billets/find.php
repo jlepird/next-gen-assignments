@@ -187,14 +187,16 @@ if (!isset($_SESSION["uname"])) {
         
         // Populate the table 
         var table = $('#mainTable')
-               .on('search.dt', function() {makeAllToggle();})
-               .on('page.dt', function() {makeAllToggle();})
+               .on('search', function() {makeAllToggle();})
+               .on('page', function() {makeAllToggle();})
                .DataTable({
                 data: outData,
+                colReorder: true,
                 dom: 'Bfrtip',
                 buttons: ['csv', 'excel'], 
                 columns: [
-                    {title: "Favorite", "orderDataType": "dom-checkbox"},
+                    {title: "Favorite", 
+                    "orderDataType": "dom-checkbox"},
                     {title: "Billet Number", "defaultContent": "<i>None</i>"},
                     {title: "AFSC", "defaultContent": "<i>None</i>"},
                     {title: "Grade", "defaultContent": "<i>None</i>"},
@@ -433,7 +435,7 @@ if (!isset($_SESSION["uname"])) {
                                .group(startTimeGroup)
                                .elasticY(true)
                                .centerBar(true)
-                               .x(d3.scale.linear().domain([minStart - 0.6, maxStart + 0.6
+                               .x(d3.scale.linear().domain([minStart - 1, maxStart + 1
                                 ]))
                                .renderHorizontalGridLines(true);
         startTimeChart.xAxis().tickFormat(function(v){
@@ -470,7 +472,7 @@ if (!isset($_SESSION["uname"])) {
                                .elasticY(true)
                                .elasticX(true)
                                .centerBar(true)
-                               .x(d3.scale.linear().domain([minStop - 0.6, maxStop + 0.6
+                               .x(d3.scale.linear().domain([minStop - 1, maxStop + 1
                                 ]))
                                .renderHorizontalGridLines(true);
         stopTimeChart.xAxis().tickFormat(function(v){

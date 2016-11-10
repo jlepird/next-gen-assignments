@@ -161,7 +161,7 @@ if ($_SESSION['isAirman'] != 't' ){
 <body>
 <?php include '../banner.php'; ?>
 <div class="col-md-3">  </div>
-    <div class="col-md-5">
+    <div class="col-md-6">
     <br> <br> <br>
     <h3> My Preference List </h3>
     <p> <?php echo $_SESSION['uname'] ?>, enter your preferences below: </p>
