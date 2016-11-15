@@ -114,34 +114,7 @@ if (!isset($_SESSION["uname"])) {
 
     // Things to run after page load 
     $(function(){
-
-        /*
-        // initialize the map
-        var map = L.map('map').setView([39.8282, -60], 2);
-
-        // load a tile layer
-        L.tileLayer('https://api.mapbox.com/styles/v1/jlepird/ciu4azfa300by2jo1vhynt4tl/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiamxlcGlyZCIsImEiOiJjaXU0YWpzMDcwaG1mMnRvMWQ1OWUyajNtIn0.GdK0FhpdJkfEvN3HxPwDDw',
-        {
-          attribution: 'Tiles by <a href="https://www.mapbox.com/">MapBox</a>',
-          maxZoom: 17,
-          minZoom: 1
-        }).addTo(map);
-
-        // Plot the locations of our data 
-        
-        for (var i = 0; i < data.length; ++i){
-            var id = data[i].id;
-             
-            var marker = new L.marker([data[i].lon, data[i].lat],
-                                   {bounceOnAdd: true}).addTo(map);
-
-            marker.bindPopup("Billet: <a href='/billets/view.php?billet=" + id + "'>" + id + "</a>" + 
-                              "<br>Location: " + data[i].location + 
-                              "<br>Unit: " +     data[i].unit); 
-                 
-        }
-        */
-        
+      
 
         // Charts
         var numberFormat = d3.format(".0f");
@@ -173,22 +146,25 @@ if (!isset($_SESSION["uname"])) {
             off: ""
         };
         
+        var toggled = [];
         function makeAllToggle(){
             $(".toggle").each(function(i,x){
-                if ($(x).hasClass("toggleComplete")){
-                    return;
-                } else {
-                    $(x).bootstrapToggle(toggleOptions);
-                    $(x).addClass("toggleComplete");
-                    return;
-                }
-            })
+            	if ($(x).is("input")){
+	                if (toggled.indexOf($(x).attr("id")) > -1){
+	                    return;
+	                } else {
+	                    $(x).bootstrapToggle(toggleOptions);
+	                    toggled.push($(x).attr("id"));
+	                    return;
+	                }
+            	}
+            });
         }
         
         // Populate the table 
         var table = $('#mainTable')
-               .on('search', function() {makeAllToggle();})
-               .on('page', function() {makeAllToggle();})
+               .on('search.dt', function() {setTimeout(makeAllToggle, 50);})
+               .on('page.dt',   function() {setTimeout(makeAllToggle, 50);})
                .DataTable({
                 data: outData,
                 colReorder: true,
