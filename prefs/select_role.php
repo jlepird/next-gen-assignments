@@ -13,11 +13,16 @@ if (!isset($_SESSION["uname"])) {
 // Get list of billets assigned to user-- don't need to worry about security, it's verifyied by the php page.  
 var billets = <?php echo $sql->queryJSON("select posn from billetOwners where username = '" . $_SESSION["uname"] . "';"); ?>; 
 
+function goTo(value){
+	window.location.href = value;
+}
+
 // Populate after page load. 
 $(function(){
 	billets.forEach(function(x){
-	$("#switch tr:last").after("<tr> <td> <a href='./assignments_preference.php?billet=" + x.posn + "'> Billet " + x.posn + "</a> </td> </tr>" );
-});
+	$("#switch tr:last").after("<option value='./assignments_preference.php?billet=" + x.posn + "'> Billet " + x.posn + "</option>" );
+	});
+	$("#switch").chosen();
 });
 
 </script>
@@ -29,8 +34,10 @@ $(function(){
 <br> <br> <br> <br> 
 <h5> Select your Role: </h5>
 <br> 
-<table id = "switch" class = "table-bordered">
-<tr> <td> <a href="./officer_preference.php"> Self (My Assignment Preferences) </a> </td> </tr>
-</table>
+<select id = "switch" onchange="goTo(this.value);">
+<?php if ($_SESSION["isAirman"]) {
+	echo '<option value="./officer_preference.php"> Self (My Assignment Preferences) </option>'; 
+	?>
+</select>
 </body>
 </html>
