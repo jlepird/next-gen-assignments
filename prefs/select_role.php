@@ -27,8 +27,13 @@ $(function(){
 <div class="col-md-3">  </div>
 <div class="col-md-5">
 <br> <br> <br> <br> 
+
+<h5>Instructions</h5>
+<ul>
+    <li>If you are an officer searching for assignments, click on "Self (My Assignment Preferences)" to input your ranked list of preferred assignments.</li>
+    <li>If you are a billet owner, click on all billet listed to ensure each one has an associated list of officers that are best suited for that particular assignment.</li>
+</ul>
 <h5> Select your Role: </h5>
-<br> 
 <table id = "switch" class = "table-bordered">
 <tr> <td> <a href="./officer_preference.php"> Self (My Assignment Preferences) </a> </td> </tr>
 </table>
