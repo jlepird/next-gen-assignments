@@ -171,17 +171,16 @@ if (!isset($_SESSION["uname"])) {
                 dom: 'Bfrtip',
                 buttons: ['csv', 'excel'], 
                 columns: [
-                    {title: "Favorite", 
-                    "orderDataType": "dom-checkbox"},
-                    {title: "Billet Number", "defaultContent": "<i>None</i>"},
-                    {title: "AFSC", "defaultContent": "<i>None</i>"},
-                    {title: "Grade", "defaultContent": "<i>None</i>"},
-                    {title: "Duty Title", "defaultContent": "<i>None</i>"},
-                    {title: "Location", "defaultContent": "<i>None</i>"},
-                    {title: "State", "defaultContent": "<i>None</i>"},
-                    {title: "Unit", "defaultContent": "<i>None</i>"},
-                    {title: "Degree", "defaultContent": "<i>None</i>"},
-                    {title: "Degree Specialty", "defaultContent": "<i>None</i>"},
+                    {title: "Favorite",          "orderDataType": "dom-checkbox"},
+                    {title: "Billet Number",     "defaultContent": "<i>None</i>"},
+                    {title: "AFSC",              "defaultContent": "<i>None</i>"},
+                    {title: "Grade",             "defaultContent": "<i>None</i>"},
+                    {title: "Duty Title",        "defaultContent": "<i>None</i>"},
+                    {title: "Location",          "defaultContent": "<i>None</i>"},
+                    {title: "State",             "defaultContent": "<i>None</i>"},
+                    {title: "Unit",              "defaultContent": "<i>None</i>"},
+                    {title: "Degree",            "defaultContent": "<i>None</i>"},
+                    {title: "Degree Specialty",  "defaultContent": "<i>None</i>"},
                     {title: "Acquisition Level", "defaultContent": "<i>None</i>"}
                     
                 ]
@@ -198,14 +197,14 @@ if (!isset($_SESSION["uname"])) {
         });
 
         // Inital checkboxing 
-        $(favorites).each(function(i,x){
+        $(favorites).each(function(i, x){
             $("#fav" + x.posn).attr("checked", "checked");
         })
     
         // Initial toggle update
         makeAllToggle();
         
-        var updateTable = function(){
+        function updateTable(){
             selected = [];
             billetsDim.top(Infinity).forEach(function(x){
                 selected.push(x.id);
@@ -384,8 +383,8 @@ if (!isset($_SESSION["uname"])) {
 
         // ************* Start Time Chart ***************
         var startTime = billets.dimension(function(x){
-            var hr = +x.start.substring(0, 2);
-            var min = +x.start.substring(2, 4)
+            var hr  = +x.start.substring(0, 2);
+            var min = +x.start.substring(2, 4);
             if (15 <= min <= 45){
                 return hr + 0.5;
             } else if (min > 45){

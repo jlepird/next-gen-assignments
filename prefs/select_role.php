@@ -10,11 +10,6 @@ if (!isset($_SESSION["uname"])) {
 <?php include '../include/head_common.php'; ?>
 <script>
 
-
-function goTo(value){
-	
-}
-
 // Get list of billets assigned to user-- don't need to worry about security, it's verifyied by the php page.  
 var billets = <?php echo $sql->queryJSON("select posn from billetOwners where username = '" . $_SESSION["uname"] . "';") .";"; 
 ?>
