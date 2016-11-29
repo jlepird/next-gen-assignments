@@ -6,6 +6,10 @@ if (!isset($_SESSION["uname"])) {
 if ($_SESSION['isOwner'] != 't' ){
 	header("Location: ./input.php"); // Unless user is being assigned, they have no reason to be on this page. 
 }
+if (!isset($_GET["billet"])){
+	header("Location: ./select_role.php");
+}
+
 include '../include/head_common.php';
 $res = $sql->execute("select posn from billetOwners where username = '" . $_SESSION["uname"] . "';"); 
 
