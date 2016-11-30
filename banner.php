@@ -2,8 +2,8 @@
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand page-scroll" href="/">
-                <p>Air Force Talent Marketplace</p> 
-                <em style="font-size: 10pt;"> An Assignment Matching Test </em>
+                <p>Air Force Talent Marketplace
+                <em style="font-size: 10pt;"> An Assignment Matching Test </em></p> 
             </a>
         </div>
 
