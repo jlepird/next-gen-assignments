@@ -6,4 +6,4 @@ before_script:
 - psql -c 'create database travis_ci_test;' -U postgres
 - export DATABASE_URL="travis_ci_test"
 - cd bin && ./setupSQL.sh
-script: echo Done
+script: phpunit --bootstrap include/funs.php tests/funsTest.php

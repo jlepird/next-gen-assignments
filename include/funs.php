@@ -95,18 +95,5 @@ class SQL {
 // Supply global variable sql with an instance 
 $sql = new SQL();
 
-/* 
-FUNCTION TESTING
-This code here doesn't actually "do" anything other than fail if the functions 
-above are somehow screwed up. Only run these during development!
-*/ 
-
-if ($runTests){ 
-	// Should execute cleanly 
-	$sql->execute("select 1 + 1;")                                 or die("SQL Execution error in unit tests.");
-	$sql->queryValue("select 1 + 1;") == "\"2\""                   or die("SQL queryValue error in unit tests. Value was " . $sql->queryValue("select 1 + 1;"));
-	$sql->queryJSON("select 1 + 1 as bar;") == "[{\"bar\":\"2\"}]" or die("SQL queryJSON error in unit tests. Value was " . $sql->queryJSON("select 1 + 1 as bar;"));
-	$sql->sanitize("'") == "''"                                    or die("SQL Query Sanitiation Error. Value was " . $sql->sanitize("'")); 
-}
-?> 
-
+// Should execute cleanly 
+$sql->execute("select 1 + 1;") or die("DB Connection Error.");
