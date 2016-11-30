@@ -1,6 +1,6 @@
 ---
 applications:
-- name: af-assignments-experiment
+- name: af-talent-marketplace
   memory: 256M
   buildpack: git://github.com/heroku/heroku-buildpack-php.git
   services:
