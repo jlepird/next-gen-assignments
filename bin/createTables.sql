@@ -140,4 +140,10 @@ create table favorites (
 	posn varchar(50) not null references billetOwners (posn)
 );
 
+drop table if exists userActivity;
+create table userActivity (
+		username varchar(50) not null references users (username),
+		login timestamp
+);
+
 select 'Complete' as Update;  

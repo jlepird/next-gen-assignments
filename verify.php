@@ -18,6 +18,8 @@ if ($email == "ERROR-- no rows returned") {
 	$_SESSION['isOwner'] =  '"t"' == $sql->queryValue("select owner   from users where username = '" . $uname . "' and password = '" . $password . "';");
 	$_SESSION['isAirman'] = '"t"' == $sql->queryValue("select officer from users where username = '" . $uname . "' and password = '" . $password . "';");
 
+	$sql->execute("insert into userActivity values ('" . $uname . "', now()); ");
+
 	header("Location: index.php");
 }
 
