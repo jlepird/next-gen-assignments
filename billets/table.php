@@ -4,6 +4,7 @@ $(function(){
 		$(".chosen-select-medium").chosen({width: "150px", allow_single_deselect: true});
 		$(".chosen-select-small").chosen({width: "100px", allow_single_deselect: true});
 		$(".chosen-disabled").removeClass("chosen-disabled"); 
+		
 }); 
 </script>
 
@@ -81,6 +82,15 @@ $(function(){
 				pg_free_result($res); 
 			?>
 		</select> </td>
+	</tr>
+	<tr>
+		<td> Security Clearance Required: </td> 
+		<td> 
+		<select id = "ts" name = "ts" class = "autopop chosen-select-large">
+			<option val = "s"> Secret </option>
+			<option val = "ts"> Top Secret or Higher </option>
+		</select>
+		</td>
 	</tr>
 </table>
 </fieldset>
