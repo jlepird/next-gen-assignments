@@ -37,8 +37,7 @@ $(function(){
     <li>If you are an officer searching for assignments, click on "Self (My Assignment Preferences)" to input your ranked list of preferred assignments.</li>
     <li>If you are a billet owner, click on all billet listed to ensure each one has an associated list of officers that are best suited for that particular assignment.</li>
 </ul>
-<h5> Select your Role: </h5>
-<br> 
+<h5 style="display: inline;"> Select your Role: </h5>
 <select id = "switch">
 <?php if ($_SESSION["isAirman"]) {
 	echo '<option value="./officer_preference.php"> Self (My Assignment Preferences) </option>'; 

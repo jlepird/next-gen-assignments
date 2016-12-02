@@ -14,6 +14,25 @@ if (!isset($_SESSION["included"])) {
 		echo "'" . $billet . "'";
 	?>;  
 
+function promptForReset(value){
+	swal({
+  title: "Are you sure?",
+  text: "Any changes you've made to this billet won't be saved.",
+  type: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#DD6B55",
+  confirmButtonText: "Yes, reset everything.",
+  cancelButtonText: "No, I want to keep working.",
+},
+function(isConfirm){
+  if (isConfirm) {
+    updateBilletData(value);
+  } else {
+    return;
+  }
+});
+}
+
 updateBilletData = function(value){ 
 
 	selected = value; 
@@ -88,7 +107,7 @@ $( function(){
 	</select>
 </td>
 <td> <input type = "submit" class = "btn btn-primary" value = "Save Changes"> </td>
-<td> <button type = "button" class = "btn btn-primary" onclick = "updateBilletData(selected); "> Reset </button>
+<td> <button type = "button" class = "btn btn-primary" onclick = "promptForReset(selected); "> Reset </button>
 <td> 
 
 </td>

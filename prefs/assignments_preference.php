@@ -33,7 +33,7 @@ if (! $authorized){
     <script type="text/javascript">
     <?php
     	if ($_SESSION["justSubmitted"]){
-    		echo "alert('Preferences Successfully Submitted!');";
+    		echo '$(function(){swal("Success!", "Preferences Successfully Submitted.", "success");});';
     		$_SESSION["justSubmitted"] = False;
     	} 
     ?>

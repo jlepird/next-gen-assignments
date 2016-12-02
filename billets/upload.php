@@ -36,6 +36,6 @@ foreach ($_POST as $key => $value) {
 		$sql->execute("insert into billetData values ('" . $id . "','" . $key . "','" . $value . "'); ");		
 	}
 }
-$_SESSION["lastViewed"] = $id; 
+$_SESSION["uploaded"] = true;
 header("Location: manage.php?billet=" . $id ); 
 ?> 

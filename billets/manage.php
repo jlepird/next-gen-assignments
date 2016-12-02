@@ -31,6 +31,12 @@ if (!isset($_SESSION["uname"])) {
         $(function() {
             $(".col-md-5").fadeIn(1000);
         });
+        <?php
+            if (isset($_SESSION["uploaded"])) {
+                echo '$(function(){swal("Success!", "Billet data successfully saved.", "success");});';
+                unset($_SESSION["uploaded"]);
+            }
+        ?>
     </script>
 
     </head>

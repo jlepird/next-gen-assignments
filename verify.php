@@ -9,7 +9,8 @@ $email = $sql->queryValue("select email from users where username = '" . $uname 
 );
 
 if ($email == "ERROR-- no rows returned") { 
-	die("Incorrect Login");
+	$_SESSION["incorrect"] = true;
+	header("Location: login.php");
 } else { 
 
 	// Populate session variables and redirect user to main page
