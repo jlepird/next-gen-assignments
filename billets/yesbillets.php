@@ -108,7 +108,7 @@ $( function(){
 </td>
 <td> <input type = "submit" class = "btn btn-primary" value = "Save Changes"> </td>
 <td> <button type = "button" class = "btn" onclick = "promptForReset(selected); "> Reset </button>
-<td> <button type "button" class = "btn btn-info" onclick = "window.open('/billets/view.php?billet=' + selected, '_blank');" > View as Airman</button>
+<td> <button type = "button" class = "btn btn-info" onclick = "window.open('/billets/view.php?billet=' + selected, '_blank');" > View as Airman</button>
 
 </td>
 </tr>
