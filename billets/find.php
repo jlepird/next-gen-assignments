@@ -320,6 +320,23 @@ if (!isset($_SESSION["uname"])) {
                      .elasticX(true)
                      .on("filtered", updateTable)
                      .xAxis().ticks(1);
+                     
+        // ************* Security Levels  ***************
+        var secLevelsDecoder = {"s" : "Secret", "ts": "Top Secret or Higher"}; 
+        var secLevels = billets.dimension(function(x){
+            return toTitleCase(x.ts);
+        });
+        var secLevelGroup = secLevels.group();
+        secLevelChart = dc.rowChart("#secLevel");
+        secLevelChart.width(barWidth)
+                     .height(180)
+                     .dimension(secLevels)
+                     .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
+                     .group(secLevelGroup)
+                     .margins({top: 10, right: 50, bottom: 30, left: 40})
+                     .elasticX(true)
+                     .on("filtered", updateTable)
+                     .xAxis().ticks(1);
 
         // ************* CONUS pie chart ***************
         var conus = billets.dimension(function(x){
@@ -573,7 +590,15 @@ if (!isset($_SESSION["uname"])) {
         <div id = "acqLevel">
             <strong> Minimum Acquisition Level </strong>
             <a class="reset"
-                  href='javascriptacqLevelChart.filterAll();dc.redrawAll();'
+                  href='javascript:acqLevelChart.filterAll();dc.redrawAll();'
+                  style="display: none;">reset</a>
+            <div class = "clearfix"></div>
+        </div>
+        
+        <div id = "secLevel">
+            <strong> Required Security Clearance </strong>
+            <a class="reset"
+                  href='javascript:secLevelChart.filterAll();dc.redrawAll();'
                   style="display: none;">reset</a>
             <div class = "clearfix"></div>
         </div>
