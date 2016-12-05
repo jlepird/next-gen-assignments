@@ -68,8 +68,8 @@ class SQL {
 		if (count($row) > 1){
 			die("More than one column specified in query " . $cmd);
 		}
-		return json_encode($row[0]);
 		pg_free_result($res);
+		return json_encode($row[0]);
 	}
 
 	public function queryJSON($cmd){
@@ -79,11 +79,13 @@ class SQL {
 			while($row = pg_fetch_object($res)){
 				$json[] = $row;
 			}
+			pg_free_result($res);
 			return json_encode($json);
 		} else {
+			pg_free_result($res);
 			return "[]";
 		}
-		pg_free_result($res);
+		
 	}
 
 	public function sanitize($str){
