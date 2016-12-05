@@ -383,14 +383,18 @@ if (!isset($_SESSION["uname"])) {
 
         // ************* Start Time Chart ***************
         var startTime = billets.dimension(function(x){
-            var hr  = +x.start.substring(0, 2);
-            var min = +x.start.substring(2, 4);
-            if (15 <= min <= 45){
-                return hr + 0.5;
-            } else if (min > 45){
-                return hr + 1;
+            if (x.regularHours == "yes"){
+                var hr  = +x.start.substring(0, 2);
+                var min = +x.start.substring(2, 4);
+                if (15 <= min <= 45){
+                    return hr + 0.5;
+                } else if (min > 45){
+                    return hr + 1;
+                } else {
+                    return hr;
+                }
             } else {
-                return hr;
+                return;
             }
         });
         var startTimeGroup = startTime.group();
@@ -419,14 +423,18 @@ if (!isset($_SESSION["uname"])) {
 
         // ************* Stop Time Chart ***************
         var stopTime = billets.dimension(function(x){
-            var hr = +x.stop.substring(0, 2);
-            var min = +x.stop.substring(2, 4)
-            if (15 <= min <= 45){
-                return hr + 0.5;
-            } else if (min > 45){
-                return hr + 1;
+            if (x.regularHours == "yes"){
+                var hr = +x.stop.substring(0, 2);
+                var min = +x.stop.substring(2, 4)
+                if (15 <= min <= 45){
+                    return hr + 0.5;
+                } else if (min > 45){
+                    return hr + 1;
+                } else {
+                    return hr;
+                }
             } else {
-                return hr;
+                return;
             }
         });
         var stopTimeGroup = stopTime.group();
@@ -482,6 +490,7 @@ if (!isset($_SESSION["uname"])) {
                     dc.renderAll();
                     
                     $(".col-md-10").fadeIn(1000);
+
         });
     });
 
@@ -500,8 +509,11 @@ if (!isset($_SESSION["uname"])) {
 
     </head>
 <body>
+
+
 <?php include '../banner.php'; ?>
 
+<div class = "wrapper">
 <div class="col-md-1" align="right">  
 </div>
 <div class="col-md-10" hidden>
@@ -621,6 +633,9 @@ if (!isset($_SESSION["uname"])) {
 
 </div>
 
+</div>
+
+<div id = "footer"> For Official Use Only (FOUO) </div>
 
 </body>
 </html>

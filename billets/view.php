@@ -81,7 +81,7 @@ if (!isset($_SESSION["uname"])) {
 <body>
 <?php include '../banner.php'; ?>
 
-<div class="col-md-3">  </div>
+<div class="col-md-2">  </div>
 
 <div class = "col-md-5" hidden> 
 
@@ -103,6 +103,6 @@ Favorite this billet:
 
 </div>
 </div>
-
+<div id = "footer"> For Official Use Only (FOUO) </div>
 </body>
 </html>
