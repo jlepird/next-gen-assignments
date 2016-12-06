@@ -649,10 +649,11 @@ if (!isset($_SESSION["uname"])) {
     </div>
 
     <br> 
-
-    <table id = "mainTable" class="display" cellspacing="0" width="100%">
-    </table>
-
+    
+    <div style="margin-bottom: 1cm;">
+        <table id = "mainTable" class="display" cellspacing="0" width="100%" >
+        </table>
+    </div>
 
     </div>
 
@@ -660,7 +661,8 @@ if (!isset($_SESSION["uname"])) {
 
 </div>
 
-<div id = "footer"> For Official Use Only (FOUO) </div>
 
+
+<div id = "footer"> For Official Use Only (FOUO) </div>
 </body>
 </html>
