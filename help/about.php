@@ -9,7 +9,7 @@
 <?php include '../banner.php'; ?>
 <div class="col-md-3">  </div>
     <div class="col-md-6">
-    <br> <br> <br> 
+    <br> <br> <br> <br><br>
     <h3>Background</h3>
         <p>The objective of this test is to quantify the feasibility and performance of a proposed talent-to-assignment matching algorithm, in contrast to the status quo assignment process.  This effort is in response to the <a href="http://www.defense.gov/Portals/1/features/2015/0315_force-of-the-future/documents/FotF_Fact_Sheet_-_FINAL_11.18.pdf" target="_blank">SecDef's Force of the Future</a> initiative to implement a web-based talent management system. Please keep in mind that is only a test and will have no bearing on the actual VML cycle, as the FY17 Summer VML has already closed. Keeping that in mind, we ask that you participate as if this new assignment system is part has already been implemented.  The more accurate and quantifiable data we can collect, the better we can make recommendations to Air Force leadership. </p>
     <h3>Testing a new talent matching algorithm</h3>

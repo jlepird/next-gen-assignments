@@ -48,7 +48,8 @@ if (!isset($_SESSION["uname"])) {
 
     <div class="col-md-5" hidden>
 
-    <br> <br> <br>
+    <br> <br> <br><br><br><br>
+    <h3>Instructions</h3>
     <p>As part of this test, you are requested to submit detailed information on each of your billets.  Please review each billet in the drop-down list and ensure each one has the latest information describing the assignment. This information will be searchable and read by officers on the VML to inform their assignment preference list.
 
 

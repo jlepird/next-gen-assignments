@@ -20,13 +20,15 @@ if (!isset($_SESSION["uname"])) {
 
     <br>
     <br>
-    
+    <br>
+    <br>
+    <br>
 
     </div>
 
-    <div class="col-md-3">  </div>
+    <div class="col-md-2">  </div>
 
-    <div class="col-md-6">
+    <div class="col-md-8">
         <h2>Getting Started</h2>
 
 <p> Congratulations! As an active participant on the FY17 Summer VML cycle, you have been chosen to help shape the future Air Force assignment system. You are part of an initial pilot program to measure the effectiveness of a more decentralized, transparent, and user-friendly assignment process. </p> <br> 
