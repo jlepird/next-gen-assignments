@@ -168,7 +168,7 @@ if (!isset($_SESSION["uname"])) {
                .on('page.dt',   function() {setTimeout(makeAllToggle, 50);})
                .DataTable({
                 data: outData,
-                colReorder: true,
+                colReorder: false,
                 dom: 'Bfrtip',
                 buttons: [
                     { 
