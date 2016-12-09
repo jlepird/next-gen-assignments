@@ -515,6 +515,7 @@ if (!isset($_SESSION["uname"])) {
 
                     dc.renderAll();
                     
+                    $("#loader").fadeOut(100);
                     $(".col-md-10").fadeIn(1000);
 
         });
@@ -542,6 +543,7 @@ if (!isset($_SESSION["uname"])) {
 <div class = "wrapper">
 <div class="col-md-1" align="right">  
 </div>
+<div id = "loader"></div>
 <div class="col-md-10" hidden>
     <br> <br> <br>
     <h3>Instructions</h3>
