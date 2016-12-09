@@ -9,10 +9,7 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="/">Home</a>
-                </li>
+            <ul class="nav navbar-nav" style="font-size: 10pt;">
                 <li>
                     <a href="/help/about.php">About</a>
                 </li>
