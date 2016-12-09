@@ -15,7 +15,7 @@ if (!isset($_SESSION["uname"])) {
 <?php include '../banner.php'; ?>
 <div class="col-md-3">  </div>
     <div class="col-md-5">
-    <br> <br><br><br><br>
+    <br> <br><br>
         <h2>Contact Information</h2>
 
         <h4>HAF/A1 </h4>

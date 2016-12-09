@@ -74,8 +74,8 @@ By using this IS (which includes any device attached to this IS), you consent to
 	<td colspan="2" align="center"> <center><button type="submit" class = "btn btn-primary">Submit</button> </center></td> 
 	<td> 
 	<tr>
-	<td> <a style="font-size: 8pt; color: silver;" href="javascript:myAlert();")> Forgot Password? </a> </td>
-	<td align = "right"> <a style="font-size: 8pt; color: silver;" href="changepassword.php"> Change Password </a> </td>
+	<td> <a style="font-size: 8pt;" href="javascript:myAlert();")> Forgot Password? </a> </td>
+	<td align = "right"> <a style="font-size: 8pt;" href="changepassword.php"> Change Password </a> </td>
 	</tr>
 	</td>
 	</tr>

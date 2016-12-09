@@ -13,7 +13,7 @@ if (!isset($_SESSION["uname"])) {
 <?php include '../banner.php'; ?>
 <div class="col-md-3">  </div>
     <div class="col-md-5">
-    <br> <br> <br><br><br><br>
+    <br> <br> <br>
     <h3>Instructions</h3>
     <p>As an officer on the VML, you are required to update your profile on MyVector. There you will be able to update your duty experience, skills, training, and education.  Having a detailed profile allows billet owners to have a better understanding of you as an officer as they search for the right person for their billet.  Follow the following tutorial on how to update your profile in MyVector.
 
