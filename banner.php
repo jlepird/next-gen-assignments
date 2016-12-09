@@ -1,14 +1,18 @@
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container">
-        <div class="navbar-header">
+        <div class="navbar-header ">
+            <ul class="nav navbar-nav" style="font-size: 10pt;">
+            <li>
             <a class="navbar-brand page-scroll" href="/">
                 <p>Air Force Talent Marketplace
                 <em style="font-size: 10pt;"> An Assignment Matching Test </em></p> 
             </a>
+            </li>
+            </ul>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+        <div class="collapse navbar-collapse navbar-r navbar-main-collapse">
             <ul class="nav navbar-nav" style="font-size: 10pt;">
                 <li>
                     <a href="/help/about.php">About</a>
