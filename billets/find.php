@@ -162,6 +162,7 @@ if (!isset($_SESSION["uname"])) {
         }
         
         // Populate the table 
+        var date = new Date(Date.now());
         var table = $('#mainTable')
                .on('search.dt', function() {setTimeout(makeAllToggle, 50);})
                .on('page.dt',   function() {setTimeout(makeAllToggle, 50);})
@@ -169,7 +170,15 @@ if (!isset($_SESSION["uname"])) {
                 data: outData,
                 colReorder: true,
                 dom: 'Bfrtip',
-                buttons: ['csv', 'excel'], 
+                buttons: [
+                    { 
+                        extend: 'csvHtml5',
+                        title: "Billets Export " + date
+                    }, 
+                    {
+                        extend: 'excelHtml5',
+                        title: "Billets Export " + date
+                    }], 
                 columns: [
                     {title: "Favorite",          "orderDataType": "dom-checkbox"},
                     {title: "Billet Number",     "defaultContent": "<i>None</i>"},
