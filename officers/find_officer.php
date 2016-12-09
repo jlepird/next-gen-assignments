@@ -15,7 +15,7 @@ if (!isset($_SESSION["uname"])) {
 
 <div class="col-md-3">  </div>
     <div class="col-md-5">
-    <br> <br> <br><br><br><br>
+    <br> <br> <br>
     <h3>Instructions</h3>
     <p>You will be able to search for experienced officers via the Air Force MyVector database. While searching through the website, it is recommended you take notes and create a prioritized list of preferred officers that you find suitable for each one of your billets. Please submit this prioritized list through the <a href="../prefs/input.php">My Preference List</a> by 3 March 2017.  Follow the following tutorial on how to find officers on MyVector.
 

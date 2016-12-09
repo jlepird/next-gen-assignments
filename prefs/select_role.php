@@ -36,6 +36,7 @@ $(function(){
 <ul>
     <li>If you are an officer searching for assignments, click on "Self (My Assignment Preferences)" to input your ranked list of preferred assignments.</li>
     <li>If you are a billet owner, click on all billets listed to ensure each one has an associated list of officers that are best suited for that particular assignment.</li>
+    <li>Please submit your list(s) by 3 March 2016.</li>
 </ul>
 <h5 style="display: inline;"> Select your Role: </h5>
 <select id = "switch">
