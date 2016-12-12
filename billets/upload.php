@@ -21,7 +21,8 @@ foreach ($_POST as $key => $value) {
 	echo "Key: " . $key . " Value: " . $value . "<br>";
 	if ($key == "desc"){
 		$value = $sql->sanitize($value); 
-		$sql->execute("update billetDescs set txt = '" . $value . "' where posn = '" . $id . "'; ");
+		$sql->execute("delete from billetDescs where posn = '" . $id . "';");
+		$sql->execute("insert into billetDescs values('" . $id . "','" . $value . "');");
 	} elseif ($key == "id"){
 		continue; 
 	} elseif (is_array($value)) { 
