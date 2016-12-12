@@ -230,7 +230,7 @@ if (!isset($_SESSION["uname"])) {
             if ("afsc" in x){
                 return x.afsc.substring(0, 1); 
             } else {
-                return;
+                return '1';
             }
         });
         var afscPrefixGroup = afscPrefix.group();
@@ -245,8 +245,13 @@ if (!isset($_SESSION["uname"])) {
                     .on("filtered", updateTable);
 
         // ************* AFSC pie chart ***************
+        // Known issue: need better way to handle multiple AFSCs
         var afscs = billets.dimension(function(x){
-            return x.afsc; 
+            if ("afsc" in x){
+                return x.afsc;
+            } else {
+                return '16G';
+            } 
         });
         var afscGroup = afscs.group();
 
@@ -274,7 +279,7 @@ if (!isset($_SESSION["uname"])) {
                     return "O5";
                 }
             } else {
-                return;
+                return 'None';
             }
         });
         var gradeGroup = grades.group();
@@ -302,7 +307,7 @@ if (!isset($_SESSION["uname"])) {
                     return "phd";
                 }
             } else {
-                return;
+                return "bs";
             }
         });
         var aadGroup = aads.group();
@@ -328,7 +333,12 @@ if (!isset($_SESSION["uname"])) {
 
         // ************* ACQ Levels  ***************
         var acqLevels = billets.dimension(function(x){
-            return toTitleCase(acqDisplay[x.acqLevel]);
+            if ("acqLevel" in x){
+                return toTitleCase(acqDisplay[x.acqLevel]);
+            } else {
+                return "None";
+            }
+            
         });
         var acqLevelGroup = acqLevels.group();
         acqLevelChart = dc.rowChart("#acqLevel");
@@ -345,7 +355,12 @@ if (!isset($_SESSION["uname"])) {
         // ************* Security Levels  ***************
         var secLevelsDecoder = {"s" : "Secret", "ts": "Top Secret or Higher"}; 
         var secLevels = billets.dimension(function(x){
-            return toTitleCase(x.ts);
+            if ("ts" in x){
+                return toTitleCase(x.ts);    
+            } else {
+                return "Secret";
+            }
+            
         });
         var secLevelGroup = secLevels.group();
         secLevelChart = dc.rowChart("#secLevel");
@@ -361,7 +376,12 @@ if (!isset($_SESSION["uname"])) {
 
         // ************* CONUS pie chart ***************
         var conus = billets.dimension(function(x){
-            return x.state == "OCONUS" || x.state == "HI" || x.state == "AL" ? "OCONUS" : "CONUS"; 
+            if ("state" in x){
+               return x.state == "OCONUS" || x.state == "HI" || x.state == "AL" ? "OCONUS" : "CONUS";  
+            } else {
+                return "Unknown";
+            }
+            
         });
         var conusGroup = conus.group();
 
@@ -376,7 +396,12 @@ if (!isset($_SESSION["uname"])) {
 
         // ************* Contact pie chart ***************
         var contact = billets.dimension(function(x){
-            return x["contact?"] == "yes" ? "Yes" : "No"; 
+            if ("contact?" in x){
+                return x["contact?"] == "yes" ? "Yes" : "No"; 
+            } else {
+                return "No";
+            }
+            
         });
         var contactGroup = contact.group();
 
@@ -391,7 +416,12 @@ if (!isset($_SESSION["uname"])) {
 
         // ************* Deployable pie chart ***************
         var deployable = billets.dimension(function(x){
-            return x["deployable"] == "yes" ? "Yes" : "No"; 
+            if ("deployable" in x){
+                return x["deployable"] == "yes" ? "Yes" : "No"; 
+            } else {
+                return "No";
+            }
+            
         });
         var deployableGroup = deployable.group();
 
@@ -406,7 +436,12 @@ if (!isset($_SESSION["uname"])) {
 
         // ************* Predictable pie chart ***************
         var predictable = billets.dimension(function(x){
-            return x.regularHours == "yes" ? "Yes" : "No"; 
+            if ("regularHours" in x){
+                return x.regularHours == "yes" ? "Yes" : "No"; 
+            } else {
+                return "Yes";
+            }
+            
         });
         var predictableGroup = predictable.group();
 
@@ -432,7 +467,7 @@ if (!isset($_SESSION["uname"])) {
                     return hr;
                 }
             } else {
-                return;
+                return "";
             }
         });
         var startTimeGroup = startTime.group();
@@ -472,7 +507,7 @@ if (!isset($_SESSION["uname"])) {
                     return hr;
                 }
             } else {
-                return;
+                return "";
             }
         });
         var stopTimeGroup = stopTime.group();
@@ -502,7 +537,12 @@ if (!isset($_SESSION["uname"])) {
 
         // ************* Map ***************
         var states = billets.dimension(function(x){
-            return x.state;
+            if ("state" in x){
+                return x.state;    
+            } else {
+                return "Unknown";
+            }
+            
         });
         var statesGroup = states.group();
         usChart = dc.geoChoroplethChart("#conusMap");
