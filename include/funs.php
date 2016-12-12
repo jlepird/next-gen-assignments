@@ -62,7 +62,7 @@ class SQL {
 		if ($num_rows > 1) {
 			die("Query" . $cmd . "returned multiple rows"); 
 		} elseif ($num_rows < 1){
-			return "ERROR-- no rows returned";
+			return json_encode("ERROR-- no rows returned");
 		}
 		$row = pg_fetch_row($res);
 		if (count($row) > 1){

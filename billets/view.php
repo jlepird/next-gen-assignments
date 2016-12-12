@@ -59,13 +59,13 @@ if (!isset($_SESSION["uname"])) {
             toUpdate[i].disabled = "disabled"; 
         }
 
-        var desc = '<?php echo $sql->queryValue("select txt from billetDescs where posn = '" . $billet . "';"); ?>';
+        var desc = <?php echo $sql->queryValue("select txt from billetDescs where posn = '" . $billet . "';"); ?>;
 
         if (desc.indexOf("ERROR--") > -1 || desc.length == 0){
             desc = "No description provided...";
         }
 
-		document.getElementById("desc").value =  
+		document.getElementById("desc").value = desc;
 		document.getElementById("desc").disabled = "disabled";
 
         if (favorited != "0"){
