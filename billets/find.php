@@ -227,7 +227,11 @@ if (!isset($_SESSION["uname"])) {
 
         // ************* AFSC prefix pie chart ***************
         var afscPrefix = billets.dimension(function(x){
-            return x.afsc.substring(0, 1); 
+            if ("afsc" in x){
+                return x.afsc.substring(0, 1); 
+            } else {
+                return;
+            }
         });
         var afscPrefixGroup = afscPrefix.group();
 
