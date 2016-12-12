@@ -2,13 +2,13 @@
 		<td> <p> Last Occupied By:</p> </td> 
 		<td> <input type = "text" name = "lastOccupant" value = "" class = "autopop"> </td>
 		<td> Email: </td> 
-		<td> <input type = "email" name = "lastOccupantEmail" value = "" class = "autopop"> </td>
+		<td colspan="2"> <input type = "email" name = "lastOccupantEmail" value = "" class = "autopop"> </td>
 	</tr>
 	<tr> 
 		<td> <p> Point of Contact:</p> </td> 
 		<td> <input type = "text" name = "poc" value = "" class = "autopop"> </td>
 		<td> Email: </td> 
-		<td> <input type = "email" name = "pocEmail" 
+		<td colspan="2"> <input type = "email" name = "pocEmail" 
 			value = <?php echo "\"" . $sql->queryValue("select email from users where username = '" . $_SESSION["uname"] . "';") . "\""; 
 					?>
 		 	class = "autopop"> </td>

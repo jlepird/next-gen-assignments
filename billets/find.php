@@ -257,16 +257,20 @@ if (!isset($_SESSION["uname"])) {
 
         // ************* Grade chart ***************
         var grades = billets.dimension(function(x){
-            if (x.grade.indexOf("O1") >= 0){
-                return "O1";
-            } else if (x.grade.indexOf("O2") >= 0) {
-                return "O2";
-            } else if (x.grade.indexOf("O3") >= 0) {
-                return "O3";
-            } else if (x.grade.indexOf("O4") >= 0) {
-                return "O4";
+            if ("grade" in x){
+                if (x.grade.indexOf("O1") >= 0){
+                    return "O1";
+                } else if (x.grade.indexOf("O2") >= 0) {
+                    return "O2";
+                } else if (x.grade.indexOf("O3") >= 0) {
+                    return "O3";
+                } else if (x.grade.indexOf("O4") >= 0) {
+                    return "O4";
+                } else {
+                    return "O5";
+                }
             } else {
-                return "O5";
+                return;
             }
         });
         var gradeGroup = grades.group();
@@ -285,12 +289,16 @@ if (!isset($_SESSION["uname"])) {
 
         // Need to find the *minimum" aad level
         var aads = billets.dimension(function(x){
-            if (x.aadLevel.indexOf("bs") >= 0){
-                return "bs"; 
-            } else if (x.aadLevel.indexOf("ms") >= 0){
-                return "ms";
+            if ("aadLevel" in x){
+                if (x.aadLevel.indexOf("bs") >= 0){
+                    return "bs"; 
+                } else if (x.aadLevel.indexOf("ms") >= 0){
+                    return "ms";
+                } else {
+                    return "phd";
+                }
             } else {
-                return "phd";
+                return;
             }
         });
         var aadGroup = aads.group();
@@ -349,7 +357,7 @@ if (!isset($_SESSION["uname"])) {
 
         // ************* CONUS pie chart ***************
         var conus = billets.dimension(function(x){
-            return x.state == "OCONUS" ? "OCONUS" : "CONUS"; 
+            return x.state == "OCONUS" || x.state == "HI" || x.state == "AL" ? "OCONUS" : "CONUS"; 
         });
         var conusGroup = conus.group();
 

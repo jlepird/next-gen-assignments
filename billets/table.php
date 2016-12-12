@@ -18,7 +18,7 @@ $(function(){
 
 <table class="table-display"> 
 	<tr> <td colspan="4">  <h5> <i> General Information </i> </h5>  </td> </tr>
-	<tr> <td colspan="2" > <i> Duty Title: </i> </td> <td colspan = "3" > <input type = "text" name = "dutyTitle" size = "35" value = "" class = "autopop"> </td></tr>
+	<tr> <td colspan="2" > <i> Duty Title: </i> </td> <td colspan = "4" > <input type = "text" name = "dutyTitle" size = "45" value = "" class = "autopop"> </td></tr>
 	<tr> 
 		<td> <p> Allowable AFSCs: </p> </td> 
 		<td> <select name = "afsc[]" value = "" class = "autopop chosen-select-medium" multiple>
@@ -32,7 +32,7 @@ $(function(){
 			</select
 		 </td> 
 		<td> <p> Grade: </p> </td> 
-		<td> <select name = "grade[]" value = "" class = "autopop chosen-select-large" multiple data-placeholder="Select Allowable Grades">
+		<td colspan = "2"> <select name = "grade[]" value = "" class = "autopop chosen-select-large" multiple data-placeholder="Select Allowable Grades">
 			<option value = "O1"> 2nd Lieutenent </option>
 			<option value = "O2"> 1st Lieutenent </option>
 			<option value = "O3"> Captain </option>
@@ -42,10 +42,64 @@ $(function(){
 		</td>
 	</tr>
 	<tr> 
-		<td> <p> Location: </p> </td> 
-		<td> <input type = "text" name = "location" class = "autopop" value = ""> </td> 
 		<td> <p> Unit: </p> </td> 
 		<td> <input type = "text" name = "unit" value = "" class = "autopop"></td>
+		<td> <p> Location: </p> </td> 
+		<td> <input type = "text" name = "location" class = "autopop" value = "" style="width:120px;"> </td> 
+		<td> <select name = "state" class = "autopop chosen-select-small">
+			<option value="AL">AL</option>
+			<option value="AK">AK</option>
+			<option value="AZ">AZ</option>
+			<option value="AR">AR</option>
+			<option value="CA">CA</option>
+			<option value="CO">CO</option>
+			<option value="CT">CT</option>
+			<option value="DE">DE</option>
+			<option value="DC">DC</option>
+			<option value="FL">FL</option>
+			<option value="GA">GA</option>
+			<option value="HI">HI</option>
+			<option value="ID">ID</option>
+			<option value="IL">IL</option>
+			<option value="IN">IN</option>
+			<option value="IA">IA</option>
+			<option value="KS">KS</option>
+			<option value="KY">KY</option>
+			<option value="LA">LA</option>
+			<option value="ME">ME</option>
+			<option value="MD">MD</option>
+			<option value="MA">MA</option>
+			<option value="MI">MI</option>
+			<option value="MN">MN</option>
+			<option value="MS">MS</option>
+			<option value="MO">MO</option>
+			<option value="MT">MT</option>
+			<option value="NE">NE</option>
+			<option value="NV">NV</option>
+			<option value="NH">NH</option>
+			<option value="NJ">NJ</option>
+			<option value="NM">NM</option>
+			<option value="NY">NY</option>
+			<option value="NC">NC</option>
+			<option value="ND">ND</option>
+			<option value="OH">OH</option>
+			<option value="OK">OK</option>
+			<option value="OR">OR</option>
+			<option value="PA">PA</option>
+			<option value="RI">RI</option>
+			<option value="SC">SC</option>
+			<option value="SD">SD</option>
+			<option value="TN">TN</option>
+			<option value="TX">TX</option>
+			<option value="UT">UT</option>
+			<option value="VT">VT</option>
+			<option value="VA">VA</option>
+			<option value="WA">WA</option>
+			<option value="WV">WV</option>
+			<option value="WI">WI</option>
+			<option value="WY">WY</option>
+			<option value="OCONUS"> Other OCONUS </option>
+		</select></td>
 	</tr>
 	<?php
 		if (strpos($_SERVER['REQUEST_URI'], "manage.php") !== false){
