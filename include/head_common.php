@@ -6,12 +6,12 @@
 <link rel="stylesheet" href="/include/datatables/buttons.dataTables.min.css" type = "text/css" />
 <link rel="stylesheet" href="/css/myvector.css" type="text/css" />
 <link rel="stylesheet" href="/css/a9.css" type = "text/css" />
-<link rel="stylesheet" href="/include/leaflet/leaflet.css" />
 <link rel="stylesheet" href="/include/chosen/chosen.css" />
 <link rel="stylesheet" href="/include/dc/web/css/dc.min.css" />
 <link rel="stylesheet" href="/include/bootstrap-toggle/css/bootstrap-toggle.min.css" />
 <link rel="stylesheet" href="/include/datatables/colReorder.dataTables.min.css" />
-<link rel="stylesheet" href="/include/sweetalert/sweetalert.css">
+<link rel="stylesheet" href="/include/sweetalert/sweetalert.css"/>
+<link rel="stylesheet" href="/include/jquery/ui/jquery-ui.min.css"/>
 
 <!-- favicon stuff --> 
 <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
@@ -29,8 +29,6 @@
 <script type="text/javascript" src="/include/datatables/jszip.min.js"></script>
 <script type="text/javascript" src="/include/datatables/buttons.html5.min.js"></script>
 <script type="text/javascript" src="/include/datatables/buttons.print.min.js"></script>
-<script type="text/javascript" src="/include/leaflet/leaflet.js"></script>
-<script type="text/javascript" src="/include/bouncemarker.js"></script>
 <script type="text/javascript" src="/include/chosen/chosen.jquery.js"></script>
 <script type="text/javascript" src="/include/dc/web/js/d3.js"></script>
 <script type="text/javascript" src="/include/dc/web/js/crossfilter.js"></script>
@@ -39,6 +37,7 @@
 <script type="text/javascript" src="/include/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
 <script type="text/javascript" src="/include/datatables/dataTables.colReorder.min.js"></script>
 <script type="text/javascript" src="/include/sweetalert/sweetalert.min.js"></script>
+<script type="text/javascript" src="/include/jquery/ui/jquery-ui.min.js"></script>
 
 <!-- PHP functions --> 
 <?php 

@@ -18,7 +18,7 @@ if ($owner != $_SESSION["uname"]) {
 
 // Iterate over each POSTed value, and then update the SQL database appropriately. 
 foreach ($_POST as $key => $value) {
-	echo "Key: " . $key . " Value: " . $value . "<br>";
+	// echo "Key: " . $key . " Value: " . $value . "<br>";
 	if ($key == "desc"){
 		$value = $sql->sanitize($value); 
 		$sql->execute("delete from billetDescs where posn = '" . $id . "';");

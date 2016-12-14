@@ -122,7 +122,7 @@ if (!isset($_SESSION["uname"])) {
             var y = "0" + x;
             return y.substr(y.length - 2);
         }
-        var barWidth = 250;
+        var barWidth = 220;
 
         billets = crossfilter(data);
 
@@ -230,7 +230,7 @@ if (!isset($_SESSION["uname"])) {
             if ("afsc" in x){
                 return x.afsc.substring(0, 1); 
             } else {
-                return '1';
+                return '1'; // for 16G
             }
         });
         var afscPrefixGroup = afscPrefix.group();
@@ -248,10 +248,16 @@ if (!isset($_SESSION["uname"])) {
         // Known issue: need better way to handle multiple AFSCs
         var afscs = billets.dimension(function(x){
             if ("afsc" in x){
-                return x.afsc;
-            } else {
-                return '16G';
-            } 
+                if (x.afsc.split(",").length > 1){
+                    return "(Multiple)";
+                } else {
+                    if (x.afsc == "16G"){
+                        return 'Any';
+                    } else {
+                        return x.afsc;
+                    }
+                }
+            }
         });
         var afscGroup = afscs.group();
 
@@ -329,7 +335,7 @@ if (!isset($_SESSION["uname"])) {
                     }
                 })
                 .on("filtered", updateTable)
-                .xAxis().ticks(1);
+                .xAxis().ticks(2);
 
         // ************* ACQ Levels  ***************
         var acqLevels = billets.dimension(function(x){
@@ -350,7 +356,7 @@ if (!isset($_SESSION["uname"])) {
                      .margins({top: 10, right: 50, bottom: 30, left: 40})
                      .elasticX(true)
                      .on("filtered", updateTable)
-                     .xAxis().ticks(1);
+                     .xAxis().ticks(2);
                      
         // ************* Security Levels  ***************
         var secLevelsDecoder = {"s" : "Secret", "ts": "Top Secret or Higher"}; 
@@ -372,7 +378,7 @@ if (!isset($_SESSION["uname"])) {
                      .margins({top: 10, right: 50, bottom: 30, left: 40})
                      .elasticX(true)
                      .on("filtered", updateTable)
-                     .xAxis().ticks(1);
+                     .xAxis().ticks(2);
 
         // ************* CONUS pie chart ***************
         var conus = billets.dimension(function(x){
@@ -453,6 +459,97 @@ if (!isset($_SESSION["uname"])) {
                      .dimension(predictable)
                      .group(predictableGroup)
                      .on("filtered", updateTable);
+
+        // ************* Workweek pie chart ***************
+        var weekDecoder = {
+            "m-f":"Mon-Fri",
+            "m-sa": "Mon-Sat",
+            "m-su": "Mon-Sun",
+            "irr" : "Irregular"
+        };
+        
+        var week = billets.dimension(function(x){
+            if ("workweek" in x){
+                return weekDecoder[x.workweek]; 
+            } else {
+                return "NA";
+            }
+            
+        });
+        var weekGroup = week.group();
+
+        weekPieChart = dc.pieChart("#weekPie");
+        weekPieChart.width(180)
+                     .height(180)
+                     .radius(80)
+                     .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
+                     .dimension(week)
+                     .group(weekGroup)
+                     .on("filtered", updateTable);
+
+       // ************* Report Chart ***************
+       var monthDisplay = {
+           "01": "Jan",
+           "02": "Feb",
+           "03": "Mar",
+           "04": "Apr",
+           "05": "May",
+           "06": "Jun",
+           "07": "Jul",
+           "08": "Aug",
+           "09": "Sep",
+           "10": "Oct",
+           "11": "Nov",
+           "12": "Dec"
+       }
+       
+       
+       var invert = function (obj) {
+        // invert a dictionary-- from http://nelsonwells.net/2011/10/swap-object-key-and-values-in-javascript/
+          var new_obj = {};
+        
+          for (var prop in obj) {
+                if (obj.hasOwnProperty(prop)) {
+                    new_obj[obj[prop]] = prop;
+                }
+            }
+        
+
+          return new_obj;
+        };
+        
+        var invertedMonths = invert(monthDisplay);
+        
+        
+        var report = billets.dimension(function(x){
+            if ("report" in x){
+                var spl = x.report.split("/");
+                month = spl[0];
+                yr = spl[2];
+                return yr + '-' + monthDisplay[month];
+            } else {
+                return;
+            }
+        });
+        var reportGroup = report.group();
+
+
+        reportChart = dc.rowChart("#reportChart")
+                               .width(barWidth)
+                               .height("180")
+                               .dimension(report)
+                               .group(reportGroup)
+                               .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
+                               .margins({top: 10, right: 50, bottom: 30, left: 40})
+                               .elasticX(true)
+                               .on("filtered", updateTable)
+                               .ordering(function(d){
+                                   console.log(d.key);
+                                   spl = d.key.split("-");
+                                   return spl[0] + invertedMonths[spl[1]]; 
+                               })
+                               .xAxis().ticks(2);
+
 
         // ************* Start Time Chart ***************
         var startTime = billets.dimension(function(x){
@@ -544,11 +641,20 @@ if (!isset($_SESSION["uname"])) {
             }
             
         });
+        
+        function stripPX(x){
+            return +x.substring(0, x.length - 2);
+        }
+        
+        var mapWidth  = stripPX($("#conusMap").css("width")) - 2 * stripPX($("#conusMap").css("margin"));
+        var mapHeight = stripPX($("#conusMap").css("height"))- 2 * stripPX($("#conusMap").css("margin"));
+        var scale = Math.min(mapWidth * 1.5, mapHeight * 2.1);
+        
         var statesGroup = states.group();
         usChart = dc.geoChoroplethChart("#conusMap");
         d3.json("../data/us-states.json", function(statesJSON){
-                    usChart.width(900)
-                    .height(500)
+                    usChart.width(mapWidth)
+                    .height(mapHeight)
                     .dimension(states)
                     .group(statesGroup)
                     .colors(d3.scale.quantize().range(["#E2F2FF", "#C4E4FF", "#9ED2FF", "#81C5FF", "#6BBAFF", "#51AEFF", "#36A2FF", "#1E96FF", "#0089FF", "#0061B5"]))
@@ -563,7 +669,7 @@ if (!isset($_SESSION["uname"])) {
                         return "State: " + d.key + "\nBillets Available: " + numberFormat(d.value ? d.value : 0);
                     })
                     .on("filtered", updateTable)
-                    .projection(d3.geo.albersUsa());
+                    .projection(d3.geo.albersUsa().scale(1000).translate([mapWidth/2, mapHeight/2]));
 
                     dc.renderAll();
                     
@@ -573,14 +679,12 @@ if (!isset($_SESSION["uname"])) {
         });
     });
 
-
-
     </script>
 
     <style>
     	.map {
-		  width: 900px;
-		  height: 600px;
+		  width: 700px;
+		  height: 500px;
 		  margin: 10px;
 		  padding: 10px;
 		}
@@ -619,6 +723,8 @@ if (!isset($_SESSION["uname"])) {
               style="display: none;">reset</a>
         <div class = "clearfix"></div>
     </div>
+
+    
     </div>
 
     <div class = "row">
@@ -643,7 +749,7 @@ if (!isset($_SESSION["uname"])) {
                   style="display: none;">reset</a>
             <div class = "clearfix"></div>
         </div>
-
+        
         <div id = "aadLevel">
             <strong> Preferred Degree </strong>
             <a class="reset"
@@ -659,17 +765,20 @@ if (!isset($_SESSION["uname"])) {
                   style="display: none;">reset</a>
             <div class = "clearfix"></div>
         </div>
+
+        </div>
+        <div class = "row">
+        
         
         <div id = "secLevel">
-            <strong> Required Security Clearance </strong>
+            <strong> Required Security <br> Clearance </strong>
             <a class="reset"
                   href='javascript:secLevelChart.filterAll();dc.redrawAll();'
                   style="display: none;">reset</a>
             <div class = "clearfix"></div>
         </div>
-    </div>
-
-    <div class = "row">
+        
+        
         <div id = "contactPie" class = "dc-chart">
             <strong> Allowed to Contact? </strong>
             <a class="reset"
@@ -677,7 +786,15 @@ if (!isset($_SESSION["uname"])) {
                   style="display: none;">reset</a>
             <div class = "clearfix"></div>
         </div>
-
+        
+        <div id = "reportChart" class = "dc-chart">
+            <strong> Desired Report Month </strong>
+            <a class="reset"
+                  href='javascript:reportChart.filterAll();dc.redrawAll();'
+                  style="display: none;">reset</a>
+            <div class = "clearfix"></div>
+        </div>
+        
         <div id = "deployablePie" class = "dc-chart">
             <strong> Deployable? </strong>
             <a class="reset"
@@ -685,12 +802,23 @@ if (!isset($_SESSION["uname"])) {
                   style="display: none;">reset</a>
             <div class = "clearfix"></div>
         </div>
+    </div>
+
+    <div class = "row">
 
 
         <div id = "predictablePie" class = "dc-chart">
             <strong> Predictable Hours? </strong>
             <a class="reset"
                   href='javascript:predictablePieChart.filterAll();dc.redrawAll();'
+                  style="display: none;">reset</a>
+            <div class = "clearfix"></div>
+        </div>
+        
+        <div id = "weekPie" class = "dc-chart">
+            <strong> Typical Workweek </strong>
+            <a class="reset"
+                  href='javascript:weekPieChart.filterAll();dc.redrawAll();'
                   style="display: none;">reset</a>
             <div class = "clearfix"></div>
         </div>

@@ -13,26 +13,27 @@ $(function(){
 		$(".chosen-select-small").chosen({width: "100px", allow_single_deselect: true});
 		$(".chosen-disabled").removeClass("chosen-disabled"); 
 		toggleHours($("#regularHours").val());
+		$("#report").datepicker();
 }); 
 </script>
 
 <table class="table-display"> 
-	<tr> <td colspan="4">  <h5> <i> General Information </i> </h5>  </td> </tr>
-	<tr> <td colspan="2" > <i> Duty Title: </i> </td> <td colspan = "4" > <input type = "text" name = "dutyTitle" size = "45" value = "" class = "autopop"> </td></tr>
+	<tr> <td colspan="3">  <h5> <i> General Information </i> </h5>  </td> </tr>
+	<tr> <td colspan="1" > <i> Duty Title: </i> </td> <td colspan = "4" > <input type = "text" name = "dutyTitle" size = "45" value = "" class = "autopop"> </td></tr>
 	<tr> 
-		<td> <p> Allowable AFSCs: </p> </td> 
-		<td> <select name = "afsc[]" value = "" class = "autopop chosen-select-medium" multiple>
+		<td > <p> Allowable AFSCs: </p> </td> 
+		<td colspan> <select name = "afsc[]" value = "" class = "autopop chosen-select-large" multiple>
 						<?php
 				$res = $sql->execute("select afsc, txt from coreCodes;");
 				while ($row = pg_fetch_array($res)){
-					echo "<option value = '" . $row[0] . "'> " . $row[0] . ": " . $row[1] . "</option>";  
+					echo "<option value = '" . $row[0] . "'> " . $row[0] . ": " . ucwords(strtolower($row[1])) . "</option>";  
 				}
 				pg_free_result($res); 
 			?>
 			</select
 		 </td> 
 		<td> <p> Grade: </p> </td> 
-		<td colspan = "2"> <select name = "grade[]" value = "" class = "autopop chosen-select-large" multiple data-placeholder="Select Allowable Grades">
+		<td> <select name = "grade[]" value = "" class = "autopop chosen-select-large" multiple data-placeholder="Select Allowable Grades">
 			<option value = "O1"> 2nd Lieutenent </option>
 			<option value = "O2"> 1st Lieutenent </option>
 			<option value = "O3"> Captain </option>
@@ -44,6 +45,10 @@ $(function(){
 	<tr> 
 		<td> <p> Unit: </p> </td> 
 		<td> <input type = "text" name = "unit" value = "" class = "autopop"></td>
+		<td> <p> Report Date: </p></td>
+		<td> <input name="report" id="report" type="text" class = "autopop"> </td>
+		</tr>
+		<tr>
 		<td> <p> Location: </p> </td> 
 		<td> <input type = "text" name = "location" class = "autopop" value = "" style="width:120px;"> </td> 
 		<td> <select name = "state" class = "autopop chosen-select-small">
@@ -127,7 +132,7 @@ $(function(){
 			<?php
 				$res = $sql->execute("select code, degree from allowableDegrees;");
 				while ($row = pg_fetch_array($res)){
-					echo "<option value = '" . $row[0] . "'> " . $row[0]. ": " . $row[1] . "</option>";  
+					echo "<option value = '" . $row[0] . "'> " . $row[0]. ": " . ucwords(strtolower($row[1])) . "</option>";  
 				}
 				pg_free_result($res); 
 			?>
@@ -139,7 +144,7 @@ $(function(){
 			<?php
 				$res = $sql->execute("select code, level from acqLevels;");
 				while ($row = pg_fetch_array($res)){
-					echo "<option value = '" . $row[0] . "'> " . $row[1] . "</option>";  
+					echo "<option value = '" . $row[0] . "'> " . ucwords(strtolower($row[1])) . "</option>";  
 				}
 				pg_free_result($res); 
 			?>
@@ -177,9 +182,17 @@ $(function(){
 		</select>
 	</td>
 </tr>
-<tr> <td colspan="4"><p> <em> Typical Hours </em> </p> </td> </tr>
+<tr>
+	<td> Typical Workweek:</td>
+	<td> <select name="workweek" id = "workweek" class = "autopop chosen-select-large">
+		<option value="m-f"> Monday-Friday </option>
+		<option value="m-sa"> Monday-Saturday</option>
+		<option value="m-su"> Monday-Sunday </option>
+		<option value="irr"> Irregular Workdays</option>
+	</select></td>
+</tr>
 <tr> 
-	<td> Predictable Work Hours </td> <td> 
+	<td> Predictable Work Hours: </td> <td> 
 	<select onChange="toggleHours(this.value)" name="regularHours" id = "regularHours" class = "autopop chosen-select-small">
 		<option value = "yes"> Yes </option>
 		<option value = "no"> No </option>
@@ -189,7 +202,7 @@ $(function(){
 	<td style="align: right;" class = "toggle-hours"> <div style="float: left;"></div>Stop Time: </td> 
 	<td> <div style="float: left;"></div><input type = "text" name = "stop" id = "stop" size = "4" class = "toggle-hours autopop" value = ""> </td>
 </tr>
-	</table>
+</table>
 </fieldset>
 <fieldset>
 <table class="table-display" style="margin-bottom: 1cm;">
