@@ -16,9 +16,12 @@ if ($owner != $_SESSION["uname"]) {
 	die("User " . $_SESSION["uname"] . "vs" . $owner ." not authorized to make changes to billet " . $id . ".");
 }
 
+// Clear saved data
+$sql->execute("delete from billetData where posn = '" . $id . "';");
+
 // Iterate over each POSTed value, and then update the SQL database appropriately. 
 foreach ($_POST as $key => $value) {
-	// echo "Key: " . $key . " Value: " . $value . "<br>";
+//	echo "Key: " . $key . " Value: " . $value . "<br>"; // for debug
 	if ($key == "desc"){
 		$value = $sql->sanitize($value); 
 		$sql->execute("delete from billetDescs where posn = '" . $id . "';");
@@ -26,14 +29,12 @@ foreach ($_POST as $key => $value) {
 	} elseif ($key == "id"){
 		continue; 
 	} elseif (is_array($value)) { 
-		$sql->execute("delete from billetData where posn = '" . $id . "' and tkey = '" . $key . "';");
 		foreach($value as $val){
 			$val = $sql->sanitize($val); 
 			$sql->execute("insert into billetData values ('" . $id . "','" . $key . "','" . $val . "'); ");	
 		}
 	} else { 
 		$value = $sql->sanitize($value); 
-		$sql->execute("delete from billetData where posn = '" . $id . "' and tkey = '" . $key . "';");
 		$sql->execute("insert into billetData values ('" . $id . "','" . $key . "','" . $value . "'); ");		
 	}
 }

@@ -257,6 +257,8 @@ if (!isset($_SESSION["uname"])) {
                         return x.afsc;
                     }
                 }
+            } else {
+                return "Any";
             }
         });
         var afscGroup = afscs.group();
@@ -524,12 +526,13 @@ if (!isset($_SESSION["uname"])) {
         var report = billets.dimension(function(x){
             if ("report" in x){
                 var spl = x.report.split("/");
-                month = spl[0];
-                yr = spl[2];
-                return yr + '-' + monthDisplay[month];
-            } else {
-                return;
-            }
+                if (spl.length == 3){
+                    month = spl[0];
+                    yr = spl[2];
+                    return yr + '-' + monthDisplay[month];
+                }
+            } 
+            return "NA";
         });
         var reportGroup = report.group();
 
@@ -544,9 +547,12 @@ if (!isset($_SESSION["uname"])) {
                                .elasticX(true)
                                .on("filtered", updateTable)
                                .ordering(function(d){
-                                   console.log(d.key);
-                                   spl = d.key.split("-");
-                                   return spl[0] + invertedMonths[spl[1]]; 
+                                   if (key != "NA"){
+                                        spl = d.key.split("-");
+                                        return spl[0] + invertedMonths[spl[1]]; 
+                                   } else {
+                                       return "ZZZZZZZZ"; // so it's at the end
+                                   }
                                })
                                .xAxis().ticks(2);
 
