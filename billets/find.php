@@ -228,7 +228,20 @@ if (!isset($_SESSION["uname"])) {
         // ************* AFSC prefix pie chart ***************
         var afscPrefix = billets.dimension(function(x){
             if ("afsc" in x){
-                return x.afsc.substring(0, 1); 
+                var spl = x.afsc.split(", ");
+                var outPrefixes = [];
+                for (var i in spl){
+                    if (outPrefixes.indexOf(spl[i].substring(0,1)) >= 0){
+                        continue;
+                    } else {
+                        outPrefixes.push(spl[i].substring(0,1));
+                    }
+                }
+                if (outPrefixes.length > 1){
+                    return "(Multiple)";
+                } else {
+                    return outPrefixes[0];
+                } 
             } else {
                 return '1'; // for 16G
             }
@@ -654,7 +667,7 @@ if (!isset($_SESSION["uname"])) {
         
         var mapWidth  = stripPX($("#conusMap").css("width")) - 2 * stripPX($("#conusMap").css("margin"));
         var mapHeight = stripPX($("#conusMap").css("height"))- 2 * stripPX($("#conusMap").css("margin"));
-        var scale = Math.min(mapWidth * 1.5, mapHeight * 2.1);
+        var scale = Math.min(mapWidth * 1.3, mapHeight * 2.1);
         
         var statesGroup = states.group();
         usChart = dc.geoChoroplethChart("#conusMap");
@@ -675,7 +688,7 @@ if (!isset($_SESSION["uname"])) {
                         return "State: " + d.key + "\nBillets Available: " + numberFormat(d.value ? d.value : 0);
                     })
                     .on("filtered", updateTable)
-                    .projection(d3.geo.albersUsa().scale(1000).translate([mapWidth/2, mapHeight/2]));
+                    .projection(d3.geo.albersUsa().scale(scale).translate([mapWidth/2, mapHeight/2]));
 
                     dc.renderAll();
                     
