@@ -605,6 +605,7 @@ if (!isset($_SESSION["uname"])) {
                                .centerBar(true)
                                .x(d3.scale.linear().domain([minStart - 1, maxStart + 1
                                 ]))
+                               .on("filtered", updateTable)
                                .renderHorizontalGridLines(true);
         startTimeChart.xAxis().tickFormat(function(v){
                                 return timeFormat(Math.round(v)) + ":" + timeFormat(v % 1 * 30);
@@ -646,6 +647,7 @@ if (!isset($_SESSION["uname"])) {
                                .centerBar(true)
                                .x(d3.scale.linear().domain([minStop - 1, maxStop + 1
                                 ]))
+                               .on("filtered", updateTable)
                                .renderHorizontalGridLines(true);
         stopTimeChart.xAxis().tickFormat(function(v){
                                 return timeFormat(Math.round(v)) + ":" + timeFormat(v % 1 * 30);
