@@ -11,7 +11,7 @@ $(function(){
 		$(".chosen-select-large").chosen({width: "200px", allow_single_deselect: true});
 		$(".chosen-select-medium").chosen({width: "150px", allow_single_deselect: true});
 		$(".chosen-select-small").chosen({width: "100px", allow_single_deselect: true});
-		$(".chosen-select-dynamic").chosen({width: "100%", allow_single_deselect: true}});
+		$(".chosen-select-dynamic").chosen({width: "100%", allow_single_deselect: true});
 		$(".chosen-disabled").removeClass("chosen-disabled"); 
 		toggleHours($("#regularHours").val());
 		$("#report").datepicker();
