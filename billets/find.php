@@ -560,7 +560,7 @@ if (!isset($_SESSION["uname"])) {
                                .elasticX(true)
                                .on("filtered", updateTable)
                                .ordering(function(d){
-                                   if (key != "NA"){
+                                   if (d.key != "NA"){
                                         spl = d.key.split("-");
                                         return spl[0] + invertedMonths[spl[1]]; 
                                    } else {
