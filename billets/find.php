@@ -313,7 +313,7 @@ if (!isset($_SESSION["uname"])) {
                      .margins({top: 10, right: 50, bottom: 30, left: 40})
                      .elasticX(true)
                      .on("filtered", updateTable)
-                     .xAxis().ticks(1);
+                     .xAxis().ticks(2);
 
         // ************* AAD Level ***************
 
@@ -649,7 +649,7 @@ if (!isset($_SESSION["uname"])) {
                                .renderHorizontalGridLines(true);
         startTimeChart.xAxis().tickFormat(function(v){
                                 return timeFormat(Math.round(v)) + ":" + timeFormat(v % 1 * 30);
-                               }).ticks(3);
+                               }).ticks(4);
 
         // ************* Stop Time Chart ***************
         var stopTime = billets.dimension(function(x){
@@ -691,7 +691,7 @@ if (!isset($_SESSION["uname"])) {
                                .renderHorizontalGridLines(true);
         stopTimeChart.xAxis().tickFormat(function(v){
                                 return timeFormat(Math.round(v)) + ":" + timeFormat(v % 1 * 30);
-                               }).ticks(3);
+                               }).ticks(4);
 
         // ************* Map ***************
         var states = billets.dimension(function(x){
