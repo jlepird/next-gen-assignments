@@ -107,6 +107,23 @@ $(function(){
 			<option value="OCONUS"> Other OCONUS </option>
 		</select></td>
 	</tr>
+	<tr>
+		<td> Tour Length: </td> 
+		<td>
+			<select name="length" id = "length" class = "chosen-select-medium autopop">
+				<option value="1">1 Year </option>
+				<option value="2">2 Years </option>
+				<option value="3">3 Years </option>
+				<option value="4">4 or More Years </option>
+			</select>
+		</td>
+		<td> Joint Billet </td> <td>
+			<select id ="joint" name = "joint" class = "chosen-select-small autopop">
+				<option value="no">No </option>
+				<option value="yes"> Yes</option>
+			</select>
+		</td>
+	</tr>
 	<?php
 		if (strpos($_SERVER['REQUEST_URI'], "manage.php") !== false){
 			include "./contactInput.php"; 

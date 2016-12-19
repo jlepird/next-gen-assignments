@@ -372,7 +372,26 @@ if (!isset($_SESSION["uname"])) {
                      .elasticX(true)
                      .on("filtered", updateTable)
                      .xAxis().ticks(2);
-                     
+        
+                // ************* Joint Qualification  ***************
+        var joint = billets.dimension(function(x){
+            if ("joint" in x){
+                return x.joint == "yes" ? "Yes" : "No"
+            } else {
+                return "No";
+            }
+            
+        });
+        var jointGroup = joint.group();
+        jointChart = dc.pieChart("#joint");
+        jointChart.width(180)
+                  .height(180)
+                  .radius(80)
+                  .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
+                  .dimension(joint)
+                  .group(jointGroup)
+                  .on("filtered", updateTable);
+        
         // ************* Security Levels  ***************
         var secLevelsDecoder = {"s" : "Secret", "ts": "Top Secret or Higher"}; 
         var secLevels = billets.dimension(function(x){
@@ -454,6 +473,27 @@ if (!isset($_SESSION["uname"])) {
                      .dimension(deployable)
                      .group(deployableGroup)
                      .on("filtered", updateTable);
+
+        // ************* Assignment Length  ***************
+        var length = billets.dimension(function(x){
+            if ("length" in x){
+                return x.length + " Years";  
+            } else {
+                return "3 Years";
+            }
+            
+        });
+        var lengthGroup = length.group();
+        lengthChart = dc.rowChart("#lengthChart");
+        lengthChart.width(barWidth)
+                     .height(180)
+                     .dimension(length)
+                     .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
+                     .group(lengthGroup)
+                     .margins({top: 10, right: 50, bottom: 30, left: 40})
+                     .elasticX(true)
+                     .on("filtered", updateTable)
+                     .xAxis().ticks(2);
 
         // ************* Predictable pie chart ***************
         var predictable = billets.dimension(function(x){
@@ -786,6 +826,14 @@ if (!isset($_SESSION["uname"])) {
                   style="display: none;">reset</a>
             <div class = "clearfix"></div>
         </div>
+        
+        <div id = "joint">
+            <strong> Joint Qualified </strong>
+            <a class="reset"
+                  href='javascript:jointChart.filterAll();dc.redrawAll();'
+                  style="display: none;">reset</a>
+            <div class = "clearfix"></div>
+        </div>
 
         </div>
         <div class = "row">
@@ -820,6 +868,14 @@ if (!isset($_SESSION["uname"])) {
             <strong> Deployable? </strong>
             <a class="reset"
                   href='javascript:deployablePieChart.filterAll();dc.redrawAll();'
+                  style="display: none;">reset</a>
+            <div class = "clearfix"></div>
+        </div>
+        
+        <div id = "lengthChart" class = "dc-chart">
+            <strong> Assignment Length </strong>
+            <a class="reset"
+                  href='javascript:lengthChart.filterAll();dc.redrawAll();'
                   style="display: none;">reset</a>
             <div class = "clearfix"></div>
         </div>
