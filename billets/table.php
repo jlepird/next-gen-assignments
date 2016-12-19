@@ -113,7 +113,7 @@ $(function(){
 			<select name="length" id = "length" class = "chosen-select-medium autopop">
 				<option value="1">1 Year </option>
 				<option value="2">2 Years </option>
-				<option value="3">3 Years </option>
+				<option value="3" selected>3 Years </option>
 				<option value="4">4 or More Years </option>
 			</select>
 		</td>
