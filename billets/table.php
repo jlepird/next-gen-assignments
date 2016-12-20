@@ -225,6 +225,6 @@ $(function(){
 <fieldset>
 <table class="table-display" style="margin-bottom: 1cm;">
 	<tr> <td> <h5> <i> Job Description </i> </h5> </td> </tr>
-	<tr> <td> <textarea id = "desc" name = "desc" cols = "100" rows = "10"> </textarea> </td> </tr>
+	<tr> <td> <textarea id = "desc" name = "desc" cols = "100" rows = "10" spellcheck="true"> </textarea> </td> </tr>
 </table>
 </fieldset>
