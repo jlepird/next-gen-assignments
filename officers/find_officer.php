@@ -25,8 +25,34 @@ if (!isset($_SESSION["uname"])) {
 
 You will need to create an account if you do not already have one.<br>
 
+<H2>Search for officers.</H2>
 
-<h4><i>Tutorial on how to search for officers on MyVector is forthcoming once the capability is implemented in MyVector.</i</h4>
+You should see the following screen after logging in. Then click your name on the top right and select "QUERIES." <br><br>
+
+<img src="queries2.JPG" alt="Click queries to see officers profiles">
+
+<br><br>
+
+Click on "ICM Code Search" on the left, and select "Air Force Talent Marketplace" under "ICM Code" to see officers available.
+
+<br><br>
+
+<img src="ICM_code.JPG" alt="Select Air Force Talent Marketplace under ICM Code"><br><br>
+
+<br><br>
+
+The table will then populate with a list of available officers.  You can filter the list by clicking on the filter icon at the top of each 
+
+column.  Click on the icon on left to see more detailed information about that specific officer.
+
+<br><br><img src="search_table.JPG" alt="See My Experience">
+
+<p>If you click on the details icon, you will see the following screen.  Here you can click on the menu on the left to see the following 
+
+information:
+
+<br><br><img src="details.JPG" alt="See My Experience">
+
     </div>
 
 
