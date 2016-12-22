@@ -25,7 +25,7 @@ if (!isset($_SESSION["uname"])) {
 
 You will need to create an account if you do not already have one.<br>
 
-<H2>Search for officers.</H2>
+<H3>Search for officers.</H3>
 
 You should see the following screen after logging in. Then click your name on the top right and select "QUERIES." <br><br>
 
