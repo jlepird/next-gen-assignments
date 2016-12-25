@@ -49,7 +49,7 @@ if (! $authorized){
 	    $(function(){
 	    	// Add options
 	    	$(".chosen-select").each(function(i, x){
-	    		$(x).append($("<option>", {value: "", text: "No Preference"}));
+	    		$(x).append($("<option>", {value: "", text: "Empty Billet"}));
 	    		$(airmen).each(function(i, amn){
 	    			$(x).append($("<option>", {value: amn.name, text: amn.name}));
 	    		})
@@ -118,7 +118,11 @@ if (! $authorized){
     <div class="col-md-5">
     <br> <br> <br>
     <h3> My Preference List </h3>
-    <p> <?php echo $_SESSION['uname'] ?>, enter your preferences below for billet <b> <?php echo $_GET["billet"]; ?>: </p>
+    <p> <?php echo $_SESSION['uname'] ?>, enter your preferences below for billet <b> <?php echo $_GET["billet"]; ?></b>: </p>
+
+    <div style="background-color: #42f483">
+    <p> This billet has been ranked by <?php echo str_replace('"', "", $sql->queryValue("select count(*) from airmanPrefs where posn='" . $_GET["billet"] . "';")); ?> Airmen (<?php echo str_replace('"', "", $sql->queryValue("select count(distinct username) from airmanPrefs;"));?>/<?php echo str_replace('"', "", $sql->queryValue("select count(distinct username) from names;"));?> Airmen have submitted preferences). </p>
+    </div>
 
     <datalist id = "airmen"> </datalist> <!-- Javascript will fill in -->
 
