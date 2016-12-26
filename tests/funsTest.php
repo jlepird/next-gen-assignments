@@ -1,6 +1,7 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+//use PHPUnit\Framework\TestCase;
+require __DIR__ .'/../vendor/autoload.php';
 
 class SQLTest extends TestCase
 {
