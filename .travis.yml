@@ -8,3 +8,6 @@ before_script:
 - cd bin && ./setupSQL.sh
 - cd ..
 script: phpunit --bootstrap include/funs.php tests/funsTest.php
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
