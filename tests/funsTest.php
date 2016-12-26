@@ -12,6 +12,9 @@ class SQLTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals($sql->queryValue("select 1 + 1;") , "\"2\"");
 		$this->assertEquals($sql->queryJSON("select 1 + 1 as bar;"), "[{\"bar\":\"2\"}]" );
 		$this->assertEquals($sql->sanitize("'"), "''" );
+		$this->assertEquals($sql->queryValue("select 1 where 1=0;"),json_encode("ERROR-- no rows returned"));
+
+		$this->assertEquals($sql->queryJSON("select 1 where 1=0;"), "[]");
 	}
 }
 

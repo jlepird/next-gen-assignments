@@ -43,7 +43,7 @@ class SQL {
 		if (strpos(getenv("DATABASE_URL"), "postgres://") !== false){
 			$connection_string = getenv("DATABASE_URL"); 
 		} else {
-			$connection_string = "dbname=" . getenv("DATABASE_URL"); 
+			$connection_string = "host=localhost dbname=" . getenv("DATABASE_URL"); 
 		}
 
 		$this->_conn = pg_connect($connection_string)
