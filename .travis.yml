@@ -1,17 +1,26 @@
 language: php
 php: '7.0'
 services:
-    - postgresql
+- postgresql
 before_script:
-    - psql -c 'create database travis_ci_test;' -U postgres
-    - export DATABASE_URL="travis_ci_test"
-    - cd bin && ./setupSQL.sh
-    - cd ..
-    - travis_retry composer self-update
-    - travis_retry composer install --no-interaction --prefer-source --dev
-
+- psql -c 'create database travis_ci_test;' -U postgres
+- export DATABASE_URL="travis_ci_test"
+- cd bin && ./setupSQL.sh
+- cd ..
+- travis_retry composer self-update
+- travis_retry composer install --no-interaction --prefer-source --dev
 script:
-    - vendor/bin/phpunit --coverage-clover=coverage.xml
-
+- vendor/bin/phpunit --coverage-clover=coverage.xml
 after_success:
-    - bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash)
+deploy:
+  edge: true
+  provider: cloudfoundry
+  api: https://api.fr.cloud.gov
+  username: cd904f94-d9e7-44b1-ad4c-b9f5fca453fb
+  password:
+    secure: O3g1BKPnUoW+8PSWo9AdPdhfYZUr/6c7cwD4tLqjn5RqiUnZRj+eFsyu5dsrTW0l6NU8AMwiscI27FiEvLs69kiW6h8DRN7V5hnI1xJNNCwnf9/s2n5xuPvne4ZJRpmLsHmR6nXx4pfTFexFLOlbqfsm+FE7dsAyTsPGhKMe5kePE5/zinm6gxLrprh8v5YzRd7fILVyZOfxETvb4DjmpnFpVtiVZfERdN6ExUm5zgwd55Xz8U+JN8sEgqK1UwKjc15/51lrIlzgW1gykzHkdsg6DeaJHvR85+QVL7RlmYseqBweWikalDo2alpbZ7i1tEcxDCgtCHemmvzSZXFkzrxPtnqcurAPN1m7gJmCdM7o8qMXUfX0Qyg+KxAmYKrCKJjyigqVWadaDzRqXvd+pLUY8230vftNwHnzDHRNdhn4AHZJqKjFUL3zkZJn02N7B7sjYQX9BdiIVJvRbhrthWJ+z/8r14dIm4J8evNbvrqKz3rH2+lHs5PVLm1AZl8CKIOMlreSuPfZH9ER2hdLt5c0YqwZ++v9Ac24Qs25oY7phcaultITUf3HxpnJVQLx06uWD/BREoLnOihIB3YgK9n0yFBvrp4KOf74gga/8kNHZWu8F9P7yVaWy6cPWsjVs3F+LVySwl0A1IYHKNjkAJV1i3cmnA4t7YuDJ3h4MFY=
+  organization: sandbox-mail
+  space: john.r.lepird.mil
+  on:
+    repo: jlepird/next-gen-assignments
