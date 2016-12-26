@@ -1,13 +1,17 @@
 language: php
 php: '7.0'
 services:
-- postgresql
+    - postgresql
 before_script:
-- psql -c 'create database travis_ci_test;' -U postgres
-- export DATABASE_URL="travis_ci_test"
-- cd bin && ./setupSQL.sh
-- cd ..
-script: phpunit --bootstrap include/funs.php tests/funsTest.php
+    - psql -c 'create database travis_ci_test;' -U postgres
+    - export DATABASE_URL="travis_ci_test"
+    - cd bin && ./setupSQL.sh
+    - cd ..
+    - travis_retry composer self-update
+    - travis_retry composer install --no-interaction --prefer-source --dev
+
+script:
+    - vendor/bin/phpunit --coverage-clover=coverage.xml
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+    - bash <(curl -s https://codecov.io/bash)
