@@ -3,7 +3,9 @@
 //use PHPUnit\Framework\TestCase;
 require __DIR__ .'/../vendor/autoload.php';
 
-class SQLTest extends TestCase
+include __DIR__ . '/../include/funs.php';
+
+class SQLTest extends PHPUnit_Framework_TestCase
 {
 	public function testDB(){
 		$sql = new SQL();
