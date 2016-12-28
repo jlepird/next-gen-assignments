@@ -7,7 +7,12 @@ if (!isset($_SESSION["uname"])) {
 <!DOCTYPE html> 
 <html>
     <head> 
-    <?php include '../include/head_common.php'; ?>
+    <?php 
+    include '../include/head_common.php'; 
+    if (extension_loaded('newrelic')) {
+        newrelic_add_custom_parameter("view_" . $_GET["billet"], 1);
+    }
+    ?>
     </head>
     <script type = "text/javascript"> 
     var data = <?php
