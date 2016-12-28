@@ -9,6 +9,10 @@ if ($_SESSION['isAirman'] != 1 ){
 
 include '../include/head_common.php';
 
+if (extension_loaded('newrelic')) {
+  newrelic_add_custom_parameter($_POST["billet"], 1);
+}
+
 if ($_POST["case"] == "true"){
 	$sql->execute("insert into favorites values ('" . $_SESSION["uname"] . "', '" . $_POST["billet"] . "');");
 } else {
