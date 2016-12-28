@@ -15,6 +15,9 @@ if (extension_loaded('newrelic')) {
 
 if ($_POST["case"] == "true"){
 	$sql->execute("insert into favorites values ('" . $_SESSION["uname"] . "', '" . $_POST["billet"] . "');");
+	if (extension_loaded('newrelic')) {
+		newrelic_add_custom_parameter($_POST["billet"], 1);
+	}
 } else {
 	$sql->execute("delete from favorites where username = '" . $_SESSION["uname"] . "' and posn = '" . $_POST["billet"] . "';");
 }
