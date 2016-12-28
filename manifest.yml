@@ -8,4 +8,4 @@ applications:
   instances: 1
   path: .
   env:
-    NEWRELIC_LICENSE: 0989fcc8e88cbf15091edc7673b3733e9edb57a0
+    NEW_RELIC_LICENSE_KEY: 0989fcc8e88cbf15091edc7673b3733e9edb57a0
