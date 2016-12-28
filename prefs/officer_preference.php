@@ -79,7 +79,7 @@ if ($_SESSION['isAirman'] != 't' ){
 	    $(function(){
 	    	// Define available otpions 
 	    	var options = "";
-    		options += "<option value=''>No Preference</option>";
+    		options += "<option value=''>Needs of the Air Force</option>";
     		options += "<optgroup label='Favorites'>";
 
     		// build out the options string
@@ -164,7 +164,11 @@ if ($_SESSION['isAirman'] != 't' ){
     <div class="col-md-6">
     <br> <br> <br>
     <h3> My Preference List </h3>
-    <p> <?php echo $_SESSION['uname'] ?>, enter your preferences below: </p>
+    <p> <?php echo $_SESSION['uname'] ?>, enter your preferences below.</p>
+
+    <div style="background-color: #42f483">
+    <p> You have been ranked by <?php echo str_replace('"', "", $sql->queryValue("select count(*) from billetPrefs left outer join names on billetPrefs.name = names.name where username='" . $_SESSION['uname'] . "';")); ?> billets (<?php echo str_replace('"', "", $sql->queryValue("select count(distinct posn) from billetPrefs;"));?>/<?php echo str_replace('"', "", $sql->queryValue("select count(distinct posn) from billetOwners;"));?> billets have submitted preferences). </p>
+    </div>
 
     <datalist id = "billets"> </datalist> <!-- Javascript will fill in -->
 
