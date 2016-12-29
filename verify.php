@@ -8,7 +8,7 @@ $email = $sql->queryValue("select email from users where username = '" . $uname 
 	                     "' and password = '" . $password . "';"
 );
 
-if ($email == "ERROR-- no rows returned") { 
+if ($email == json_encode("ERROR-- no rows returned")) { 
 	$_SESSION["incorrect"] = true;
 	header("Location: login.php");
 } else { 
