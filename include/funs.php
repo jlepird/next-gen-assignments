@@ -46,8 +46,10 @@ class SQL {
 			$connection_string = "host=localhost dbname=" . getenv("DATABASE_URL"); 
 		}
 
-		$this->_conn = pg_connect($connection_string)
-		or die("SQL Connection error " . pg_last_error());
+		if (!($this->_conn = pg_connect($connection_string))) {
+			throw new Exception("SQL Connection error " . pg_last_error());
+		}
+
 
 	}
 
@@ -60,13 +62,13 @@ class SQL {
 		$res = $this->execute($cmd);
 		$num_rows = pg_num_rows($res);
 		if ($num_rows > 1) {
-			die("Query" . $cmd . "returned multiple rows"); 
+			throw new Exception("Query " . $cmd . " returned multiple rows"); 
 		} elseif ($num_rows < 1){
-			return json_encode("ERROR-- no rows returned");
+			throw new Exception("Query " . $cmd . " returned no rows");
 		}
 		$row = pg_fetch_row($res);
 		if (count($row) > 1){
-			die("More than one column specified in query " . $cmd);
+			throw new Exception("More than one column specified in query " . $cmd);
 		}
 		pg_free_result($res);
 		return json_encode($row[0]);
@@ -98,4 +100,6 @@ class SQL {
 $sql = new SQL();
 
 // Should execute cleanly 
-$sql->execute("select 1 + 1;") or die("DB Connection Error.");
+if (!($sql->execute("select 1 + 1;"))){
+	throw new Exception("DB Connection Error.");
+}
