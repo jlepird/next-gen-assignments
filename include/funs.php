@@ -30,6 +30,9 @@ class SQL {
 	private $_conn = "";
 	private $_sqluser = "";
 
+	/**
+	* @codeCoverageIgnore
+	*/
 	function __construct(){
 		// Start: global config 
 		// if running locally, we get a username, else it's a null string. 
