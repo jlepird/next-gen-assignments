@@ -5,9 +5,7 @@ This file contains functions that are useful across the webiste.
 Convention: any variable or function prefixed with "_" is intended to be
 a "local" function or variable that shouldn't need to be used outside of this file. 
 
-Additionally, note the unit tests at the bottom. These don't do anything other than fail if somehow the functions above are broken. Set $runTests = False for release, True for development.  
 */
-$runTests = True;
 
 /*********************************************************
 SQL Functions 
@@ -18,7 +16,7 @@ SQL Functions
 $sql->queryValue("select val from tbl where name = 'Jack';")
 
 // Returns a JSON of the table returned. 
-$sql->queryValue("select * from tbl;"); 
+$sql->queryJSON("select * from tbl;"); 
 
 // Runs the query, and returns a "results" reference. Used internally, but 
 // could be useful elsewhere in niche cases. 
