@@ -5,9 +5,7 @@ This file contains functions that are useful across the webiste.
 Convention: any variable or function prefixed with "_" is intended to be
 a "local" function or variable that shouldn't need to be used outside of this file. 
 
-Additionally, note the unit tests at the bottom. These don't do anything other than fail if somehow the functions above are broken. Set $runTests = False for release, True for development.  
 */
-$runTests = True;
 
 /*********************************************************
 SQL Functions 
@@ -18,7 +16,7 @@ SQL Functions
 $sql->queryValue("select val from tbl where name = 'Jack';")
 
 // Returns a JSON of the table returned. 
-$sql->queryValue("select * from tbl;"); 
+$sql->queryJSON("select * from tbl;"); 
 
 // Runs the query, and returns a "results" reference. Used internally, but 
 // could be useful elsewhere in niche cases. 
@@ -30,6 +28,9 @@ class SQL {
 	private $_conn = "";
 	private $_sqluser = "";
 
+	/**
+	* @codeCoverageIgnore
+	*/
 	function __construct(){
 		// Start: global config 
 		// if running locally, we get a username, else it's a null string. 
@@ -46,8 +47,10 @@ class SQL {
 			$connection_string = "host=localhost dbname=" . getenv("DATABASE_URL"); 
 		}
 
-		$this->_conn = pg_connect($connection_string)
-		or die("SQL Connection error " . pg_last_error());
+		if (!($this->_conn = pg_connect($connection_string))) {
+			throw new Exception("SQL Connection error " . pg_last_error());
+		}
+
 
 	}
 
@@ -60,13 +63,13 @@ class SQL {
 		$res = $this->execute($cmd);
 		$num_rows = pg_num_rows($res);
 		if ($num_rows > 1) {
-			die("Query" . $cmd . "returned multiple rows"); 
+			throw new Exception("Query " . $cmd . " returned multiple rows"); 
 		} elseif ($num_rows < 1){
-			return json_encode("ERROR-- no rows returned");
+			throw new Exception("Query " . $cmd . " returned no rows");
 		}
 		$row = pg_fetch_row($res);
 		if (count($row) > 1){
-			die("More than one column specified in query " . $cmd);
+			throw new Exception("More than one column specified in query " . $cmd);
 		}
 		pg_free_result($res);
 		return json_encode($row[0]);
@@ -98,4 +101,6 @@ class SQL {
 $sql = new SQL();
 
 // Should execute cleanly 
-$sql->execute("select 1 + 1;") or die("DB Connection Error.");
+if (!($sql->execute("select 1 + 1;"))){
+	throw new Exception("DB Connection Error.");
+}

@@ -3,3 +3,4 @@
 /bin/psql/
 /data/*.csv*
 *.pg
+clover.xml
