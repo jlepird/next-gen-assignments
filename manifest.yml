@@ -1,11 +1,11 @@
 ---
 applications:
 - name: af-talent-marketplace
-  memory: 256M
+  memory: 512M
   buildpack: git://github.com/heroku/heroku-buildpack-php.git
   services:
       - af-assignments-db
-  instances: 1
+  instances: 4
   path: .
   env:
     NEW_RELIC_LICENSE_KEY: 0989fcc8e88cbf15091edc7673b3733e9edb57a0

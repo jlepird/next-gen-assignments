@@ -64,7 +64,13 @@ if (!isset($_SESSION["uname"])) {
             toUpdate[i].disabled = "disabled"; 
         }
 
-        var desc = <?php echo $sql->queryValue("select txt from billetDescs where posn = '" . $billet . "';"); ?>;
+        var desc = <?php 
+        try{
+            echo $sql->queryValue("select txt from billetDescs where posn = '" . $billet . "';"); 
+        } catch (Exception $e){
+            echo '"ERROR--"';
+        }
+        ?>;
 
         if (desc.indexOf("ERROR--") > -1 || desc.length == 0){
             desc = "No description provided...";

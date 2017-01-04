@@ -4,14 +4,14 @@ include_once("./include/funs.php");
 $uname    = $sql->sanitize($_POST['uname']);
 $password = md5($_POST['password']);
 
+try {
 $email = $sql->queryValue("select email from users where username = '" . $uname . 
 	                     "' and password = '" . $password . "';"
 );
-
-if ($email == json_encode("ERROR-- no rows returned")) { 
+} catch (Exception $e){ // login error
 	$_SESSION["incorrect"] = true;
 	header("Location: login.php");
-} else { 
+}
 
 	// Populate session variables and redirect user to main page
 	$_SESSION['uname'] = $uname; 
@@ -22,6 +22,6 @@ if ($email == json_encode("ERROR-- no rows returned")) {
 	$sql->execute("insert into userActivity values ('" . $uname . "', now()); ");
 
 	header("Location: index.php");
-}
+
 
 ?>

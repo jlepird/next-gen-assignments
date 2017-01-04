@@ -10,11 +10,13 @@ if ($_SESSION['isOwner'] != 't' ){
 include '../include/head_common.php';
 
 // Need to validate that this user owns this billet 
-$res = $sql->queryValue("select 1 from billetOwners where username = '" . $_SESSION["uname"] . "' and posn = '" . $_GET["billet"] . "';"); 
-if ($res == "ERROR-- no rows returned"){
+try {
+	$res = $sql->queryValue("select 1 from billetOwners where username = '" . $_SESSION["uname"] . "' and posn = '" . $_GET["billet"] . "';"); 
+} catch (Exception $e){
 	die("Access forbidden"); 
 }
 
+}
 $sql->execute("delete from billetPrefs where posn = '" . $_GET["billet"] . "';"); 
 for ($i = 1; $i <= 10; $i++){
 	$airman = $sql->sanitize($_POST["airman" . $i]);
