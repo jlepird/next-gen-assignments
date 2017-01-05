@@ -45,6 +45,17 @@ if (! $authorized){
 
 	    var initialPrefs = <?php echo $sql->queryJSON("select name, pref from billetPrefs where posn = '" . $_GET["billet"] . "';"); ?>; 
 
+	   	// Get how many people have priorized each billet
+	    var amnPriors = <?php echo $sql->queryJSON("select name, count(*) as val from billetprefs where posn != '" . $_GET["billet"] . "' group by name;"); ?>;
+	    var maxPref = d3.max(amnPriors, function(x){
+	    	return +x.val;
+	    })
+
+	    // Define the color scale we'll use to code the prior preferences
+	    var scale = d3.scale.linear()
+	                        .domain([0, maxPref])
+	                        .range(["#42f483", "#d66464"]);
+
 	    // After page load, populate datalist with options
 	    $(function(){
 	    	// Add options
@@ -60,6 +71,8 @@ if (! $authorized){
 		    });
 			
 			$(".chosen-select").chosen({width: "200"});
+
+			showOthers();
 			
 		  });
 
@@ -106,9 +119,31 @@ if (! $authorized){
 				//$("#submit")[0].style.background = "#7a7d82"; 
 			} else {
 				$("#submit")[0].disabled = ""; 
-				//$("#submit")[0].style.background = "#286090"; 
+				//$("#submit")[0].style.background = "#286090";
+				showOthers();
 			}
 
+	    }
+
+	    var showOthers = function(){
+	    	for(var i = 1; i <= numPrefs; ++i){
+	    		var val = $("#airman" + i).val();
+	    		if (val != ""){
+	    			var subset = amnPriors.filter(function(x){
+	    				return x.name == val;
+	    			}); 
+
+	    			var count = 0; 
+	    			if (subset.length > 0){
+	    				count = subset[0].val; 
+	    			}
+
+	    			$("#row" + i)[0].innerHTML = "<div class=update-prefs id=count" + i + "> &larr; Already ranked by " + count + " other(s). </div>";
+	    			$("#count" + i).css("background-color", scale(count));
+	    		} else {
+	    			$("#count" + i).remove();
+	    		}
+	    	}
 	    }
 
     </script>

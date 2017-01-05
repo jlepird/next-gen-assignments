@@ -83,9 +83,10 @@ input[type="text"]:disabled , textarea {
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-/*
-.dc-chart .pie text {
-    fill: white;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+.update-prefs {
+  padding-bottom: 0px;
+  padding-right: 5px;
+  padding-top: 1px;
+  padding-left: 5px;
+  text-align: center;
 }
-*/
