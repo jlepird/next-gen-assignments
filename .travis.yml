@@ -24,3 +24,4 @@ deploy:
   space: john.r.lepird.mil
   on:
     repo: jlepird/next-gen-assignments
+    all_branches: true
