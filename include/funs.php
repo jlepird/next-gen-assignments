@@ -41,11 +41,11 @@ class SQL {
 		}
 
 		// Connect to our sql server
-		if (strpos(getenv("DATABASE_URL"), "postgres://") !== false){
+		if (strpos(getenv("DATABASE_URL"), "postgres://") !== false){ // on the cloud
 			$connection_string = getenv("DATABASE_URL"); 
-		} elseif ($this->_sqluser == "ubuntu"){ // assume it's Cloud9
-			$connection_string = "dbname=" . getenv("DATABASE_URL"); 
-		} else {
+		} elseif (strpos(php_uname(), "Linux") !== false){ // linux, but not cloud
+			$connection_string = "dbname=" . getenv("DATABASE_URL");  
+		} else { // OSX
 			$connection_string = "host=localhost dbname=" . getenv("DATABASE_URL"); 
 		}
 

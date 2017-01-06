@@ -52,6 +52,17 @@ if ($_SESSION['isAirman'] != 't' ){
 	    	delete x.val;
 	    });
 
+	    // Get how many people have priorized each billet
+	    var billetPriors = <?php echo $sql->queryJSON("select posn, count(*) as val from airmanprefs where username != '" . $_SESSION["uname"] . "' group by posn;"); ?>;
+	    var maxPref = d3.max(billetPriors, function(x){
+	    	return +x.val;
+	    })
+
+	    // Define the color scale we'll use to code the prior preferences
+	    var scale = d3.scale.linear()
+	                        .domain([0, maxPref])
+	                        .range(["#42f483", "#d66464"]);
+
 	    // Get list of billets the user has favorited
 	    var billetFavs = <?php echo $sql->queryJSON("select posn from favorites where username = '". $_SESSION["uname"] . "';"); ?>;
 
@@ -105,6 +116,7 @@ if ($_SESSION['isAirman'] != 't' ){
 		    
 		    $(".chosen-select").chosen({width: "400px"});
 
+		    showOthers();
 		  });
 
 	    // Hard-coded value for number of preferences available
@@ -136,8 +148,13 @@ if ($_SESSION['isAirman'] != 't' ){
 	    				$("#row" + i)[0].innerHTML = "&larr; Unknown Billet Number " + val;
 	    				break;
 	    			}
-	    			// Make sure it's not a duplicate of a one before it. 
+
+	    			// Reset row text
 	    			$("#row" + i)[0].innerHTML = "";
+	    			$("#count" + i).remove(); // ensure count is removed
+
+	    			// Make sure it's not a duplicate of a one before it. 
+	    			
 	    			for (var j = 1; j < i; ++j){
 		    			if (val == $("#billets" + j)[0].value) {
 		    				$("#row" + i)[0].innerHTML = "&larr; Repeat of #" + j;
@@ -152,9 +169,31 @@ if ($_SESSION['isAirman'] != 't' ){
 				//$("#submit")[0].style.background = "#7a7d82"; 
 			} else {
 				$("#submit")[0].disabled = ""; 
-				//$("#submit")[0].style.background = "#286090"; 
+				//$("#submit")[0].style.background = "#286090";
+				showOthers();
 			}
 
+	    }
+
+	    var showOthers = function(){
+	    	for(var i = 1; i <= numPrefs; ++i){
+	    		var val = $("#billets" + i).val();
+	    		if (val != ""){
+	    			var subset = billetPriors.filter(function(x){
+	    				return x.posn == val;
+	    			}); 
+
+	    			var count = 0; 
+	    			if (subset.length > 0){
+	    				count = subset[0].val; 
+	    			}
+
+	    			$("#row" + i)[0].innerHTML = "<div class=update-prefs id=count" + i + "> &larr; Already ranked by " + count + " other(s). </div>";
+	    			$("#count" + i).css("background-color", scale(count));
+	    		} else {
+	    			$("#count" + i).remove();
+	    		}
+	    	}
 	    }
 
     </script>
@@ -178,23 +217,23 @@ if ($_SESSION['isAirman'] != 't' ){
     			<tr> <td> Preference #1: </td> <td> 
     	<select class = "chosen-select" id = "billets1" name = "billets1" onchange = "verify(this);"> </td> <td id = "row1"> </td></tr>
     			<tr> <td> Preference #2: </td> <td> 
-    	<select class = "chosen-select" id = "billets2" name = "billets2" onchange = "verify(this);"> </td> <td id = "row2"> </td</tr>
+    	<select class = "chosen-select" id = "billets2" name = "billets2" onchange = "verify(this);"> </td> <td id = "row2"> </td></tr>
     	    	<tr> <td> Preference #3: </td> <td> 
-    	<select class = "chosen-select" id = "billets3" name = "billets3" onchange = "verify(this);"> </td> <td id = "row3"> </td</tr>
+    	<select class = "chosen-select" id = "billets3" name = "billets3" onchange = "verify(this);"> </td> <td id = "row3"> </td></tr>
     	    	<tr> <td> Preference #4: </td> <td> 
-    	<select class = "chosen-select" id = "billets4" name = "billets4" onchange = "verify(this);"> </td> <td id = "row4"> </td</tr>
+    	<select class = "chosen-select" id = "billets4" name = "billets4" onchange = "verify(this);"> </td> <td id = "row4"> </td></tr>
     	    	<tr> <td> Preference #5: </td> <td> 
-    	<select class = "chosen-select" id = "billets5" name = "billets5" onchange = "verify(this);"> </td> <td id = "row5"> </td</tr>
+    	<select class = "chosen-select" id = "billets5" name = "billets5" onchange = "verify(this);"> </td> <td id = "row5"> </td></tr>
     	    	<tr> <td> Preference #6: </td> <td> 
-    	<select class = "chosen-select" id = "billets6" name = "billets6" onchange = "verify(this);"> </td> <td id = "row6"> </td</tr>
+    	<select class = "chosen-select" id = "billets6" name = "billets6" onchange = "verify(this);"> </td> <td id = "row6"> </td></tr>
     	    	<tr> <td> Preference #7: </td> <td> 
-    	<select class = "chosen-select" id = "billets7" name = "billets7" onchange = "verify(this);"> </td> <td id = "row7"> </td</tr>
+    	<select class = "chosen-select" id = "billets7" name = "billets7" onchange = "verify(this);"> </td> <td id = "row7"> </td></tr>
     	    	<tr> <td> Preference #8: </td> <td> 
-    	<select class = "chosen-select" id = "billets8" name = "billets8" onchange = "verify(this);"> </td> <td id = "row8"> </td</tr>
+    	<select class = "chosen-select" id = "billets8" name = "billets8" onchange = "verify(this);"> </td> <td id = "row8"> </td></tr>
     	    	<tr> <td> Preference #9: </td> <td> 
-    	<select class = "chosen-select" id = "billets9" name = "billets9" onchange = "verify(this);"> </td> <td id = "row9"> </td</tr>
+    	<select class = "chosen-select" id = "billets9" name = "billets9" onchange = "verify(this);"> </td> <td id = "row9"> </td></tr>
     	    	<tr> <td> Preference #10: </td> <td> 
-    	<select class = "chosen-select" id = "billets10" name = "billets10" onchange = "verify(this);"> </td> <td id = "row10"> </td</tr>
+    	<select class = "chosen-select" id = "billets10" name = "billets10" onchange = "verify(this);"> </td> <td id = "row10"> </td> </tr>
 
     	</table>
     </fieldset>

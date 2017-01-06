@@ -16,7 +16,6 @@ try {
 	die("Access forbidden"); 
 }
 
-}
 $sql->execute("delete from billetPrefs where posn = '" . $_GET["billet"] . "';"); 
 for ($i = 1; $i <= 10; $i++){
 	$airman = $sql->sanitize($_POST["airman" . $i]);
