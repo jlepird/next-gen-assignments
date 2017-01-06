@@ -7,6 +7,15 @@ function toggleHours(value){
 	}
 }
 
+function helpNRPP(){
+	swal({
+	title: "Prioritization Levels",
+	text: "<div style=\"text-align: left;\">Not all billets have the same likelihood of being filled. Air Staff prioritizes billets into three tiers: <ul> <li> \"Must Fill\" (100% filled) </li> <li> \"Priority\" (XX%) </li> <li> \"Entitlement\" (Dynmaic, but currently at XX%) </li> </ul> </div>",
+	imageUrl: "../images/help.jpg",
+	html: true
+});
+}
+
 $(function(){
 		$(".chosen-select-large").chosen(  {width: "200px", allow_single_deselect: true});
 		$(".chosen-select-medium").chosen( {width: "150px", allow_single_deselect: true});
@@ -123,6 +132,14 @@ $(function(){
 				<option value="yes"> Yes</option>
 			</select>
 		</td>
+	</tr>
+	<tr>
+		<td colspan = 1> Prioritization Level <img src="../images/help.jpg"  style="width:20px;height:20px; cursor: pointer;" onclick="helpNRPP();"> </td>
+		<td colspan = 1> <select id="nrpp" class = "autopop chosen-select-large" disabled=disabled>
+			<option value="ent">Entitlement </option>
+			<option value="ent+"> Priority </option>
+			<option value="mf"> Must-Fill </option>
+		</select>
 	</tr>
 	<?php
 		if (strpos($_SERVER['REQUEST_URI'], "manage.php") !== false){

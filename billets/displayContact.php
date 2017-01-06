@@ -3,7 +3,7 @@
 	if ($allowed == '"yes"'){
 		echo "<td> <p> Last Occupied By:</p> </td> ";
 		$email = str_replace('"', '', $sql->queryValue("select val from billetData where posn = '" . $_GET["billet"] . "' and tkey='lastOccupantEmail';"));
-		echo "<td>"; 
+		echo "<td colspan=2>"; 
 		if (strpos($email, "@") !== false) {
 			echo "<a href=mailto:" . $email . ">";
 		}
@@ -15,7 +15,7 @@
 		echo "<td> <p> Point of Contact:</p> </td> "; 
 
 		$email = str_replace('"', '', $sql->queryValue("select val from billetData where posn = '" . $_GET["billet"] . "' and tkey='pocEmail';"));
-		echo "<td>"; 
+		echo "<td colspan=2>"; 
 		if (strpos($email, "@") !== false){
 			echo "<a href=mailto:" . $email . ">";
 		}

@@ -39,6 +39,19 @@
 <script type="text/javascript" src="/include/sweetalert/sweetalert.min.js"></script>
 <script type="text/javascript" src="/include/jquery/ui/jquery-ui.min.js"></script>
 
+<script type="text/javascript">
+/* Functions used across multiple pages */
+
+function helpNRPP(){
+	swal({
+	title: "Prioritization Levels",
+	text: "<div style=\"text-align: left;\">Not all billets have the same likelihood of being filled. Air Staff prioritizes billets into three tiers: <ul> <li> \"Must Fill\" (100% filled) </li> <li> \"Priority\" (XX%) </li> <li> \"Entitlement\" (Dynmaic, but currently at XX%) </li> </ul> </div>",
+	imageUrl: "../images/help.jpg",
+	html: true
+});
+    
+</script>
+
 <!-- PHP functions --> 
 <?php 
 include_once( $_SERVER['DOCUMENT_ROOT'] . "/include/funs.php"); 
