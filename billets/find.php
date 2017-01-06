@@ -224,6 +224,32 @@ if (!isset($_SESSION["uname"])) {
         // Initial toggle update
 
         // ============= BEGIN CHARTING ===============
+        
+        var nrppDecoder = {
+            "ent": "Entitlement",
+            "ent+": "Priority",
+            "mf": "Must-Fill"
+        };
+        
+        // ************* NRPP pie chart ***************
+        var nrpp = billets.dimension(function(x){
+            if ("nrpp" in x){
+                return nrppDecoder[x.nrpp];
+            } else {
+                return "(Unknown)";
+            }
+        });
+        var nrppGroup = nrpp.group();
+
+        prioritizationPieChart = dc.pieChart("#prioritizationPie");
+        prioritizationPieChart.width(180)
+                    .height(180)
+                    .radius(80)
+                    .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
+                    .dimension(nrpp)
+                    .group(nrppGroup)
+                    .on("filtered", updateTable);
+
 
         // ************* AFSC prefix pie chart ***************
         var afscPrefix = billets.dimension(function(x){
@@ -789,6 +815,14 @@ if (!isset($_SESSION["uname"])) {
     </div>
 
     <div class = "row">
+        <div id = "prioritizationPie" class = "dc-chart" >
+            <strong> Prioritization Level <img src="../images/help.jpg"  style="width:20px;height:20px; cursor: pointer;" onclick="helpNRPP();"> </strong>
+            <a class="reset"
+                  href='javascript:prioritizationPieChart.filterAll();dc.redrawAll();'
+                  style="display: none;">reset</a>
+            <div class = "clearfix"></div>
+        </div>
+        
         <div id = "afscPrefixPie" class = "dc-chart" >
             <strong> Preferred AFSC Prefix </strong>
             <a class="reset"
