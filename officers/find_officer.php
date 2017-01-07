@@ -23,33 +23,42 @@ if (!isset($_SESSION["uname"])) {
 
 <H3>Log into <a href="https://afvec.langley.af.mil/myvector/" target="_blank">MyVector</a>.</H3>
 
-You will need to create an account if you do not already have one.<br>
+<p> 
+You will need to create an account if you do not already have one.</p><br>
+
 
 <H3>Search for officers.</H3>
+<p> 
+You should see the following screen after logging in. Then click your name on the top right and select "QUERIES."
+</p>
+<ul>
+    <li> <p> Don't see "Queries"? Then <a href="/help/contact.php">contact us </a> and we'll set up your privileges. </p> </li>
+</ul>
 
-You should see the following screen after logging in. Then click your name on the top right and select "QUERIES." <br><br>
+<br>
 
 <img src="queries2.JPG" alt="Click queries to see officers profiles">
 
 <br><br>
-
+<p> 
 Click on "ICM Code Search" on the left, and select "Air Force Talent Marketplace" under "ICM Code" to see officers available.
-
+</p>
 <br><br>
 
 <img src="ICM_code.JPG" alt="Select Air Force Talent Marketplace under ICM Code"><br><br>
 
 <br><br>
-
+<p> 
 The table will then populate with a list of available officers.  You can filter the list by clicking on the filter icon at the top of each 
 
 column.  Click on the icon on left to see more detailed information about that specific officer.
+</p>
 
 <br><br><img src="search_table.JPG" alt="See My Experience">
 
 <p>If you click on the details icon, you will see the following screen.  Here you can click on the menu on the left to see the following 
 
-information:
+information: </p>
 
 <br><br><img src="details.JPG" alt="See My Experience">
 

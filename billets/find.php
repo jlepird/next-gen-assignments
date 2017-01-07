@@ -68,16 +68,16 @@ if (!isset($_SESSION["uname"])) {
 
     var acqDisplay = {
         " " : " None",                                                                   
- "1"    : "ENTRY LEVEL I",
- "2"    : "INTERMEDIATE LEVEL II",
- "3"    : "SENIOR LEVEL III",
- "4"    : "LEVEL III, CRITICAL, DIVISION HEAD",
- "5"    : "LEVEL II, CRITICAL, NON-DIVISION HEAD",
- "6"    : "LEVEL III, CRITICAL, NON-DIVISION HEAD",
- "7"    : "LEVEL III, NON-CRITICAL",
- "A"    : "ENTRY LEVEL I TRAINEE EXPOSED TO ACQ FUN",
- "B"    : "INTERMEDIATE LEVEL II CONT AREA SPEC/BRO",
- "C"    : "SENIOR LEVEL III IN DEPT KNOWLEDGE SPEC"
+	 "1"    : "ENTRY LEVEL I",
+	 "2"    : "INTERMEDIATE LEVEL II",
+	 "3"    : "SENIOR LEVEL III",
+	 "4"    : "LEVEL III, CRITICAL, DIVISION HEAD",
+	 "5"    : "LEVEL II, CRITICAL, NON-DIVISION HEAD",
+	 "6"    : "LEVEL III, CRITICAL, NON-DIVISION HEAD",
+	 "7"    : "LEVEL III, NON-CRITICAL",
+	 "A"    : "ENTRY LEVEL I TRAINEE EXPOSED TO ACQ FUN",
+	 "B"    : "INTERMEDIATE LEVEL II CONT AREA SPEC/BRO",
+	 "C"    : "SENIOR LEVEL III IN DEPT KNOWLEDGE SPEC"
     }
 
     function toTitleCase(str)
@@ -248,10 +248,12 @@ if (!isset($_SESSION["uname"])) {
                     .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
                     .dimension(nrpp)
                     .group(nrppGroup)
+
                     .on("filtered", updateTable);
 
 
         // ************* AFSC prefix pie chart ***************
+        /* Disabled for production: all billets are 61X
         var afscPrefix = billets.dimension(function(x){
             if ("afsc" in x){
                 var spl = x.afsc.split(", ");
@@ -282,6 +284,7 @@ if (!isset($_SESSION["uname"])) {
                     .dimension(afscPrefix)
                     .group(afscPrefixGroup)
                     .on("filtered", updateTable);
+		*/
 
         // ************* AFSC pie chart ***************
         // Known issue: need better way to handle multiple AFSCs
@@ -297,15 +300,18 @@ if (!isset($_SESSION["uname"])) {
                     }
                 }
             } else {
-                return "Any";
+                return "(Unknown)";
             }
         });
         var afscGroup = afscs.group();
 
         afscPieChart = dc.pieChart("#afscPie");
+        var cs = d3.scale.ordinal()
+                         .domain()
         afscPieChart.width(180)
                     .height(180)
                     .radius(80)
+                    .colors(d3.co)
                     .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
                     .dimension(afscs)
                     .group(afscGroup)
@@ -326,7 +332,7 @@ if (!isset($_SESSION["uname"])) {
                     return "O5";
                 }
             } else {
-                return 'None';
+                return '(Unknown)';
             }
         });
         var gradeGroup = grades.group();
@@ -383,7 +389,7 @@ if (!isset($_SESSION["uname"])) {
             if ("acqLevel" in x){
                 return toTitleCase(acqDisplay[x.acqLevel]);
             } else {
-                return "None";
+                return "(Unknown)";
             }
             
         });
@@ -424,7 +430,7 @@ if (!isset($_SESSION["uname"])) {
             if ("ts" in x){
                 return toTitleCase(x.ts);    
             } else {
-                return "Secret";
+                return "(Unknown)";
             }
             
         });
@@ -445,7 +451,7 @@ if (!isset($_SESSION["uname"])) {
             if ("state" in x){
                return x.state == "OCONUS" || x.state == "HI" || x.state == "AL" ? "OCONUS" : "CONUS";  
             } else {
-                return "Unknown";
+                return "(Unknown)";
             }
             
         });
@@ -465,7 +471,7 @@ if (!isset($_SESSION["uname"])) {
             if ("contact?" in x){
                 return x["contact?"] == "yes" ? "Yes" : "No"; 
             } else {
-                return "No";
+                return "(Unknown)";
             }
             
         });
@@ -485,7 +491,7 @@ if (!isset($_SESSION["uname"])) {
             if ("deployable" in x){
                 return x["deployable"] == "yes" ? "Yes" : "No"; 
             } else {
-                return "No";
+                return "(Unknown)";
             }
             
         });
@@ -505,7 +511,7 @@ if (!isset($_SESSION["uname"])) {
             if ("length" in x){
                 return x.length + " Years";  
             } else {
-                return "3 Years";
+                return "(Unknown)";
             }
             
         });
@@ -526,7 +532,7 @@ if (!isset($_SESSION["uname"])) {
             if ("regularHours" in x){
                 return x.regularHours == "yes" ? "Yes" : "No"; 
             } else {
-                return "Yes";
+                return "(Unknown)";
             }
             
         });
@@ -553,7 +559,7 @@ if (!isset($_SESSION["uname"])) {
             if ("workweek" in x){
                 return weekDecoder[x.workweek]; 
             } else {
-                return "NA";
+                return "(Unknown)";
             }
             
         });
@@ -610,8 +616,9 @@ if (!isset($_SESSION["uname"])) {
                     yr = spl[2];
                     return yr + '-' + monthDisplay[month];
                 }
-            } 
-            return "NA";
+            } else { 
+            	return "(Unknown)";
+            }
         });
         var reportGroup = report.group();
 
@@ -823,7 +830,7 @@ if (!isset($_SESSION["uname"])) {
             <div class = "clearfix"></div>
         </div>
         
-        <div id = "afscPrefixPie" class = "dc-chart" >
+        <div id = "afscPrefixPie" class = "dc-chart" hidden>
             <strong> Preferred AFSC Prefix </strong>
             <a class="reset"
                   href='javascript:afscPrefixPieChart.filterAll();dc.redrawAll();'

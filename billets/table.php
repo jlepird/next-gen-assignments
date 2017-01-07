@@ -21,7 +21,7 @@ $(function(){
 
 <table class="table-display"> 
 	<tr> <td colspan="3">  <h5> <i> General Information </i> </h5>  </td> </tr>
-	<tr> <td colspan="1" > <i> Duty Title: </i> </td> <td colspan = "4" > <input type = "text" name = "dutyTitle" size = "45" value = "" class = "autopop"> </td></tr>
+	<tr> <td colspan="1" > <p> <i> Duty Title: </i> </p> </td> <td colspan = "4" > <input type = "text" name = "dutyTitle" size = "45" value = "" class = "autopop"> </td></tr>
 	<tr> 
 		<td > <p> Allowable AFSCs: </p> </td> 
 		<td colspan> <select name = "afsc[]" value = "" class = "autopop chosen-select-large" multiple>
@@ -109,7 +109,7 @@ $(function(){
 		</select></td>
 	</tr>
 	<tr>
-		<td> Tour Length: </td> 
+		<td> <p> Tour Length: </p> </td> 
 		<td>
 			<select name="length" id = "length" class = "chosen-select-medium autopop">
 				<option value="1">1 Year </option>
@@ -118,7 +118,7 @@ $(function(){
 				<option value="4">4 or More Years </option>
 			</select>
 		</td>
-		<td> Joint Billet </td> <td>
+		<td> <p> Joint Billet </p> </td> <td>
 			<select id ="joint" name = "joint" class = "chosen-select-small autopop">
 				<option value="no">No </option>
 				<option value="yes"> Yes</option>
@@ -126,7 +126,7 @@ $(function(){
 		</td>
 	</tr>
 	<tr>
-		<td colspan = 1> Prioritization Level <img src="../images/help.jpg"  style="width:20px;height:20px; cursor: pointer;" onclick="helpNRPP();"> </td>
+		<td colspan = 1> <p> Prioritization Level  <img src="../images/help.jpg"  style="width:20px;height:20px; cursor: pointer;" onclick="helpNRPP();"></p> </td>
 		<td colspan = 1> <select id="nrpp" class = "autopop chosen-select-large" disabled=disabled>
 			<option value="ent">Entitlement </option>
 			<option value="ent+"> Priority </option>
@@ -147,7 +147,7 @@ $(function(){
 <table class="table-display"> 
 	<tr> <td colspan="4"> <h5> <i> Degrees and Certifications </i> </h5>  </td> </tr>
 	<tr> 
-		<td> <p> Preferred Education Level: </p> </td>
+		<td> <p> Preferred Education Levels: </p> </td>
 		<td> <select name = "aadLevel[]" class = "autopop chosen-select-large" data-placeholder="Select AAD Level" multiple> 
 			<option value = "bs"> None </option>
 			<option value = "ms"> Master's </option>
@@ -155,7 +155,7 @@ $(function(){
 		</select> </td>
 	</tr>
 	<tr> 
-		<td> <p> Preferred Academic Degree: </p> </td>
+		<td> <p> Preferred Academic Degrees: </p> </td>
 		<td> <select  = "100" id = "aadDegree" multiple name = "aadDegree[]" class = "autopop chosen-select-large" data-placeholder="None">
 			<?php
 				$res = $sql->execute("select code, degree from allowableDegrees;");
@@ -179,7 +179,7 @@ $(function(){
 		</select> </td>
 	</tr>
 	<tr>
-		<td> Security Clearance Required: </td> 
+		<td> <p> Security Clearance Required: </p> </td> 
 		<td> 
 		<select id = "ts" name = "ts" class = "autopop chosen-select-large">
 			<option val = "s"> Secret </option>

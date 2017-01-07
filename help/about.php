@@ -11,7 +11,7 @@
     <div class="col-md-6">
     <br> <br> <br> 
     <h3>Background</h3>
-        <p>The objective of this test is to quantify the feasibility and performance of a proposed talent-to-assignment matching algorithm, in contrast to the status quo assignment process.  This effort is in response to the <a href="http://www.defense.gov/Portals/1/features/2015/0315_force-of-the-future/documents/FotF_Fact_Sheet_-_FINAL_11.18.pdf" target="_blank">SecDef's Force of the Future</a> initiative to implement a web-based talent management system. Please keep in mind that is only a test and will have no bearing on the actual VML cycle, as the FY17 Summer VML has already closed. Keeping that in mind, we ask that you participate as if this new assignment system is part has already been implemented.  The more accurate and quantifiable data we can collect, the better we can make recommendations to Air Force leadership. </p>
+        <p>The objective of this test is to quantify the feasibility and performance of a proposed talent-to-assignment matching algorithm, in contrast to the status quo assignment process.  Please keep in mind that is only a test and will have no bearing on the actual VML cycle, as the FY17 Summer VML has already closed. Keeping that in mind, we ask that you participate as if this new assignment system is part has already been implemented.  The more accurate and quantifiable data we can collect, the better we can make recommendations to Air Force leadership. </p>
     <h3>Testing a new talent matching algorithm</h3>
         <p>The backbone of this assignment system is to test a talent matching algorithm that maximizes satisfaction between both officers and the billet owners themselves. This algorithm has been used successfully for nearly 50 years by the <a href="http://www.nrmp.org/match-process/match-algorithm/"> National Residency Matching Program</a>, the process by which graduating medical students are awarded their initial placement in hospitals. </p> 
         
@@ -28,23 +28,12 @@
         
     <h3> About this Website </h3>
     <p>
-        This website was developed by AF/A9 and hosted by <a href="https://cloud.gov"> cloud.gov </a>. You can find our source code on our GitHub page <a href="https://github.com/jlepird/next-gen-assignments"> here </a> . 
+        This website was developed by AF/A9 and hosted by <a href="https://cloud.gov">cloud.gov</a>. You can find our source code on our GitHub page <a href="https://github.com/jlepird/next-gen-assignments"> here </a> . 
         
         <h5> Want to contribute? </h5>
         <p> Then just <a href="https://help.github.com/articles/fork-a-repo/" > fork </a> our Github repository and submit a pull request with your changes-- we're happy to have your help. </p>
     </p>
         
-        <!--This contrast will be measured using</p>
-           statistics such as the following:</p>
-            <ul>Number of officers given their first, second, third etc. assignment
-                preferences under each system.</ul>
-            <ul>Number of commanders given their first, second, third, etc. assignment
-                preferences under each system.</ul>
-            <ul>Sentiment surveys of affected officers, commanders, and units.</ul>
-            <ul>Compliance rate with applicable assignment policy, to include policies derived
-                from public law, joint regulations, Air Force Instructions, and the applicable
-                Career Field Manager (CFM).</ul>-->
-    </div>
 
 </div>
 
