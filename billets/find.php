@@ -449,7 +449,7 @@ if (!isset($_SESSION["uname"])) {
         // ************* CONUS pie chart ***************
         var conus = billets.dimension(function(x){
             if ("state" in x){
-               return x.state == "OCONUS" || x.state == "HI" || x.state == "AL" ? "OCONUS" : "CONUS";  
+               return x.state == "OCONUS" || x.state == "HI" || x.state == "AK" ? "OCONUS" : "CONUS";  
             } else {
                 return "(Unknown)";
             }
