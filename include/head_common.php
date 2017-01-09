@@ -38,6 +38,8 @@
 <script type="text/javascript" src="/include/datatables/dataTables.colReorder.min.js"></script>
 <script type="text/javascript" src="/include/sweetalert/sweetalert.min.js"></script>
 <script type="text/javascript" src="/include/jquery/ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/include/lodash.min.js"></script>
+
 
 <script type="text/javascript">
 /* Functions used across multiple pages */

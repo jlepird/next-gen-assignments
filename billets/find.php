@@ -590,7 +590,7 @@ if (!isset($_SESSION["uname"])) {
            "12": "Dec"
        }
        
-       
+       /*
        var invert = function (obj) {
         // invert a dictionary-- from http://nelsonwells.net/2011/10/swap-object-key-and-values-in-javascript/
           var new_obj = {};
@@ -604,8 +604,10 @@ if (!isset($_SESSION["uname"])) {
 
           return new_obj;
         };
+        */ 
         
-        var invertedMonths = invert(monthDisplay);
+        // Get version with keys/values swapped
+        var invertedMonths = _.invert(monthDisplay);
         
         
         var report = billets.dimension(function(x){
