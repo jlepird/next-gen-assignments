@@ -206,7 +206,7 @@ if ($_SESSION['isAirman'] != 't' ){
     <p> <?php echo $_SESSION['uname'] ?>, enter your preferences below.</p>
 
     <div style="background-color: #42f483">
-    <p> You have been ranked by <?php echo str_replace('"', "", $sql->queryValue("select count(*) from billetPrefs left outer join names on billetPrefs.name = names.name where username='" . $_SESSION['uname'] . "';")); ?> billets (<?php echo str_replace('"', "", $sql->queryValue("select count(distinct posn) from billetPrefs;"));?>/<?php echo str_replace('"', "", $sql->queryValue("select count(distinct posn) from billetOwners;"));?> billets have submitted preferences). </p>
+    <p> You have been ranked by <?php echo str_replace('"', "", $sql->queryValue("select count(*) from billetPrefs left outer join users on billetPrefs.name = users.name where username='" . $_SESSION['uname'] . "';")); ?> billets (<?php echo str_replace('"', "", $sql->queryValue("select count(distinct posn) from billetPrefs;"));?>/<?php echo str_replace('"', "", $sql->queryValue("select count(distinct posn) from billetOwners;"));?> billets have submitted preferences). </p>
     </div>
 
     <datalist id = "billets"> </datalist> <!-- Javascript will fill in -->

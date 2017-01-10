@@ -7,18 +7,22 @@ create table users (
     email varchar(50) not null, 
     password varchar(32) not null,
     owner boolean not null,
-    officer boolean not null
+    officer boolean not null,
+    name varchar(200) unique not null
 ); 
 
 
 insert into users values 
-('a9', 'example@test.com',  md5('test'), true, true),
-('a1', 'example2@test.com', md5('test'), false, true);
+('a9', 'example@test.com',  md5('test'), true, true, 'Maj Dysfunction'),
+('a1', 'example2@test.com', md5('test'), false, true, 'Capt Smith');
 
 drop table if exists billetOwners cascade;
 create table billetOwners(
 	posn varchar(50) primary key not null,
-	username varchar(50) references users (username)
+	username varchar(50),
+	constraint fk_billetOwners_users
+	   foreign key (username)
+	   references users(username)
 );
 
 insert into billetOwners values
@@ -27,9 +31,12 @@ insert into billetOwners values
 
 drop table if exists billetData cascade; 
 create table billetData (
-	posn varchar(50) not null references billetOwners (posn),
+	posn varchar(50) not null,
 	tkey varchar(50) not null, 
-	val  varchar(100)
+	val  varchar(100),
+	constraint fk_billetData_owners
+		foreign key (posn)
+		references billetOwners (posn)
 );
 
 insert into billetData values 
@@ -73,8 +80,11 @@ insert into billetData values
 
 drop table if exists billetDescs cascade;
 create table billetDescs (
-	posn varchar(50) not null references billetOwners (posn),
-	txt varchar(5000)
+	posn varchar(50) not null,
+	txt varchar(5000),
+	constraint fk_billetDescs_owners
+		foreign key (posn) 
+		references billetOwners (posn)
 );
 insert into billetDescs values 
 	('abc', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam mauris, vulputate ut nisi pharetra, gravida aliquet erat. Pellentesque iaculis lobortis tortor, eu eleifend eros fringilla sed. Donec consequat purus eu sem pellentesque, vel porttitor mi aliquam. Vivamus ornare dolor eleifend consequat vestibulum. Etiam eleifend neque eu mauris aliquam consectetur. Ut feugiat nulla quis nisi tempor ornare vitae ac enim. Nam consectetur id nulla in congue. Sed et odio quis ante fermentum finibus ut sed massa. Suspendisse maximus gravida lorem vitae sagittis. Integer consectetur augue magna, molestie placerat ligula rhoncus ac. Proin dictum, lacus sit amet semper euismod, orci lacus condimentum dui, nec blandit lorem metus semper dui.'),
@@ -83,13 +93,13 @@ insert into billetDescs values
 
 drop table if exists allowableDegrees cascade;
 create table allowableDegrees(
-	code varchar(4),
+	code varchar(4) primary key,
 	degree varchar(100)
 );
 
 drop table if exists locations cascade; 
 create table locations(
-	location varchar(100) not null,
+	location varchar(100) primary key,
 	lon numeric(16, 10), 
 	lat numeric(16, 10)
 );
@@ -100,50 +110,61 @@ insert into locations values
 
 drop table if exists airmanPrefs cascade;
 create table airmanPrefs (
-	username varchar(50) not null references users (username), 
-	posn varchar(50) not null references billetOwners (posn),
-	pref int not null
+	username varchar(50) not null, 
+	posn varchar(50) not null,
+	pref int not null,
+	constraint fk_airmanPrefs_users
+		foreign key (username)
+		references users (username), 
+	constraint fk_airmanPrefs_posn
+		foreign key (posn)
+		references billetOwners (posn)
 );
-
-drop table if exists names cascade; 
-create table names (
-	username varchar(50) not null references users (username), 
-	name varchar(100) primary key not null
-);
-
-insert into names values 
-	('a9', 'Maj Dysfunction'),
-	('a1', 'Capt Snuffy'); 
 
 drop table if exists billetPrefs cascade;
 create table billetPrefs ( 
-	name varchar(100) not null references names (name), 
+	name varchar(500) not null, 
 	posn varchar(50) not null references billetOwners (posn),
-	pref int not null
+	pref int not null,
+	constraint fk_billetPrefs_users
+		foreign key (name)
+		references users (name), 
+	constraint fk_billetPrefs_posn
+		foreign key (posn)
+		references billetOwners (posn)
 );
 	
 drop table if exists acqLevels cascade; 
 create table acqLevels (
-	code varchar(1) primary key not null,
+	code varchar(1) primary key,
 	level varchar(100) not null
 ); 
 
 drop table if exists coreCodes cascade; 
 create table coreCodes (
-	afsc varchar(3) primary key not null,
+	afsc varchar(3) primary key,
 	txt varchar(100) not null
 ); 
 
 drop table if exists favorites cascade;
 create table favorites (
-	username varchar(50) not null references users (username),
-	posn varchar(50) not null references billetOwners (posn)
+	username varchar(50) not null,
+	posn varchar(50) not null,
+	constraint fk_favs_users
+		foreign key (username)
+		references users (username), 
+	constraint fk_favs_posn
+		foreign key (posn)
+		references billetOwners (posn)
 );
 
 drop table if exists userActivity;
 create table userActivity (
-		username varchar(50) not null references users (username),
-		login timestamp
+		username varchar(50) not null,
+		login timestamp,
+		constraint fk_useractivty_users
+			foreign key (username)
+			references users (username)
 );
 
 select 'Complete' as Update;  

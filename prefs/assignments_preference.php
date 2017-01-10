@@ -32,7 +32,7 @@ if (! $authorized){
     
     <script type="text/javascript">
     <?php
-    	if ($_SESSION["justSubmitted"]){
+    	if (isset($_SESSION["justSubmitted"]) and $_SESSION["justSubmitted"]){
     		echo '$(function(){swal("Success!", "Preferences Successfully Submitted.", "success");});';
     		$_SESSION["justSubmitted"] = False;
     	} 
@@ -41,7 +41,7 @@ if (! $authorized){
     </head>
     <script>
     	// Get list of airmen
-	    var airmen = <?php echo $sql->queryJSON("select distinct name from names;"); ?>;
+	    var airmen = <?php echo $sql->queryJSON("select distinct name from users;"); ?>;
 
 	    var initialPrefs = <?php echo $sql->queryJSON("select name, pref from billetPrefs where posn = '" . $_GET["billet"] . "';"); ?>; 
 
@@ -156,7 +156,7 @@ if (! $authorized){
     <p> <?php echo $_SESSION['uname'] ?>, enter your preferences below for billet <b> <?php echo $_GET["billet"]; ?></b>: </p>
 
     <div style="background-color: #42f483">
-    <p> This billet has been ranked by <?php echo str_replace('"', "", $sql->queryValue("select count(*) from airmanPrefs where posn='" . $_GET["billet"] . "';")); ?> Airmen (<?php echo str_replace('"', "", $sql->queryValue("select count(distinct username) from airmanPrefs;"));?>/<?php echo str_replace('"', "", $sql->queryValue("select count(distinct username) from names;"));?> Airmen have submitted preferences). </p>
+    <p> This billet has been ranked by <?php echo str_replace('"', "", $sql->queryValue("select count(*) from airmanPrefs where posn='" . $_GET["billet"] . "';")); ?> Airmen (<?php echo str_replace('"', "", $sql->queryValue("select count(distinct username) from airmanPrefs;"));?>/<?php echo str_replace('"', "", $sql->queryValue("select count(distinct username) from users where owner;"));?> Airmen have submitted preferences). </p>
     </div>
 
     <datalist id = "airmen"> </datalist> <!-- Javascript will fill in -->
