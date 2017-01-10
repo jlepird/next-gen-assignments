@@ -13,8 +13,9 @@ if (!isset($_SESSION["uname"])) {
 <?php include '../banner.php'; ?>
 
 
+
 <div class="col-md-3">  </div>
-    <div class="col-md-5">
+    <div class="col-md-6">
     <br> <br> <br>
     <h3>Instructions</h3>
     <p>You will be able to search for experienced officers via the Air Force MyVector database. While searching through the website, it is recommended you take notes and create a prioritized list of preferred officers that you find suitable for each one of your billets. Please submit this prioritized list through the <a href="../prefs/input.php">My Preference List</a> by 3 March 2017.  Follow the following tutorial on how to find officers on MyVector.
@@ -37,7 +38,7 @@ You should see the following screen after logging in. Then click your name on th
 
 <br>
 
-<img src="queries2.JPG" alt="Click queries to see officers profiles">
+<img src="queries2.JPG" alt="Click queries to see officers profiles" style="padding:2px;border:thin solid black;">
 
 <br><br>
 <p> 
@@ -45,22 +46,22 @@ Click on "ICM Code Search" on the left, and select "Air Force Talent Marketplace
 </p>
 <br><br>
 
-<img src="ICM_code.JPG" alt="Select Air Force Talent Marketplace under ICM Code"><br><br>
+<img src="ICM_code.JPG" alt="Select Air Force Talent Marketplace under ICM Code"  style="padding:2px;border:thin solid black;"><br><br>
 
 <br><br>
 <p> 
-The table will then populate with a list of available officers.  You can filter the list by clicking on the filter icon at the top of each 
+The table will then populate with a list of available officers that you can match to your billets.  You can filter the list by clicking on the filter icon at the top of each 
 
 column.  Click on the icon on left to see more detailed information about that specific officer.
 </p>
 
-<br><br><img src="search_table.JPG" alt="See My Experience">
+<br><br><img src="search_table.JPG" alt="See My Experience"  style="padding:2px;border:thin solid black;">
 
-<p>If you click on the details icon, you will see the following screen.  Here you can click on the menu on the left to see the following 
+<br><br><p>If you click on the details icon next to a particular officer, you will see the following window open up.  Here you can click on each item in the left menu to see more information related to their  career and development plan.
 
 information: </p>
 
-<br><br><img src="details.JPG" alt="See My Experience">
+<br><img src="details.JPG" alt="See My Experience"  style="padding:2px;border:thin solid black;">
 
     </div>
 

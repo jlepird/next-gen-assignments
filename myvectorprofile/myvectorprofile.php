@@ -12,7 +12,7 @@ if (!isset($_SESSION["uname"])) {
 <body>
 <?php include '../banner.php'; ?>
 <div class="col-md-3">  </div>
-    <div class="col-md-5">
+    <div class="col-md-6">
     <br> <br> <br>
     <h3>Instructions</h3>
     <p>As an officer on the VML, you are required to update your profile on MyVector. There you will be able to update your duty experience, skills, training, and education.  Having a detailed profile allows billet owners to have a better understanding of you as an officer as they search for the right person for their billet.  Follow the following tutorial on how to update your profile in MyVector.
@@ -32,12 +32,12 @@ You will need to create an account if you do not already have one.<br>
 
 You should see the following screen after logging in.  <br><br>
 
-<img src="splash.JPG" alt="Go to personal profile">
+<img src="splash.JPG" alt="Go to personal profile"  style="padding:2px;border:thin solid black;">
 
 <br><br>
 Update all the applicable fields in your personal profile. As an officer, your screen may look slightly different than what is shown.<br><br>
 
-<img src="profile.JPG" alt="Update your personal profile">
+<img src="profile.JPG" alt="Update your personal profile"  style="padding:2px;border:thin solid black;">
 
 <br><br>Click save when complete.
 
@@ -48,7 +48,7 @@ Update all the applicable fields in your personal profile. As an officer, your s
 <H3>Update your assignment history and relevant work experience.</H3>
 
 
-<img src="see my experience.JPG" alt="See My Experience"><br><br>
+<img src="see my experience.JPG" alt="See My Experience"  style="padding:2px;border:thin solid black;"><br><br>
 
 <p>Your duty distory should be automatically filled in.  The quick view table will display the following for each duty entry: Start date of the duty, Duty 
 
@@ -69,7 +69,7 @@ Note: MyVECTOR is Total Force, therefore if your component is incorrect, it is i
 initially display as Reserves due to the initial data source.
 
 
-<br><br><img src="duty.JPG" alt="Review your Duty History"> <br><br>
+<br><br><img src="duty.JPG" alt="Review your Duty History"  style="padding:2px;border:thin solid black;"> <br><br>
 
 <p> The "Other-Self Reported" section allows you to add experience garnered throughout your career that cannot be identified any place else (i.e. jobs with 
 
@@ -78,11 +78,11 @@ other services, deployment experience, previous military or civilian experience)
 dropdowns so it will appear on your experience summaries.  You can also edit existing entries in this section.
 
 
-<br><br><img src="edit self report.JPG" alt="See My Experience">
+<br><br><img src="edit self report.JPG" alt="See My Experience"  style="padding:2px;border:thin solid black;">
 
 <p>You will see the following screen when you create a new self-reported job.  Be sure to fill out all relevant information.
 
-<br><br><img src="add self report.JPG" alt="See My Experience">
+<br><br><img src="add self report.JPG" alt="See My Experience"  style="padding:2px;border:thin solid black;">
 
 <p>Click "Save" when finished.
 
@@ -112,7 +112,7 @@ and award date. Note: some sections on this table may be left blank if not appli
 
 You are also able to add additional education experience that is not automatically pulled from DCPDS, as shown below.
 
-<br><br><img src="education.JPG" alt="See My Experience">
+<br><br><img src="education.JPG" alt="See My Experience"  style="padding:2px;border:thin solid black;">
 
 
 
@@ -124,12 +124,12 @@ You are also able to add additional education experience that is not automatical
 
 "Development Plan" in the MyVector Dashboard.  Be sure to click the "Save" button in each tab after making changes.
 
-<br><br><img src="development plan.JPG" alt="Development Plan">
+<br><br><img src="development plan.JPG" alt="Development Plan"  style="padding:2px;border:thin solid black;">
 
 
 <p>The "Job Preferences" tab displays your job preferences to be considered by the Development Teams during the vectoring process.
 
-<br><br><img src="job pref.bmp" alt="Job Preferences">
+<br><br><img src="job pref.bmp" alt="Job Preferences"  style="padding:2px;border:thin solid black;">
 
 <p>The "Developmental Education" tab allows you to update your desire for training and/or Professional Military Education programs. You can enter your developmental education goals 
 
@@ -139,11 +139,11 @@ PME course. You can also view your current and historical Developmental Educatio
 
 will also be able to update you Advanced Studies Group intent on this tab.
 
-<br><br><img src="dev edu.bmp" alt="Development Education">
+<br><br><img src="dev edu.bmp" alt="Development Education"  style="padding:2px;border:thin solid black;">
 
 <p>The "Intent & Comments" tab allows you to outline any relevant details concerning your career plans, goals, answering developmental team group intent questions, and any other information you would like leadership to know about.
 
-<br><br><img src="intent.bmp" alt="Intent and Comments">
+<br><br><img src="intent.bmp" alt="Intent and Comments"  style="padding:2px;border:thin solid black;">
 
 
     </div>
