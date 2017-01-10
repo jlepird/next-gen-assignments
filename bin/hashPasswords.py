@@ -15,7 +15,7 @@ with open(sys.argv[1], "r") as fIn, open(sys.argv[1] + ".passwords", "w") as pwO
 		line = line.rstrip() 
 		spl = line.split(",")
 
-		if len(spl) != 4:
+		if len(spl) != 5:
 			raise Exception("Error on line %s" % line)
 
 		password = ""
