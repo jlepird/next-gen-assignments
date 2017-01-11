@@ -28,7 +28,7 @@ You will need to create an account if you do not already have one.<br>
 
 
 
-<H3>Update your personal profile.</H3>
+<!--<H3>Update your personal profile.</H3>
 
 You should see the following screen after logging in.  <br><br>
 
@@ -39,7 +39,7 @@ Update all the applicable fields in your personal profile. As an officer, your s
 
 <img src="profile.JPG" alt="Update your personal profile"  style="padding:2px;border:thin solid black;">
 
-<br><br>Click save when complete.
+<br><br>Click save when complete.-->
 
 
 
@@ -47,40 +47,23 @@ Update all the applicable fields in your personal profile. As an officer, your s
 
 <H3>Update your assignment history and relevant work experience.</H3>
 
+You should see the following screen after logging in.  Click on "See My Experience" to get started.  <br><br>
 
 <img src="see my experience.JPG" alt="See My Experience"  style="padding:2px;border:thin solid black;"><br><br>
 
-<p>Your duty distory should be automatically filled in.  The quick view table will display the following for each duty entry: Start date of the duty, Duty 
+<p>Under the "Duty History" tab, your duty distory should be automatically filled in.  The quick view table will display the following for each duty entry: Start date of the duty, Duty Title, AFSC, Component, Unit, Organization, Type, Location, MAJCOM, Rank, Career Field Experience Code (created by the CFM), Experience Description, and association request action.
 
-Title, AFSC, Component, Unit, Organization, Type, Location, MAJCOM, Rank, Career Field Experience Code (created by the CFM), Experience Description, and 
+<p>All duty entries are pulled from MilPDS if the information is incorrect, you must contact the local Military Personnel Section (MPS) to ensure the information is updated correctly within those systems. Note: The Rank associated with a duty is calculated from the Date of Rank held when you started the duty.
 
-association request action.
-
-<p>All duty entries are pulled from MilPDS if the information is incorrect, you must contact the local Military Personnel Section (MPS) to ensure the 
-
-information is updated correctly within those systems. Note: The Rank associated with a duty is calculated from the Date of Rank held when you started the 
-
-duty.
-
-<p>You can click “Change Component” if your component is incorrect (options include the following: AF Component, Reserve, Air National Guard, and Civilian). 
-
-Note: MyVECTOR is Total Force, therefore if your component is incorrect, it is important to correct. The Active Duty history of many reservists will 
-
-initially display as Reserves due to the initial data source.
-
+<p>You can click “Change Component” if your component is incorrect (options include the following: AF Component, Reserve, Air National Guard, and Civilian).  Note: MyVECTOR is Total Force, therefore if your component is incorrect, it is important to correct. The Active Duty history of many reservists will initially display as Reserves due to the initial data source.
 
 <br><br><img src="duty.JPG" alt="Review your Duty History"  style="padding:2px;border:thin solid black;"> <br><br>
 
-<p> The "Other-Self Reported" section allows you to add experience garnered throughout your career that cannot be identified any place else (i.e. jobs with 
-
-other services, deployment experience, previous military or civilian experience). In addition, you will be able to associate a code with this duty using the 
-
-dropdowns so it will appear on your experience summaries.  You can also edit existing entries in this section.
-
+<p> The "Other-Self Reported" section allows you to add experience garnered throughout your career that cannot be identified any place else (i.e. jobs with other services, deployment experience, previous military or civilian experience, programming experience, foreign languages, volunteer work, etc). In addition, you will be able to associate a code with this duty using the dropdowns so it will appear on your experience summaries.  You can also edit existing entries in this section.
 
 <br><br><img src="edit self report.JPG" alt="See My Experience"  style="padding:2px;border:thin solid black;">
 
-<p>You will see the following screen when you create a new self-reported job.  Be sure to fill out all relevant information.
+<p>You will see the following screen when you create a new self-reported job.  Be sure to fill out all relevant information, especially the free-text Description box where you should provide as much detail as possible.
 
 <br><br><img src="add self report.JPG" alt="See My Experience"  style="padding:2px;border:thin solid black;">
 
