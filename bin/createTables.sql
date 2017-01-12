@@ -3,7 +3,7 @@
 
 drop table if exists users cascade;
 create table users (
-    username varchar(50) primary key not null,
+    username varchar(50) primary key,
     email varchar(50) not null, 
     password varchar(32) not null,
     owner boolean not null,
@@ -16,13 +16,28 @@ insert into users values
 ('a9', 'example@test.com',  md5('test'), true, true, 'Maj Dysfunction'),
 ('a1', 'example2@test.com', md5('test'), false, true, 'Capt Smith');
 
+-- Billetdescs is the authoritative source of the list of billets
+drop table if exists billetDescs cascade;
+create table billetDescs (
+	posn varchar(50) primary key,
+	txt varchar(5000)
+);
+
+insert into billetDescs values 
+	('abc', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam mauris, vulputate ut nisi pharetra, gravida aliquet erat. Pellentesque iaculis lobortis tortor, eu eleifend eros fringilla sed. Donec consequat purus eu sem pellentesque, vel porttitor mi aliquam. Vivamus ornare dolor eleifend consequat vestibulum. Etiam eleifend neque eu mauris aliquam consectetur. Ut feugiat nulla quis nisi tempor ornare vitae ac enim. Nam consectetur id nulla in congue. Sed et odio quis ante fermentum finibus ut sed massa. Suspendisse maximus gravida lorem vitae sagittis. Integer consectetur augue magna, molestie placerat ligula rhoncus ac. Proin dictum, lacus sit amet semper euismod, orci lacus condimentum dui, nec blandit lorem metus semper dui.'),
+	('def', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam mauris, vulputate ut nisi pharetra, gravida aliquet erat. Pellentesque iaculis lobortis tortor, eu eleifend eros fringilla sed. Donec consequat purus eu sem pellentesque, vel porttitor mi aliquam. Vivamus ornare dolor eleifend consequat vestibulum. Etiam eleifend neque eu mauris aliquam consectetur. Ut feugiat nulla quis nisi tempor ornare vitae ac enim. Nam consectetur id nulla in congue. Sed et odio quis ante fermentum finibus ut sed massa. Suspendisse maximus gravida lorem vitae sagittis. Integer consectetur augue magna, molestie placerat ligula rhoncus ac. Proin dictum, lacus sit amet semper euismod, orci lacus condimentum dui, nec blandit lorem metus semper dui.')
+	;
+
 drop table if exists billetOwners cascade;
 create table billetOwners(
-	posn varchar(50) primary key not null,
+	posn varchar(50) not null,
 	username varchar(50),
 	constraint fk_billetOwners_users
 	   foreign key (username)
-	   references users(username)
+	   references users(username),
+	constraint fk_billetOwners_posns
+		foreign key (posn)
+		references billetDescs(posn)
 );
 
 insert into billetOwners values
@@ -36,7 +51,7 @@ create table billetData (
 	val  varchar(100),
 	constraint fk_billetData_owners
 		foreign key (posn)
-		references billetOwners (posn)
+		references billetDescs (posn)
 );
 
 insert into billetData values 
@@ -76,21 +91,6 @@ insert into billetData values
 	('def', 'regularHours', 'yes')
 	;
 
-
-
-drop table if exists billetDescs cascade;
-create table billetDescs (
-	posn varchar(50) not null,
-	txt varchar(5000),
-	constraint fk_billetDescs_owners
-		foreign key (posn) 
-		references billetOwners (posn)
-);
-insert into billetDescs values 
-	('abc', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam mauris, vulputate ut nisi pharetra, gravida aliquet erat. Pellentesque iaculis lobortis tortor, eu eleifend eros fringilla sed. Donec consequat purus eu sem pellentesque, vel porttitor mi aliquam. Vivamus ornare dolor eleifend consequat vestibulum. Etiam eleifend neque eu mauris aliquam consectetur. Ut feugiat nulla quis nisi tempor ornare vitae ac enim. Nam consectetur id nulla in congue. Sed et odio quis ante fermentum finibus ut sed massa. Suspendisse maximus gravida lorem vitae sagittis. Integer consectetur augue magna, molestie placerat ligula rhoncus ac. Proin dictum, lacus sit amet semper euismod, orci lacus condimentum dui, nec blandit lorem metus semper dui.'),
-	('def', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam mauris, vulputate ut nisi pharetra, gravida aliquet erat. Pellentesque iaculis lobortis tortor, eu eleifend eros fringilla sed. Donec consequat purus eu sem pellentesque, vel porttitor mi aliquam. Vivamus ornare dolor eleifend consequat vestibulum. Etiam eleifend neque eu mauris aliquam consectetur. Ut feugiat nulla quis nisi tempor ornare vitae ac enim. Nam consectetur id nulla in congue. Sed et odio quis ante fermentum finibus ut sed massa. Suspendisse maximus gravida lorem vitae sagittis. Integer consectetur augue magna, molestie placerat ligula rhoncus ac. Proin dictum, lacus sit amet semper euismod, orci lacus condimentum dui, nec blandit lorem metus semper dui.')
-	;
-
 drop table if exists allowableDegrees cascade;
 create table allowableDegrees(
 	code varchar(4) primary key,
@@ -118,20 +118,20 @@ create table airmanPrefs (
 		references users (username), 
 	constraint fk_airmanPrefs_posn
 		foreign key (posn)
-		references billetOwners (posn)
+		references billetDescs (posn)
 );
 
 drop table if exists billetPrefs cascade;
 create table billetPrefs ( 
 	name varchar(500) not null, 
-	posn varchar(50) not null references billetOwners (posn),
+	posn varchar(50) not null,
 	pref int not null,
 	constraint fk_billetPrefs_users
 		foreign key (name)
 		references users (name), 
 	constraint fk_billetPrefs_posn
 		foreign key (posn)
-		references billetOwners (posn)
+		references billetDescs (posn)
 );
 	
 drop table if exists acqLevels cascade; 
@@ -155,7 +155,7 @@ create table favorites (
 		references users (username), 
 	constraint fk_favs_posn
 		foreign key (posn)
-		references billetOwners (posn)
+		references billetDescs (posn)
 );
 
 drop table if exists userActivity;

@@ -18,7 +18,7 @@ var billets = <?php echo $sql->queryJSON("select posn from billetOwners where us
 // Populate after page load. 
 $(function(){
 	billets.forEach(function(x){
-	$("#switch option:last").after("<option value='./assignments_preference.php?billet=" + x.posn + "'> Billet " + x.posn + "</option>" );
+	$("#switch").append("<option value='./assignments_preference.php?billet=" + x.posn + "'> Billet " + x.posn + "</option>" );
 	});
 	$("#switch").chosen();
 });
@@ -48,7 +48,8 @@ $(function(){
 <select id = "switch">
 <?php if ($_SESSION["isAirman"]) {
 	echo '<option value="./officer_preference.php"> Self (My Assignment Preferences) </option>'; 
-	}?>
+	}
+?>
 </select>
 <button class="btn-primary" onclick="window.location.href = $('#switch').val();">
     Go!

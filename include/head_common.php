@@ -47,7 +47,7 @@
 function helpNRPP(){
 	swal({
 	title: "Prioritization Levels",
-	text: "<div style=\"text-align: left;\">Not all billets have the same likelihood of being filled. Air Staff prioritizes billets into three tiers: <ul> <li> \"Must Fill\" (100% filled) </li> <li> \"Priority\" (XX%) </li> <li> \"Entitlement\" (Dynmaic, but currently at XX%) </li> </ul> </div>",
+	text: "<div style=\"text-align: left;\">Not all billets have the same likelihood of being filled. Air Staff prioritizes billets into three tiers: <ul> <li> \"Must Fill\" (100% filled) </li> <li> \"Priority\" (~85%) </li> <li> \"Entitlement\" (Remainder of Officers) </li> </ul> </div>",
 	imageUrl: "../images/help.jpg",
 	html: true
 })}
