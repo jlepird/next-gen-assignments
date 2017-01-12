@@ -15,7 +15,7 @@ if (!isset($_SESSION["uname"])) {
     <div class="col-md-6">
     <br> <br> <br>
     <h3>Instructions</h3>
-    <p>As an officer on the VML, you are required to update your profile on MyVector. There you will be able to update your duty experience, skills, training, and education.  Having a detailed profile allows billet owners to have a better understanding of you as an officer as they search for the right person for their billet.  Follow the following tutorial on how to update your profile in MyVector.
+    <p>As an officer on the VML, you are required to update your profile on MyVector by 3 Feb 17. There you will be able to update your duty experience, skills, training, and education.  Having a detailed profile allows billet owners to have a better understanding of you as an officer as they search for the right person for their billet.  Follow the following tutorial on how to update your profile in MyVector.
 
     
 
@@ -51,23 +51,41 @@ You should see the following screen after logging in.  Click on "See My Experien
 
 <img src="see my experience.JPG" alt="See My Experience"  style="padding:2px;border:thin solid black;"><br><br>
 
-<p>Under the "Duty History" tab, your duty distory should be automatically filled in.  The quick view table will display the following for each duty entry: Start date of the duty, Duty Title, AFSC, Component, Unit, Organization, Type, Location, MAJCOM, Rank, Career Field Experience Code (created by the CFM), Experience Description, and association request action.
-
-<p>All duty entries are pulled from MilPDS if the information is incorrect, you must contact the local Military Personnel Section (MPS) to ensure the information is updated correctly within those systems. Note: The Rank associated with a duty is calculated from the Date of Rank held when you started the duty.
-
-<p>You can click “Change Component” if your component is incorrect (options include the following: AF Component, Reserve, Air National Guard, and Civilian).  Note: MyVECTOR is Total Force, therefore if your component is incorrect, it is important to correct. The Active Duty history of many reservists will initially display as Reserves due to the initial data source.
+<p>Under the "Duty History" tab, your AF duty distory should be automatically filled in.  The quick view table will display the following for each duty entry: Start date of the duty, Duty Title, AFSC, Component, Unit, Organization, Type, Location, MAJCOM, Rank, Career Field Experience Code (created by the CFM), Experience Description, and association request action.
 
 <br><br><img src="duty.JPG" alt="Review your Duty History"  style="padding:2px;border:thin solid black;"> <br><br>
 
-<p> The "Other-Self Reported" section allows you to add experience garnered throughout your career that cannot be identified any place else (i.e. jobs with other services, deployment experience, previous military or civilian experience, programming experience, foreign languages, volunteer work, etc). In addition, you will be able to associate a code with this duty using the dropdowns so it will appear on your experience summaries.  You can also edit existing entries in this section.
+<p>All duty entries are pulled from MilPDS if the information is incorrect, you must contact the local Military Personnel Section (MPS) to ensure the information is updated correctly within those systems. Note: The Rank associated with a duty is calculated from the Date of Rank held when you started the duty.
 
-<br><br><img src="edit self report.JPG" alt="See My Experience"  style="padding:2px;border:thin solid black;">
+<p>You can click “Change Component” if your component is incorrect (options include the following: AF Component, Reserve, Air National Guard, and Civilian).  Note: MyVector is Total Force, therefore if your component is incorrect, it is important to correct. The Active Duty history of many reservists will initially display as Reserves due to the initial data source.
 
-<p>You will see the following screen when you create a new self-reported job.  Be sure to fill out all relevant information, especially the free-text Description box where you should provide as much detail as possible.
+
+
+<!--<br><br><img src="edit self report.JPG" alt="See My Experience"  style="padding:2px;border:thin solid black;"> -->
+
+
+
+<p> The most important area you should pay attention to is the "Other-Self Reported" tab which allows you to add experience garnered throughout your career that cannot be identified any place else (i.e. jobs with other services, deployment experience, previous military or civilian experience, volunteer work, etc).  Click on the "Other-Self Reported" tab to get started.  You can click "Add Additional Experience" or edit existing records.
+
+<br><br><img src="self-report.JPG" alt="SELF-REPORT"  style="padding:2px;border:thin solid black;">
+
+<br><br><img src="self_reported_deployment.JPG" alt="Self reported deployment"  style="padding:2px;border:thin solid black;">
+
+
+
+<p>From the way MyVector is set up at this time, you are unable to add your accomplishments and skills to specific assignments.  As such, this is also a good place to list any awards, accomplishments, and skill sets that billet owners should know about.  This could include organizational awards, programming experience, foreign languages, hobbies, supervisory skills, etc.  You can do this by creating adding Additional Experience sections.  For example you can create entries titled "SELF REPORTED SKILLS," "VOLUNTEER WORK," "AWARDS," and listing descriptions in the free-text box as shown in the following screenshot.
+
+<br><br><img src="self_reported_skills.JPG" alt="SELF-REPORTED SKILLS"  style="padding:2px;border:thin solid black;">
+
+
+
+<!--<p>You will see the following screen when you create a new self-reported job.  Be sure to fill out all relevant information, especially the free-text Description box where you should provide as much detail as possible.
+
+
 
 <br><br><img src="add self report.JPG" alt="See My Experience"  style="padding:2px;border:thin solid black;">
 
-<p>Click "Save" when finished.
+<p>Click "Save" when finished. -->
 
 
 
