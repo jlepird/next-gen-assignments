@@ -22,7 +22,7 @@
         <p>To aid billet owners in finding for potential officers, the existing <a href="https://afvec.langley.af.mil/myvector/" target="_blank">MyVector</a> website has the list of available officers along with their work history, skill sets, etc. If you an officer on the VML, you will need to log into <a href="https://afvec.langley.af.mil/myvector/" target="_blank">MyVector</a> and fill out your profile with as much information regarding your talents, skills, expertise, and anything that will make you look favorable as billet owners search through the website to build their preferred officer list.  This process emulates a LinkedIn environment where billet owners can quickly review and rank multiple candidates for their positions.</p>
         
     <h3>Deadlines</h3>
-        <p>Officers to provide information on themselves via <a href="https://afvec.langley.af.mil/myvector/" target="_blank">MyVector</a>. Billet owners to provide information on their assignments via <a href="../billets/manage.php">Manage Billets</a>. <b>Deadline: 3 February 2017</b></p>
+        <p>Officers to provide information on themselves via <a href="https://afvec.langley.af.mil/myvector/" target="_blank">MyVector</a>. Billet owners to provide information on their assignments via <a href="../billets/manage.php">Manage Billets</a>. <b>Deadline: 31 January 2017</b></p>
         
         <p>Officers to input their preferred assignment list. Billet owners to input their preferred officers list.  This is done via the <a href="/prefs/input.php">My Preference List</a> link.  <b>Deadline: 3 March 2017</b></p>
         
