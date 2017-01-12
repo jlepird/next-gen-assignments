@@ -60,7 +60,7 @@ if (! $authorized){
 	    $(function(){
 	    	// Add options
 	    	$(".chosen-select").each(function(i, x){
-	    		$(x).append($("<option>", {value: "", text: "Empty Billet"}));
+	    		$(x).append($("<option>", {value: "", text: "Any Airman"}));
 	    		$(airmen).each(function(i, amn){
 	    			$(x).append($("<option>", {value: amn.name, text: amn.name}));
 	    		})
