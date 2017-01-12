@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once("./include/funs.php");
-$uname    = strtolower($sql->sanitize($_POST['uname']));
+$uname    = $sql->sanitize($_POST['uname']);
 $password = md5($_POST['password']);
 
 try {
