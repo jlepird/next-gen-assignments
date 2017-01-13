@@ -139,6 +139,10 @@ if ($_SESSION['isAirman'] != 't' ){
 	
 	    		var val = $("#billets" + i)[0].value;
 
+    			// Reset row text
+    			$("#row" + i)[0].innerHTML = "";
+    			$("#count" + i).remove(); // ensure count is removed
+
 	    		// Verify each billet 
 	    		if (val){ // if nonempty 
 
@@ -149,9 +153,7 @@ if ($_SESSION['isAirman'] != 't' ){
 	    				break;
 	    			}
 
-	    			// Reset row text
-	    			$("#row" + i)[0].innerHTML = "";
-	    			$("#count" + i).remove(); // ensure count is removed
+
 
 	    			// Make sure it's not a duplicate of a one before it. 
 	    			
