@@ -41,7 +41,7 @@ if (! $authorized){
     </head>
     <script>
     	// Get list of airmen
-	    var airmen = <?php echo $sql->queryJSON("select distinct name from users where officer;"); ?>;
+	    var airmen = <?php echo $sql->queryJSON("select distinct name from users where officer order by name;"); ?>;
 
 	    var initialPrefs = <?php echo $sql->queryJSON("select name, pref from billetPrefs where posn = '" . $_GET["billet"] . "';"); ?>; 
 
