@@ -41,7 +41,7 @@ if (! $authorized){
     </head>
     <script>
     	// Get list of airmen
-	    var airmen = <?php echo $sql->queryJSON("select distinct name from users;"); ?>;
+	    var airmen = <?php echo $sql->queryJSON("select distinct name from users where officer order by name;"); ?>;
 
 	    var initialPrefs = <?php echo $sql->queryJSON("select name, pref from billetPrefs where posn = '" . $_GET["billet"] . "';"); ?>; 
 
@@ -62,7 +62,7 @@ if (! $authorized){
 	    	$(".chosen-select").each(function(i, x){
 	    		$(x).append($("<option>", {value: "", text: "Any Airman"}));
 	    		$(airmen).each(function(i, amn){
-	    			$(x).append($("<option>", {value: amn.name, text: amn.name}));
+	    			$(x).append($("<option>", {value: amn.name, text: _.startCase(_.toLower(amn.name))}));
 	    		})
 	    	});
 
