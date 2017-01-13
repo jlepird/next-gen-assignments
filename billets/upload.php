@@ -17,7 +17,7 @@ if ($owner != $_SESSION["uname"]) {
 }
 
 // Clear saved data
-$sql->execute("delete from billetData where posn = '" . $id . "';");
+$sql->execute("delete from billetData where posn = '" . $id . "' and tkey != 'nrpp';");
 
 // Iterate over each POSTed value, and then update the SQL database appropriately. 
 foreach ($_POST as $key => $value) {
@@ -28,7 +28,7 @@ foreach ($_POST as $key => $value) {
 		$sql->execute("update billetDescs set txt= '" . $value . "' where posn = '" . $id . "';");
 		//$sql->execute("delete from billetDescs where posn = '" . $id . "';");
 		//$sql->execute("insert into billetDescs values('" . $id . "','" . $value . "');");
-	} elseif ($key == "id"){
+	} elseif ($key == "id" or $key == "nrpp"){
 		continue; 
 	} elseif (is_array($value)) { 
 		foreach($value as $val){

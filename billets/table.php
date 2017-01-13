@@ -127,7 +127,7 @@ $(function(){
 	</tr>
 	<tr>
 		<td colspan = 1> <p> Prioritization Level  <img src="../images/help.jpg"  style="width:20px;height:20px; cursor: pointer;" onclick="helpNRPP();"></p> </td>
-		<td colspan = 1> <select id="nrpp" class = "autopop chosen-select-large" disabled=disabled>
+		<td colspan = 1> <select name = "nrpp" id="nrpp" class = "autopop chosen-select-large" disabled=disabled>
 			<option value="ent">Entitlement </option>
 			<option value="ent+"> Priority </option>
 			<option value="mf"> Must-Fill </option>
