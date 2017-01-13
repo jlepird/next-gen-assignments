@@ -10,7 +10,7 @@ include '../include/head_common.php';
 $id = $_POST["id"];
 
 // Ensure owner actually owns the position! 
-$owner = $sql->queryValue("select username from billetOwners where posn = '" . $id . "'; ");
+$owner = $sql->queryValue("select username from billetOwners where posn = '" . $id . "' and username = '" . $_SESSION["uname"] . "'; ");
 $owner = str_replace("\"", "",  $owner);
 if ($owner != $_SESSION["uname"]) {
 	die("User " . $_SESSION["uname"] . "vs" . $owner ." not authorized to make changes to billet " . $id . ".");
@@ -24,8 +24,10 @@ foreach ($_POST as $key => $value) {
 //	echo "Key: " . $key . " Value: " . $value . "<br>"; // for debug
 	if ($key == "desc"){
 		$value = $sql->sanitize($value); 
-		$sql->execute("delete from billetDescs where posn = '" . $id . "';");
-		$sql->execute("insert into billetDescs values('" . $id . "','" . $value . "');");
+		
+		$sql->execute("update billetDescs set txt= '" . $value . "' where posn = '" . $id . "';");
+		//$sql->execute("delete from billetDescs where posn = '" . $id . "';");
+		//$sql->execute("insert into billetDescs values('" . $id . "','" . $value . "');");
 	} elseif ($key == "id"){
 		continue; 
 	} elseif (is_array($value)) { 
