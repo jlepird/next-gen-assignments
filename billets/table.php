@@ -167,7 +167,7 @@ $(function(){
 			</select> </td>
 	</tr>
 	<tr> 
-		<td> <p>Acquisition Level: </p> </td>
+		<td> <p>Minimum Acquisition Level: </p> </td>
 		<td> <select name = "acqLevel" class = "autopop chosen-select-large" >
 			<?php
 				$res = $sql->execute("select code, level from acqLevels;");
