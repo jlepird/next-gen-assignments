@@ -22,35 +22,6 @@ if ($_SESSION['isAirman'] != 't' ){
     </script>
     </head>
     <script>
-    // First, we need a list of all the billets we can populate. 
-
-    	
-    	// Get names of available billets. Need to do this in case other fields are missing for some reason 
-	    var rawBillets = <?php echo $sql->queryJSON("select distinct posn from billetOwners;"); ?>;
-		
-	    // Get a list of their locations. 
-	    var billetLocs = <?php echo $sql->queryJSON("select posn, val from billetData where tkey = 'location';"); ?>;
-	    // Rename key for merge
-	    billetLocs = $(billetLocs).each(function(i, x){
-	    	x.location = x.val;
-	    	delete x.val;
-	    });
-
-	    // Get the units of available billets 
-	    var billetUnits = <?php echo $sql->queryJSON("select posn, val from billetData where tkey = 'unit';"); ?>;
-	    // Rename key 
-	    billetUnits = $(billetUnits).each(function(i, x){
-	    	x.unit = x.val;
-	    	delete x.val;
-	    });
-
-	    // Get the duty titles of available billets 
-	    var billetTitles = <?php echo $sql->queryJSON("select posn, val from billetData where tkey = 'dutyTitle';"); ?>;
-	    // Rename key 
-	    billetTitles = $(billetTitles).each(function(i, x){
-	    	x.title = x.val;
-	    	delete x.val;
-	    });
 
 	    // Get how many people have priorized each billet
 	    var billetPriors = <?php echo $sql->queryJSON("select posn, count(*) as val from airmanprefs where username != '" . $_SESSION["uname"] . "' group by posn;"); ?>;
@@ -66,8 +37,16 @@ if ($_SESSION['isAirman'] != 't' ){
 	    // Get list of billets the user has favorited
 	    var billetFavs = <?php echo $sql->queryJSON("select posn from favorites where username = '". $_SESSION["uname"] . "';"); ?>;
 
-	    // Merge the objects. 
-	    billets = $.extend(true, {}, rawBillets, billetLocs, billetUnits, billetTitles);
+	    // Get our display list of billets
+	    billets = <?php echo $sql->queryJSON("select posns.posn, location, unit, title from 
+(select posn from billetDescs) posns 
+left outer join 
+(select posn, val as location from billetdata where tkey = 'location') locs on posns.posn = locs.posn
+left outer join 
+(select posn, val as unit from billetdata where tkey = 'unit') units on posns.posn = units.posn
+left outer join
+(select posn, val as title from billetData where tkey = 'dutyTitle') titles on posns.posn = titles.posn;
+"); ?>;
 
 	    $(billets).each(function(i,x){
 	    	x.favorite = false; 
