@@ -55,12 +55,12 @@ left outer join
 	    			x.favorite = true;
 	    		}
 	    	})
-	    })
+	    });
 
 	    // Re-order the array so that the favorites come first
 	    billets = billets.sort(function(a,b){ // sort expects a compare function
 	    	return (b.favorite) - (a.favorite);
-	    })
+	    });
 
 	    // Get the list of preferences the user has (if any)
 	    var initialPrefs = <?php echo $sql->queryJSON("select posn, pref from airmanPrefs where username = '" . $_SESSION["uname"] . "';"); ?>; 
@@ -104,7 +104,7 @@ left outer join
 
 	    // Make array of billet names for enforcement later 
 	    var billetNames = []; 
-	    billets.each(function(i, x ){
+	    $(billets).each(function(i, x ){
 	    	billetNames.push(x.posn); 
 	    }); 
 
