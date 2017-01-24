@@ -1,10 +1,11 @@
 ### Source code for the AF Talent Marketplace
-[![Build Status](https://travis-ci.org/jlepird/next-gen-assignments.png)](https://travis-ci.org/jlepird/next-gen-assignments) [![codecov](https://codecov.io/gh/jlepird/next-gen-assignments/branch/master/graph/badge.svg)](https://codecov.io/gh/jlepird/next-gen-assignments)
+[![Build Status](https://travis-ci.org/jlepird/next-gen-assignments.png)](https://travis-ci.org/jlepird/next-gen-assignments) [![Code Coverage](https://codecov.io/gh/jlepird/next-gen-assignments/branch/master/graph/badge.svg)](https://codecov.io/gh/jlepird/next-gen-assignments) [![Code Climate](https://codeclimate.com/github/jlepird/next-gen-assignments/badges/gpa.svg)](https://codeclimate.com/github/jlepird/next-gen-assignments)
+[![License](https://img.shields.io/badge/license-Public%20Domain-brightgreen.svg)](https://github.com/jlepird/next-gen-assignments/blob/master/LICENSE.md)
 
 This repository contains all of the source code for the Air Force Talent Marketplace test. It is a prototype proof-of-concept and is not intended for production use at this time.
 
 #### What are we testing?
-The National Residency Matching Program [NRMP](http://www.nrmp.org/) is the process by which graduating medical students are assigned to their initial medical residencies. It assigns over 30,000 medical students annually, and its methodology was awarded a [Nobel Prize](http://www.nrmp.org/wp-content/uploads/2013/08/The-Sveriges-Riksbank-Prize-in-Economic-Sciences-in-Memory-of-Alfred-Nobel1.pdf) in 2012. Here's how it works: 
+The National Residency Matching Program [(NRMP)](http://www.nrmp.org/) is the process by which graduating medical students are assigned to their initial medical residencies. It assigns over 30,000 medical students annually, and its methodology was awarded a [Nobel Prize](http://www.nrmp.org/wp-content/uploads/2013/08/The-Sveriges-Riksbank-Prize-in-Economic-Sciences-in-Memory-of-Alfred-Nobel1.pdf) in 2012. Here's how it works: 
 
 * Graduating medical students submit prioritized lists of the hospitals they'd like to work at.
 * Hospitals submit prioritized lists of the graduating medical students they'd like to have as residents.

@@ -32,7 +32,7 @@ if (! $authorized){
     
     <script type="text/javascript">
     <?php
-    	if ($_SESSION["justSubmitted"]){
+    	if (isset($_SESSION["justSubmitted"]) and $_SESSION["justSubmitted"]){
     		echo '$(function(){swal("Success!", "Preferences Successfully Submitted.", "success");});';
     		$_SESSION["justSubmitted"] = False;
     	} 
@@ -41,17 +41,28 @@ if (! $authorized){
     </head>
     <script>
     	// Get list of airmen
-	    var airmen = <?php echo $sql->queryJSON("select distinct name from names;"); ?>;
+	    var airmen = <?php echo $sql->queryJSON("select distinct name from users where officer order by name;"); ?>;
 
 	    var initialPrefs = <?php echo $sql->queryJSON("select name, pref from billetPrefs where posn = '" . $_GET["billet"] . "';"); ?>; 
+
+	   	// Get how many people have priorized each billet
+	    var amnPriors = <?php echo $sql->queryJSON("select name, count(*) as val from billetprefs where posn != '" . $_GET["billet"] . "' group by name;"); ?>;
+	    var maxPref = d3.max(amnPriors, function(x){
+	    	return +x.val;
+	    })
+
+	    // Define the color scale we'll use to code the prior preferences
+	    var scale = d3.scale.linear()
+	                        .domain([0, maxPref])
+	                        .range(["#42f483", "#d66464"]);
 
 	    // After page load, populate datalist with options
 	    $(function(){
 	    	// Add options
 	    	$(".chosen-select").each(function(i, x){
-	    		$(x).append($("<option>", {value: "", text: "Empty Billet"}));
+	    		$(x).append($("<option>", {value: "", text: "Any Airman"}));
 	    		$(airmen).each(function(i, amn){
-	    			$(x).append($("<option>", {value: amn.name, text: amn.name}));
+	    			$(x).append($("<option>", {value: amn.name, text: _.startCase(_.toLower(amn.name))}));
 	    		})
 	    	});
 
@@ -60,6 +71,8 @@ if (! $authorized){
 		    });
 			
 			$(".chosen-select").chosen({width: "200"});
+
+			showOthers();
 			
 		  });
 
@@ -106,9 +119,31 @@ if (! $authorized){
 				//$("#submit")[0].style.background = "#7a7d82"; 
 			} else {
 				$("#submit")[0].disabled = ""; 
-				//$("#submit")[0].style.background = "#286090"; 
+				//$("#submit")[0].style.background = "#286090";
+				showOthers();
 			}
 
+	    }
+
+	    var showOthers = function(){
+	    	for(var i = 1; i <= numPrefs; ++i){
+	    		var val = $("#airman" + i).val();
+	    		if (val != ""){
+	    			var subset = amnPriors.filter(function(x){
+	    				return x.name == val;
+	    			}); 
+
+	    			var count = 0; 
+	    			if (subset.length > 0){
+	    				count = subset[0].val; 
+	    			}
+
+	    			$("#row" + i)[0].innerHTML = "<div class=update-prefs id=count" + i + "> &larr; Already ranked by " + count + " other(s). </div>";
+	    			$("#count" + i).css("background-color", scale(count));
+	    		} else {
+	    			$("#count" + i).remove();
+	    		}
+	    	}
 	    }
 
     </script>
@@ -121,7 +156,7 @@ if (! $authorized){
     <p> <?php echo $_SESSION['uname'] ?>, enter your preferences below for billet <b> <?php echo $_GET["billet"]; ?></b>: </p>
 
     <div style="background-color: #42f483">
-    <p> This billet has been ranked by <?php echo str_replace('"', "", $sql->queryValue("select count(*) from airmanPrefs where posn='" . $_GET["billet"] . "';")); ?> Airmen (<?php echo str_replace('"', "", $sql->queryValue("select count(distinct username) from airmanPrefs;"));?>/<?php echo str_replace('"', "", $sql->queryValue("select count(distinct username) from names;"));?> Airmen have submitted preferences). </p>
+    <p> This billet has been ranked by <?php echo str_replace('"', "", $sql->queryValue("select count(*) from airmanPrefs where posn='" . $_GET["billet"] . "';")); ?> Airmen (<?php echo str_replace('"', "", $sql->queryValue("select count(distinct username) from airmanPrefs;"));?>/<?php echo str_replace('"', "", $sql->queryValue("select count(distinct username) from users where officer;"));?> Airmen have submitted preferences). </p>
     </div>
 
     <datalist id = "airmen"> </datalist> <!-- Javascript will fill in -->
