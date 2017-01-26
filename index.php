@@ -28,8 +28,13 @@ if (!isset($_SESSION["uname"])) {
 
     <div class="col-md-8">
 
+<div class = "reminder">
+Reminder: The Talent Marketplace is only a test. AFPC will still be matching your actual assignments. 
+</div>
+
 <h1 style="text-align: center;"> <strong> Welcome to the Air Force Talent Marketplace </strong> </h1>
 <p> Congratulations! As an active participant on the FY17 Summer VML cycle, you have been chosen to help shape the future Air Force assignment system. You are part of an initial pilot program to measure the effectiveness of a more decentralized, transparent, and user-friendly assignment process. If you are interested in more technical details about this test program, see the <a target = "_blank" href="/help/about.php"> About</a> section.</p>
+
 
 
 <h2> What we need you to do </h2>

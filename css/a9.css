@@ -108,3 +108,10 @@ p {
     border-color: green;
     background-color: green;
 }
+
+
+.reminder {
+  background-color: #f43d3d;
+  color: white;
+  text-align: center;
+}
