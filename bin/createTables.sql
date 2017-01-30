@@ -167,4 +167,17 @@ create table userActivity (
 			references users (username)
 );
 
+drop table if exists billetViews;
+create table billetViews ( 
+	username varchar(50) not null,
+	posn varchar(50) not null,
+	at timestamp,
+	constraint fk_billetViews_users
+		foreign key (username)
+		references users (username),
+	constraint fk_billetViews_posn
+		foreign key (posn)
+		references billetDescs (posn)
+);
+
 select 'Complete' as Update;  
