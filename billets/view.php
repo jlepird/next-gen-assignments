@@ -9,9 +9,8 @@ if (!isset($_SESSION["uname"])) {
     <head> 
     <?php 
     include '../include/head_common.php'; 
-    if (extension_loaded('newrelic')) {
-        newrelic_add_custom_parameter("view_" . $_GET["billet"], 1);
-    }
+    $sql->execute("insert into billetViews values ('" . $_SESSION["uname"] . "','" . $_GET['billet'] . "', now());");
+
     ?>
     </head>
     <script type = "text/javascript"> 
