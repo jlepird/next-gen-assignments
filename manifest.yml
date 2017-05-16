@@ -1,6 +1,6 @@
 ---
 applications:
-- name: af-talent-marketplace
+- name: af-talent-marketplace-dev
   memory: 256M
   buildpack: git://github.com/heroku/heroku-buildpack-php.git
   services:
