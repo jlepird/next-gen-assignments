@@ -25,6 +25,13 @@
     </script>
     </head>
 <body>
+    <script type="text/javascript">
+    swal({
+        title: "Warning",
+        text: "The Air Force Talent Marketplace test has officially ended. This legacy website is for demonstration purposes only.",
+        type: "warning"
+    });
+</script>
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
 <div class="container">
 <div class="navbar-header">

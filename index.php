@@ -14,7 +14,6 @@ if (!isset($_SESSION["uname"])) {
 
 <?php include './banner.php'; ?>
 
-
 <div class="container">
 
     <br>
