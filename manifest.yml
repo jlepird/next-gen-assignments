@@ -4,6 +4,6 @@ applications:
   memory: 256M
   buildpack: git://github.com/heroku/heroku-buildpack-php.git
   services:
-      - af-assignments-db
+      - af-assignments-db-dev
   instances: 1
   path: .
