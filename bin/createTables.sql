@@ -180,4 +180,21 @@ create table billetViews (
 		references billetDescs (posn)
 );
 
+drop table if exists constraints;
+create table constraints (
+	name varchar(500) not null, 
+	posn varchar(50) not null,
+	constr varchar(50) not null,
+	constraint fk_billetPrefs_users
+		foreign key (name)
+		references users (name), 
+	constraint fk_billetPrefs_posn
+		foreign key (posn)
+		references billetDescs (posn)
+);
+
+drop table if exists private_key;
+create table private_key (key varchar(100));
+insert into private_key values ('abc');
+
 select 'Complete' as Update;  
