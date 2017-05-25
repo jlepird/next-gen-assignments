@@ -50,35 +50,10 @@ if (!isset($_SESSION["uname"])) {
     		completed.push(id); 
     	}
     }
-	test = data; 
+	
     // rename and de-allocate extra 
     data = outData; outData = []; 
 
-    var degreeDisplay = {
-        "bs" : "None",
-        "ms" : "MS",
-        "phd": "PhD"
-    };
-    
-    var aads = <?php echo $sql->queryJSON("select code, degree from allowableDegrees;"); ?>;
-    var aadDisplay = {};
-    $(aads).each(function(i, x){
-        aadDisplay[x.code] = x.degree;
-    });
-
-    var acqDisplay = {
-        " " : " None",                                                                   
-	 "1"    : "ENTRY LEVEL I",
-	 "2"    : "INTERMEDIATE LEVEL II",
-	 "3"    : "SENIOR LEVEL III",
-	 "4"    : "LEVEL III, CRITICAL, DIVISION HEAD",
-	 "5"    : "LEVEL II, CRITICAL, NON-DIVISION HEAD",
-	 "6"    : "LEVEL III, CRITICAL, NON-DIVISION HEAD",
-	 "7"    : "LEVEL III, NON-CRITICAL",
-	 "A"    : "ENTRY LEVEL I TRAINEE EXPOSED TO ACQ FUN",
-	 "B"    : "INTERMEDIATE LEVEL II CONT AREA SPEC/BRO",
-	 "C"    : "SENIOR LEVEL III IN DEPT KNOWLEDGE SPEC"
-    }
 
     function toTitleCase(str)
     { try{
@@ -100,16 +75,14 @@ if (!isset($_SESSION["uname"])) {
     for (var i = 0; i < data.length; ++i){
     	outData.push(["<input type = 'checkbox' onchange='toggleFavorite(\"" + data[i].id + "\", this)' data-toggle='toggle' class = 'toggle' id = 'fav" + data[i].id + "'>",
             "<a href='/billets/view.php?billet=" + data[i].id + "'>" + data[i].id + "</a>",
-    		          data[i].afsc, 
     		          data[i].grade,
-    		          data[i].dutyTitle,
-    		          data[i].location,
-                      data[i].state,
-    		          data[i].unit,
-                      degreeDisplay[data[i].aadLevel],
-                      toTitleCase(aadDisplay[data[i].aadDegree]),
-                      toTitleCase(acqDisplay[data[i].acqLevel])]
-    		          );
+    		          data[i].DutyTitle,
+    		          data[i].Location,
+                      data[i].State,
+    		          data[i].Unit,
+    		          data[i].Type,
+    		          data[i].NumAvailable
+    		          ]);
     }
 
     // Things to run after page load 
@@ -181,17 +154,12 @@ if (!isset($_SESSION["uname"])) {
                     }], 
                 columns: [
                     {title: "Favorite",          "orderDataType": "dom-checkbox"},
-                    {title: "Billet Number",     "defaultContent": "<i>None</i>"},
-                    {title: "AFSC",              "defaultContent": "<i>None</i>"},
+                    {title: "ID",     "defaultContent": "<i>None</i>"},
                     {title: "Grade",             "defaultContent": "<i>None</i>"},
                     {title: "Duty Title",        "defaultContent": "<i>None</i>"},
                     {title: "Location",          "defaultContent": "<i>None</i>"},
                     {title: "State",             "defaultContent": "<i>None</i>"},
-                    {title: "Unit",              "defaultContent": "<i>None</i>"},
-                    {title: "Degree",            "defaultContent": "<i>None</i>"},
-                    {title: "Degree Specialty",  "defaultContent": "<i>None</i>"},
-                    {title: "Acquisition Level", "defaultContent": "<i>None</i>"}
-                    
+                    {title: "Unit",              "defaultContent": "<i>None</i>"}
                 ]
             });
         table.draw();
@@ -231,91 +199,6 @@ if (!isset($_SESSION["uname"])) {
             "mf": "Must-Fill"
         };
         
-        // ************* NRPP pie chart ***************
-        var nrpp = billets.dimension(function(x){
-            if ("nrpp" in x){
-                return nrppDecoder[x.nrpp];
-            } else {
-                return "(Unknown)";
-            }
-        });
-        var nrppGroup = nrpp.group();
-
-        prioritizationPieChart = dc.pieChart("#prioritizationPie");
-        prioritizationPieChart.width(180)
-                    .height(180)
-                    .radius(80)
-                    .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
-                    .dimension(nrpp)
-                    .group(nrppGroup)
-
-                    .on("filtered", updateTable);
-
-
-        // ************* AFSC prefix pie chart ***************
-        /* Disabled for production: all billets are 61X
-        var afscPrefix = billets.dimension(function(x){
-            if ("afsc" in x){
-                var spl = x.afsc.split(", ");
-                var outPrefixes = [];
-                for (var i in spl){
-                    if (outPrefixes.indexOf(spl[i].substring(0,1)) >= 0){
-                        continue;
-                    } else {
-                        outPrefixes.push(spl[i].substring(0,1));
-                    }
-                }
-                if (outPrefixes.length > 1){
-                    return "(Multiple)";
-                } else {
-                    return outPrefixes[0];
-                } 
-            } else {
-                return '1'; // for 16G
-            }
-        });
-        var afscPrefixGroup = afscPrefix.group();
-
-        afscPrefixPieChart = dc.pieChart("#afscPrefixPie");
-        afscPrefixPieChart.width(180)
-                    .height(180)
-                    .radius(80)
-                    .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
-                    .dimension(afscPrefix)
-                    .group(afscPrefixGroup)
-                    .on("filtered", updateTable);
-		*/
-
-        // ************* AFSC pie chart ***************
-        // Known issue: need better way to handle multiple AFSCs
-        var afscs = billets.dimension(function(x){
-            if ("afsc" in x){
-                if (x.afsc.split(",").length > 1){
-                    return "(Multiple)";
-                } else {
-                    if (x.afsc == "16G"){
-                        return 'Any';
-                    } else {
-                        return x.afsc;
-                    }
-                }
-            } else {
-                return "(Unknown)";
-            }
-        });
-        var afscGroup = afscs.group();
-
-        afscPieChart = dc.pieChart("#afscPie");
-        var cs = d3.scale.ordinal()
-                         .domain()
-        afscPieChart.width(180)
-                    .height(180)
-                    .radius(80)
-                    .colors(d3.co)
-                    .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
-                    .dimension(afscs)
-                    .group(afscGroup)
-                    .on("filtered", updateTable);
 
         // ************* Grade chart ***************
         var grades = billets.dimension(function(x){
@@ -336,6 +219,10 @@ if (!isset($_SESSION["uname"])) {
             }
         });
         var gradeGroup = grades.group();
+        gradeGroup = gradeGroup.reduce(function(p,v) {return p+(+v.NumAvailable);},
+               function(p,v) {return p-(+v.NumAvailable);},
+               function() {return 0;});
+
         gradeChart = dc.rowChart("#grade");
         gradeChart.width(barWidth)
                      .height(180)
@@ -347,115 +234,21 @@ if (!isset($_SESSION["uname"])) {
                      .on("filtered", updateTable)
                      .xAxis().ticks(2);
 
-        // ************* AAD Level ***************
-
-        // Need to find the *minimum" aad level
-        var aads = billets.dimension(function(x){
-            if ("aadLevel" in x){
-                if (x.aadLevel.indexOf("bs") >= 0){
-                    return "bs"; 
-                } else if (x.aadLevel.indexOf("ms") >= 0){
-                    return "ms";
-                } else {
-                    return "phd";
-                }
-            } else {
-                return "bs";
-            }
-        });
-        var aadGroup = aads.group();
-        aadChart = dc.rowChart("#aadLevel");
-        aadChart.width(barWidth)
-                .height(180)
-                .dimension(aads)
-                .group(aadGroup)
-                .margins({top: 10, right: 50, bottom: 30, left: 40})
-                .elasticX(true)
-                .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
-                .label(function(d){
-                    if (d.key == "ms"){
-                        return "MS";
-                    } else if (d.key == "phd"){
-                        return "PhD"; 
-                    } else {
-                        return "None";
-                    }
-                })
-                .on("filtered", updateTable)
-                .xAxis().ticks(2);
-
-        // ************* ACQ Levels  ***************
-        var acqLevels = billets.dimension(function(x){
-            if ("acqLevel" in x){
-                return toTitleCase(acqDisplay[x.acqLevel]);
-            } else {
-                return "(Unknown)";
-            }
-            
-        });
-        var acqLevelGroup = acqLevels.group();
-        acqLevelChart = dc.rowChart("#acqLevel");
-        acqLevelChart.width(barWidth)
-                     .height(180)
-                     .dimension(acqLevels)
-                     .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
-                     .group(acqLevelGroup)
-                     .margins({top: 10, right: 50, bottom: 30, left: 40})
-                     .elasticX(true)
-                     .on("filtered", updateTable)
-                     .xAxis().ticks(2);
-        
-                // ************* Joint Qualification  ***************
-        var joint = billets.dimension(function(x){
-            if ("joint" in x){
-                return x.joint == "yes" ? "Yes" : "No"
-            } else {
-                return "No";
-            }
-            
-        });
-        var jointGroup = joint.group();
-        jointChart = dc.pieChart("#joint");
-        jointChart.width(180)
-                  .height(180)
-                  .radius(80)
-                  .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
-                  .dimension(joint)
-                  .group(jointGroup)
-                  .on("filtered", updateTable);
-        
-        // ************* Security Levels  ***************
-        var secLevelsDecoder = {"s" : "Secret", "ts": "Top Secret or Higher"}; 
-        var secLevels = billets.dimension(function(x){
-            if ("ts" in x){
-                return toTitleCase(x.ts);    
-            } else {
-                return "(Unknown)";
-            }
-            
-        });
-        var secLevelGroup = secLevels.group();
-        secLevelChart = dc.rowChart("#secLevel");
-        secLevelChart.width(barWidth)
-                     .height(180)
-                     .dimension(secLevels)
-                     .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
-                     .group(secLevelGroup)
-                     .margins({top: 10, right: 50, bottom: 30, left: 40})
-                     .elasticX(true)
-                     .on("filtered", updateTable)
-                     .xAxis().ticks(2);
 
         // ************* CONUS pie chart ***************
         var conus = billets.dimension(function(x){
-            if ("state" in x){
-               return x.state == "OCONUS" || x.state == "HI" || x.state == "AK" ? "OCONUS" : "CONUS";  
-            } else {
-                return "(Unknown)";
+            if ("CONUS" in x){
+            	if (x.CONUS == 1){
+            		return "CONUS";
+            	} else {
+            		return "OCONUS";
+            	}
             }
-            
         });
         var conusGroup = conus.group();
+        conusGroup = conusGroup.reduce(function(p,v) {return p+(+v.NumAvailable);},
+               function(p,v) {return p-(+v.NumAvailable);},
+               function() {return 0;});
 
         conusPieChart = dc.pieChart("#conusPie");
         conusPieChart.width(180)
@@ -476,6 +269,9 @@ if (!isset($_SESSION["uname"])) {
             
         });
         var contactGroup = contact.group();
+        contactGroup = contactGroup.reduce(function(p,v) {return p+(+v.NumAvailable);},
+               function(p,v) {return p-(+v.NumAvailable);},
+               function() {return 0;});
 
         contactPieChart = dc.pieChart("#contactPie");
         contactPieChart.width(180)
@@ -486,25 +282,50 @@ if (!isset($_SESSION["uname"])) {
                      .group(contactGroup)
                      .on("filtered", updateTable);
 
-        // ************* Deployable pie chart ***************
-        var deployable = billets.dimension(function(x){
-            if ("deployable" in x){
-                return x["deployable"] == "yes" ? "Yes" : "No"; 
-            } else {
-                return "(Unknown)";
-            }
-            
+        // ************** Assignment type *********************
+        var type = billets.dimension(function(x){
+        	if ("Type" in x){
+        		return x.Type;
+        	} else {
+        		return "(Unknown)";
+        	}
         });
-        var deployableGroup = deployable.group();
-
-        deployablePieChart = dc.pieChart("#deployablePie");
-        deployablePieChart.width(180)
+        var typeGroup = type.group();
+        typeChart = dc.rowChart("#typeChart");
+        typeChart.width(barWidth)
                      .height(180)
-                     .radius(80)
+                     .dimension(type)
                      .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
-                     .dimension(deployable)
-                     .group(deployableGroup)
-                     .on("filtered", updateTable);
+                     .group(typeGroup)
+                     .margins({top: 10, right: 50, bottom: 30, left: 40})
+                     .elasticX(true)
+                     .on("filtered", updateTable)
+                     .xAxis().ticks(2);
+
+        // ************** AC *********************
+        var ac = billets.dimension(function(x){
+        	if ("AC" in x){
+        		return x.AC;
+        	} else {
+        		return "(Unknown)";
+        	}
+        });
+        var acGroup = ac.group();
+        acGroup=acGroup.reduce(function(p,v) {return p+(+v.NumAvailable);},
+               function(p,v) {return p-(+v.NumAvailable);},
+               function() {return 0;});
+
+        acChart = dc.rowChart("#acChart");
+        acChart.width(barWidth)
+                     .height(180)
+                     .dimension(ac)
+                     .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
+                     .group(acGroup)
+                     .margins({top: 10, right: 50, bottom: 30, left: 40})
+                     .elasticX(true)
+                     .on("filtered", updateTable)
+                     .xAxis().ticks(2);
+
 
         // ************* Assignment Length  ***************
         var length = billets.dimension(function(x){
@@ -516,6 +337,10 @@ if (!isset($_SESSION["uname"])) {
             
         });
         var lengthGroup = length.group();
+        lengthGroup=lengthGroup.reduce(function(p,v) {return p+(+v.NumAvailable);},
+               function(p,v) {return p-(+v.NumAvailable);},
+               function() {return 0;});
+
         lengthChart = dc.rowChart("#lengthChart");
         lengthChart.width(barWidth)
                      .height(180)
@@ -537,6 +362,9 @@ if (!isset($_SESSION["uname"])) {
             
         });
         var predictableGroup = predictable.group();
+        predictableGroupGroup=predictableGroup.reduce(function(p,v) {return p+(+v.NumAvailable);},
+               function(p,v) {return p-(+v.NumAvailable);},
+               function() {return 0;});
 
         predictablePieChart = dc.pieChart("#predictablePie");
         predictablePieChart.width(180)
@@ -564,6 +392,9 @@ if (!isset($_SESSION["uname"])) {
             
         });
         var weekGroup = week.group();
+        weekGroup=weekGroup.reduce(function(p,v) {return p+(+v.NumAvailable);},
+               function(p,v) {return p-(+v.NumAvailable);},
+               function() {return 0;});
 
         weekPieChart = dc.pieChart("#weekPie");
         weekPieChart.width(180)
@@ -623,7 +454,9 @@ if (!isset($_SESSION["uname"])) {
             }
         });
         var reportGroup = report.group();
-
+        reportGroup=reportGroup.reduce(function(p,v) {return p+(+v.NumAvailable);},
+               function(p,v) {return p-(+v.NumAvailable);},
+               function() {return 0;});
 
         reportChart = dc.rowChart("#reportChart")
                                .width(barWidth)
@@ -645,93 +478,10 @@ if (!isset($_SESSION["uname"])) {
                                .xAxis().ticks(2);
 
 
-        // ************* Start Time Chart ***************
-        var startTime = billets.dimension(function(x){
-            if (x.regularHours == "yes"){
-                var hr  = +x.start.substring(0, 2);
-                var min = +x.start.substring(2, 4);
-                if (15 <= min <= 45){
-                    return hr + 0.5;
-                } else if (min > 45){
-                    return hr + 1;
-                } else {
-                    return hr;
-                }
-            } else {
-                return "";
-            }
-        });
-        var startTimeGroup = startTime.group();
-
-        var minStart = d3.min(startTimeGroup.top(Infinity), function(x){
-            return x.key;
-        });
-        var maxStart = d3.max(startTimeGroup.top(Infinity), function(x){
-            return x.key;
-        });
-
-        startTimeChart = dc.barChart("#startTimeChart")
-                               .width("300")
-                               .height("180")
-                               .margins({top: 10, right: 50, bottom: 30, left: 40})
-                               .dimension(startTime)
-                               .group(startTimeGroup)
-                               .elasticY(true)
-                               .centerBar(true)
-                               .x(d3.scale.linear().domain([minStart - 1, maxStart + 1
-                                ]))
-                               .on("filtered", updateTable)
-                               .renderHorizontalGridLines(true);
-        startTimeChart.xAxis().tickFormat(function(v){
-                                return timeFormat(Math.round(v)) + ":" + timeFormat(v % 1 * 30);
-                               }).ticks(4);
-
-        // ************* Stop Time Chart ***************
-        var stopTime = billets.dimension(function(x){
-            if (x.regularHours == "yes"){
-                var hr = +x.stop.substring(0, 2);
-                var min = +x.stop.substring(2, 4)
-                if (15 <= min <= 45){
-                    return hr + 0.5;
-                } else if (min > 45){
-                    return hr + 1;
-                } else {
-                    return hr;
-                }
-            } else {
-                return "";
-            }
-        });
-        var stopTimeGroup = stopTime.group();
-
-        var minStop = d3.min(stopTimeGroup.top(Infinity), function(x){
-            return x.key;
-        });
-        var maxStop = d3.max(stopTimeGroup.top(Infinity), function(x){
-            return x.key;
-        });
-
-        stopTimeChart = dc.barChart("#stopTimeChart")
-                               .width("300")
-                               .height("180")
-                               .margins({top: 10, right: 50, bottom: 30, left: 40})
-                               .dimension(stopTime)
-                               .group(stopTimeGroup)
-                               .elasticY(true)
-                               .elasticX(true)
-                               .centerBar(true)
-                               .x(d3.scale.linear().domain([minStop - 1, maxStop + 1
-                                ]))
-                               .on("filtered", updateTable)
-                               .renderHorizontalGridLines(true);
-        stopTimeChart.xAxis().tickFormat(function(v){
-                                return timeFormat(Math.round(v)) + ":" + timeFormat(v % 1 * 30);
-                               }).ticks(4);
-
         // ************* Map ***************
         var states = billets.dimension(function(x){
-            if ("state" in x){
-                return x.state;    
+            if ("State" in x){
+                return x.State;    
             } else {
                 return "Unknown";
             }
@@ -747,6 +497,10 @@ if (!isset($_SESSION["uname"])) {
         var scale = Math.min(mapWidth * 1.3, mapHeight * 2.1);
         
         var statesGroup = states.group();
+        statesGroup=statesGroup.reduce(function(p,v) {return p+(+v.NumAvailable);},
+               function(p,v) {return p-(+v.NumAvailable);},
+               function() {return 0;});
+
         usChart = dc.geoChoroplethChart("#conusMap");
         d3.json("../data/us-states.json", function(statesJSON){
                     usChart.width(mapWidth)
@@ -754,7 +508,7 @@ if (!isset($_SESSION["uname"])) {
                     .dimension(states)
                     .group(statesGroup)
                     .colors(d3.scale.quantize().range(["#E2F2FF", "#C4E4FF", "#9ED2FF", "#81C5FF", "#6BBAFF", "#51AEFF", "#36A2FF", "#1E96FF", "#0089FF", "#0061B5"]))
-                    .colorDomain([0, d3.max(statesGroup.all(), function(x){
+                    .colorDomain([-10, d3.max(statesGroup.all(), function(x){
                         return x.value;
                     })])
                     .colorCalculator(function (d) { return d ? usChart.colors()(d) : '#ccc'; })
@@ -831,21 +585,24 @@ if (!isset($_SESSION["uname"])) {
                   style="display: none;">reset</a>
             <div class = "clearfix"></div>
         </div>
+
+        <div id = "typeChart" class = "dc-chart" >
+            <strong> Assignment Type </strong>
+            <a class="reset"
+                  href='javascript:typeChart.filterAll();dc.redrawAll();'
+                  style="display: none;">reset</a>
+            <div class = "clearfix"></div>
+        </div>
+
+        <div id = "acChart" class = "dc-chart" >
+            <strong> Aircraft  </strong>
+            <a class="reset"
+                  href='javascript:acChart.filterAll();dc.redrawAll();'
+                  style="display: none;">reset</a>
+            <div class = "clearfix"></div>
+        </div>
         
-        <div id = "afscPrefixPie" class = "dc-chart" hidden>
-            <strong> Preferred AFSC Prefix </strong>
-            <a class="reset"
-                  href='javascript:afscPrefixPieChart.filterAll();dc.redrawAll();'
-                  style="display: none;">reset</a>
-            <div class = "clearfix"></div>
-        </div>
-        <div id = "afscPie" class = "dc-chart">
-            <strong> Preferred AFSCs </strong>
-            <a class="reset"
-                  href='javascript:afscPieChart.filterAll();dc.redrawAll();'
-                  style="display: none;">reset</a>
-            <div class = "clearfix"></div>
-        </div>
+
         <div id = "grade">            
         <strong> Preferred Grades </strong>
             <a class="reset"
@@ -854,41 +611,10 @@ if (!isset($_SESSION["uname"])) {
             <div class = "clearfix"></div>
         </div>
         
-        <div id = "aadLevel">
-            <strong> Preferred Degree </strong>
-            <a class="reset"
-                  href='javascript:aadChart.filterAll();dc.redrawAll();'
-                  style="display: none;">reset</a>
-            <div class = "clearfix"></div>
-        </div>
-        
-        <div id = "acqLevel">
-            <strong> Minimum Acquisition Level </strong>
-            <a class="reset"
-                  href='javascript:acqLevelChart.filterAll();dc.redrawAll();'
-                  style="display: none;">reset</a>
-            <div class = "clearfix"></div>
-        </div>
-        
-        <div id = "joint">
-            <strong> Joint Qualified </strong>
-            <a class="reset"
-                  href='javascript:jointChart.filterAll();dc.redrawAll();'
-                  style="display: none;">reset</a>
-            <div class = "clearfix"></div>
-        </div>
 
         </div>
         <div class = "row">
         
-        
-        <div id = "secLevel">
-            <strong> Required Security <br> Clearance </strong>
-            <a class="reset"
-                  href='javascript:secLevelChart.filterAll();dc.redrawAll();'
-                  style="display: none;">reset</a>
-            <div class = "clearfix"></div>
-        </div>
         
         
         <div id = "contactPie" class = "dc-chart">
@@ -906,14 +632,7 @@ if (!isset($_SESSION["uname"])) {
                   style="display: none;">reset</a>
             <div class = "clearfix"></div>
         </div>
-        
-        <div id = "deployablePie" class = "dc-chart">
-            <strong> Deployable? </strong>
-            <a class="reset"
-                  href='javascript:deployablePieChart.filterAll();dc.redrawAll();'
-                  style="display: none;">reset</a>
-            <div class = "clearfix"></div>
-        </div>
+
         
         <div id = "lengthChart" class = "dc-chart">
             <strong> Assignment Length </strong>
@@ -943,23 +662,6 @@ if (!isset($_SESSION["uname"])) {
             <div class = "clearfix"></div>
         </div>
 
-        <div id = "startTimeChart" class = "dc-chart">
-            <strong> Typical Work Start Time </strong>
-            <a class="reset"
-                  href='javascript:startTimeChart.filterAll();dc.redrawAll();'
-                  style="display: none;">reset</a>
-            <div class = "clearfix"></div>
-        </div>
-
-        <div id = "stopTimeChart" class = "dc-chart">
-            <strong> Typical Work Stop Time </strong>
-            <a class="reset"
-                  href='javascript:stopTimeChart.filterAll();dc.redrawAll();'
-                  style="display: none;">reset</a>
-            <div class = "clearfix"></div>
-        </div>
-        
-    </div>
 
     <br> 
     

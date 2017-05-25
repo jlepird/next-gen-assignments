@@ -21,7 +21,7 @@ $(function(){
 
 <table class="table-display"> 
 	<tr> <td colspan="3">  <h5> <i> General Information </i> </h5>  </td> </tr>
-	<tr> <td colspan="1" > <p> <i> Duty Title: </i> </p> </td> <td colspan = "4" > <input type = "text" name = "dutyTitle" size = "45" value = "" class = "autopop"> </td></tr>
+	<tr> <td colspan="1" > <p> <i> Duty Title: </i> </p> </td> <td colspan = "4" > <input type = "text" name = "DutyTitle" size = "45" value = "" class = "autopop"> </td></tr>
 	<tr> 
 		<td > <p> Allowable AFSCs: </p> </td> 
 		<td colspan> <select name = "afsc[]" value = "" class = "autopop chosen-select-large" multiple>
@@ -46,14 +46,14 @@ $(function(){
 	</tr>
 	<tr> 
 		<td> <p> Unit: </p> </td> 
-		<td> <input type = "text" name = "unit" value = "" class = "autopop"></td>
+		<td> <input type = "text" name = "Unit" value = "" class = "autopop"></td>
 		<td> <p> Report Date: </p></td>
 		<td> <input name="report" id="report" type="text" class = "autopop"> </td>
 		</tr>
 		<tr>
 		<td> <p> Location: </p> </td> 
-		<td> <input type = "text" name = "location" class = "autopop" value = "" style="width:120px;"> </td> 
-		<td> <select name = "state" class = "autopop chosen-select-dynamic">
+		<td> <input type = "text" name = "Location" class = "autopop" value = "" style="width:120px;"> </td> 
+		<td> <select name = "State" class = "autopop chosen-select-dynamic">
 			<option value="AL">AL</option>
 			<option value="AK">AK</option>
 			<option value="AZ">AZ</option>
@@ -143,52 +143,7 @@ $(function(){
 	?>
 </table>
 </fieldset>
-<fieldset>
-<table class="table-display"> 
-	<tr> <td colspan="4"> <h5> <i> Degrees and Certifications </i> </h5>  </td> </tr>
-	<tr> 
-		<td> <p> Preferred Education Levels: </p> </td>
-		<td> <select name = "aadLevel[]" class = "autopop chosen-select-large" data-placeholder="Select AAD Level" multiple> 
-			<option value = "bs"> None </option>
-			<option value = "ms"> Master's </option>
-			<option value = "phd"> PhD </option>
-		</select> </td>
-	</tr>
-	<tr> 
-		<td> <p> Preferred Academic Degrees: </p> </td>
-		<td> <select  = "100" id = "aadDegree" multiple name = "aadDegree[]" class = "autopop chosen-select-large" data-placeholder="None">
-			<?php
-				$res = $sql->execute("select code, degree from allowableDegrees;");
-				while ($row = pg_fetch_array($res)){
-					echo "<option value = '" . $row[0] . "'> " . $row[0]. ": " . ucwords(strtolower($row[1])) . "</option>";  
-				}
-				pg_free_result($res); 
-			?>
-			</select> </td>
-	</tr>
-	<tr> 
-		<td> <p>Minimum Acquisition Level: </p> </td>
-		<td> <select name = "acqLevel" class = "autopop chosen-select-large" >
-			<?php
-				$res = $sql->execute("select code, level from acqLevels;");
-				while ($row = pg_fetch_array($res)){
-					echo "<option value = '" . $row[0] . "'> " . ucwords(strtolower($row[1])) . "</option>";  
-				}
-				pg_free_result($res); 
-			?>
-		</select> </td>
-	</tr>
-	<tr>
-		<td> <p> Security Clearance Required: </p> </td> 
-		<td> 
-		<select id = "ts" name = "ts" class = "autopop chosen-select-large">
-			<option val = "s"> Secret </option>
-			<option val = "ts"> Top Secret or Higher </option>
-		</select>
-		</td>
-	</tr>
-</table>
-</fieldset>
+
 <fieldset>
 <table class="table-display" style="table-layout:fixed;"> 
 	<tr> <td colspan="4"> <h5> <i> Lifestyle </i> </h5>  </td> </tr>
