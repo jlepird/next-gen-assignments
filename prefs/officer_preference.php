@@ -41,11 +41,11 @@ if ($_SESSION['isAirman'] != 't' ){
 	    billets = <?php echo $sql->queryJSON("select posns.posn, location, unit, title from 
 (select posn from billetDescs) posns 
 left outer join 
-(select posn, val as location from billetdata where tkey = 'location') locs on posns.posn = locs.posn
+(select posn, val as location from billetdata where tkey = 'Location') locs on posns.posn = locs.posn
 left outer join 
-(select posn, val as unit from billetdata where tkey = 'unit') units on posns.posn = units.posn
+(select posn, val as unit from billetdata where tkey = 'Unit') units on posns.posn = units.posn
 left outer join
-(select posn, val as title from billetData where tkey = 'dutyTitle') titles on posns.posn = titles.posn;
+(select posn, val as title from billetData where tkey = 'DutyTitle') titles on posns.posn = titles.posn;
 "); ?>;
 
 	    $(billets).each(function(i,x){

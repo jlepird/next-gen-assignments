@@ -75,13 +75,12 @@ if (!isset($_SESSION["uname"])) {
     for (var i = 0; i < data.length; ++i){
     	outData.push(["<input type = 'checkbox' onchange='toggleFavorite(\"" + data[i].id + "\", this)' data-toggle='toggle' class = 'toggle' id = 'fav" + data[i].id + "'>",
             "<a href='/billets/view.php?billet=" + data[i].id + "'>" + data[i].id + "</a>",
+    		          data[i].NumAvailable,
     		          data[i].grade,
     		          data[i].DutyTitle,
     		          data[i].Location,
                       data[i].State,
-    		          data[i].Unit,
-    		          data[i].Type,
-    		          data[i].NumAvailable
+    		          data[i].Unit
     		          ]);
     }
 
@@ -155,6 +154,7 @@ if (!isset($_SESSION["uname"])) {
                 columns: [
                     {title: "Favorite",          "orderDataType": "dom-checkbox"},
                     {title: "ID",     "defaultContent": "<i>None</i>"},
+                    {title: "Number of Positions"},
                     {title: "Grade",             "defaultContent": "<i>None</i>"},
                     {title: "Duty Title",        "defaultContent": "<i>None</i>"},
                     {title: "Location",          "defaultContent": "<i>None</i>"},
@@ -552,8 +552,7 @@ if (!isset($_SESSION["uname"])) {
 <div id = "loader"></div>
 <div class="col-md-10" hidden>
     <br> <br> <br>
-    <h3>Instructions</h3>
-    <p>This page allows you to search for available billets, which are listed in the table at the bottom of the page. Simply click on the Billet Number to view more detailed information provided by the billet owner.  You can filter the list by typing into the Search bar at the top right of the table, or by using the graphical interface to narrow down your selected billets. You can reset the filter by hitting "reset" next to the metric.  You can Favorite as many billets as you want, which allows you to select them easily when creating your Preference List.  You can also export the list to a CSV or Excel file for viewing outside the web interface, but it will not contain all the detailed information that you would find by clicking the billet number. If allowed, you are encouraged to contact the billet POC to find more information about the position.</p>
+
 
     <div class = "row">
     <div id ="conusMap" class = "map dc-chart" > 
