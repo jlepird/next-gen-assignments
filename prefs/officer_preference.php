@@ -169,7 +169,11 @@ left outer join
 	    				count = subset[0].val; 
 	    			}
 
-	    			$("#row" + i)[0].innerHTML = "<div class=update-prefs id=count" + i + "> &larr; Already ranked by " + count + " other(s). </div>";
+	    			if (count <= 5){
+	    				count = "five or fewer";
+	    			}
+
+	    			$("#row" + i)[0].innerHTML = "<div class=update-prefs id=count" + i + "> &larr; Already ranked by " + count + " others. </div>";
 	    			$("#count" + i).css("background-color", scale(count));
 	    		} else {
 	    			$("#count" + i).remove();
