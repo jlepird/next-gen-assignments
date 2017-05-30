@@ -146,10 +146,10 @@ left outer join
 	    		}
 	    	}
 			if (foundError){
-				$("#submit")[0].disabled = "disabled"; 
+				$("#bsubmit")[0].disabled = "disabled"; 
 				//$("#submit")[0].style.background = "#7a7d82"; 
 			} else {
-				$("#submit")[0].disabled = ""; 
+				$("#bsubmit")[0].disabled = ""; 
 				//$("#submit")[0].style.background = "#286090";
 				showOthers();
 			}
@@ -181,6 +181,22 @@ left outer join
 	    	}
 	    }
 
+	    function mySubmit() {
+	    	swal({
+	    		title:"Ready to Submit?",
+	    		html: true,
+	    		showCancelButton: true,
+	    		confirmButtonText: "Submit",
+	    		text:"<strong> Before you submit, please verify the following: </strong>" + 
+	    		"<ul> <li style='text-align:left;'> I understand that this website is a test." + 
+	    		"<li style='text-align:left;'> I understand that AFPC will base its assignment decision on many other factors that include, but not are not limited to, my current chain of command, development needs, career field prioritization, and development team inputs." + 
+	    		"<li style='text-align:left;'> I acknowledge any information I provided is accurate and complete and that I will work with my MPS to correct any inaccurate information." + 
+	    		"<li style='text-align:left;'> I have read the Frequently Asked Questions. </ul>",
+	    	}, function(){
+	    		document.getElementById("myForm").submit();
+	    	});
+	    }
+
     </script>
 <body>
 <?php include '../banner.php'; ?>
@@ -196,7 +212,7 @@ left outer join
 
     <datalist id = "billets"> </datalist> <!-- Javascript will fill in -->
 
-    <form action = "submitOfficer.php" method = "POST">
+    <form id="myForm" action = "submitOfficer.php" method = "POST">
     <fieldset id = "prefs">
     	<table> 
     			<tr> <td> Preference #1: </td> <td> 
@@ -223,7 +239,7 @@ left outer join
     	</table>
     </fieldset>
     	<fieldset>
-    		<center> <input class = "btn btn-primary" id = "submit" type = "submit" value = "Submit"> </center>
+    		<center> <input class = "btn btn-primary" id = "bsubmit" value = "Submit" onclick = "mySubmit();"> </center>
     	</fieldset>
     </form>
 
