@@ -193,8 +193,37 @@ create table constraints (
 		references billetDescs (posn)
 );
 
-drop table if exists private_key;
-create table private_key (key varchar(100));
-insert into private_key values ('abc');
+drop table if exists officers cascade;
+create table officers (
+	ri_person_id varchar(20) primary key,
+	MAJCOM varchar(10),
+	OWNER varchar(10),
+	WING varchar(50),
+	UNIT varchar(100),
+	LOCATION varchar(100),
+	PAS varchar(100),
+	MWS varchar(50),
+	CAT varchar(50),
+	TIER varchar(50),
+	RTG varchar(50),
+	CORE_GROUP varchar(50),
+	RDTM_AIRCRAFT varchar(50),
+	GRD varchar(3),
+	DAS int,
+	TAFMSD int,
+	F_C_T varchar(50),
+	R_S_T varchar(50),
+	D_S_T varchar(50),
+	LAST_AIRCRAFT varchar(50),
+	ASOFDATE int,
+	STATUS varchar(50),
+	IP_HOURS int
+);
+
+drop table if exists surfs;
+create table surfs (
+	ri_person_id varchar(20),
+	surf text
+);
 
 select 'Complete' as Update;  
