@@ -51,7 +51,38 @@ function helpNRPP(){
 	imageUrl: "../images/help.jpg",
 	html: true
 })}
-    
+
+function tutorial(){
+	swal({title: "Tutorial", 
+		  text: "Click on any chart to filter down.", 
+						  confirmButtonText:"Continue",
+						  cancelButtonText:"Exit", 
+						  showCancelButton:true,
+						  closeOnConfirm: false
+	}, function(){
+		swal({title: "Tutorial", 
+		  text: "Click reset to reset a filter or \"Reset all Filters\" to start with a fresh page.", 
+						  confirmButtonText:"Continue",
+						  cancelButtonText:"Exit", 
+						  showCancelButton:true,
+						  closeOnConfirm: false
+	}, function(){
+		swal({title: "Tutorial", 
+		  text: "The table at the bottom shows what you've filtered down to. Click the toggle under \"Favorite\" to mark that entry for later.", 
+						  confirmButtonText:"Continue",
+						  cancelButtonText:"Exit", 
+						  showCancelButton:true,
+						  closeOnConfirm: false
+	}, function(){
+		swal({title: "Tutorial", 
+		  text: "Click on entries in the table to open a new tab with even more information.", 
+						  confirmButtonText:"Exit Tutorial"
+	});	
+	});
+	});
+	});
+}
+
 </script>
 
 <!-- PHP functions --> 

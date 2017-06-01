@@ -181,6 +181,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/include/head_common.php';
 
 var width = 1140
 
+var numVisits = +<?php echo $sql->queryValue("select count(*) from useractivity where username = '" . $_SESSION["uname"] . "';"); ?>;
+
+
 // load data from a csv file
 var data;
 $(function(){
@@ -492,6 +495,16 @@ $(function(){
       // Browsers that support HTML5 download attribute
       link.setAttribute("href", window.URL.createObjectURL(blob))
       link.setAttribute("download", fileName)
+  }
+
+  if (numVisits < 2){
+    swal({title: "New here?",
+        showCancelButton: true,
+        confirmButtonText:"View the Tutorial",
+        cancelButtonText:"Skip", 
+        closeOnConfirm: false
+
+  }, tutorial)
   }
 });
 

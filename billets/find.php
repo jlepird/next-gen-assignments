@@ -16,6 +16,10 @@ if (!isset($_SESSION["uname"])) {
 
     var favorites = <?php echo $sql->queryJSON("select posn from favorites where username = '" . $_SESSION["uname"] . "';") ?>;
 
+    var numVisits = +<?php echo $sql->queryValue("select count(*) from useractivity where username = '" . $_SESSION["uname"] . "';"); ?>;
+
+
+
     // Restructure the data from "long" form to "wide" form. 
     var completed = [];
     var outData = []; 
@@ -70,6 +74,7 @@ if (!isset($_SESSION["uname"])) {
                    "case" : x.checked}
         });
     }
+
 
     // Build a giant array of the data for table display 
     for (var i = 0; i < data.length; ++i){
@@ -526,6 +531,15 @@ if (!isset($_SESSION["uname"])) {
                     
                     $("#loader").fadeOut(100);
                     $(".col-md-10").fadeIn(1000);
+                    if (numVisits < 2){
+    					swal({title: "New here?",
+    						  showCancelButton: true,
+    						  confirmButtonText:"View the Tutorial",
+    						  cancelButtonText:"Skip", 
+    						  closeOnConfirm: false
+
+    				}, tutorial)
+    				}
 
         });
     });
