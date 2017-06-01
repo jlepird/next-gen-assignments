@@ -74,7 +74,7 @@ if (!isset($_SESSION["uname"])) {
     // Build a giant array of the data for table display 
     for (var i = 0; i < data.length; ++i){
     	outData.push(["<input type = 'checkbox' onchange='toggleFavorite(\"" + data[i].id + "\", this)' data-toggle='toggle' class = 'toggle' id = 'fav" + data[i].id + "'>",
-            "<a href='/billets/view.php?billet=" + data[i].id + "'>" + data[i].id + "</a>",
+            "<a target = '_blank' href='/billets/view.php?billet=" + data[i].id + "'>" + data[i].id + "</a>",
     		          data[i].NumAvailable,
     		          data[i].grade,
     		          data[i].DutyTitle,
