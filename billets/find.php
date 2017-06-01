@@ -98,6 +98,7 @@ if (!isset($_SESSION["uname"])) {
 
         billets = crossfilter(data);
 
+
         var billetsDim = billets.dimension(function(x){
             return x.id;
         });
@@ -551,8 +552,13 @@ if (!isset($_SESSION["uname"])) {
 </div>
 <div id = "loader"></div>
 <div class="col-md-10" hidden>
-    <br> <br> <br>
-
+    <br> <br> <br> <br> 
+    <div class='container'>
+    <div class="row">
+    	<h4>
+        	<a href="javascript:dc.filterAll(); dc.renderAll();">Reset All Filters</a>
+    	</h4>
+    </div>
 
     <div class = "row">
     <div id ="conusMap" class = "map dc-chart" > 
@@ -672,7 +678,7 @@ if (!isset($_SESSION["uname"])) {
     </div>
 
 </div>
-
+</div>
 </div>
 
 

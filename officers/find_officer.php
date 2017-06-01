@@ -185,7 +185,7 @@ var width = 1140
 var data;
 $(function(){
   data = <?php echo $sql->queryJSON("select * from officers;"); ?>;
-  console.log(data);
+
   var dateParse = d3.time.format("%Y%m%d").parse;
   data.forEach(function(d){
     d.das = dateParse("" + d.das)
