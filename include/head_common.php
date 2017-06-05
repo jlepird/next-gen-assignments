@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/css/a9.css" type = "text/css" />
 <link rel="stylesheet" href="/include/chosen/chosen.css" />
 <link rel="stylesheet" href="/include/dc/web/css/dc.min.css" />
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"> -->
 <link rel="stylesheet" href="/include/bootstrap-toggle/css/bootstrap-toggle.min.css" />
 <link rel="stylesheet" href="/include/datatables/colReorder.dataTables.min.css" />
 <link rel="stylesheet" href="/include/sweetalert/sweetalert.css"/>
