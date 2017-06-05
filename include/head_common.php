@@ -2,8 +2,10 @@
 <title> Air Force Talent Marketplace</title>
 
 <!-- CSS files --> 
-<link rel="stylesheet" href="/include/datatables/jquery.dataTables.min.css" type = "text/css"/>
-<link rel="stylesheet" href="/include/datatables/buttons.dataTables.min.css" type = "text/css" />
+<!-- <link rel="stylesheet" href="/include/datatables/jquery.dataTables.min.css" type = "text/css"/> -->
+<!-- <link rel="stylesheet" href="/include/datatables/buttons.dataTables.min.css" type = "text/css" /> -->
+
+<!-- CSS Include -->
 <link rel="stylesheet" href="/css/myvector.css" type="text/css" />
 <link rel="stylesheet" href="/css/a9.css" type = "text/css" />
 <link rel="stylesheet" href="/include/chosen/chosen.css" />
@@ -33,7 +35,7 @@
 <script type="text/javascript" src="/include/dc/web/js/d3.js"></script>
 <script type="text/javascript" src="/include/dc/web/js/crossfilter.js"></script>
 <script type="text/javascript" src="/include/dc/web/js/colorbrewer.js"></script>
-<script type="text/javascript" src="/include/dc/web/js/dc.js"></script>
+<script type="text/javascript" src="/include/dc/web/js/dc.min.js"></script>
 <script type="text/javascript" src="/include/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
 <script type="text/javascript" src="/include/datatables/dataTables.colReorder.min.js"></script>
 <script type="text/javascript" src="/include/sweetalert/sweetalert.min.js"></script>
