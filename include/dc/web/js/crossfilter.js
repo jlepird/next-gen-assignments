@@ -1,1 +1,1401 @@
-!function(r){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=r();else if("function"==typeof define&&define.amd)define([],r);else{var t;t="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:this,t.crossfilter=r()}}(function(){return function r(t,e,n){function o(u,f){if(!e[u]){if(!t[u]){var a="function"==typeof require&&require;if(!f&&a)return a(u,!0);if(i)return i(u,!0);var s=new Error("Cannot find module '"+u+"'");throw s.code="MODULE_NOT_FOUND",s}var c=e[u]={exports:{}};t[u][0].call(c.exports,function(r){var e=t[u][1][r];return o(e?e:r)},c,c.exports,r,t,e,n)}return e[u].exports}for(var i="function"==typeof require&&require,u=0;u<n.length;u++)o(n[u]);return o}({1:[function(r,t){t.exports=r("./src/crossfilter").crossfilter},{"./src/crossfilter":6}],2:[function(r,t){(function(r){function e(r,t){return null==r?void 0:r[t]}function n(r){var t=!1;if(null!=r&&"function"!=typeof r.toString)try{t=!!(r+"")}catch(e){}return t}function o(r){var t=-1,e=r?r.length:0;for(this.clear();++t<e;){var n=r[t];this.set(n[0],n[1])}}function i(){this.__data__=dt?dt(null):{}}function u(r){return this.has(r)&&delete this.__data__[r]}function f(r){var t=this.__data__;if(dt){var e=t[r];return e===T?void 0:e}return st.call(t,r)?t[r]:void 0}function a(r){var t=this.__data__;return dt?void 0!==t[r]:st.call(t,r)}function s(r,t){var e=this.__data__;return e[r]=dt&&void 0===t?T:t,this}function c(r){var t=-1,e=r?r.length:0;for(this.clear();++t<e;){var n=r[t];this.set(n[0],n[1])}}function l(){this.__data__=[]}function h(r){var t=this.__data__,e=w(t,r);if(0>e)return!1;var n=t.length-1;return e==n?t.pop():pt.call(t,e,1),!0}function p(r){var t=this.__data__,e=w(t,r);return 0>e?void 0:t[e][1]}function v(r){return w(this.__data__,r)>-1}function d(r,t){var e=this.__data__,n=w(e,r);return 0>n?e.push([r,t]):e[n][1]=t,this}function y(r){var t=-1,e=r?r.length:0;for(this.clear();++t<e;){var n=r[t];this.set(n[0],n[1])}}function g(){this.__data__={hash:new o,map:new(vt||c),string:new o}}function b(r){return O(this,r).delete(r)}function _(r){return O(this,r).get(r)}function x(r){return O(this,r).has(r)}function m(r,t){return O(this,r).set(r,t),this}function w(r,t){for(var e=r.length;e--;)if(q(r[e][0],t))return e;return-1}function E(r){if(!R(r)||M(r))return!1;var t=N(r)||n(r)?lt:Z;return t.test(C(r))}function z(r){if("string"==typeof r)return r;if(D(r))return gt?gt.call(r):"";var t=r+"";return"0"==t&&1/r==-W?"-0":t}function A(r){return _t(r)?r:bt(r)}function O(r,t){var e=r.__data__;return S(t)?e["string"==typeof t?"string":"hash"]:e.map}function k(r,t){var n=e(r,t);return E(n)?n:void 0}function j(r,t){if(_t(r))return!1;var e=typeof r;return"number"==e||"symbol"==e||"boolean"==e||null==r||D(r)?!0:K.test(r)||!H.test(r)||null!=t&&r in Object(t)}function S(r){var t=typeof r;return"string"==t||"number"==t||"symbol"==t||"boolean"==t?"__proto__"!==r:null===r}function M(r){return!!ft&&ft in r}function $(r){if("string"==typeof r||D(r))return r;var t=r+"";return"0"==t&&1/r==-W?"-0":t}function C(r){if(null!=r){try{return at.call(r)}catch(t){}try{return r+""}catch(t){}}return""}function F(r,t){if("function"!=typeof r||t&&"function"!=typeof t)throw new TypeError(P);var e=function(){var n=arguments,o=t?t.apply(this,n):n[0],i=e.cache;if(i.has(o))return i.get(o);var u=r.apply(this,n);return e.cache=i.set(o,u),u};return e.cache=new(F.Cache||y),e}function q(r,t){return r===t||r!==r&&t!==t}function N(r){var t=R(r)?ct.call(r):"";return t==J||t==G}function R(r){var t=typeof r;return!!r&&("object"==t||"function"==t)}function U(r){return!!r&&"object"==typeof r}function D(r){return"symbol"==typeof r||U(r)&&ct.call(r)==B}function I(r){return null==r?"":z(r)}function L(r,t,e){t=j(t,r)?[t]:A(t);var n=-1,o=t.length;for(o||(r=void 0,o=1);++n<o;){var i=null==r?void 0:r[$(t[n])];void 0===i&&(n=o,i=e),r=N(i)?i.call(r):i}return r}var P="Expected a function",T="__lodash_hash_undefined__",W=1/0,J="[object Function]",G="[object GeneratorFunction]",B="[object Symbol]",H=/\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,K=/^\w*$/,Q=/^\./,V=/[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g,X=/[\\^$.*+?()[\]{}|]/g,Y=/\\(\\)?/g,Z=/^\[object .+?Constructor\]$/,rt="object"==typeof r&&r&&r.Object===Object&&r,tt="object"==typeof self&&self&&self.Object===Object&&self,et=rt||tt||Function("return this")(),nt=Array.prototype,ot=Function.prototype,it=Object.prototype,ut=et["__core-js_shared__"],ft=function(){var r=/[^.]+$/.exec(ut&&ut.keys&&ut.keys.IE_PROTO||"");return r?"Symbol(src)_1."+r:""}(),at=ot.toString,st=it.hasOwnProperty,ct=it.toString,lt=RegExp("^"+at.call(st).replace(X,"\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g,"$1.*?")+"$"),ht=et.Symbol,pt=nt.splice,vt=k(et,"Map"),dt=k(Object,"create"),yt=ht?ht.prototype:void 0,gt=yt?yt.toString:void 0;o.prototype.clear=i,o.prototype.delete=u,o.prototype.get=f,o.prototype.has=a,o.prototype.set=s,c.prototype.clear=l,c.prototype.delete=h,c.prototype.get=p,c.prototype.has=v,c.prototype.set=d,y.prototype.clear=g,y.prototype.delete=b,y.prototype.get=_,y.prototype.has=x,y.prototype.set=m;var bt=F(function(r){r=I(r);var t=[];return Q.test(r)&&t.push(""),r.replace(V,function(r,e,n,o){t.push(n?o.replace(Y,"$1"):e||r)}),t});F.Cache=y;var _t=Array.isArray;t.exports=L}).call(this,"undefined"!=typeof global?global:"undefined"!=typeof self?self:"undefined"!=typeof window?window:{})},{}],3:[function(r,t){t.exports={version:"1.4.0"}},{}],4:[function(r,t){function e(r){for(var t=new Array(r),e=-1;++e<r;)t[e]=0;return t}function n(r,t){for(var e=r.length;t>e;)r[e++]=0;return r}function o(r,t){if(t>32)throw new Error("invalid array width!");return r}function i(r){this.length=r,this.subarrays=1,this.width=8,this.masks={0:0},this[0]=u(r)}if("undefined"!=typeof Uint8Array)var u=function(r){return new Uint8Array(r)},f=function(r){return new Uint16Array(r)},a=function(r){return new Uint32Array(r)},s=function(r,t){if(r.length>=t)return r;var e=new r.constructor(t);return e.set(r),e},c=function(r,t){var e;switch(t){case 16:e=f(r.length);break;case 32:e=a(r.length);break;default:throw new Error("invalid array width!")}return e.set(r),e};i.prototype.lengthen=function(r){var t,e;for(t=0,e=this.subarrays;e>t;++t)this[t]=s(this[t],r);this.length=r},i.prototype.add=function(){var r,t,e,n,o;for(n=0,o=this.subarrays;o>n;++n)if(r=this.masks[n],t=this.width-32*n,e=~r&-~r,!(t>=32)||e)return 32>t&&e&1<<t&&(this[n]=c(this[n],t<<=1),this.width=32*n+t),this.masks[n]|=e,{offset:n,one:e};return this[this.subarrays]=u(this.length),this.masks[this.subarrays]=1,this.width+=8,{offset:this.subarrays++,one:1}},i.prototype.copy=function(r,t){var e,n;for(e=0,n=this.subarrays;n>e;++e)this[e][r]=this[e][t]},i.prototype.truncate=function(r){var t,e;for(t=0,e=this.subarrays;e>t;++t){for(var n=this.length-1;n>=r;n--)this[t][n]=0;this[t].length=r}this.length=r},i.prototype.zero=function(r){var t,e;for(t=0,e=this.subarrays;e>t;++t)if(this[t][r])return!1;return!0},i.prototype.zeroExcept=function(r,t,e){var n,o;for(n=0,o=this.subarrays;o>n;++n)if(n===t?this[n][r]&e:this[n][r])return!1;return!0},i.prototype.zeroExceptMask=function(r,t){var e,n;for(e=0,n=this.subarrays;n>e;++e)if(this[e][r]&t[e])return!1;return!0},i.prototype.only=function(r,t,e){var n,o;for(n=0,o=this.subarrays;o>n;++n)if(this[n][r]!=(n===t?e:0))return!1;return!0},i.prototype.onlyExcept=function(r,t,e,n,o){var i,u,f;for(u=0,f=this.subarrays;f>u;++u)if(i=this[u][r],u===t&&(i&=e),i!=(u===n?o:0))return!1;return!0},t.exports={array8:e,array16:e,array32:e,arrayLengthen:n,arrayWiden:o,bitarray:i}},{}],5:[function(r,t){"use strict";function e(r){function t(t,e,n,o){for(;o>n;){var i=n+o>>>1;r(t[i])<e?n=i+1:o=i}return n}function e(t,e,n,o){for(;o>n;){var i=n+o>>>1;e<r(t[i])?o=i:n=i+1}return n}return e.right=e,e.left=t,e}var n=r("./identity");t.exports=e(n),t.exports.by=e},{"./identity":10}],6:[function(r,t,e){"use strict";function n(){function r(r){var t=j,e=r.length;return e&&(k=k.concat(r),A.lengthen(j+=e),M.forEach(function(n){n(r,t,e)}),z("dataAdded")),O}function t(){for(var r=o(j,j),t=[],e=0,n=0;j>e;++e)A.zero(e)?t.push(e):r[e]=n++;S.forEach(function(r){r(-1,-1,[],t,!0)}),$.forEach(function(t){t(r)});for(var i=0,u=0;j>i;++i)A.zero(i)||(i!==u&&(A.copy(u,i),k[u]=k[i]),++u);k.length=j=u,A.truncate(u),z("dataRemoved")}function e(r,t){var e,n,o,i,u=Array(A.subarrays);for(e=0;e<A.subarrays;e++)u[e]=-1;if(t)for(n=0,i=t.length;i>n;n++)o=t[n].id(),u[o>>7]&=~(1<<(63&o));return A.zeroExceptMask(r,u)}function n(r,t){function e(e,n,u){if(t){at=0,k=0,rt=[];for(var a=0;a<e.length;a++)for(k=0,rt=r(e[a]);k<rt.length;k++)at++;B=[],Q=i(e.length),X=o(at,1),Y=[];for(var s=i(at),c=0,l=0;l<e.length;l++)if(rt=r(e[l]),rt.length)for(Q[l]=rt.length,k=0;k<rt.length;k++)B.push(rt[k]),s[c]=l,c++;else Q[l]=0,Y.push(l);var h=et(i(at),0,at);B=y(B,h),H=y(s,h)}else B=e.map(r),H=et(i(u),0,u),B=y(B,H);t&&(u=at);var p=nt(B),v=p[0],d=p[1];if(Z)for(var g=0;u>g;++g)Z(B[g],g)||(A[T][H[g]+n]|=L,t&&(X[g]=1));else{for(var b=0;v>b;++b)A[T][H[b]+n]|=L,t&&(X[b]=1);for(var _=d;u>_;++_)A[T][H[_]+n]|=L,t&&(X[_]=1)}if(!n)return J=B,G=H,K=Q,V=X,ut=v,ft=d,void 0;var x,m=J,w=G,E=V,z=0;if(a=0,t&&(x=n,n=m.length,u=at),J=t?new Array(n+u):new Array(j),G=t?new Array(n+u):o(j,j),t&&(V=o(n+u,1)),t){var O=K.length;K=f.arrayLengthen(K,j);for(var k=0;j>k+O;k++)K[k+O]=Q[k]}for(var S=0;n>a&&u>z;++S)m[a]<B[z]?(J[S]=m[a],t&&(V[S]=E[a]),G[S]=w[a++]):(J[S]=B[z],t&&(V[S]=E[z]),G[S]=H[z++]+(t?x:n));for(;n>a;++a,++S)J[S]=m[a],t&&(V[S]=E[a]),G[S]=w[a];for(;u>z;++z,++S)J[S]=B[z],t&&(V[S]=E[z]),G[S]=H[z]+(t?x:n);p=nt(J),ut=p[0],ft=p[1]}function n(r,t,e){ot.forEach(function(r){r(B,H,t,e)}),B=H=null}function d(r){for(var t,e=0,n=0;j>e;++e)A.zero(t=G[e])||(e!==n&&(J[n]=J[e]),G[n]=r[t],++n);for(J.length=n;j>n;)G[n++]=0;var o=nt(J);ut=o[0],ft=o[1]}function _(r){var e=r[0],n=r[1];if(Z)return Z=null,F(function(r,t){return t>=e&&n>t},0===r[0]&&r[1]===G.length),ut=e,ft=n,tt;var o,i,u,f=[],a=[],s=[],c=[];if(ut>e)for(o=e,i=Math.min(ut,n);i>o;++o)f.push(G[o]),s.push(o);else if(e>ut)for(o=ut,i=Math.min(e,ft);i>o;++o)a.push(G[o]),c.push(o);if(n>ft)for(o=Math.max(e,ft),i=n;i>o;++o)f.push(G[o]),s.push(o);else if(ft>n)for(o=Math.max(ut,n),i=ft;i>o;++o)a.push(G[o]),c.push(o);if(t){var l=[],h=[];for(o=0;o<f.length;o++)K[f[o]]++,V[s[o]]=0,1===K[f[o]]&&(A[T][f[o]]^=L,l.push(f[o]));for(o=0;o<a.length;o++)K[a[o]]--,V[c[o]]=1,0===K[a[o]]&&(A[T][a[o]]^=L,h.push(a[o]));if(f=l,a=h,0===r[0]&&r[1]===G.length)for(o=0;o<Y.length;o++)A[T][u=Y[o]]&L&&(A[T][u]^=L,f.push(u));else for(o=0;o<Y.length;o++)A[T][u=Y[o]]&L||(A[T][u]^=L,a.push(u))}else{for(o=0;o<f.length;o++)A[T][f[o]]^=L;for(o=0;o<a.length;o++)A[T][a[o]]^=L}return ut=e,ft=n,S.forEach(function(r){r(L,T,f,a)}),z("filtered"),tt}function m(r){return null==r?O():Array.isArray(r)?E(r):"function"==typeof r?C(r):w(r)}function w(r){return _((nt=a.filterExact(v,r))(J))}function E(r){return _((nt=a.filterRange(v,r))(J))}function O(){return _((nt=a.filterAll)(J))}function C(r){return Z=r,nt=a.filterAll,F(r,!1),ut=0,ft=j,tt}function F(r,e){var n,o,i,u=[],f=[],a=[],s=[],c=G.length;if(!t)for(n=0;c>n;++n)!(A[T][o=G[n]]&L)^!!(i=r(J[n],n))&&(i?u.push(o):f.push(o));if(t)for(n=0;c>n;++n)r(J[n],n)?(u.push(G[n]),a.push(n)):(f.push(G[n]),s.push(n));if(t){var l=[],h=[];for(n=0;n<u.length;n++)1===V[a[n]]&&(K[u[n]]++,V[a[n]]=0,1===K[u[n]]&&(A[T][u[n]]^=L,l.push(u[n])));for(n=0;n<f.length;n++)0===V[s[n]]&&(K[f[n]]--,V[s[n]]=1,0===K[f[n]]&&(A[T][f[n]]^=L,h.push(f[n])));if(u=l,f=h,e)for(n=0;n<Y.length;n++)A[T][o=Y[n]]&L&&(A[T][o]^=L,u.push(o));else for(n=0;n<Y.length;n++)A[T][o=Y[n]]&L||(A[T][o]^=L,f.push(o))}else{for(n=0;n<u.length;n++)A[T][u[n]]&L&&(A[T][u[n]]&=P);for(n=0;n<f.length;n++)A[T][f[n]]&L||(A[T][f[n]]|=L)}S.forEach(function(r){r(L,T,u,f)}),z("filtered")}function q(r,e){var n,o=[],i=ft,u=0;for(e&&e>0&&(u=e);--i>=ut&&r>0;)A.zero(n=G[i])&&(u>0?--u:(o.push(k[n]),--r));if(t)for(i=0;i<Y.length&&r>0;i++)A.zero(n=Y[i])&&(u>0?--u:(o.push(k[n]),--r));return o}function N(r,e){var n,o,i=[],u=0;if(e&&e>0&&(u=e),t)for(n=0;n<Y.length&&r>0;n++)A.zero(o=Y[n])&&(u>0?--u:(i.push(k[o]),--r));for(n=ut;ft>n&&r>0;)A.zero(o=G[n])&&(u>0?--u:(i.push(k[o]),--r)),n++;return i}function R(r){function e(e,n,s,l){function h(){return t?(K++,void 0):(++K===H&&(E=f.arrayWiden(E,B<<=1),q=f.arrayWiden(q,B),H=u(B)),void 0)}t&&(W=s,s=J.length-e.length,l=e.length);var p,g,b,_,x,m,w=F,E=t?[]:o(K,H),z=U,O=D,M=I,$=K,C=0,N=0;for(X&&(z=M=c),X&&(O=M=c),F=new Array(K),K=0,q=t?$>1?q:[]:$>1?f.arrayLengthen(q,j):o(j,H),$&&(b=(g=w[0]).key);l>N&&!((_=r(e[N]))>=_);)++N;for(;l>N;){for(g&&_>=b?(x=g,m=b,E[C]=K,g=w[++C],g&&(b=g.key)):(x={key:_,value:M()},m=_),F[K]=x;m>=_&&(p=n[N]+(t?W:s),t?q[p]?q[p].push(K):q[p]=[K]:q[p]=K,x.value=z(x.value,k[p],!0),A.zeroExcept(p,T,P)||(x.value=O(x.value,k[p],!1)),!(++N>=l));)_=r(e[N]);h()}for(;$>C;)F[E[C]=K]=w[C++],h();if(t)for(var R=0;j>R;R++)q[R]||(q[R]=[]);if(K>C)if(t)q=y(q,E,!0);else for(C=0;s>C;++C)q[C]=E[q[C]];p=S.indexOf(Q),K>1?(Q=i,V=v):(!K&&Y&&(K=1,F=[{key:null,value:M()}]),1===K?(Q=a,V=d):(Q=c,V=c),q=null),S[p]=Q}function n(){if(K>1){for(var r=K,t=F,e=o(r,r),n=0,u=0;j>n;++n)A.zero(n)||(e[q[u]=q[n]]=1,++u);for(F=[],K=0,n=0;r>n;++n)e[n]&&(e[n]=K++,F.push(t[n]));if(K>1)for(var f=0;u>f;++f)q[f]=e[q[f]];else q=null;S[S.indexOf(Q)]=K>1?(V=v,Q=i):1===K?(V=d,Q=a):V=Q=c}else if(1===K){if(Y)return;for(var s=0;j>s;++s)if(!A.zero(s))return;F=[],K=0,S[S.indexOf(Q)]=Q=V=c}}function i(r,e,n,o,i){if(!(r===L&&e===T||X)){var u,f,a,s,c;if(t){for(u=0,s=n.length;s>u;++u)if(A.zeroExcept(a=n[u],T,P))for(f=0;f<q[a].length;f++)c=F[q[a][f]],c.value=U(c.value,k[a],!1,f);for(u=0,s=o.length;s>u;++u)if(A.onlyExcept(a=o[u],T,P,e,r))for(f=0;f<q[a].length;f++)c=F[q[a][f]],c.value=D(c.value,k[a],i,f)}else{for(u=0,s=n.length;s>u;++u)A.zeroExcept(a=n[u],T,P)&&(c=F[q[a]],c.value=U(c.value,k[a],!1));for(u=0,s=o.length;s>u;++u)A.onlyExcept(a=o[u],T,P,e,r)&&(c=F[q[a]],c.value=D(c.value,k[a],i))}}}function a(r,t,e,n,o){if(!(r===L&&t===T||X)){var i,u,f,a=F[0];for(i=0,f=e.length;f>i;++i)A.zeroExcept(u=e[i],T,P)&&(a.value=U(a.value,k[u],!1));for(i=0,f=n.length;f>i;++i)A.onlyExcept(u=n[i],T,P,t,r)&&(a.value=D(a.value,k[u],o))}}function v(){var r,e,n;for(r=0;K>r;++r)F[r].value=I();if(t){for(r=0;j>r;++r)for(e=0;e<q[r].length;e++)n=F[q[r][e]],n.value=U(n.value,k[r],!0,e);for(r=0;j>r;++r)if(!A.zeroExcept(r,T,P))for(e=0;e<q[r].length;e++)n=F[q[r][e]],n.value=D(n.value,k[r],!1,e)}else{for(r=0;j>r;++r)n=F[q[r]],n.value=U(n.value,k[r],!0);for(r=0;j>r;++r)A.zeroExcept(r,T,P)||(n=F[q[r]],n.value=D(n.value,k[r],!1))}}function d(){var r,t=F[0];for(t.value=I(),r=0;j>r;++r)t.value=U(t.value,k[r],!0);for(r=0;j>r;++r)A.zeroExcept(r,T,P)||(t.value=D(t.value,k[r],!1))}function g(){return X&&(V(),X=!1),F}function _(r){var t=N(g(),0,F.length,r);return R.sort(t,0,t.length)}function x(r,t,e){return U=r,D=t,I=e,X=!0,C}function m(){return x(b.reduceIncrement,b.reduceDecrement,l)}function w(r){return x(b.reduceAdd(r),b.reduceSubtract(r),l)}function E(r){function t(t){return r(t.value)}return N=h.by(t),R=p.by(t),C}function z(){return E(s)}function O(){return K}function M(){var r=S.indexOf(Q);return r>=0&&S.splice(r,1),r=ot.indexOf(e),r>=0&&ot.splice(r,1),r=$.indexOf(n),r>=0&&$.splice(r,1),C}var C={top:_,all:g,reduce:x,reduceCount:m,reduceSum:w,order:E,orderNatural:z,size:O,dispose:M,remove:M};it.push(C);var F,q,N,R,U,D,I,W,B=8,H=u(B),K=0,Q=c,V=c,X=!0,Y=r===c;return arguments.length<1&&(r=s),S.push(Q),ot.push(e),$.push(n),e(J,G,0,j),m().orderNatural()}function U(){var r=R(c),t=r.all;return delete r.all,delete r.top,delete r.order,delete r.orderNatural,delete r.size,r.value=function(){return t()[0].value},r}function D(){it.forEach(function(r){r.dispose()});var r=M.indexOf(e);return r>=0&&M.splice(r,1),r=M.indexOf(n),r>=0&&M.splice(r,1),r=$.indexOf(d),r>=0&&$.splice(r,1),A.masks[T]&=P,O()}if("string"==typeof r){var I=r;r=function(r){return x(r,I)}}var L,P,T,W,J,G,B,H,K,Q,V,X,Y,Z,rt,tt={filter:m,filterExact:w,filterRange:E,filterFunction:C,filterAll:O,top:q,bottom:N,group:R,groupAll:U,dispose:D,remove:D,accessor:r,id:function(){return W}},et=g.by(function(r){return B[r]}),nt=a.filterAll,ot=[],it=[],ut=0,ft=0,at=0;M.unshift(e),M.push(n),$.push(d);var st=A.add();return T=st.offset,L=st.one,P=~L,W=T<<7|Math.log(L)/Math.log(2),e(k,0,j),n(k,0,j),tt}function d(){function r(r,t){var e;if(!v)for(e=t;j>e;++e)a=s(a,k[e],!0),A.zero(e)||(a=c(a,k[e],!1))}function t(r,t,e,n,o){var i,u,f;if(!v){for(i=0,f=e.length;f>i;++i)A.zero(u=e[i])&&(a=s(a,k[u],o));for(i=0,f=n.length;f>i;++i)A.only(u=n[i],t,r)&&(a=c(a,k[u],o))}}function e(){var r;for(a=h(),r=0;j>r;++r)a=s(a,k[r],!0),A.zero(r)||(a=c(a,k[r],!1))}function n(r,t,e){return s=r,c=t,h=e,v=!0,p}function o(){return n(b.reduceIncrement,b.reduceDecrement,l)}function i(r){return n(b.reduceAdd(r),b.reduceSubtract(r),l)}function u(){return v&&(e(),v=!1),a}function f(){var e=S.indexOf(t);return e>=0&&S.splice(e),e=M.indexOf(r),e>=0&&M.splice(e),p}var a,s,c,h,p={reduce:n,reduceCount:o,reduceSum:i,value:u,dispose:f,remove:f},v=!0;return S.push(t),M.push(r),r(k,0,j),o()}function _(){return j}function m(){return k}function w(){var r=[],t=0;for(t=0;j>t;t++)A.zero(t)&&r.push(k[t]);return r}function E(r){return"function"!=typeof r?(console.warn("onChange callback parameter must be a function!"),void 0):(C.push(r),function(){C.splice(C.indexOf(r),1)})}function z(r){for(var t=0;t<C.length;t++)C[t](r)}var A,O={add:r,remove:t,dimension:n,groupAll:d,size:_,all:m,allFiltered:w,onChange:E,isElementFiltered:e},k=[],j=0,S=[],M=[],$=[],C=[];return A=new f.bitarray(0),arguments.length?r(arguments[0]):O}function o(r,t){return(257>t?f.array8:65537>t?f.array16:f.array32)(r)}function i(r){for(var t=o(r,r),e=-1;++e<r;)t[e]=e;return t}function u(r){return 8===r?256:16===r?65536:4294967296}var f=r("./array"),a=r("./filter"),s=r("./identity"),c=r("./null"),l=r("./zero"),h=r("./heapselect"),p=r("./heap"),v=r("./bisect"),d=r("./insertionsort"),y=r("./permute"),g=r("./quicksort"),b=r("./reduce"),_=r("./../package.json"),x=r("lodash.result");e.crossfilter=n,e.crossfilter.heap=p,e.crossfilter.heapselect=h,e.crossfilter.bisect=v,e.crossfilter.insertionsort=d,e.crossfilter.permute=y,e.crossfilter.quicksort=g,e.crossfilter.version=_.version},{"./../package.json":3,"./array":4,"./bisect":5,"./filter":7,"./heap":8,"./heapselect":9,"./identity":10,"./insertionsort":11,"./null":12,"./permute":13,"./quicksort":14,"./reduce":15,"./zero":16,"lodash.result":2}],7:[function(r,t){"use strict";function e(r,t){return function(e){var n=e.length;return[r.left(e,t,0,n),r.right(e,t,0,n)]}}function n(r,t){var e=t[0],n=t[1];return function(t){var o=t.length;return[r.left(t,e,0,o),r.left(t,n,0,o)]}}function o(r){return[0,r.length]}t.exports={filterExact:e,filterRange:n,filterAll:o}},{}],8:[function(r,t){"use strict";function e(r){function t(r,t,e){for(var o=e-t,i=(o>>>1)+1;--i>0;)n(r,i,o,t);return r}function e(r,t,e){for(var o,i=e-t;--i>0;)o=r[t],r[t]=r[t+i],r[t+i]=o,n(r,1,i,t);return r}function n(t,e,n,o){for(var i,u=t[--o+e],f=r(u);(i=e<<1)<=n&&(n>i&&r(t[o+i])>r(t[o+i+1])&&i++,!(f<=r(t[o+i])));)t[o+e]=t[o+i],e=i;t[o+e]=u}return t.sort=e,t}var n=r("./identity");t.exports=e(n),t.exports.by=e},{"./identity":10}],9:[function(r,t){"use strict";function e(r){function t(t,n,o,i){var u,f,a,s=new Array(i=Math.min(o-n,i));for(f=0;i>f;++f)s[f]=t[n++];if(e(s,0,i),o>n){u=r(s[0]);do r(a=t[n])>u&&(s[0]=a,u=r(e(s,0,i)[0]));while(++n<o)}return s}var e=o.by(r);return t}var n=r("./identity"),o=r("./heap");t.exports=e(n),t.exports.by=e},{"./heap":8,"./identity":10}],10:[function(r,t){"use strict";function e(r){return r}t.exports=e},{}],11:[function(r,t){"use strict";function e(r){function t(t,e,n){for(var o=e+1;n>o;++o){for(var i=o,u=t[o],f=r(u);i>e&&r(t[i-1])>f;--i)t[i]=t[i-1];t[i]=u}return t}return t}var n=r("./identity");t.exports=e(n),t.exports.by=e},{"./identity":10}],12:[function(r,t){"use strict";function e(){return null}t.exports=e},{}],13:[function(r,t){"use strict";function e(r,t,e){for(var n=0,o=t.length,i=e?JSON.parse(JSON.stringify(r)):new Array(o);o>n;++n)i[n]=r[t[n]];return i}t.exports=e},{}],14:[function(r,t){function e(r){function t(r,t,o){return(i>o-t?n:e)(r,t,o)}function e(e,n,o){var i,u=0|(o-n)/6,f=n+u,a=o-1-u,s=n+o-1>>1,c=s-u,l=s+u,h=e[f],p=r(h),v=e[c],d=r(v),y=e[s],g=r(y),b=e[l],_=r(b),x=e[a],m=r(x);p>d&&(i=h,h=v,v=i,i=p,p=d,d=i),_>m&&(i=b,b=x,x=i,i=_,_=m,m=i),p>g&&(i=h,h=y,y=i,i=p,p=g,g=i),d>g&&(i=v,v=y,y=i,i=d,d=g,g=i),p>_&&(i=h,h=b,b=i,i=p,p=_,_=i),g>_&&(i=y,y=b,b=i,i=g,g=_,_=i),d>m&&(i=v,v=x,x=i,i=d,d=m,m=i),d>g&&(i=v,v=y,y=i,i=d,d=g,g=i),_>m&&(i=b,b=x,x=i,i=_,_=m,m=i);var w=v,E=d,z=b,A=_;e[f]=h,e[c]=e[n],e[s]=y,e[l]=e[o-1],e[a]=x;var O=n+1,k=o-2,j=A>=E&&E>=A;if(j)for(var S=O;k>=S;++S){var M=e[S],$=r(M);if(E>$)S!==O&&(e[S]=e[O],e[O]=M),++O;else if($>E)for(;;){var C=r(e[k]);{if(!(C>E)){if(E>C){e[S]=e[O],e[O++]=e[k],e[k--]=M;break}e[S]=e[k],e[k--]=M;break}k--}}}else!function(){for(var t=O;k>=t;t++){var n=e[t],o=r(n);if(E>o)t!==O&&(e[t]=e[O],e[O]=n),++O;else if(o>A)for(;;){var i=r(e[k]);{if(!(i>A)){E>i?(e[t]=e[O],e[O++]=e[k],e[k--]=n):(e[t]=e[k],e[k--]=n);break}if(k--,t>k)break}}}}();return e[n]=e[O-1],e[O-1]=w,e[o-1]=e[k+1],e[k+1]=z,t(e,n,O-1),t(e,k+2,o),j?e:(f>O&&k>a&&!function(){for(var t,n;(t=r(e[O]))<=E&&t>=E;)++O;for(;(n=r(e[k]))<=A&&n>=A;)--k;for(var o=O;k>=o;o++){var i=e[o],u=r(i);if(E>=u&&u>=E)o!==O&&(e[o]=e[O],e[O]=i),O++;else if(A>=u&&u>=A)for(;;){n=r(e[k]);{if(!(A>=n&&n>=A)){E>n?(e[o]=e[O],e[O++]=e[k],e[k--]=i):(e[o]=e[k],e[k--]=i);break}if(k--,o>k)break}}}}(),t(e,O,k+1))}var n=o.by(r);return t}var n=r("./identity"),o=r("./insertionsort"),i=32;t.exports=e(n),t.exports.by=e},{"./identity":10,"./insertionsort":11}],15:[function(r,t){"use strict";function e(r){return r+1}function n(r){return r-1}function o(r){return function(t,e){return t+ +r(e)}}function i(r){return function(t,e){return t-r(e)}}t.exports={reduceIncrement:e,reduceDecrement:n,reduceAdd:o,reduceSubtract:i}},{}],16:[function(r,t){"use strict";function e(){return 0}t.exports=e},{}]},{},[1])(1)});
+(function(exports){
+crossfilter.version = "1.3.12";
+function crossfilter_identity(d) {
+  return d;
+}
+crossfilter.permute = permute;
+
+function permute(array, index) {
+  for (var i = 0, n = index.length, copy = new Array(n); i < n; ++i) {
+    copy[i] = array[index[i]];
+  }
+  return copy;
+}
+var bisect = crossfilter.bisect = bisect_by(crossfilter_identity);
+
+bisect.by = bisect_by;
+
+function bisect_by(f) {
+
+  // Locate the insertion point for x in a to maintain sorted order. The
+  // arguments lo and hi may be used to specify a subset of the array which
+  // should be considered; by default the entire array is used. If x is already
+  // present in a, the insertion point will be before (to the left of) any
+  // existing entries. The return value is suitable for use as the first
+  // argument to `array.splice` assuming that a is already sorted.
+  //
+  // The returned insertion point i partitions the array a into two halves so
+  // that all v < x for v in a[lo:i] for the left side and all v >= x for v in
+  // a[i:hi] for the right side.
+  function bisectLeft(a, x, lo, hi) {
+    while (lo < hi) {
+      var mid = lo + hi >>> 1;
+      if (f(a[mid]) < x) lo = mid + 1;
+      else hi = mid;
+    }
+    return lo;
+  }
+
+  // Similar to bisectLeft, but returns an insertion point which comes after (to
+  // the right of) any existing entries of x in a.
+  //
+  // The returned insertion point i partitions the array into two halves so that
+  // all v <= x for v in a[lo:i] for the left side and all v > x for v in
+  // a[i:hi] for the right side.
+  function bisectRight(a, x, lo, hi) {
+    while (lo < hi) {
+      var mid = lo + hi >>> 1;
+      if (x < f(a[mid])) hi = mid;
+      else lo = mid + 1;
+    }
+    return lo;
+  }
+
+  bisectRight.right = bisectRight;
+  bisectRight.left = bisectLeft;
+  return bisectRight;
+}
+var heap = crossfilter.heap = heap_by(crossfilter_identity);
+
+heap.by = heap_by;
+
+function heap_by(f) {
+
+  // Builds a binary heap within the specified array a[lo:hi]. The heap has the
+  // property such that the parent a[lo+i] is always less than or equal to its
+  // two children: a[lo+2*i+1] and a[lo+2*i+2].
+  function heap(a, lo, hi) {
+    var n = hi - lo,
+        i = (n >>> 1) + 1;
+    while (--i > 0) sift(a, i, n, lo);
+    return a;
+  }
+
+  // Sorts the specified array a[lo:hi] in descending order, assuming it is
+  // already a heap.
+  function sort(a, lo, hi) {
+    var n = hi - lo,
+        t;
+    while (--n > 0) t = a[lo], a[lo] = a[lo + n], a[lo + n] = t, sift(a, 1, n, lo);
+    return a;
+  }
+
+  // Sifts the element a[lo+i-1] down the heap, where the heap is the contiguous
+  // slice of array a[lo:lo+n]. This method can also be used to update the heap
+  // incrementally, without incurring the full cost of reconstructing the heap.
+  function sift(a, i, n, lo) {
+    var d = a[--lo + i],
+        x = f(d),
+        child;
+    while ((child = i << 1) <= n) {
+      if (child < n && f(a[lo + child]) > f(a[lo + child + 1])) child++;
+      if (x <= f(a[lo + child])) break;
+      a[lo + i] = a[lo + child];
+      i = child;
+    }
+    a[lo + i] = d;
+  }
+
+  heap.sort = sort;
+  return heap;
+}
+var heapselect = crossfilter.heapselect = heapselect_by(crossfilter_identity);
+
+heapselect.by = heapselect_by;
+
+function heapselect_by(f) {
+  var heap = heap_by(f);
+
+  // Returns a new array containing the top k elements in the array a[lo:hi].
+  // The returned array is not sorted, but maintains the heap property. If k is
+  // greater than hi - lo, then fewer than k elements will be returned. The
+  // order of elements in a is unchanged by this operation.
+  function heapselect(a, lo, hi, k) {
+    var queue = new Array(k = Math.min(hi - lo, k)),
+        min,
+        i,
+        x,
+        d;
+
+    for (i = 0; i < k; ++i) queue[i] = a[lo++];
+    heap(queue, 0, k);
+
+    if (lo < hi) {
+      min = f(queue[0]);
+      do {
+        if (x = f(d = a[lo]) > min) {
+          queue[0] = d;
+          min = f(heap(queue, 0, k)[0]);
+        }
+      } while (++lo < hi);
+    }
+
+    return queue;
+  }
+
+  return heapselect;
+}
+var insertionsort = crossfilter.insertionsort = insertionsort_by(crossfilter_identity);
+
+insertionsort.by = insertionsort_by;
+
+function insertionsort_by(f) {
+
+  function insertionsort(a, lo, hi) {
+    for (var i = lo + 1; i < hi; ++i) {
+      for (var j = i, t = a[i], x = f(t); j > lo && f(a[j - 1]) > x; --j) {
+        a[j] = a[j - 1];
+      }
+      a[j] = t;
+    }
+    return a;
+  }
+
+  return insertionsort;
+}
+// Algorithm designed by Vladimir Yaroslavskiy.
+// Implementation based on the Dart project; see lib/dart/LICENSE for details.
+
+var quicksort = crossfilter.quicksort = quicksort_by(crossfilter_identity);
+
+quicksort.by = quicksort_by;
+
+function quicksort_by(f) {
+  var insertionsort = insertionsort_by(f);
+
+  function sort(a, lo, hi) {
+    return (hi - lo < quicksort_sizeThreshold
+        ? insertionsort
+        : quicksort)(a, lo, hi);
+  }
+
+  function quicksort(a, lo, hi) {
+    // Compute the two pivots by looking at 5 elements.
+    var sixth = (hi - lo) / 6 | 0,
+        i1 = lo + sixth,
+        i5 = hi - 1 - sixth,
+        i3 = lo + hi - 1 >> 1,  // The midpoint.
+        i2 = i3 - sixth,
+        i4 = i3 + sixth;
+
+    var e1 = a[i1], x1 = f(e1),
+        e2 = a[i2], x2 = f(e2),
+        e3 = a[i3], x3 = f(e3),
+        e4 = a[i4], x4 = f(e4),
+        e5 = a[i5], x5 = f(e5);
+
+    var t;
+
+    // Sort the selected 5 elements using a sorting network.
+    if (x1 > x2) t = e1, e1 = e2, e2 = t, t = x1, x1 = x2, x2 = t;
+    if (x4 > x5) t = e4, e4 = e5, e5 = t, t = x4, x4 = x5, x5 = t;
+    if (x1 > x3) t = e1, e1 = e3, e3 = t, t = x1, x1 = x3, x3 = t;
+    if (x2 > x3) t = e2, e2 = e3, e3 = t, t = x2, x2 = x3, x3 = t;
+    if (x1 > x4) t = e1, e1 = e4, e4 = t, t = x1, x1 = x4, x4 = t;
+    if (x3 > x4) t = e3, e3 = e4, e4 = t, t = x3, x3 = x4, x4 = t;
+    if (x2 > x5) t = e2, e2 = e5, e5 = t, t = x2, x2 = x5, x5 = t;
+    if (x2 > x3) t = e2, e2 = e3, e3 = t, t = x2, x2 = x3, x3 = t;
+    if (x4 > x5) t = e4, e4 = e5, e5 = t, t = x4, x4 = x5, x5 = t;
+
+    var pivot1 = e2, pivotValue1 = x2,
+        pivot2 = e4, pivotValue2 = x4;
+
+    // e2 and e4 have been saved in the pivot variables. They will be written
+    // back, once the partitioning is finished.
+    a[i1] = e1;
+    a[i2] = a[lo];
+    a[i3] = e3;
+    a[i4] = a[hi - 1];
+    a[i5] = e5;
+
+    var less = lo + 1,   // First element in the middle partition.
+        great = hi - 2;  // Last element in the middle partition.
+
+    // Note that for value comparison, <, <=, >= and > coerce to a primitive via
+    // Object.prototype.valueOf; == and === do not, so in order to be consistent
+    // with natural order (such as for Date objects), we must do two compares.
+    var pivotsEqual = pivotValue1 <= pivotValue2 && pivotValue1 >= pivotValue2;
+    if (pivotsEqual) {
+
+      // Degenerated case where the partitioning becomes a dutch national flag
+      // problem.
+      //
+      // [ |  < pivot  | == pivot | unpartitioned | > pivot  | ]
+      //  ^             ^          ^             ^            ^
+      // left         less         k           great         right
+      //
+      // a[left] and a[right] are undefined and are filled after the
+      // partitioning.
+      //
+      // Invariants:
+      //   1) for x in ]left, less[ : x < pivot.
+      //   2) for x in [less, k[ : x == pivot.
+      //   3) for x in ]great, right[ : x > pivot.
+      for (var k = less; k <= great; ++k) {
+        var ek = a[k], xk = f(ek);
+        if (xk < pivotValue1) {
+          if (k !== less) {
+            a[k] = a[less];
+            a[less] = ek;
+          }
+          ++less;
+        } else if (xk > pivotValue1) {
+
+          // Find the first element <= pivot in the range [k - 1, great] and
+          // put [:ek:] there. We know that such an element must exist:
+          // When k == less, then el3 (which is equal to pivot) lies in the
+          // interval. Otherwise a[k - 1] == pivot and the search stops at k-1.
+          // Note that in the latter case invariant 2 will be violated for a
+          // short amount of time. The invariant will be restored when the
+          // pivots are put into their final positions.
+          while (true) {
+            var greatValue = f(a[great]);
+            if (greatValue > pivotValue1) {
+              great--;
+              // This is the only location in the while-loop where a new
+              // iteration is started.
+              continue;
+            } else if (greatValue < pivotValue1) {
+              // Triple exchange.
+              a[k] = a[less];
+              a[less++] = a[great];
+              a[great--] = ek;
+              break;
+            } else {
+              a[k] = a[great];
+              a[great--] = ek;
+              // Note: if great < k then we will exit the outer loop and fix
+              // invariant 2 (which we just violated).
+              break;
+            }
+          }
+        }
+      }
+    } else {
+
+      // We partition the list into three parts:
+      //  1. < pivot1
+      //  2. >= pivot1 && <= pivot2
+      //  3. > pivot2
+      //
+      // During the loop we have:
+      // [ | < pivot1 | >= pivot1 && <= pivot2 | unpartitioned  | > pivot2  | ]
+      //  ^            ^                        ^              ^             ^
+      // left         less                     k              great        right
+      //
+      // a[left] and a[right] are undefined and are filled after the
+      // partitioning.
+      //
+      // Invariants:
+      //   1. for x in ]left, less[ : x < pivot1
+      //   2. for x in [less, k[ : pivot1 <= x && x <= pivot2
+      //   3. for x in ]great, right[ : x > pivot2
+      for (var k = less; k <= great; k++) {
+        var ek = a[k], xk = f(ek);
+        if (xk < pivotValue1) {
+          if (k !== less) {
+            a[k] = a[less];
+            a[less] = ek;
+          }
+          ++less;
+        } else {
+          if (xk > pivotValue2) {
+            while (true) {
+              var greatValue = f(a[great]);
+              if (greatValue > pivotValue2) {
+                great--;
+                if (great < k) break;
+                // This is the only location inside the loop where a new
+                // iteration is started.
+                continue;
+              } else {
+                // a[great] <= pivot2.
+                if (greatValue < pivotValue1) {
+                  // Triple exchange.
+                  a[k] = a[less];
+                  a[less++] = a[great];
+                  a[great--] = ek;
+                } else {
+                  // a[great] >= pivot1.
+                  a[k] = a[great];
+                  a[great--] = ek;
+                }
+                break;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // Move pivots into their final positions.
+    // We shrunk the list from both sides (a[left] and a[right] have
+    // meaningless values in them) and now we move elements from the first
+    // and third partition into these locations so that we can store the
+    // pivots.
+    a[lo] = a[less - 1];
+    a[less - 1] = pivot1;
+    a[hi - 1] = a[great + 1];
+    a[great + 1] = pivot2;
+
+    // The list is now partitioned into three partitions:
+    // [ < pivot1   | >= pivot1 && <= pivot2   |  > pivot2   ]
+    //  ^            ^                        ^             ^
+    // left         less                     great        right
+
+    // Recursive descent. (Don't include the pivot values.)
+    sort(a, lo, less - 1);
+    sort(a, great + 2, hi);
+
+    if (pivotsEqual) {
+      // All elements in the second partition are equal to the pivot. No
+      // need to sort them.
+      return a;
+    }
+
+    // In theory it should be enough to call _doSort recursively on the second
+    // partition.
+    // The Android source however removes the pivot elements from the recursive
+    // call if the second partition is too large (more than 2/3 of the list).
+    if (less < i1 && great > i5) {
+      var lessValue, greatValue;
+      while ((lessValue = f(a[less])) <= pivotValue1 && lessValue >= pivotValue1) ++less;
+      while ((greatValue = f(a[great])) <= pivotValue2 && greatValue >= pivotValue2) --great;
+
+      // Copy paste of the previous 3-way partitioning with adaptions.
+      //
+      // We partition the list into three parts:
+      //  1. == pivot1
+      //  2. > pivot1 && < pivot2
+      //  3. == pivot2
+      //
+      // During the loop we have:
+      // [ == pivot1 | > pivot1 && < pivot2 | unpartitioned  | == pivot2 ]
+      //              ^                      ^              ^
+      //            less                     k              great
+      //
+      // Invariants:
+      //   1. for x in [ *, less[ : x == pivot1
+      //   2. for x in [less, k[ : pivot1 < x && x < pivot2
+      //   3. for x in ]great, * ] : x == pivot2
+      for (var k = less; k <= great; k++) {
+        var ek = a[k], xk = f(ek);
+        if (xk <= pivotValue1 && xk >= pivotValue1) {
+          if (k !== less) {
+            a[k] = a[less];
+            a[less] = ek;
+          }
+          less++;
+        } else {
+          if (xk <= pivotValue2 && xk >= pivotValue2) {
+            while (true) {
+              var greatValue = f(a[great]);
+              if (greatValue <= pivotValue2 && greatValue >= pivotValue2) {
+                great--;
+                if (great < k) break;
+                // This is the only location inside the loop where a new
+                // iteration is started.
+                continue;
+              } else {
+                // a[great] < pivot2.
+                if (greatValue < pivotValue1) {
+                  // Triple exchange.
+                  a[k] = a[less];
+                  a[less++] = a[great];
+                  a[great--] = ek;
+                } else {
+                  // a[great] == pivot1.
+                  a[k] = a[great];
+                  a[great--] = ek;
+                }
+                break;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // The second partition has now been cleared of pivot elements and looks
+    // as follows:
+    // [  *  |  > pivot1 && < pivot2  | * ]
+    //        ^                      ^
+    //       less                  great
+    // Sort the second partition using recursive descent.
+
+    // The second partition looks as follows:
+    // [  *  |  >= pivot1 && <= pivot2  | * ]
+    //        ^                        ^
+    //       less                    great
+    // Simply sort it by recursive descent.
+
+    return sort(a, less, great + 1);
+  }
+
+  return sort;
+}
+
+var quicksort_sizeThreshold = 32;
+var crossfilter_array8 = crossfilter_arrayUntyped,
+    crossfilter_array16 = crossfilter_arrayUntyped,
+    crossfilter_array32 = crossfilter_arrayUntyped,
+    crossfilter_arrayLengthen = crossfilter_arrayLengthenUntyped,
+    crossfilter_arrayWiden = crossfilter_arrayWidenUntyped;
+
+if (typeof Uint8Array !== "undefined") {
+  crossfilter_array8 = function(n) { return new Uint8Array(n); };
+  crossfilter_array16 = function(n) { return new Uint16Array(n); };
+  crossfilter_array32 = function(n) { return new Uint32Array(n); };
+
+  crossfilter_arrayLengthen = function(array, length) {
+    if (array.length >= length) return array;
+    var copy = new array.constructor(length);
+    copy.set(array);
+    return copy;
+  };
+
+  crossfilter_arrayWiden = function(array, width) {
+    var copy;
+    switch (width) {
+      case 16: copy = crossfilter_array16(array.length); break;
+      case 32: copy = crossfilter_array32(array.length); break;
+      default: throw new Error("invalid array width!");
+    }
+    copy.set(array);
+    return copy;
+  };
+}
+
+function crossfilter_arrayUntyped(n) {
+  var array = new Array(n), i = -1;
+  while (++i < n) array[i] = 0;
+  return array;
+}
+
+function crossfilter_arrayLengthenUntyped(array, length) {
+  var n = array.length;
+  while (n < length) array[n++] = 0;
+  return array;
+}
+
+function crossfilter_arrayWidenUntyped(array, width) {
+  if (width > 32) throw new Error("invalid array width!");
+  return array;
+}
+function crossfilter_filterExact(bisect, value) {
+  return function(values) {
+    var n = values.length;
+    return [bisect.left(values, value, 0, n), bisect.right(values, value, 0, n)];
+  };
+}
+
+function crossfilter_filterRange(bisect, range) {
+  var min = range[0],
+      max = range[1];
+  return function(values) {
+    var n = values.length;
+    return [bisect.left(values, min, 0, n), bisect.left(values, max, 0, n)];
+  };
+}
+
+function crossfilter_filterAll(values) {
+  return [0, values.length];
+}
+function crossfilter_null() {
+  return null;
+}
+function crossfilter_zero() {
+  return 0;
+}
+function crossfilter_reduceIncrement(p) {
+  return p + 1;
+}
+
+function crossfilter_reduceDecrement(p) {
+  return p - 1;
+}
+
+function crossfilter_reduceAdd(f) {
+  return function(p, v) {
+    return p + +f(v);
+  };
+}
+
+function crossfilter_reduceSubtract(f) {
+  return function(p, v) {
+    return p - f(v);
+  };
+}
+exports.crossfilter = crossfilter;
+
+function crossfilter() {
+  var crossfilter = {
+    add: add,
+    remove: removeData,
+    dimension: dimension,
+    groupAll: groupAll,
+    size: size
+  };
+
+  var data = [], // the records
+      n = 0, // the number of records; data.length
+      m = 0, // a bit mask representing which dimensions are in use
+      M = 8, // number of dimensions that can fit in `filters`
+      filters = crossfilter_array8(0), // M bits per record; 1 is filtered out
+      filterListeners = [], // when the filters change
+      dataListeners = [], // when data is added
+      removeDataListeners = []; // when data is removed
+
+  // Adds the specified new records to this crossfilter.
+  function add(newData) {
+    var n0 = n,
+        n1 = newData.length;
+
+    // If there's actually new data to add…
+    // Merge the new data into the existing data.
+    // Lengthen the filter bitset to handle the new records.
+    // Notify listeners (dimensions and groups) that new data is available.
+    if (n1) {
+      data = data.concat(newData);
+      filters = crossfilter_arrayLengthen(filters, n += n1);
+      dataListeners.forEach(function(l) { l(newData, n0, n1); });
+    }
+
+    return crossfilter;
+  }
+
+  // Removes all records that match the current filters.
+  function removeData() {
+    var newIndex = crossfilter_index(n, n),
+        removed = [];
+    for (var i = 0, j = 0; i < n; ++i) {
+      if (filters[i]) newIndex[i] = j++;
+      else removed.push(i);
+    }
+
+    // Remove all matching records from groups.
+    filterListeners.forEach(function(l) { l(0, [], removed); });
+
+    // Update indexes.
+    removeDataListeners.forEach(function(l) { l(newIndex); });
+
+    // Remove old filters and data by overwriting.
+    for (var i = 0, j = 0, k; i < n; ++i) {
+      if (k = filters[i]) {
+        if (i !== j) filters[j] = k, data[j] = data[i];
+        ++j;
+      }
+    }
+    data.length = j;
+    while (n > j) filters[--n] = 0;
+  }
+
+  // Adds a new dimension with the specified value accessor function.
+  function dimension(value) {
+    var dimension = {
+      filter: filter,
+      filterExact: filterExact,
+      filterRange: filterRange,
+      filterFunction: filterFunction,
+      filterAll: filterAll,
+      top: top,
+      bottom: bottom,
+      group: group,
+      groupAll: groupAll,
+      dispose: dispose,
+      remove: dispose // for backwards-compatibility
+    };
+
+    var one = ~m & -~m, // lowest unset bit as mask, e.g., 00001000
+        zero = ~one, // inverted one, e.g., 11110111
+        values, // sorted, cached array
+        index, // value rank ↦ object id
+        newValues, // temporary array storing newly-added values
+        newIndex, // temporary array storing newly-added index
+        sort = quicksort_by(function(i) { return newValues[i]; }),
+        refilter = crossfilter_filterAll, // for recomputing filter
+        refilterFunction, // the custom filter function in use
+        indexListeners = [], // when data is added
+        dimensionGroups = [],
+        lo0 = 0,
+        hi0 = 0;
+
+    // Updating a dimension is a two-stage process. First, we must update the
+    // associated filters for the newly-added records. Once all dimensions have
+    // updated their filters, the groups are notified to update.
+    dataListeners.unshift(preAdd);
+    dataListeners.push(postAdd);
+
+    removeDataListeners.push(removeData);
+
+    // Incorporate any existing data into this dimension, and make sure that the
+    // filter bitset is wide enough to handle the new dimension.
+    m |= one;
+    if (M >= 32 ? !one : m & -(1 << M)) {
+      filters = crossfilter_arrayWiden(filters, M <<= 1);
+    }
+    preAdd(data, 0, n);
+    postAdd(data, 0, n);
+
+    // Incorporates the specified new records into this dimension.
+    // This function is responsible for updating filters, values, and index.
+    function preAdd(newData, n0, n1) {
+
+      // Permute new values into natural order using a sorted index.
+      newValues = newData.map(value);
+      newIndex = sort(crossfilter_range(n1), 0, n1);
+      newValues = permute(newValues, newIndex);
+
+      // Bisect newValues to determine which new records are selected.
+      var bounds = refilter(newValues), lo1 = bounds[0], hi1 = bounds[1], i;
+      if (refilterFunction) {
+        for (i = 0; i < n1; ++i) {
+          if (!refilterFunction(newValues[i], i)) filters[newIndex[i] + n0] |= one;
+        }
+      } else {
+        for (i = 0; i < lo1; ++i) filters[newIndex[i] + n0] |= one;
+        for (i = hi1; i < n1; ++i) filters[newIndex[i] + n0] |= one;
+      }
+
+      // If this dimension previously had no data, then we don't need to do the
+      // more expensive merge operation; use the new values and index as-is.
+      if (!n0) {
+        values = newValues;
+        index = newIndex;
+        lo0 = lo1;
+        hi0 = hi1;
+        return;
+      }
+
+      var oldValues = values,
+          oldIndex = index,
+          i0 = 0,
+          i1 = 0;
+
+      // Otherwise, create new arrays into which to merge new and old.
+      values = new Array(n);
+      index = crossfilter_index(n, n);
+
+      // Merge the old and new sorted values, and old and new index.
+      for (i = 0; i0 < n0 && i1 < n1; ++i) {
+        if (oldValues[i0] < newValues[i1]) {
+          values[i] = oldValues[i0];
+          index[i] = oldIndex[i0++];
+        } else {
+          values[i] = newValues[i1];
+          index[i] = newIndex[i1++] + n0;
+        }
+      }
+
+      // Add any remaining old values.
+      for (; i0 < n0; ++i0, ++i) {
+        values[i] = oldValues[i0];
+        index[i] = oldIndex[i0];
+      }
+
+      // Add any remaining new values.
+      for (; i1 < n1; ++i1, ++i) {
+        values[i] = newValues[i1];
+        index[i] = newIndex[i1] + n0;
+      }
+
+      // Bisect again to recompute lo0 and hi0.
+      bounds = refilter(values), lo0 = bounds[0], hi0 = bounds[1];
+    }
+
+    // When all filters have updated, notify index listeners of the new values.
+    function postAdd(newData, n0, n1) {
+      indexListeners.forEach(function(l) { l(newValues, newIndex, n0, n1); });
+      newValues = newIndex = null;
+    }
+
+    function removeData(reIndex) {
+      for (var i = 0, j = 0, k; i < n; ++i) {
+        if (filters[k = index[i]]) {
+          if (i !== j) values[j] = values[i];
+          index[j] = reIndex[k];
+          ++j;
+        }
+      }
+      values.length = j;
+      while (j < n) index[j++] = 0;
+
+      // Bisect again to recompute lo0 and hi0.
+      var bounds = refilter(values);
+      lo0 = bounds[0], hi0 = bounds[1];
+    }
+
+    // Updates the selected values based on the specified bounds [lo, hi].
+    // This implementation is used by all the public filter methods.
+    function filterIndexBounds(bounds) {
+      var lo1 = bounds[0],
+          hi1 = bounds[1];
+
+      if (refilterFunction) {
+        refilterFunction = null;
+        filterIndexFunction(function(d, i) { return lo1 <= i && i < hi1; });
+        lo0 = lo1;
+        hi0 = hi1;
+        return dimension;
+      }
+
+      var i,
+          j,
+          k,
+          added = [],
+          removed = [];
+
+      // Fast incremental update based on previous lo index.
+      if (lo1 < lo0) {
+        for (i = lo1, j = Math.min(lo0, hi1); i < j; ++i) {
+          filters[k = index[i]] ^= one;
+          added.push(k);
+        }
+      } else if (lo1 > lo0) {
+        for (i = lo0, j = Math.min(lo1, hi0); i < j; ++i) {
+          filters[k = index[i]] ^= one;
+          removed.push(k);
+        }
+      }
+
+      // Fast incremental update based on previous hi index.
+      if (hi1 > hi0) {
+        for (i = Math.max(lo1, hi0), j = hi1; i < j; ++i) {
+          filters[k = index[i]] ^= one;
+          added.push(k);
+        }
+      } else if (hi1 < hi0) {
+        for (i = Math.max(lo0, hi1), j = hi0; i < j; ++i) {
+          filters[k = index[i]] ^= one;
+          removed.push(k);
+        }
+      }
+
+      lo0 = lo1;
+      hi0 = hi1;
+      filterListeners.forEach(function(l) { l(one, added, removed); });
+      return dimension;
+    }
+
+    // Filters this dimension using the specified range, value, or null.
+    // If the range is null, this is equivalent to filterAll.
+    // If the range is an array, this is equivalent to filterRange.
+    // Otherwise, this is equivalent to filterExact.
+    function filter(range) {
+      return range == null
+          ? filterAll() : Array.isArray(range)
+          ? filterRange(range) : typeof range === "function"
+          ? filterFunction(range)
+          : filterExact(range);
+    }
+
+    // Filters this dimension to select the exact value.
+    function filterExact(value) {
+      return filterIndexBounds((refilter = crossfilter_filterExact(bisect, value))(values));
+    }
+
+    // Filters this dimension to select the specified range [lo, hi].
+    // The lower bound is inclusive, and the upper bound is exclusive.
+    function filterRange(range) {
+      return filterIndexBounds((refilter = crossfilter_filterRange(bisect, range))(values));
+    }
+
+    // Clears any filters on this dimension.
+    function filterAll() {
+      return filterIndexBounds((refilter = crossfilter_filterAll)(values));
+    }
+
+    // Filters this dimension using an arbitrary function.
+    function filterFunction(f) {
+      refilter = crossfilter_filterAll;
+
+      filterIndexFunction(refilterFunction = f);
+
+      lo0 = 0;
+      hi0 = n;
+
+      return dimension;
+    }
+
+    function filterIndexFunction(f) {
+      var i,
+          k,
+          x,
+          added = [],
+          removed = [];
+
+      for (i = 0; i < n; ++i) {
+        if (!(filters[k = index[i]] & one) ^ !!(x = f(values[i], i))) {
+          if (x) filters[k] &= zero, added.push(k);
+          else filters[k] |= one, removed.push(k);
+        }
+      }
+      filterListeners.forEach(function(l) { l(one, added, removed); });
+    }
+
+    // Returns the top K selected records based on this dimension's order.
+    // Note: observes this dimension's filter, unlike group and groupAll.
+    function top(k) {
+      var array = [],
+          i = hi0,
+          j;
+
+      while (--i >= lo0 && k > 0) {
+        if (!filters[j = index[i]]) {
+          array.push(data[j]);
+          --k;
+        }
+      }
+
+      return array;
+    }
+
+    // Returns the bottom K selected records based on this dimension's order.
+    // Note: observes this dimension's filter, unlike group and groupAll.
+    function bottom(k) {
+      var array = [],
+          i = lo0,
+          j;
+
+      while (i < hi0 && k > 0) {
+        if (!filters[j = index[i]]) {
+          array.push(data[j]);
+          --k;
+        }
+        i++;
+      }
+
+      return array;
+    }
+
+    // Adds a new group to this dimension, using the specified key function.
+    function group(key) {
+      var group = {
+        top: top,
+        all: all,
+        reduce: reduce,
+        reduceCount: reduceCount,
+        reduceSum: reduceSum,
+        order: order,
+        orderNatural: orderNatural,
+        size: size,
+        dispose: dispose,
+        remove: dispose // for backwards-compatibility
+      };
+
+      // Ensure that this group will be removed when the dimension is removed.
+      dimensionGroups.push(group);
+
+      var groups, // array of {key, value}
+          groupIndex, // object id ↦ group id
+          groupWidth = 8,
+          groupCapacity = crossfilter_capacity(groupWidth),
+          k = 0, // cardinality
+          select,
+          heap,
+          reduceAdd,
+          reduceRemove,
+          reduceInitial,
+          update = crossfilter_null,
+          reset = crossfilter_null,
+          resetNeeded = true,
+          groupAll = key === crossfilter_null;
+
+      if (arguments.length < 1) key = crossfilter_identity;
+
+      // The group listens to the crossfilter for when any dimension changes, so
+      // that it can update the associated reduce values. It must also listen to
+      // the parent dimension for when data is added, and compute new keys.
+      filterListeners.push(update);
+      indexListeners.push(add);
+      removeDataListeners.push(removeData);
+
+      // Incorporate any existing data into the grouping.
+      add(values, index, 0, n);
+
+      // Incorporates the specified new values into this group.
+      // This function is responsible for updating groups and groupIndex.
+      function add(newValues, newIndex, n0, n1) {
+        var oldGroups = groups,
+            reIndex = crossfilter_index(k, groupCapacity),
+            add = reduceAdd,
+            initial = reduceInitial,
+            k0 = k, // old cardinality
+            i0 = 0, // index of old group
+            i1 = 0, // index of new record
+            j, // object id
+            g0, // old group
+            x0, // old key
+            x1, // new key
+            g, // group to add
+            x; // key of group to add
+
+        // If a reset is needed, we don't need to update the reduce values.
+        if (resetNeeded) add = initial = crossfilter_null;
+
+        // Reset the new groups (k is a lower bound).
+        // Also, make sure that groupIndex exists and is long enough.
+        groups = new Array(k), k = 0;
+        groupIndex = k0 > 1 ? crossfilter_arrayLengthen(groupIndex, n) : crossfilter_index(n, groupCapacity);
+
+        // Get the first old key (x0 of g0), if it exists.
+        if (k0) x0 = (g0 = oldGroups[0]).key;
+
+        // Find the first new key (x1), skipping NaN keys.
+        while (i1 < n1 && !((x1 = key(newValues[i1])) >= x1)) ++i1;
+
+        // While new keys remain…
+        while (i1 < n1) {
+
+          // Determine the lesser of the two current keys; new and old.
+          // If there are no old keys remaining, then always add the new key.
+          if (g0 && x0 <= x1) {
+            g = g0, x = x0;
+
+            // Record the new index of the old group.
+            reIndex[i0] = k;
+
+            // Retrieve the next old key.
+            if (g0 = oldGroups[++i0]) x0 = g0.key;
+          } else {
+            g = {key: x1, value: initial()}, x = x1;
+          }
+
+          // Add the lesser group.
+          groups[k] = g;
+
+          // Add any selected records belonging to the added group, while
+          // advancing the new key and populating the associated group index.
+          while (!(x1 > x)) {
+            groupIndex[j = newIndex[i1] + n0] = k;
+            if (!(filters[j] & zero)) g.value = add(g.value, data[j]);
+            if (++i1 >= n1) break;
+            x1 = key(newValues[i1]);
+          }
+
+          groupIncrement();
+        }
+
+        // Add any remaining old groups that were greater than all new keys.
+        // No incremental reduce is needed; these groups have no new records.
+        // Also record the new index of the old group.
+        while (i0 < k0) {
+          groups[reIndex[i0] = k] = oldGroups[i0++];
+          groupIncrement();
+        }
+
+        // If we added any new groups before any old groups,
+        // update the group index of all the old records.
+        if (k > i0) for (i0 = 0; i0 < n0; ++i0) {
+          groupIndex[i0] = reIndex[groupIndex[i0]];
+        }
+
+        // Modify the update and reset behavior based on the cardinality.
+        // If the cardinality is less than or equal to one, then the groupIndex
+        // is not needed. If the cardinality is zero, then there are no records
+        // and therefore no groups to update or reset. Note that we also must
+        // change the registered listener to point to the new method.
+        j = filterListeners.indexOf(update);
+        if (k > 1) {
+          update = updateMany;
+          reset = resetMany;
+        } else {
+          if (!k && groupAll) {
+            k = 1;
+            groups = [{key: null, value: initial()}];
+          }
+          if (k === 1) {
+            update = updateOne;
+            reset = resetOne;
+          } else {
+            update = crossfilter_null;
+            reset = crossfilter_null;
+          }
+          groupIndex = null;
+        }
+        filterListeners[j] = update;
+
+        // Count the number of added groups,
+        // and widen the group index as needed.
+        function groupIncrement() {
+          if (++k === groupCapacity) {
+            reIndex = crossfilter_arrayWiden(reIndex, groupWidth <<= 1);
+            groupIndex = crossfilter_arrayWiden(groupIndex, groupWidth);
+            groupCapacity = crossfilter_capacity(groupWidth);
+          }
+        }
+      }
+
+      function removeData() {
+        if (k > 1) {
+          var oldK = k,
+              oldGroups = groups,
+              seenGroups = crossfilter_index(oldK, oldK);
+
+          // Filter out non-matches by copying matching group index entries to
+          // the beginning of the array.
+          for (var i = 0, j = 0; i < n; ++i) {
+            if (filters[i]) {
+              seenGroups[groupIndex[j] = groupIndex[i]] = 1;
+              ++j;
+            }
+          }
+
+          // Reassemble groups including only those groups that were referred
+          // to by matching group index entries.  Note the new group index in
+          // seenGroups.
+          groups = [], k = 0;
+          for (i = 0; i < oldK; ++i) {
+            if (seenGroups[i]) {
+              seenGroups[i] = k++;
+              groups.push(oldGroups[i]);
+            }
+          }
+
+          if (k > 1) {
+            // Reindex the group index using seenGroups to find the new index.
+            for (var i = 0; i < j; ++i) groupIndex[i] = seenGroups[groupIndex[i]];
+          } else {
+            groupIndex = null;
+          }
+          filterListeners[filterListeners.indexOf(update)] = k > 1
+              ? (reset = resetMany, update = updateMany)
+              : k === 1 ? (reset = resetOne, update = updateOne)
+              : reset = update = crossfilter_null;
+        } else if (k === 1) {
+          if (groupAll) return;
+          for (var i = 0; i < n; ++i) if (filters[i]) return;
+          groups = [], k = 0;
+          filterListeners[filterListeners.indexOf(update)] =
+          update = reset = crossfilter_null;
+        }
+      }
+
+      // Reduces the specified selected or deselected records.
+      // This function is only used when the cardinality is greater than 1.
+      function updateMany(filterOne, added, removed) {
+        if (filterOne === one || resetNeeded) return;
+
+        var i,
+            k,
+            n,
+            g;
+
+        // Add the added values.
+        for (i = 0, n = added.length; i < n; ++i) {
+          if (!(filters[k = added[i]] & zero)) {
+            g = groups[groupIndex[k]];
+            g.value = reduceAdd(g.value, data[k]);
+          }
+        }
+
+        // Remove the removed values.
+        for (i = 0, n = removed.length; i < n; ++i) {
+          if ((filters[k = removed[i]] & zero) === filterOne) {
+            g = groups[groupIndex[k]];
+            g.value = reduceRemove(g.value, data[k]);
+          }
+        }
+      }
+
+      // Reduces the specified selected or deselected records.
+      // This function is only used when the cardinality is 1.
+      function updateOne(filterOne, added, removed) {
+        if (filterOne === one || resetNeeded) return;
+
+        var i,
+            k,
+            n,
+            g = groups[0];
+
+        // Add the added values.
+        for (i = 0, n = added.length; i < n; ++i) {
+          if (!(filters[k = added[i]] & zero)) {
+            g.value = reduceAdd(g.value, data[k]);
+          }
+        }
+
+        // Remove the removed values.
+        for (i = 0, n = removed.length; i < n; ++i) {
+          if ((filters[k = removed[i]] & zero) === filterOne) {
+            g.value = reduceRemove(g.value, data[k]);
+          }
+        }
+      }
+
+      // Recomputes the group reduce values from scratch.
+      // This function is only used when the cardinality is greater than 1.
+      function resetMany() {
+        var i,
+            g;
+
+        // Reset all group values.
+        for (i = 0; i < k; ++i) {
+          groups[i].value = reduceInitial();
+        }
+
+        // Add any selected records.
+        for (i = 0; i < n; ++i) {
+          if (!(filters[i] & zero)) {
+            g = groups[groupIndex[i]];
+            g.value = reduceAdd(g.value, data[i]);
+          }
+        }
+      }
+
+      // Recomputes the group reduce values from scratch.
+      // This function is only used when the cardinality is 1.
+      function resetOne() {
+        var i,
+            g = groups[0];
+
+        // Reset the singleton group values.
+        g.value = reduceInitial();
+
+        // Add any selected records.
+        for (i = 0; i < n; ++i) {
+          if (!(filters[i] & zero)) {
+            g.value = reduceAdd(g.value, data[i]);
+          }
+        }
+      }
+
+      // Returns the array of group values, in the dimension's natural order.
+      function all() {
+        if (resetNeeded) reset(), resetNeeded = false;
+        return groups;
+      }
+
+      // Returns a new array containing the top K group values, in reduce order.
+      function top(k) {
+        var top = select(all(), 0, groups.length, k);
+        return heap.sort(top, 0, top.length);
+      }
+
+      // Sets the reduce behavior for this group to use the specified functions.
+      // This method lazily recomputes the reduce values, waiting until needed.
+      function reduce(add, remove, initial) {
+        reduceAdd = add;
+        reduceRemove = remove;
+        reduceInitial = initial;
+        resetNeeded = true;
+        return group;
+      }
+
+      // A convenience method for reducing by count.
+      function reduceCount() {
+        return reduce(crossfilter_reduceIncrement, crossfilter_reduceDecrement, crossfilter_zero);
+      }
+
+      // A convenience method for reducing by sum(value).
+      function reduceSum(value) {
+        return reduce(crossfilter_reduceAdd(value), crossfilter_reduceSubtract(value), crossfilter_zero);
+      }
+
+      // Sets the reduce order, using the specified accessor.
+      function order(value) {
+        select = heapselect_by(valueOf);
+        heap = heap_by(valueOf);
+        function valueOf(d) { return value(d.value); }
+        return group;
+      }
+
+      // A convenience method for natural ordering by reduce value.
+      function orderNatural() {
+        return order(crossfilter_identity);
+      }
+
+      // Returns the cardinality of this group, irrespective of any filters.
+      function size() {
+        return k;
+      }
+
+      // Removes this group and associated event listeners.
+      function dispose() {
+        var i = filterListeners.indexOf(update);
+        if (i >= 0) filterListeners.splice(i, 1);
+        i = indexListeners.indexOf(add);
+        if (i >= 0) indexListeners.splice(i, 1);
+        i = removeDataListeners.indexOf(removeData);
+        if (i >= 0) removeDataListeners.splice(i, 1);
+        return group;
+      }
+
+      return reduceCount().orderNatural();
+    }
+
+    // A convenience function for generating a singleton group.
+    function groupAll() {
+      var g = group(crossfilter_null), all = g.all;
+      delete g.all;
+      delete g.top;
+      delete g.order;
+      delete g.orderNatural;
+      delete g.size;
+      g.value = function() { return all()[0].value; };
+      return g;
+    }
+
+    // Removes this dimension and associated groups and event listeners.
+    function dispose() {
+      dimensionGroups.forEach(function(group) { group.dispose(); });
+      var i = dataListeners.indexOf(preAdd);
+      if (i >= 0) dataListeners.splice(i, 1);
+      i = dataListeners.indexOf(postAdd);
+      if (i >= 0) dataListeners.splice(i, 1);
+      i = removeDataListeners.indexOf(removeData);
+      if (i >= 0) removeDataListeners.splice(i, 1);
+      m &= zero;
+      return filterAll();
+    }
+
+    return dimension;
+  }
+
+  // A convenience method for groupAll on a dummy dimension.
+  // This implementation can be optimized since it always has cardinality 1.
+  function groupAll() {
+    var group = {
+      reduce: reduce,
+      reduceCount: reduceCount,
+      reduceSum: reduceSum,
+      value: value,
+      dispose: dispose,
+      remove: dispose // for backwards-compatibility
+    };
+
+    var reduceValue,
+        reduceAdd,
+        reduceRemove,
+        reduceInitial,
+        resetNeeded = true;
+
+    // The group listens to the crossfilter for when any dimension changes, so
+    // that it can update the reduce value. It must also listen to the parent
+    // dimension for when data is added.
+    filterListeners.push(update);
+    dataListeners.push(add);
+
+    // For consistency; actually a no-op since resetNeeded is true.
+    add(data, 0, n);
+
+    // Incorporates the specified new values into this group.
+    function add(newData, n0) {
+      var i;
+
+      if (resetNeeded) return;
+
+      // Add the added values.
+      for (i = n0; i < n; ++i) {
+        if (!filters[i]) {
+          reduceValue = reduceAdd(reduceValue, data[i]);
+        }
+      }
+    }
+
+    // Reduces the specified selected or deselected records.
+    function update(filterOne, added, removed) {
+      var i,
+          k,
+          n;
+
+      if (resetNeeded) return;
+
+      // Add the added values.
+      for (i = 0, n = added.length; i < n; ++i) {
+        if (!filters[k = added[i]]) {
+          reduceValue = reduceAdd(reduceValue, data[k]);
+        }
+      }
+
+      // Remove the removed values.
+      for (i = 0, n = removed.length; i < n; ++i) {
+        if (filters[k = removed[i]] === filterOne) {
+          reduceValue = reduceRemove(reduceValue, data[k]);
+        }
+      }
+    }
+
+    // Recomputes the group reduce value from scratch.
+    function reset() {
+      var i;
+
+      reduceValue = reduceInitial();
+
+      for (i = 0; i < n; ++i) {
+        if (!filters[i]) {
+          reduceValue = reduceAdd(reduceValue, data[i]);
+        }
+      }
+    }
+
+    // Sets the reduce behavior for this group to use the specified functions.
+    // This method lazily recomputes the reduce value, waiting until needed.
+    function reduce(add, remove, initial) {
+      reduceAdd = add;
+      reduceRemove = remove;
+      reduceInitial = initial;
+      resetNeeded = true;
+      return group;
+    }
+
+    // A convenience method for reducing by count.
+    function reduceCount() {
+      return reduce(crossfilter_reduceIncrement, crossfilter_reduceDecrement, crossfilter_zero);
+    }
+
+    // A convenience method for reducing by sum(value).
+    function reduceSum(value) {
+      return reduce(crossfilter_reduceAdd(value), crossfilter_reduceSubtract(value), crossfilter_zero);
+    }
+
+    // Returns the computed reduce value.
+    function value() {
+      if (resetNeeded) reset(), resetNeeded = false;
+      return reduceValue;
+    }
+
+    // Removes this group and associated event listeners.
+    function dispose() {
+      var i = filterListeners.indexOf(update);
+      if (i >= 0) filterListeners.splice(i);
+      i = dataListeners.indexOf(add);
+      if (i >= 0) dataListeners.splice(i);
+      return group;
+    }
+
+    return reduceCount();
+  }
+
+  // Returns the number of records in this crossfilter, irrespective of any filters.
+  function size() {
+    return n;
+  }
+
+  return arguments.length
+      ? add(arguments[0])
+      : crossfilter;
+}
+
+// Returns an array of size n, big enough to store ids up to m.
+function crossfilter_index(n, m) {
+  return (m < 0x101
+      ? crossfilter_array8 : m < 0x10001
+      ? crossfilter_array16
+      : crossfilter_array32)(n);
+}
+
+// Constructs a new array of size n, with sequential values from 0 to n - 1.
+function crossfilter_range(n) {
+  var range = crossfilter_index(n, n);
+  for (var i = -1; ++i < n;) range[i] = i;
+  return range;
+}
+
+function crossfilter_capacity(w) {
+  return w === 8
+      ? 0x100 : w === 16
+      ? 0x10000
+      : 0x100000000;
+}
+})(typeof exports !== 'undefined' && exports || this);
