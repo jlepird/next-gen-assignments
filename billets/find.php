@@ -240,7 +240,31 @@ if (!isset($_SESSION["uname"])) {
                      .on("filtered", updateTable)
                      .xAxis().ticks(2);
 
+        // ************ AFSC ****************** 
+        
+        var afscs = billets.dimension(function(x){
+        	if ("position_AFSC_Core" in x) {
+        		return x.position_AFSC_Core; 
+        	} else {return "N/A";}
+        }); 
+        
+        var afscsGroup = afscs.group();
+        afscsGroup = afscsGroup.reduce(function(p,v) {return p+(+v.NumAvailable);},
+               function(p,v) {return p-(+v.NumAvailable);},
+               function() {return 0;});
 
+        afscsChart = dc.rowChart("#afscsChart");
+        afscsChart.width(barWidth)
+                     .height(180)
+                     .dimension(afscs)
+                     .group(afscsGroup)
+                     .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
+                     .margins({top: 10, right: 50, bottom: 30, left: 40})
+                     .elasticX(true)
+                     .on("filtered", updateTable)
+                     .xAxis().ticks(2);
+		
+	
         // ************* CONUS pie chart ***************
         var conus = billets.dimension(function(x){
             if ("CONUS" in x){
@@ -309,24 +333,24 @@ if (!isset($_SESSION["uname"])) {
                      .xAxis().ticks(2);
 
         // ************** AC *********************
-        var ac = billets.dimension(function(x){
-        	if ("AC" in x){
-        		return x.AC;
+        var Position_Level = billets.dimension(function(x){
+        	if ("Position_Level" in x){
+        		return x.Position_Level;
         	} else {
         		return "(Unknown)";
         	}
         });
-        var acGroup = ac.group();
-        acGroup=acGroup.reduce(function(p,v) {return p+(+v.NumAvailable);},
+        var Position_LevelGroup = Position_Level.group();
+        Position_LevelGroup=Position_LevelGroup.reduce(function(p,v) {return p+(+v.NumAvailable);},
                function(p,v) {return p-(+v.NumAvailable);},
                function() {return 0;});
 
-        acChart = dc.rowChart("#acChart");
-        acChart.width(barWidth)
+        levelChart = dc.rowChart("#levelChart");
+        levelChart.width(barWidth)
                      .height(180)
-                     .dimension(ac)
+                     .dimension(Position_Level)
                      .ordinalColors(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",  "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
-                     .group(acGroup)
+                     .group(Position_LevelGroup)
                      .margins({top: 10, right: 50, bottom: 30, left: 40})
                      .elasticX(true)
                      .on("filtered", updateTable)
@@ -413,47 +437,32 @@ if (!isset($_SESSION["uname"])) {
 
        // ************* Report Chart ***************
        var monthDisplay = {
-           "01": "Jan",
-           "02": "Feb",
-           "03": "Mar",
-           "04": "Apr",
-           "05": "May",
-           "06": "Jun",
-           "07": "Jul",
-           "08": "Aug",
-           "09": "Sep",
-           "10": "Oct",
-           "11": "Nov",
-           "12": "Dec"
+           01: "Jan",
+           02: "Feb",
+           03: "Mar",
+           04: "Apr",
+           05: "May",
+           06: "Jun",
+           07: "Jul",
+           08: "Aug",
+           09: "Sep",
+           10: "Oct",
+           11: "Nov",
+           12: "Dec"
        }
        
-       /*
-       var invert = function (obj) {
-        // invert a dictionary-- from http://nelsonwells.net/2011/10/swap-object-key-and-values-in-javascript/
-          var new_obj = {};
-        
-          for (var prop in obj) {
-                if (obj.hasOwnProperty(prop)) {
-                    new_obj[obj[prop]] = prop;
-                }
-            }
-        
-
-          return new_obj;
-        };
-        */ 
         
         // Get version with keys/values swapped
         var invertedMonths = _.invert(monthDisplay);
         
         
         var report = billets.dimension(function(x){
-            if ("report" in x){
-                var spl = x.report.split("/");
+            if ("RNLTD" in x){
+                var spl = x.RNLTD.split("/");
                 if (spl.length == 3){
                     month = spl[0];
                     yr = spl[2];
-                    return yr + '-' + monthDisplay[month];
+                    return yr + '-' + monthDisplay[+month];
                 }
             } else { 
             	return "(Unknown)";
@@ -597,13 +606,14 @@ if (!isset($_SESSION["uname"])) {
     </div>
 
     <div class = "row">
-        <div id = "prioritizationPie" class = "dc-chart" >
-            <strong> Prioritization Level <img src="../images/help.jpg"  style="width:20px;height:20px; cursor: pointer;" onclick="helpNRPP();"> </strong>
-            <a class="reset"
-                  href='javascript:prioritizationPieChart.filterAll();dc.redrawAll();'
+
+    	<div id="afscsChart" class="dc-chart">
+    		<strong> AFSC </strong>	
+    		 <a class="reset"
+                  href='javascript:afscsChart.filterAll();dc.redrawAll();'
                   style="display: none;">reset</a>
             <div class = "clearfix"></div>
-        </div>
+    	</div>
 
         <div id = "typeChart" class = "dc-chart" >
             <strong> Assignment Type </strong>
@@ -613,10 +623,10 @@ if (!isset($_SESSION["uname"])) {
             <div class = "clearfix"></div>
         </div>
 
-        <div id = "acChart" class = "dc-chart" >
-            <strong> Aircraft  </strong>
+        <div id = "levelChart" class = "dc-chart" >
+            <strong> Level  </strong>
             <a class="reset"
-                  href='javascript:acChart.filterAll();dc.redrawAll();'
+                  href='javascript:levelChart.filterAll();dc.redrawAll();'
                   style="display: none;">reset</a>
             <div class = "clearfix"></div>
         </div>

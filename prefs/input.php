@@ -3,7 +3,7 @@
 if (!isset($_SESSION["uname"])) {
     header("Location: ../login.php"); // comment this line to disable login (for debug) 
 }
-include '../include/head_common.php'; 
+
 if ($_SESSION['isOwner']){
     header("Location: ./select_role.php");
 } elseif ($_SESSION['isAirman']) { // if they are an owner, then display a page to submit a preference list of officers
