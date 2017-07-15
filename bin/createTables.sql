@@ -158,6 +158,18 @@ create table favorites (
 		references billetDescs (posn)
 );
 
+drop table if exists amnfavorites cascade;
+create table amnfavorites (
+	username varchar(50) not null,
+	id       varchar(50) not null,
+	constraint fk_favs_users
+		foreign key (username)
+		references users (username), 
+	constraint fk_favs_id
+		foreign key (id)
+		references officers(ri_person_id)
+);
+
 drop table if exists userActivity;
 create table userActivity (
 		username varchar(50) not null,

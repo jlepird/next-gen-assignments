@@ -6,13 +6,49 @@ if (!isset($_SESSION["uname"])) {
 if ($_SESSION['isOwner'] != 't' ){
   header("Location: ./input.php"); // Unless user is being assigned, they have no reason to be on this page. 
 }
-include $_SERVER['DOCUMENT_ROOT'] . '/include/head_common.php';
 ?>
 
 <!DOCTYPE html5>
 <html>
+<head>
 <meta charset='utf-8' http-equiv="X-UA-Compatible" content="IE=9;IE=10;IE=Edge,chrome=1"/>
 <title>Find an Officer</title>
+<?php 
+  include $_SERVER['DOCUMENT_ROOT'] . '/include/head_common.php';
+?>
+<script type="text/javascript">
+  function toggleFavorite(officer, x){
+      $.ajax({
+          url:"/officers/changeFavorite.php",
+          type: 'post',
+          data: {"officer" : officer,
+                 "case" : x.checked}
+      });
+  }
+
+  var toggleOptions = {
+    on: "<span style='font-size: 100%;'> &starf; </span>",
+    off: ""
+  };
+  var toggled = [];
+  function makeAllToggle(){
+    $(".toggle").each(function(i,x){
+      if ($(x).is("input")){
+          if (toggled.indexOf($(x).attr("id")) > -1){
+              return;
+          } else {
+              $(x).bootstrapToggle(toggleOptions);
+              toggled.push($(x).attr("id"));
+              return;
+          }
+      }
+    });
+  }
+
+  var favorites = <?php echo $sql->queryJSON("select id from amnfavorites where username = '" . $_SESSION["uname"] . "';") ?>;
+
+</script>
+</head>
 <body>
 <?php include '../banner.php'; ?>
 	<div class='container' style="font-family: Lucida Sans Unicode, Lucida Grande, sans-seriff">
@@ -169,14 +205,10 @@ include $_SERVER['DOCUMENT_ROOT'] . '/include/head_common.php';
 	</table>
 </div>
 </div>
-<script src='js_css/d3.v3.min.js' type='text/javascript'></script>
-<script src='js_css/crossfilter.js' type='text/javascript'></script>
-<script src='js_css/dc.min.js' type='text/javascript'></script>
-<script src='js_css/jquery-3.2.1.min.js' type='text/javascript'></script>
-<script src="js_css/tether.min.js"></script>
-<script src='js_css/bootstrap.min.js' type='text/javascript'></script>
-<script src="js_css/lodash.min.js"></script>
+
 <script type="text/javascript">
+
+
   // Create the dc.js chart objects & link to div
 
 var width = 1140
@@ -452,9 +484,7 @@ $(function(){
       function(d) { return d['rdtm_aircraft'] },
       function(d) { return d['rtg'] },
       function(d) { return d.grd },
-      function(d) {if (d.selected){ return '<label class="switch"><input type="checkbox" checked class="favorite" id='+d.id+'><div class="slider round"></div>'}
-        else
-          {return '<label class="switch"><input type="checkbox" class="favorite" id='+d.id+'><div class="slider round"></div>' }
+      function(d) {return "<input type = 'checkbox' onchange='toggleFavorite(\"" + d.id + "\", this)' data-toggle='toggle' class = 'toggle' id = 'fav" + d.id + "'>"
       }
     ])
     .sortBy(function(d){ return d.id })
@@ -463,6 +493,14 @@ $(function(){
 
   // Render the Charts
   dc.renderAll();
+
+  // Inital checkboxing 
+  $(favorites).each(function(i, x){
+      $("#fav" + x.id).attr("checked", "checked");
+  })
+
+  // Make the favorites pretty.
+  makeAllToggle();
 
   // Persist favorite button states 
   $('#dc-data-table').on('click', '.dc-table-column', function(){

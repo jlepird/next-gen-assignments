@@ -2,5 +2,6 @@
 .DS_Store
 /bin/psql/
 /data/*.csv*
+/data/surfs/*
 *.pg
 clover.xml
