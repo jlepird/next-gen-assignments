@@ -17,12 +17,24 @@ if ($_SESSION['isOwner'] != 't' ){
   include $_SERVER['DOCUMENT_ROOT'] . '/include/head_common.php';
 ?>
 <script type="text/javascript">
+  var favorites = <?php echo $sql->queryJSON("select id from amnfavorites where username = '" . $_SESSION["uname"] . "';") ?>;
   function toggleFavorite(officer, x){
+  	  // First update our local copy of what favs the user has. 
+      if (x.checked){
+      	favorites.push({id:officer});
+      } else { 
+      	var index = array.indexOf({id:officer});
+      	if (index > -1){
+      		favorites.splice(index, 1); // remove one element
+      	}
+      }
+
+      // Then inform the server of the changes
       $.ajax({
           url:"/officers/changeFavorite.php",
           type: 'post',
           data: {"officer" : officer,
-                 "case" : x.checked}
+                 "case"    : x.checked}
       });
   }
 
@@ -45,7 +57,7 @@ if ($_SESSION['isOwner'] != 't' ){
     });
   }
 
-  var favorites = <?php echo $sql->queryJSON("select id from amnfavorites where username = '" . $_SESSION["uname"] . "';") ?>;
+
 
 </script>
 </head>
@@ -192,14 +204,14 @@ if ($_SESSION['isOwner'] != 't' ){
 	<table class='col-xs-12 table table-hover' id='dc-data-table'>
 		<thead>
 			<tr class='header'>
+			    <th class='th_FAV'>Favorite</th>
 				<th class='th_ID'>ID</th>
+				<th class='th_Grade'>Grade</th>
 				<th class='th_Location'>Location</th>
 				<th class='th_PAS'>PAS</th>
 				<th class='th_Unit'>Unit</th>
 				<th class='th_RDTM'>A/C</th>
 				<th class='th_RTG'>RTG</th>
-				<th class='th_Grade'>Grade</th>
-        <th class='th_FAV'>Favorite</th>
 			</tr>
 		</thead>
 	</table>
@@ -477,15 +489,16 @@ $(function(){
     .group(function(d) {return 'Showing only first 100'})
     .size(data.length)
     .columns([
+      function(d) {return "<input type = 'checkbox' onchange='toggleFavorite(\"" + d.id + "\", this)' data-toggle='toggle' class = 'toggle' id = 'fav" + d.id + "'>"
+      },
       function(d) { return '<a href="surf.php?id=' + d.id + '" target="_blank">'+d.id+'</a>' },
+      function(d) { return d.grd },
       function(d) { return d.location},
       function(d) { return d.pas },
       function(d) { return d.unit },
       function(d) { return d['rdtm_aircraft'] },
       function(d) { return d['rtg'] },
-      function(d) { return d.grd },
-      function(d) {return "<input type = 'checkbox' onchange='toggleFavorite(\"" + d.id + "\", this)' data-toggle='toggle' class = 'toggle' id = 'fav" + d.id + "'>"
-      }
+ 
     ])
     .sortBy(function(d){ return d.id })
     .order(d3.ascending)
@@ -514,12 +527,19 @@ $(function(){
   $('#export-favorite').on('click', function() {exportAll(true)})
   //Function to export into CSV
   function exportAll(only_favorites) {
+  	  var favsArray = [];
+  	  favorites.forEach(function(d){
+  	  	if ("id" in d){
+  	  		favsArray.push(d.id);
+  	  	}
+  	  });
+
       // prepare CSV data
       var csvData = new Array()
-      var exportData = only_favorites ? data.filter(function(d){return d.selected}) : data 
+      var exportData = only_favorites ? data.filter(function(d){return ($.inArray(d.id, favsArray) > -1);}) : data;
       csvData.push('"ID","LOCATION","PAS","UNIT"')
       exportData.forEach(function (airman, index, array) {
-          csvData.push('"' + airman.id + '","' + airman.LOCATION + '","' + airman.PAS + '","' +airman.UNIT+ '"' )
+          csvData.push('"' + airman.id + '","' + airman.location + '","' + airman.pas + '","' +airman.unit+ '"' )
       })
 
       // download stuff
