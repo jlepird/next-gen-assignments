@@ -1,6 +1,3 @@
-<meta charset="utf-8">
-<title> Air Force Talent Marketplace</title>
-
 <!-- CSS files --> 
 <link rel="stylesheet" href="/include/datatables/jquery.dataTables.min.css" type = "text/css"/>
 <link rel="stylesheet" href="/include/datatables/buttons.dataTables.min.css" type = "text/css" />

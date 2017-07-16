@@ -515,13 +515,15 @@ $(function(){
   // Make the favorites pretty.
   makeAllToggle();
 
-  // Persist favorite button states 
+  // Persist favorite button states
+  /*
   $('#dc-data-table').on('click', '.dc-table-column', function(){
     var id = d3.select(this.parentNode).select(".dc-table-column._0").text()
     var ind = _.findIndex(data, function(d){ return id == d.id})
     data[ind].selected = d3.select(this).select('input').property('checked')
     // INSERT php statement here, using data[ind].selected as "case"
   });
+  */
 
   $('#export-all').on('click', function(){ exportAll(false)})
   $('#export-favorite').on('click', function() {exportAll(true)})

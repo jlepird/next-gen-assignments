@@ -206,10 +206,6 @@ left outer join
     <h3> My Preference List </h3>
     <p> <?php echo $_SESSION['uname'] ?>, enter your preferences below.</p>
 
-    <div style="background-color: #42f483">
-    <p> You have been ranked by <?php echo str_replace('"', "", $sql->queryValue("select count(*) from billetPrefs left outer join users on billetPrefs.name = users.name where username='" . $_SESSION['uname'] . "';")); ?> billets (<?php echo str_replace('"', "", $sql->queryValue("select count(distinct posn) from billetPrefs;"));?>/<?php echo str_replace('"', "", $sql->queryValue("select count(distinct posn) from billetOwners;"));?> billets have submitted preferences). </p>
-    </div>
-
     <datalist id = "billets"> </datalist> <!-- Javascript will fill in -->
 
     <form id="myForm" action = "submitOfficer.php" method = "POST">

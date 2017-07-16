@@ -7,7 +7,7 @@ if ($_SESSION['isOwner'] != 't' ){
 	header("Location: ./input.php"); // Unless user is a position owner, they have no reason to be on this page. 
 }
 
-include '../include/head_common.php';
+include '../include/funs.php';
 
 // Need to validate that this user owns this billet 
 try {

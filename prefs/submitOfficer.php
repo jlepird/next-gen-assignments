@@ -7,7 +7,7 @@ if ($_SESSION['isAirman'] != 1 ){
 	header("Location: ./input.php"); // Unless user is being assigned, they have no reason to be on this page. 
 }
 
-include '../include/head_common.php';
+include '../include/funs.php';
 
 $sql->execute("delete from airmanPrefs where username = '" . $_SESSION["uname"] . "';"); 
 for ($i = 1; $i <= 10; $i++){

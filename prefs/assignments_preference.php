@@ -40,16 +40,50 @@ if (! $authorized){
     </script>
     </head>
     <script>
-    	// Get list of airmen
-	    var airmen = <?php echo $sql->queryJSON("select distinct name from users where officer order by name;"); ?>;
+    	// Get list of airmen 
+    	// In postgres, || is string concatenation!
+	    var airmen = <?php echo $sql->queryJSON("select distinct grd, ri_person_id as name from officers order by name ;"); ?>; 
 
-	    var initialPrefs = <?php echo $sql->queryJSON("select name, pref from billetPrefs where posn = '" . $_GET["billet"] . "';"); ?>; 
+	    var initialPrefs = <?php echo $sql->queryJSON("select id as name, pref from billetPrefs where posn = '" . $_GET["billet"] . "';"); ?>; 
 
 	   	// Get how many people have priorized each billet
-	    var amnPriors = <?php echo $sql->queryJSON("select name, count(*) as val from billetprefs where posn != '" . $_GET["billet"] . "' group by name;"); ?>;
+	    var amnPriors = <?php echo $sql->queryJSON("select id as name, count(*) as val from billetprefs where posn != '" . $_GET["billet"] . "' group by id;"); ?>;
 	    var maxPref = d3.max(amnPriors, function(x){
 	    	return +x.val;
 	    })
+
+	    var amnFavs = <?php echo $sql->queryJSON("select id from amnfavorites where username = '". $_SESSION["uname"] . "';"); ?>;
+
+	    $(airmen).each(function(i, airman){
+	    	airman.favorite = false;
+	    	$(amnFavs).each(function(j, amn){
+	    		if (airman.name == amn.id){
+	    			airman.favorite = true;
+	    		}
+	    	})
+	    })
+
+	    // Re-order the array so that the favorites come first
+	    airmen = airmen.sort(function(a,b){ // sort expects a compare function
+	    	return (b.favorite) - (a.favorite);
+	    });
+
+	    var options = "";
+	    options += "<option value=''>Any Officer</option>";
+    	options += "<optgroup label='Favorites'>";
+
+		// build out the options string
+		var haveMoreFavorites = true;
+		$(airmen).each(function(i, airman){
+			if (haveMoreFavorites & !airman.favorite){
+				haveMoreFavorites = false;
+				options += "</optgroup>";
+				options += "<optgroup label = 'Others'>";
+			}
+			options += "<option value='" + airman.name + "'>" + airman.grd + " " + airman.name + "</option>";
+		});
+		options += "</optgroup>";
+
 
 	    // Define the color scale we'll use to code the prior preferences
 	    var scale = d3.scale.linear()
@@ -60,10 +94,7 @@ if (! $authorized){
 	    $(function(){
 	    	// Add options
 	    	$(".chosen-select").each(function(i, x){
-	    		$(x).append($("<option>", {value: "", text: "Any Airman"}));
-	    		$(airmen).each(function(i, amn){
-	    			$(x).append($("<option>", {value: amn.name, text: _.startCase(_.toLower(amn.name))}));
-	    		})
+	    		$(x).append(options);
 	    	});
 
 		    initialPrefs.forEach(function(x){

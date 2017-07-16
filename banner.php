@@ -1,11 +1,12 @@
+<meta charset="utf-8">
+<title> Air Force Talent Marketplace</title>
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header ">
             <ul class="nav navbar-nav" style="font-size: 10pt;">
             <li>
             <a class="navbar-brand page-scroll" href="/">
-                <p>Air Force Talent Marketplace
-                <em style="font-size: 10pt;"> An Assignment Matching Test </em></p> 
+                <p>Air Force Talent Marketplace</p> 
             </a>
             </li>
             </ul>
@@ -27,9 +28,10 @@
                 <li>
                     <a href="/officers/find_officer.php">Find an Officer</a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="/myvectorprofile/myvectorprofile.php">Update My Profile</a>
                 </li>
+                -->
                 <li>
                     <a href="/prefs/input.php">My Preference List</a>
                 </li>

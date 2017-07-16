@@ -97,17 +97,6 @@ create table allowableDegrees(
 	degree varchar(100)
 );
 
-drop table if exists locations cascade; 
-create table locations(
-	location varchar(100) primary key,
-	lon numeric(16, 10), 
-	lat numeric(16, 10)
-);
-
-insert into locations values 
-	('Ramstein Air Base', 49.4417857579 ,   7.6008885732),
-    ('The Pentagon'     , 38.8707481657 , -77.0540203771);
-
 drop table if exists airmanPrefs cascade;
 create table airmanPrefs (
 	username varchar(50) not null, 
@@ -123,12 +112,12 @@ create table airmanPrefs (
 
 drop table if exists billetPrefs cascade;
 create table billetPrefs ( 
-	name varchar(500) not null, 
-	posn varchar(50) not null,
-	pref int not null,
+	id varchar(20)   not null,
+    posn varchar(50) not null,
+	pref int         not null,
 	constraint fk_billetPrefs_users
-		foreign key (name)
-		references users (name), 
+		foreign key (id)
+		references officers (ri_person_id), 
 	constraint fk_billetPrefs_posn
 		foreign key (posn)
 		references billetDescs (posn)
