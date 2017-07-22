@@ -13,8 +13,7 @@ create table users (
 
 
 insert into users values 
-('a9', 'example@test.com',  md5('test'), true, true, 'Maj Dysfunction'),
-('a1', 'example2@test.com', md5('test'), false, true, 'Capt Smith');
+('demo.user', 'example@test.com',  md5('test'), true, true, 'Demo User');
 
 -- Billetdescs is the authoritative source of the list of billets
 drop table if exists billetDescs cascade;

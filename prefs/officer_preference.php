@@ -243,6 +243,6 @@ left outer join
 
 </div>
 
-<div id = "footer"> For Official Use Only (FOUO) </div>
+
 </body>
 </html>

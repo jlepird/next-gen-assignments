@@ -6,7 +6,8 @@
             <ul class="nav navbar-nav" style="font-size: 10pt;">
             <li>
             <a class="navbar-brand page-scroll" href="/">
-                <p>Air Force Talent Marketplace</p> 
+                <p>Air Force Talent Marketplace <em> Demo Version </em></p> 
+
             </a>
             </li>
             </ul>

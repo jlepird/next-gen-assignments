@@ -50,7 +50,7 @@ if (!isset($_SESSION["uname"])) {
 
     <br> <br> <br>
     <h3>Instructions</h3>
-    <p>As part of this test, you are requested to submit detailed information on each of your billets.  Please review each billet in the drop-down list and ensure each one has the latest information describing the assignment. This information will be searchable and read by officers on the VML to inform their assignment preference list. Please provide this information for all your billets by 31 January 2017. 
+    <p>As part of this test, you are requested to submit detailed information on each of your billets.  Please review each billet in the drop-down list and ensure each one has the latest information describing the assignment. This information will be searchable and read by officers on the VML to inform their assignment preference list.. 
     <ul> <li> <p> Tip: feel free to select multiple options! </p> </li> </ul>
     </p>
 

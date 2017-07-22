@@ -4,7 +4,7 @@ if (!isset($_SESSION["uname"])) {
     header("Location: /login.php"); // comment this line to disable login (for debug) 
 }
 if ($_SESSION['isOwner'] != 't' ){
-  header("Location: ./input.php"); // Unless user is being assigned, they have no reason to be on this page. 
+  //header("Location: ./index.php"); // Unless user is being assigned, they have no reason to be on this page. 
 }
 ?>
 
