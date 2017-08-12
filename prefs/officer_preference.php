@@ -65,10 +65,12 @@ left outer join
 	    // Get the list of preferences the user has (if any)
 	    var initialPrefs = <?php echo $sql->queryJSON("select posn, pref from airmanPrefs where username = '" . $_SESSION["uname"] . "';"); ?>; 
 
+	    var numInitalPrefs = +<?php echo $sql->queryValue("select max(pref) from airmanPrefs where username = '" . $_SESSION["uname"] . "';"); ?>; 
+
+	    var options = ""; 
 	    // After page load, populate datalist with options
 	    $(function(){
 	    	// Define available otpions 
-	    	var options = "";
     		options += "<option value=''>Needs of the Air Force</option>";
     		options += "<optgroup label='Favorites'>";
 
@@ -89,17 +91,26 @@ left outer join
 	    		$(x).append(options);	    		
 	    	});
 
+	    	while (numPrefs < numInitalPrefs){
+	    		addPrefs(false); // can't use chosen yet until initial prefs are popuplated.
+	    		// Update number of prefs available
+		    	numPrefs = $("[id^=row]").length;
+	    	}
+
 		    initialPrefs.forEach(function(x){
 		    	$("#billets" + x.pref)[0].value = x.posn; 
 		    });
-		    
+
+
 		    $(".chosen-select").chosen({width: "400px"});
 
 		    showOthers();
+
+
 		  });
 
 	    // Hard-coded value for number of preferences available
-	    var numPrefs = 10; 
+	    var numPrefs = 10 ;
 
 
 	    // Make array of billet names for enforcement later 
@@ -111,6 +122,10 @@ left outer join
 	    // This function ensures that the preferences are sensible
 	    var verify = function(x){
 	    	myId = +x.id.substr(7); // Get our preference number
+
+	    	numPrefs = $('[id^=row]').length;
+
+	    	console.log(numPrefs);
 
 	    	var foundError = false; 
 	    	// Validate each element in our list 
@@ -132,10 +147,7 @@ left outer join
 	    				break;
 	    			}
 
-
-
 	    			// Make sure it's not a duplicate of a one before it. 
-	    			
 	    			for (var j = 1; j < i; ++j){
 		    			if (val == $("#billets" + j)[0].value) {
 		    				$("#row" + i)[0].innerHTML = "&larr; Repeat of #" + j;
@@ -182,6 +194,7 @@ left outer join
 	    }
 
 	    function mySubmit() {
+
 	    	swal({
 	    		title:"Ready to Submit?",
 	    		html: true,
@@ -193,10 +206,25 @@ left outer join
 	    		"<li style='text-align:left;'> I acknowledge any information I provided is accurate and complete and that I will work with my MPS to correct any inaccurate information." + 
 	    		"<li style='text-align:left;'> I have read the Frequently Asked Questions. </ul>",
 	    	}, function(){
+		    	$("#myForm").append("<input type='hidden' name='numPrefs' value='" + numPrefs + "'/>");
 	    		document.getElementById("myForm").submit();
 	    	});
 	    }
 
+	    function addPrefs(choose){
+	    	for (var i = numPrefs+1; i <= numPrefs + 5; i++){
+	    		$("#prefs").append("<tr> <td> Preference #" + i + ": </td> <td> " + 
+	    		                   "<select class='chosen-select' id='billets" + i + 
+	    		                   "' name='billets" + i + 
+	    		                   "' onchange='verify(this);'></select></td>" + 
+	    		                    "<td id='row" + i + "'</td></tr>");
+	    		$("#billets" + i).append(options);
+	    		if (choose){
+	    			$("#billets" + i).chosen({width: "400px"});
+	    		}
+
+	    	}
+	    };
     </script>
 <body>
 <?php include '../banner.php'; ?>
@@ -235,7 +263,7 @@ left outer join
     	</table>
     </fieldset>
     	<fieldset>
-    		<center> <input class = "btn btn-primary" id = "bsubmit" value = "Submit" onclick = "mySubmit();"> </center>
+			<center> <input class = "btn btn-info" id = "more" value = "+ Preferences" onclick = "addPrefs(true);">  <input class = "btn btn-primary" id = "bsubmit" value = "Submit" onclick = "mySubmit();"> </center>
     	</fieldset>
     </form>
 

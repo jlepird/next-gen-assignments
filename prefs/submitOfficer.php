@@ -10,7 +10,7 @@ if ($_SESSION['isAirman'] != 1 ){
 include '../include/funs.php';
 
 $sql->execute("delete from airmanPrefs where username = '" . $_SESSION["uname"] . "';"); 
-for ($i = 1; $i <= 10; $i++){
+for ($i = 1; $i <= $_POST["numPrefs"]; $i++){
 	$billet = $sql->sanitize($_POST["billets" . $i]);
 	if ($billet != "") {
 		$sql->execute("insert into airmanPrefs values ('" . $_SESSION["uname"] . "','" . $billet . "', " . $i . ");");
